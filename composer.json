@@ -1,0 +1,36 @@
+{
+    "description": 	"Aspose.Imaging for Cloud PHP SDK",
+    "name": 		"aspose/imaging-cloud-sdk",
+    "type": 		"library",
+    "keywords" : 	["aspose", "imaging", "cloud", "php", "sdk", "image", "bmp", "dicom", "dng", "djvu", "djv", "emf", "gif", "jpg", "jpe", "jpeg", "jpeg2000", "jp2", "jpx", "jpm", "j2k", "odg", "pdf", "png", "psd", "tiff", "tif", "svg", "webp", "wmf", "reverse", "image", "search"],
+	"license": 		"MIT",
+    "homepage": "https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-php",
+    "authors": [
+		{
+            "name": "Maksym Shnurenok",
+            "email": "maksym.shnurenok@aspose.com"
+		}
+    ],
+	"config": {
+        "platform": {
+            "php": "5.6.32"
+        }
+    },
+    "require": {
+        "php": ">=5.5",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "aspose/storage-sdk-php": "18.*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "squizlabs/php_codesniffer": "3.*",
+        "phpunit/phpunit": "^4.8"
+    },
+	"autoload": {
+        "psr-0": {
+            "Aspose.Imaging": "lib/",
+            "Aspose.Imaging.Tests": "tests/"
+        }
+    }
+}

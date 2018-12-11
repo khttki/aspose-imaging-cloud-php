@@ -1,0 +1,5 @@
+vendor/
+.vs/
+.vscode/
+composer.lock
+.swagger-codegen-ignore
