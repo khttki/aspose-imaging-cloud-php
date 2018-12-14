@@ -11,10 +11,10 @@
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- * 
+ *
  *  The above copyright notice and this permission notice shall be included in all
  *  copies or substantial portions of the Software.
- * 
+ *
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,12 +26,12 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-namespace Aspose\Imaging\Model;
+namespace Aspose\Imaging;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
 
-/*
+/**
  * SaaSposeResponse
  *
  * @description The basic response class kept from the old Aspose for Cloud Platform. We keep this base class and use it because most probably users are already using it to get API responses. The plan in future is to get rid of it.
@@ -40,34 +40,34 @@ class SaaSposeResponse implements ArrayAccess
 {
     const DISCRIMINATOR = 'Type';
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "SaaSposeResponse";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'code' => '\Aspose\Imaging\Model\HttpStatusCode',
+        'code' => 'int',
         'status' => 'string'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'code' => null,
+        'code' => 'int32',
         'status' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -77,7 +77,7 @@ class SaaSposeResponse implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -87,7 +87,7 @@ class SaaSposeResponse implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -98,7 +98,7 @@ class SaaSposeResponse implements ArrayAccess
         'status' => 'Status'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -108,7 +108,7 @@ class SaaSposeResponse implements ArrayAccess
         'status' => 'setStatus'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -118,7 +118,7 @@ class SaaSposeResponse implements ArrayAccess
         'status' => 'getStatus'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -129,7 +129,7 @@ class SaaSposeResponse implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -139,7 +139,7 @@ class SaaSposeResponse implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -149,7 +149,7 @@ class SaaSposeResponse implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -159,18 +159,14 @@ class SaaSposeResponse implements ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -186,7 +182,7 @@ class SaaSposeResponse implements ArrayAccess
         $this->container[$discriminator] = static::$swaggerModelName;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -201,7 +197,7 @@ class SaaSposeResponse implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -209,7 +205,6 @@ class SaaSposeResponse implements ArrayAccess
      */
     public function valid()
     {
-
         if ($this->container['code'] === null) {
             return false;
         }
@@ -217,20 +212,20 @@ class SaaSposeResponse implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets code
      *
-     * @return \Aspose\Imaging\Model\HttpStatusCode
+     * @return int
      */
     public function getCode()
     {
         return $this->container['code'];
     }
 
-    /*
+    /**
      * Sets code
      *
-     * @param \Aspose\Imaging\Model\HttpStatusCode $code HTTP status code.
+     * @param int $code HTTP status code.
      *
      * @return $this
      */
@@ -241,7 +236,7 @@ class SaaSposeResponse implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets status
      *
      * @return string
@@ -251,7 +246,7 @@ class SaaSposeResponse implements ArrayAccess
         return $this->container['status'];
     }
 
-    /*
+    /**
      * Sets status
      *
      * @param string $status Status description.
@@ -264,7 +259,7 @@ class SaaSposeResponse implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -276,7 +271,7 @@ class SaaSposeResponse implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -288,7 +283,7 @@ class SaaSposeResponse implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -305,7 +300,7 @@ class SaaSposeResponse implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -317,7 +312,7 @@ class SaaSposeResponse implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string
@@ -334,5 +329,3 @@ class SaaSposeResponse implements ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

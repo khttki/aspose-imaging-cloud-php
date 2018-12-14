@@ -31,22 +31,22 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageFrameProperties operation.
  */
 class PostImageFramePropertiesRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * Number of a frame.
      */
     public $frame_id;
     
-    /*
+    /**
      * Initializes a new instance of the PostImageFramePropertiesRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -59,7 +59,7 @@ class PostImageFramePropertiesRequest extends ImagingRequest
         $this->frame_id = $frame_id;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -67,16 +67,18 @@ class PostImageFramePropertiesRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Number of a frame.
      */
     public function get_frame_id()
@@ -84,8 +86,10 @@ class PostImageFramePropertiesRequest extends ImagingRequest
         return $this->frame_id;
     }
 
-    /*
+    /**
      * Number of a frame.
+     *
+     * @return 
      */
     public function set_frame_id($value)
     {
@@ -93,7 +97,7 @@ class PostImageFramePropertiesRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

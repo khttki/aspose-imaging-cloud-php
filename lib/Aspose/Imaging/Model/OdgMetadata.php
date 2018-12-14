@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * OdgMetadata
  *
  * @description ODG format metadata
@@ -40,14 +41,14 @@ class OdgMetadata implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "OdgMetadata";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -73,7 +74,7 @@ class OdgMetadata implements ArrayAccess
         'document_statistics' => 'string'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -99,7 +100,7 @@ class OdgMetadata implements ArrayAccess
         'document_statistics' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -109,7 +110,7 @@ class OdgMetadata implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -119,7 +120,7 @@ class OdgMetadata implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -146,7 +147,7 @@ class OdgMetadata implements ArrayAccess
         'document_statistics' => 'DocumentStatistics'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -172,7 +173,7 @@ class OdgMetadata implements ArrayAccess
         'document_statistics' => 'setDocumentStatistics'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -198,7 +199,7 @@ class OdgMetadata implements ArrayAccess
         'document_statistics' => 'getDocumentStatistics'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -209,7 +210,7 @@ class OdgMetadata implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -219,7 +220,7 @@ class OdgMetadata implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -229,7 +230,7 @@ class OdgMetadata implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -243,14 +244,14 @@ class OdgMetadata implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -278,7 +279,7 @@ class OdgMetadata implements ArrayAccess
         $this->container['document_statistics'] = isset($data['document_statistics']) ? $data['document_statistics'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -290,7 +291,7 @@ class OdgMetadata implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -303,7 +304,7 @@ class OdgMetadata implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets generator
      *
      * @return string
@@ -313,7 +314,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['generator'];
     }
 
-    /*
+    /**
      * Sets generator
      *
      * @param string $generator Gets or sets the generator.
@@ -327,7 +328,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets title
      *
      * @return string
@@ -337,7 +338,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['title'];
     }
 
-    /*
+    /**
      * Sets title
      *
      * @param string $title Gets or sets the title.
@@ -351,7 +352,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets description
      *
      * @return string
@@ -361,7 +362,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['description'];
     }
 
-    /*
+    /**
      * Sets description
      *
      * @param string $description Gets or sets the description.
@@ -375,7 +376,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subject
      *
      * @return string
@@ -385,7 +386,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['subject'];
     }
 
-    /*
+    /**
      * Sets subject
      *
      * @param string $subject Gets or sets the subject.
@@ -399,7 +400,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets keywords
      *
      * @return string
@@ -409,7 +410,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['keywords'];
     }
 
-    /*
+    /**
      * Sets keywords
      *
      * @param string $keywords Gets or sets the keywords.
@@ -423,7 +424,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets initial_creator
      *
      * @return string
@@ -433,7 +434,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['initial_creator'];
     }
 
-    /*
+    /**
      * Sets initial_creator
      *
      * @param string $initial_creator Gets or sets the initial creator.
@@ -447,7 +448,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets creator
      *
      * @return string
@@ -457,7 +458,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['creator'];
     }
 
-    /*
+    /**
      * Sets creator
      *
      * @param string $creator Gets or sets the creator.
@@ -471,7 +472,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets printed_by
      *
      * @return string
@@ -481,7 +482,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['printed_by'];
     }
 
-    /*
+    /**
      * Sets printed_by
      *
      * @param string $printed_by Gets or sets the \"PrintedBy\" record.
@@ -495,7 +496,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets creation_date_time
      *
      * @return string
@@ -505,7 +506,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['creation_date_time'];
     }
 
-    /*
+    /**
      * Sets creation_date_time
      *
      * @param string $creation_date_time Gets or sets the creation date and time.
@@ -519,7 +520,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets modification_date_time
      *
      * @return string
@@ -529,7 +530,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['modification_date_time'];
     }
 
-    /*
+    /**
      * Sets modification_date_time
      *
      * @param string $modification_date_time Gets or sets the modification date and time.
@@ -543,7 +544,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets print_date_time
      *
      * @return string
@@ -553,7 +554,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['print_date_time'];
     }
 
-    /*
+    /**
      * Sets print_date_time
      *
      * @param string $print_date_time Gets or sets the print date and time.
@@ -567,7 +568,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets document_template
      *
      * @return string
@@ -577,7 +578,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['document_template'];
     }
 
-    /*
+    /**
      * Sets document_template
      *
      * @param string $document_template Gets or sets the document template.
@@ -591,7 +592,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets automatic_reload
      *
      * @return string
@@ -601,7 +602,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['automatic_reload'];
     }
 
-    /*
+    /**
      * Sets automatic_reload
      *
      * @param string $automatic_reload Gets or sets the automatic reload.
@@ -615,7 +616,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets hyperlink_behavior
      *
      * @return string
@@ -625,7 +626,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['hyperlink_behavior'];
     }
 
-    /*
+    /**
      * Sets hyperlink_behavior
      *
      * @param string $hyperlink_behavior Gets or sets the hyperlink behavior.
@@ -639,7 +640,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets language
      *
      * @return string
@@ -649,7 +650,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['language'];
     }
 
-    /*
+    /**
      * Sets language
      *
      * @param string $language Gets or sets the language.
@@ -663,7 +664,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets editing_cycles
      *
      * @return string
@@ -673,7 +674,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['editing_cycles'];
     }
 
-    /*
+    /**
      * Sets editing_cycles
      *
      * @param string $editing_cycles Gets or sets the editing cycles.
@@ -687,7 +688,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets editing_duration
      *
      * @return string
@@ -697,7 +698,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['editing_duration'];
     }
 
-    /*
+    /**
      * Sets editing_duration
      *
      * @param string $editing_duration Gets or sets the duration of the editing.
@@ -711,7 +712,7 @@ class OdgMetadata implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets document_statistics
      *
      * @return string
@@ -721,7 +722,7 @@ class OdgMetadata implements ArrayAccess
         return $this->container['document_statistics'];
     }
 
-    /*
+    /**
      * Sets document_statistics
      *
      * @param string $document_statistics Gets or sets the document statistics.
@@ -734,7 +735,7 @@ class OdgMetadata implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -746,7 +747,7 @@ class OdgMetadata implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -758,7 +759,7 @@ class OdgMetadata implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -775,7 +776,7 @@ class OdgMetadata implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -787,7 +788,7 @@ class OdgMetadata implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

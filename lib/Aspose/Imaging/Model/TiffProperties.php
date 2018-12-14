@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * TiffProperties
  *
  * @description Represents properties of TIFF image.
@@ -40,14 +41,14 @@ class TiffProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "TiffProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -58,7 +59,7 @@ class TiffProperties implements ArrayAccess
         'frames' => '\Aspose\Imaging\Model\TiffFrame[]'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -69,7 +70,7 @@ class TiffProperties implements ArrayAccess
         'frames' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -79,7 +80,7 @@ class TiffProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -89,7 +90,7 @@ class TiffProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -101,7 +102,7 @@ class TiffProperties implements ArrayAccess
         'frames' => 'Frames'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -112,7 +113,7 @@ class TiffProperties implements ArrayAccess
         'frames' => 'setFrames'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -123,7 +124,7 @@ class TiffProperties implements ArrayAccess
         'frames' => 'getFrames'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -134,7 +135,7 @@ class TiffProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -144,7 +145,7 @@ class TiffProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -154,7 +155,7 @@ class TiffProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -168,14 +169,14 @@ class TiffProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -188,7 +189,7 @@ class TiffProperties implements ArrayAccess
         $this->container['frames'] = isset($data['frames']) ? $data['frames'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -200,7 +201,7 @@ class TiffProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -213,7 +214,7 @@ class TiffProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets byte_order
      *
      * @return string
@@ -223,7 +224,7 @@ class TiffProperties implements ArrayAccess
         return $this->container['byte_order'];
     }
 
-    /*
+    /**
      * Sets byte_order
      *
      * @param string $byte_order Gets or sets the byte order.
@@ -237,7 +238,7 @@ class TiffProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exif_data
      *
      * @return \Aspose\Imaging\Model\ExifData
@@ -247,7 +248,7 @@ class TiffProperties implements ArrayAccess
         return $this->container['exif_data'];
     }
 
-    /*
+    /**
      * Sets exif_data
      *
      * @param \Aspose\Imaging\Model\ExifData $exif_data Gets or sets the EXIF data.
@@ -261,7 +262,7 @@ class TiffProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets frames
      *
      * @return \Aspose\Imaging\Model\TiffFrame[]
@@ -271,7 +272,7 @@ class TiffProperties implements ArrayAccess
         return $this->container['frames'];
     }
 
-    /*
+    /**
      * Sets frames
      *
      * @param \Aspose\Imaging\Model\TiffFrame[] $frames Frames information.
@@ -284,7 +285,7 @@ class TiffProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -296,7 +297,7 @@ class TiffProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -308,7 +309,7 @@ class TiffProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -325,7 +326,7 @@ class TiffProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -337,7 +338,7 @@ class TiffProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

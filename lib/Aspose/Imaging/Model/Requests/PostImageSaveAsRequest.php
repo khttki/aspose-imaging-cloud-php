@@ -31,32 +31,32 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageSaveAs operation.
  */
 class PostImageSaveAsRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      */
     public $format;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostImageSaveAsRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -73,7 +73,7 @@ class PostImageSaveAsRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -81,16 +81,18 @@ class PostImageSaveAsRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      */
     public function get_format()
@@ -98,16 +100,18 @@ class PostImageSaveAsRequest extends ImagingRequest
         return $this->format;
     }
 
-    /*
+    /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @return 
      */
     public function set_format($value)
     {
         $this->format = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -115,16 +119,18 @@ class PostImageSaveAsRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -132,8 +138,10 @@ class PostImageSaveAsRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -141,7 +149,7 @@ class PostImageSaveAsRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

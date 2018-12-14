@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * WebPProperties
  *
  * @description Represents information about image in WEBP format.
@@ -40,14 +41,14 @@ class WebPProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "WebPProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -59,7 +60,7 @@ class WebPProperties implements ArrayAccess
         'anim_background_color' => 'int'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -71,7 +72,7 @@ class WebPProperties implements ArrayAccess
         'anim_background_color' => 'int64'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -81,7 +82,7 @@ class WebPProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -91,7 +92,7 @@ class WebPProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -104,7 +105,7 @@ class WebPProperties implements ArrayAccess
         'anim_background_color' => 'AnimBackgroundColor'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -116,7 +117,7 @@ class WebPProperties implements ArrayAccess
         'anim_background_color' => 'setAnimBackgroundColor'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -128,7 +129,7 @@ class WebPProperties implements ArrayAccess
         'anim_background_color' => 'getAnimBackgroundColor'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -139,7 +140,7 @@ class WebPProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -149,7 +150,7 @@ class WebPProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -159,7 +160,7 @@ class WebPProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -173,14 +174,14 @@ class WebPProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -194,7 +195,7 @@ class WebPProperties implements ArrayAccess
         $this->container['anim_background_color'] = isset($data['anim_background_color']) ? $data['anim_background_color'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -218,7 +219,7 @@ class WebPProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -243,7 +244,7 @@ class WebPProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets lossless
      *
      * @return bool
@@ -253,7 +254,7 @@ class WebPProperties implements ArrayAccess
         return $this->container['lossless'];
     }
 
-    /*
+    /**
      * Sets lossless
      *
      * @param bool $lossless Gets or sets a value indicating whether these  is lossless.
@@ -267,7 +268,7 @@ class WebPProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets quality
      *
      * @return double
@@ -277,7 +278,7 @@ class WebPProperties implements ArrayAccess
         return $this->container['quality'];
     }
 
-    /*
+    /**
      * Sets quality
      *
      * @param double $quality Gets or sets the quality.
@@ -291,7 +292,7 @@ class WebPProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets anim_loop_count
      *
      * @return int
@@ -301,7 +302,7 @@ class WebPProperties implements ArrayAccess
         return $this->container['anim_loop_count'];
     }
 
-    /*
+    /**
      * Sets anim_loop_count
      *
      * @param int $anim_loop_count Gets or sets the animation loop count.
@@ -315,7 +316,7 @@ class WebPProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets anim_background_color
      *
      * @return int
@@ -325,7 +326,7 @@ class WebPProperties implements ArrayAccess
         return $this->container['anim_background_color'];
     }
 
-    /*
+    /**
      * Sets anim_background_color
      *
      * @param int $anim_background_color Gets or sets the color of the animation background.
@@ -338,7 +339,7 @@ class WebPProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -350,7 +351,7 @@ class WebPProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -362,7 +363,7 @@ class WebPProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -379,7 +380,7 @@ class WebPProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -391,7 +392,7 @@ class WebPProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

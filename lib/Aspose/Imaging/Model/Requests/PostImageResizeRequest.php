@@ -31,42 +31,42 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageResize operation.
  */
 class PostImageResizeRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      */
     public $format;
-	
-    /*
+    
+    /**
      * New width.
      */
     public $new_width;
-	
-    /*
+    
+    /**
      * New height.
      */
     public $new_height;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostImageResizeRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -87,7 +87,7 @@ class PostImageResizeRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -95,16 +95,18 @@ class PostImageResizeRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      */
     public function get_format()
@@ -112,16 +114,18 @@ class PostImageResizeRequest extends ImagingRequest
         return $this->format;
     }
 
-    /*
+    /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @return 
      */
     public function set_format($value)
     {
         $this->format = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * New width.
      */
     public function get_new_width()
@@ -129,16 +133,18 @@ class PostImageResizeRequest extends ImagingRequest
         return $this->new_width;
     }
 
-    /*
+    /**
      * New width.
+     *
+     * @return 
      */
     public function set_new_width($value)
     {
         $this->new_width = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * New height.
      */
     public function get_new_height()
@@ -146,16 +152,18 @@ class PostImageResizeRequest extends ImagingRequest
         return $this->new_height;
     }
 
-    /*
+    /**
      * New height.
+     *
+     * @return 
      */
     public function set_new_height($value)
     {
         $this->new_height = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -163,16 +171,18 @@ class PostImageResizeRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -180,8 +190,10 @@ class PostImageResizeRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -189,7 +201,7 @@ class PostImageResizeRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

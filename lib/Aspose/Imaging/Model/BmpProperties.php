@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * BmpProperties
  *
  * @description Represents information about image in bmp format.
@@ -40,14 +41,14 @@ class BmpProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "BmpProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -56,7 +57,7 @@ class BmpProperties implements ArrayAccess
         'compression' => 'string'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -65,7 +66,7 @@ class BmpProperties implements ArrayAccess
         'compression' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -75,7 +76,7 @@ class BmpProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -85,7 +86,7 @@ class BmpProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -95,7 +96,7 @@ class BmpProperties implements ArrayAccess
         'compression' => 'Compression'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -104,7 +105,7 @@ class BmpProperties implements ArrayAccess
         'compression' => 'setCompression'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -113,7 +114,7 @@ class BmpProperties implements ArrayAccess
         'compression' => 'getCompression'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -124,7 +125,7 @@ class BmpProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -134,7 +135,7 @@ class BmpProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -144,7 +145,7 @@ class BmpProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -158,14 +159,14 @@ class BmpProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -176,7 +177,7 @@ class BmpProperties implements ArrayAccess
         $this->container['compression'] = isset($data['compression']) ? $data['compression'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -188,7 +189,7 @@ class BmpProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -201,7 +202,7 @@ class BmpProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets compression
      *
      * @return string
@@ -211,7 +212,7 @@ class BmpProperties implements ArrayAccess
         return $this->container['compression'];
     }
 
-    /*
+    /**
      * Sets compression
      *
      * @param string $compression Gets or sets compression of bitmap.
@@ -224,7 +225,7 @@ class BmpProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -236,7 +237,7 @@ class BmpProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -248,7 +249,7 @@ class BmpProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -265,7 +266,7 @@ class BmpProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -277,7 +278,7 @@ class BmpProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

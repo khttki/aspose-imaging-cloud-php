@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * OdgProperties
  *
  * @description ODG format specific properties
@@ -40,14 +41,14 @@ class OdgProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "OdgProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -58,7 +59,7 @@ class OdgProperties implements ArrayAccess
         'pages' => '\Aspose\Imaging\Model\OdgPage[]'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -69,7 +70,7 @@ class OdgProperties implements ArrayAccess
         'pages' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -79,7 +80,7 @@ class OdgProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -89,7 +90,7 @@ class OdgProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -101,7 +102,7 @@ class OdgProperties implements ArrayAccess
         'pages' => 'Pages'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -112,7 +113,7 @@ class OdgProperties implements ArrayAccess
         'pages' => 'setPages'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -123,7 +124,7 @@ class OdgProperties implements ArrayAccess
         'pages' => 'getPages'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -134,7 +135,7 @@ class OdgProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -144,7 +145,7 @@ class OdgProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -154,7 +155,7 @@ class OdgProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -168,14 +169,14 @@ class OdgProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -188,7 +189,7 @@ class OdgProperties implements ArrayAccess
         $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -203,7 +204,7 @@ class OdgProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -219,7 +220,7 @@ class OdgProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets page_count
      *
      * @return int
@@ -229,7 +230,7 @@ class OdgProperties implements ArrayAccess
         return $this->container['page_count'];
     }
 
-    /*
+    /**
      * Sets page_count
      *
      * @param int $page_count Gets or sets the page count.
@@ -243,7 +244,7 @@ class OdgProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets metadata
      *
      * @return \Aspose\Imaging\Model\OdgMetadata
@@ -253,7 +254,7 @@ class OdgProperties implements ArrayAccess
         return $this->container['metadata'];
     }
 
-    /*
+    /**
      * Sets metadata
      *
      * @param \Aspose\Imaging\Model\OdgMetadata $metadata Gets or sets the metadata.
@@ -267,7 +268,7 @@ class OdgProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets pages
      *
      * @return \Aspose\Imaging\Model\OdgPage[]
@@ -277,7 +278,7 @@ class OdgProperties implements ArrayAccess
         return $this->container['pages'];
     }
 
-    /*
+    /**
      * Sets pages
      *
      * @param \Aspose\Imaging\Model\OdgPage[] $pages Gets or sets the pages.
@@ -290,7 +291,7 @@ class OdgProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -302,7 +303,7 @@ class OdgProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -314,7 +315,7 @@ class OdgProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -331,7 +332,7 @@ class OdgProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -343,7 +344,7 @@ class OdgProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

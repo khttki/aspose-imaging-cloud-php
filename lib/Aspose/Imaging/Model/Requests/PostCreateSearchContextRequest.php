@@ -31,32 +31,32 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postCreateSearchContext operation.
  */
 class PostCreateSearchContextRequest extends ImagingRequest
 {
-    /*
+    /**
      * The image features detector.
      */
     public $detector;
-	
-    /*
+    
+    /**
      * The matching algorithm.
      */
     public $matching_algorithm;
-	
-    /*
+    
+    /**
      * The folder.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * The storage.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostCreateSearchContextRequest class.
      *  
      * @param string $detector The image features detector.
@@ -73,7 +73,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * The image features detector.
      */
     public function get_detector()
@@ -81,16 +81,18 @@ class PostCreateSearchContextRequest extends ImagingRequest
         return $this->detector;
     }
 
-    /*
+    /**
      * The image features detector.
+     *
+     * @return 
      */
     public function set_detector($value)
     {
         $this->detector = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The matching algorithm.
      */
     public function get_matching_algorithm()
@@ -98,16 +100,18 @@ class PostCreateSearchContextRequest extends ImagingRequest
         return $this->matching_algorithm;
     }
 
-    /*
+    /**
      * The matching algorithm.
+     *
+     * @return 
      */
     public function set_matching_algorithm($value)
     {
         $this->matching_algorithm = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The folder.
      */
     public function get_folder()
@@ -115,16 +119,18 @@ class PostCreateSearchContextRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * The folder.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The storage.
      */
     public function get_storage()
@@ -132,8 +138,10 @@ class PostCreateSearchContextRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * The storage.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -141,7 +149,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

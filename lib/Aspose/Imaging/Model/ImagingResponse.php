@@ -28,8 +28,9 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * ImagingResponse
  *
  * @description Represents information about image.
@@ -38,14 +39,14 @@ class ImagingResponse extends SaaSposeResponse
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "ImagingResponse";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -71,7 +72,7 @@ class ImagingResponse extends SaaSposeResponse
         'is_cached' => 'bool'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -97,7 +98,7 @@ class ImagingResponse extends SaaSposeResponse
         'is_cached' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -107,7 +108,7 @@ class ImagingResponse extends SaaSposeResponse
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -117,7 +118,7 @@ class ImagingResponse extends SaaSposeResponse
         return self::$swaggerFormats + parent::swaggerFormats();
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -144,7 +145,7 @@ class ImagingResponse extends SaaSposeResponse
         'is_cached' => 'IsCached'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -170,7 +171,7 @@ class ImagingResponse extends SaaSposeResponse
         'is_cached' => 'setIsCached'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -196,7 +197,7 @@ class ImagingResponse extends SaaSposeResponse
         'is_cached' => 'getIsCached'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -207,7 +208,7 @@ class ImagingResponse extends SaaSposeResponse
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -217,7 +218,7 @@ class ImagingResponse extends SaaSposeResponse
         return parent::setters() + self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -227,7 +228,7 @@ class ImagingResponse extends SaaSposeResponse
         return parent::getters() + self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -242,7 +243,7 @@ class ImagingResponse extends SaaSposeResponse
     
 
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -272,7 +273,7 @@ class ImagingResponse extends SaaSposeResponse
         $this->container['is_cached'] = isset($data['is_cached']) ? $data['is_cached'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -284,7 +285,7 @@ class ImagingResponse extends SaaSposeResponse
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -300,7 +301,7 @@ class ImagingResponse extends SaaSposeResponse
     }
 
 
-    /*
+    /**
      * Gets height
      *
      * @return int
@@ -310,7 +311,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['height'];
     }
 
-    /*
+    /**
      * Sets height
      *
      * @param int $height Gets or sets the height of image.
@@ -324,7 +325,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets width
      *
      * @return int
@@ -334,7 +335,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['width'];
     }
 
-    /*
+    /**
      * Sets width
      *
      * @param int $width Gets or sets the width of image.
@@ -348,7 +349,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets bits_per_pixel
      *
      * @return int
@@ -358,7 +359,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['bits_per_pixel'];
     }
 
-    /*
+    /**
      * Sets bits_per_pixel
      *
      * @param int $bits_per_pixel Gets or sets the bits per pixel for image.
@@ -372,7 +373,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets bmp_properties
      *
      * @return \Aspose\Imaging\Model\BmpProperties
@@ -382,7 +383,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['bmp_properties'];
     }
 
-    /*
+    /**
      * Sets bmp_properties
      *
      * @param \Aspose\Imaging\Model\BmpProperties $bmp_properties Gets or sets the BMP properties.
@@ -396,7 +397,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets gif_properties
      *
      * @return \Aspose\Imaging\Model\GifProperties
@@ -406,7 +407,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['gif_properties'];
     }
 
-    /*
+    /**
      * Sets gif_properties
      *
      * @param \Aspose\Imaging\Model\GifProperties $gif_properties Gets or sets the GIF properties.
@@ -420,7 +421,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets jpeg_properties
      *
      * @return \Aspose\Imaging\Model\JpegProperties
@@ -430,7 +431,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['jpeg_properties'];
     }
 
-    /*
+    /**
      * Sets jpeg_properties
      *
      * @param \Aspose\Imaging\Model\JpegProperties $jpeg_properties Gets or sets the JPEG properties.
@@ -444,7 +445,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets png_properties
      *
      * @return \Aspose\Imaging\Model\PngProperties
@@ -454,7 +455,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['png_properties'];
     }
 
-    /*
+    /**
      * Sets png_properties
      *
      * @param \Aspose\Imaging\Model\PngProperties $png_properties Gets or sets the PNG properties.
@@ -468,7 +469,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets tiff_properties
      *
      * @return \Aspose\Imaging\Model\TiffProperties
@@ -478,7 +479,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['tiff_properties'];
     }
 
-    /*
+    /**
      * Sets tiff_properties
      *
      * @param \Aspose\Imaging\Model\TiffProperties $tiff_properties Gets or sets the TIFF properties.
@@ -492,7 +493,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets psd_properties
      *
      * @return \Aspose\Imaging\Model\PsdProperties
@@ -502,7 +503,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['psd_properties'];
     }
 
-    /*
+    /**
      * Sets psd_properties
      *
      * @param \Aspose\Imaging\Model\PsdProperties $psd_properties Gets or sets the PSD properties.
@@ -516,7 +517,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets djvu_properties
      *
      * @return \Aspose\Imaging\Model\DjvuProperties
@@ -526,7 +527,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['djvu_properties'];
     }
 
-    /*
+    /**
      * Sets djvu_properties
      *
      * @param \Aspose\Imaging\Model\DjvuProperties $djvu_properties Gets or sets the DJVU properties.
@@ -540,7 +541,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets web_p_properties
      *
      * @return \Aspose\Imaging\Model\WebPProperties
@@ -550,7 +551,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['web_p_properties'];
     }
 
-    /*
+    /**
      * Sets web_p_properties
      *
      * @param \Aspose\Imaging\Model\WebPProperties $web_p_properties Gets or sets the WEBP properties.
@@ -564,7 +565,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets jpeg2000_properties
      *
      * @return \Aspose\Imaging\Model\Jpeg2000Properties
@@ -574,7 +575,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['jpeg2000_properties'];
     }
 
-    /*
+    /**
      * Sets jpeg2000_properties
      *
      * @param \Aspose\Imaging\Model\Jpeg2000Properties $jpeg2000_properties Gets or sets the JPEG2000 properties.
@@ -588,7 +589,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets dicom_properties
      *
      * @return \Aspose\Imaging\Model\DicomProperties
@@ -598,7 +599,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['dicom_properties'];
     }
 
-    /*
+    /**
      * Sets dicom_properties
      *
      * @param \Aspose\Imaging\Model\DicomProperties $dicom_properties Gets or sets the DICOM properties.
@@ -612,7 +613,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets dng_properties
      *
      * @return \Aspose\Imaging\Model\DngProperties
@@ -622,7 +623,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['dng_properties'];
     }
 
-    /*
+    /**
      * Sets dng_properties
      *
      * @param \Aspose\Imaging\Model\DngProperties $dng_properties Gets or sets the DNG properties.
@@ -636,7 +637,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets odg_properties
      *
      * @return \Aspose\Imaging\Model\OdgProperties
@@ -646,7 +647,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['odg_properties'];
     }
 
-    /*
+    /**
      * Sets odg_properties
      *
      * @param \Aspose\Imaging\Model\OdgProperties $odg_properties Gets or sets the the ODG properties.
@@ -660,7 +661,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets horizontal_resolution
      *
      * @return double
@@ -670,7 +671,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['horizontal_resolution'];
     }
 
-    /*
+    /**
      * Sets horizontal_resolution
      *
      * @param double $horizontal_resolution Gets or sets the horizontal resolution of an image.
@@ -684,7 +685,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets vertical_resolution
      *
      * @return double
@@ -694,7 +695,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['vertical_resolution'];
     }
 
-    /*
+    /**
      * Sets vertical_resolution
      *
      * @param double $vertical_resolution Gets or sets the vertical resolution of an image.
@@ -708,7 +709,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets is_cached
      *
      * @return bool
@@ -718,7 +719,7 @@ class ImagingResponse extends SaaSposeResponse
         return $this->container['is_cached'];
     }
 
-    /*
+    /**
      * Sets is_cached
      *
      * @param bool $is_cached Gets or sets a value indicating whether image is cached.
@@ -731,7 +732,7 @@ class ImagingResponse extends SaaSposeResponse
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -743,7 +744,7 @@ class ImagingResponse extends SaaSposeResponse
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -755,7 +756,7 @@ class ImagingResponse extends SaaSposeResponse
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -772,7 +773,7 @@ class ImagingResponse extends SaaSposeResponse
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -784,7 +785,7 @@ class ImagingResponse extends SaaSposeResponse
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

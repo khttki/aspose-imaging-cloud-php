@@ -28,8 +28,9 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * JpegExifData
  *
  * @description Represents EXIF data for JPEG
@@ -38,14 +39,14 @@ class JpegExifData extends ExifData
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "JpegExifData";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -69,7 +70,7 @@ class JpegExifData extends ExifData
         'y_resolution' => 'double'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -93,7 +94,7 @@ class JpegExifData extends ExifData
         'y_resolution' => 'double'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -103,7 +104,7 @@ class JpegExifData extends ExifData
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -113,7 +114,7 @@ class JpegExifData extends ExifData
         return self::$swaggerFormats + parent::swaggerFormats();
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -138,7 +139,7 @@ class JpegExifData extends ExifData
         'y_resolution' => 'YResolution'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -162,7 +163,7 @@ class JpegExifData extends ExifData
         'y_resolution' => 'setYResolution'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -186,7 +187,7 @@ class JpegExifData extends ExifData
         'y_resolution' => 'getYResolution'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -197,7 +198,7 @@ class JpegExifData extends ExifData
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -207,7 +208,7 @@ class JpegExifData extends ExifData
         return parent::setters() + self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -217,7 +218,7 @@ class JpegExifData extends ExifData
         return parent::getters() + self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -232,7 +233,7 @@ class JpegExifData extends ExifData
     
 
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -260,7 +261,7 @@ class JpegExifData extends ExifData
         $this->container['y_resolution'] = isset($data['y_resolution']) ? $data['y_resolution'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -272,7 +273,7 @@ class JpegExifData extends ExifData
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -288,7 +289,7 @@ class JpegExifData extends ExifData
     }
 
 
-    /*
+    /**
      * Gets artist
      *
      * @return string
@@ -298,7 +299,7 @@ class JpegExifData extends ExifData
         return $this->container['artist'];
     }
 
-    /*
+    /**
      * Sets artist
      *
      * @param string $artist Gets or sets the artist.
@@ -312,7 +313,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets copyright
      *
      * @return string
@@ -322,7 +323,7 @@ class JpegExifData extends ExifData
         return $this->container['copyright'];
     }
 
-    /*
+    /**
      * Sets copyright
      *
      * @param string $copyright Gets or sets the copyright info.
@@ -336,7 +337,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets date_time
      *
      * @return string
@@ -346,7 +347,7 @@ class JpegExifData extends ExifData
         return $this->container['date_time'];
     }
 
-    /*
+    /**
      * Sets date_time
      *
      * @param string $date_time Gets or sets the date and time.
@@ -360,7 +361,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets image_description
      *
      * @return string
@@ -370,7 +371,7 @@ class JpegExifData extends ExifData
         return $this->container['image_description'];
     }
 
-    /*
+    /**
      * Sets image_description
      *
      * @param string $image_description Gets or sets the image description.
@@ -384,7 +385,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets make
      *
      * @return string
@@ -394,7 +395,7 @@ class JpegExifData extends ExifData
         return $this->container['make'];
     }
 
-    /*
+    /**
      * Sets make
      *
      * @param string $make Gets or sets the manufacturer.
@@ -408,7 +409,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets model
      *
      * @return string
@@ -418,7 +419,7 @@ class JpegExifData extends ExifData
         return $this->container['model'];
     }
 
-    /*
+    /**
      * Sets model
      *
      * @param string $model Gets or sets the model.
@@ -432,7 +433,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets orientation
      *
      * @return string
@@ -442,7 +443,7 @@ class JpegExifData extends ExifData
         return $this->container['orientation'];
     }
 
-    /*
+    /**
      * Sets orientation
      *
      * @param string $orientation Gets or sets the orientation.
@@ -456,7 +457,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets primary_chromaticities
      *
      * @return double[]
@@ -466,7 +467,7 @@ class JpegExifData extends ExifData
         return $this->container['primary_chromaticities'];
     }
 
-    /*
+    /**
      * Sets primary_chromaticities
      *
      * @param double[] $primary_chromaticities Gets or sets the primary chromaticities.
@@ -480,7 +481,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets reference_black_white
      *
      * @return double[]
@@ -490,7 +491,7 @@ class JpegExifData extends ExifData
         return $this->container['reference_black_white'];
     }
 
-    /*
+    /**
      * Sets reference_black_white
      *
      * @param double[] $reference_black_white Gets or sets the reference black and white.
@@ -504,7 +505,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets resolution_unit
      *
      * @return string
@@ -514,7 +515,7 @@ class JpegExifData extends ExifData
         return $this->container['resolution_unit'];
     }
 
-    /*
+    /**
      * Sets resolution_unit
      *
      * @param string $resolution_unit Gets or sets the resolution unit.
@@ -528,7 +529,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets software
      *
      * @return string
@@ -538,7 +539,7 @@ class JpegExifData extends ExifData
         return $this->container['software'];
     }
 
-    /*
+    /**
      * Sets software
      *
      * @param string $software Gets or sets the software.
@@ -552,7 +553,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets transfer_function
      *
      * @return int[]
@@ -562,7 +563,7 @@ class JpegExifData extends ExifData
         return $this->container['transfer_function'];
     }
 
-    /*
+    /**
      * Sets transfer_function
      *
      * @param int[] $transfer_function Gets or sets the transfer function.
@@ -576,7 +577,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets x_resolution
      *
      * @return double
@@ -586,7 +587,7 @@ class JpegExifData extends ExifData
         return $this->container['x_resolution'];
     }
 
-    /*
+    /**
      * Sets x_resolution
      *
      * @param double $x_resolution Gets or sets the X resolution.
@@ -600,7 +601,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets y_cb_cr_coefficients
      *
      * @return double[]
@@ -610,7 +611,7 @@ class JpegExifData extends ExifData
         return $this->container['y_cb_cr_coefficients'];
     }
 
-    /*
+    /**
      * Sets y_cb_cr_coefficients
      *
      * @param double[] $y_cb_cr_coefficients Gets or sets the YCbCr coefficients.
@@ -624,7 +625,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets y_cb_cr_positioning
      *
      * @return string
@@ -634,7 +635,7 @@ class JpegExifData extends ExifData
         return $this->container['y_cb_cr_positioning'];
     }
 
-    /*
+    /**
      * Sets y_cb_cr_positioning
      *
      * @param string $y_cb_cr_positioning Gets or sets the YCbCr positioning.
@@ -648,7 +649,7 @@ class JpegExifData extends ExifData
         return $this;
     }
 
-    /*
+    /**
      * Gets y_resolution
      *
      * @return double
@@ -658,7 +659,7 @@ class JpegExifData extends ExifData
         return $this->container['y_resolution'];
     }
 
-    /*
+    /**
      * Sets y_resolution
      *
      * @param double $y_resolution Gets or sets the Y resolution.
@@ -671,7 +672,7 @@ class JpegExifData extends ExifData
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -683,7 +684,7 @@ class JpegExifData extends ExifData
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -695,7 +696,7 @@ class JpegExifData extends ExifData
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -712,7 +713,7 @@ class JpegExifData extends ExifData
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -724,7 +725,7 @@ class JpegExifData extends ExifData
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

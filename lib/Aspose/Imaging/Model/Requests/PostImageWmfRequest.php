@@ -31,57 +31,57 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageWmf operation.
  */
 class PostImageWmfRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * Color of the background.
      */
     public $bk_color;
-	
-    /*
+    
+    /**
      * Width of the page.
      */
     public $page_width;
-	
-    /*
+    
+    /**
      * Height of the page.
      */
     public $page_height;
-	
-    /*
+    
+    /**
      * Border width.
      */
     public $border_x;
-	
-    /*
+    
+    /**
      * Border height.
      */
     public $border_y;
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public $from_scratch;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostImageWmfRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -108,7 +108,7 @@ class PostImageWmfRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -116,16 +116,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Color of the background.
      */
     public function get_bk_color()
@@ -133,16 +135,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->bk_color;
     }
 
-    /*
+    /**
      * Color of the background.
+     *
+     * @return 
      */
     public function set_bk_color($value)
     {
         $this->bk_color = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Width of the page.
      */
     public function get_page_width()
@@ -150,16 +154,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->page_width;
     }
 
-    /*
+    /**
      * Width of the page.
+     *
+     * @return 
      */
     public function set_page_width($value)
     {
         $this->page_width = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Height of the page.
      */
     public function get_page_height()
@@ -167,16 +173,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->page_height;
     }
 
-    /*
+    /**
      * Height of the page.
+     *
+     * @return 
      */
     public function set_page_height($value)
     {
         $this->page_height = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Border width.
      */
     public function get_border_x()
@@ -184,16 +192,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->border_x;
     }
 
-    /*
+    /**
      * Border width.
+     *
+     * @return 
      */
     public function set_border_x($value)
     {
         $this->border_x = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Border height.
      */
     public function get_border_y()
@@ -201,16 +211,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->border_y;
     }
 
-    /*
+    /**
      * Border height.
+     *
+     * @return 
      */
     public function set_border_y($value)
     {
         $this->border_y = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public function get_from_scratch()
@@ -218,16 +230,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->from_scratch;
     }
 
-    /*
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return 
      */
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -235,16 +249,18 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -252,8 +268,10 @@ class PostImageWmfRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -261,7 +279,7 @@ class PostImageWmfRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

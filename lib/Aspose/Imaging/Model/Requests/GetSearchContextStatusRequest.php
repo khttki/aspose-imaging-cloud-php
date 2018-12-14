@@ -31,27 +31,27 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getSearchContextStatus operation.
  */
 class GetSearchContextStatusRequest extends ImagingRequest
 {
-    /*
+    /**
      * The search context identifier.
      */
     public $search_context_id;
-	
-    /*
+    
+    /**
      * The folder.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * The storage.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the GetSearchContextStatusRequest class.
      *  
      * @param string $search_context_id The search context identifier.
@@ -66,7 +66,7 @@ class GetSearchContextStatusRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * The search context identifier.
      */
     public function get_search_context_id()
@@ -74,16 +74,18 @@ class GetSearchContextStatusRequest extends ImagingRequest
         return $this->search_context_id;
     }
 
-    /*
+    /**
      * The search context identifier.
+     *
+     * @return 
      */
     public function set_search_context_id($value)
     {
         $this->search_context_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The folder.
      */
     public function get_folder()
@@ -91,16 +93,18 @@ class GetSearchContextStatusRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * The folder.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The storage.
      */
     public function get_storage()
@@ -108,8 +112,10 @@ class GetSearchContextStatusRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * The storage.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -117,7 +123,7 @@ class GetSearchContextStatusRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

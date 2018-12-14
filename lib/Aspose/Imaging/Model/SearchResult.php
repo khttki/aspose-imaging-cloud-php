@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * SearchResult
  *
  * @description Search result.
@@ -40,14 +41,14 @@ class SearchResult implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "SearchResult";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -57,7 +58,7 @@ class SearchResult implements ArrayAccess
         'similarity' => 'double'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -67,7 +68,7 @@ class SearchResult implements ArrayAccess
         'similarity' => 'double'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -77,7 +78,7 @@ class SearchResult implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -87,7 +88,7 @@ class SearchResult implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -98,7 +99,7 @@ class SearchResult implements ArrayAccess
         'similarity' => 'Similarity'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -108,7 +109,7 @@ class SearchResult implements ArrayAccess
         'similarity' => 'setSimilarity'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -118,7 +119,7 @@ class SearchResult implements ArrayAccess
         'similarity' => 'getSimilarity'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -129,7 +130,7 @@ class SearchResult implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -139,7 +140,7 @@ class SearchResult implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -149,7 +150,7 @@ class SearchResult implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -163,14 +164,14 @@ class SearchResult implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -182,7 +183,7 @@ class SearchResult implements ArrayAccess
         $this->container['similarity'] = isset($data['similarity']) ? $data['similarity'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -197,7 +198,7 @@ class SearchResult implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -213,7 +214,7 @@ class SearchResult implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets image_id
      *
      * @return string
@@ -223,7 +224,7 @@ class SearchResult implements ArrayAccess
         return $this->container['image_id'];
     }
 
-    /*
+    /**
      * Sets image_id
      *
      * @param string $image_id Gets the image identifier.
@@ -237,7 +238,7 @@ class SearchResult implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets similarity
      *
      * @return double
@@ -247,7 +248,7 @@ class SearchResult implements ArrayAccess
         return $this->container['similarity'];
     }
 
-    /*
+    /**
      * Sets similarity
      *
      * @param double $similarity Gets the similarity.
@@ -260,7 +261,7 @@ class SearchResult implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -272,7 +273,7 @@ class SearchResult implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -284,7 +285,7 @@ class SearchResult implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -301,7 +302,7 @@ class SearchResult implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -313,7 +314,7 @@ class SearchResult implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

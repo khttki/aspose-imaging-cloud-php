@@ -31,32 +31,32 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postTiffAppend operation.
  */
 class PostTiffAppendRequest extends ImagingRequest
 {
-    /*
+    /**
      * Original image file name.
      */
     public $name;
-	
-    /*
+    
+    /**
      * Image file name to be appended to original one.
      */
     public $append_file;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
-	
-    /*
+    
+    /**
      * Folder with images to process.
      */
     public $folder;
     
-    /*
+    /**
      * Initializes a new instance of the PostTiffAppendRequest class.
      *  
      * @param string $name Original image file name.
@@ -73,7 +73,7 @@ class PostTiffAppendRequest extends ImagingRequest
         $this->folder = $folder;
     }
 
-    /*
+    /**
      * Original image file name.
      */
     public function get_name()
@@ -81,16 +81,18 @@ class PostTiffAppendRequest extends ImagingRequest
         return $this->name;
     }
 
-    /*
+    /**
      * Original image file name.
+     *
+     * @return 
      */
     public function set_name($value)
     {
         $this->name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Image file name to be appended to original one.
      */
     public function get_append_file()
@@ -98,16 +100,18 @@ class PostTiffAppendRequest extends ImagingRequest
         return $this->append_file;
     }
 
-    /*
+    /**
      * Image file name to be appended to original one.
+     *
+     * @return 
      */
     public function set_append_file($value)
     {
         $this->append_file = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -115,16 +119,18 @@ class PostTiffAppendRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
         $this->storage = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder with images to process.
      */
     public function get_folder()
@@ -132,8 +138,10 @@ class PostTiffAppendRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder with images to process.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
@@ -141,7 +149,7 @@ class PostTiffAppendRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

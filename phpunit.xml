@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    stopOnError="false"
+    stopOnFailure="false"
+    strict="true"
+    verbose="true">
+    <logging>
+      <log type="junit" target="../testReports/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
+</phpunit>

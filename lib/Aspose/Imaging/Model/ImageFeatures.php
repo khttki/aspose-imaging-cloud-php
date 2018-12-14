@@ -28,8 +28,9 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * ImageFeatures
  *
  * @description Image features.
@@ -38,14 +39,14 @@ class ImageFeatures extends SaaSposeResponse
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "ImageFeatures";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -57,7 +58,7 @@ class ImageFeatures extends SaaSposeResponse
         'features' => 'string'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -69,7 +70,7 @@ class ImageFeatures extends SaaSposeResponse
         'features' => 'byte'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -79,7 +80,7 @@ class ImageFeatures extends SaaSposeResponse
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -89,7 +90,7 @@ class ImageFeatures extends SaaSposeResponse
         return self::$swaggerFormats + parent::swaggerFormats();
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -102,7 +103,7 @@ class ImageFeatures extends SaaSposeResponse
         'features' => 'Features'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -114,7 +115,7 @@ class ImageFeatures extends SaaSposeResponse
         'features' => 'setFeatures'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -126,7 +127,7 @@ class ImageFeatures extends SaaSposeResponse
         'features' => 'getFeatures'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -137,7 +138,7 @@ class ImageFeatures extends SaaSposeResponse
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -147,7 +148,7 @@ class ImageFeatures extends SaaSposeResponse
         return parent::setters() + self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -157,7 +158,7 @@ class ImageFeatures extends SaaSposeResponse
         return parent::getters() + self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -172,7 +173,7 @@ class ImageFeatures extends SaaSposeResponse
     
 
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -188,7 +189,7 @@ class ImageFeatures extends SaaSposeResponse
         $this->container['features'] = isset($data['features']) ? $data['features'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -204,7 +205,7 @@ class ImageFeatures extends SaaSposeResponse
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -223,7 +224,7 @@ class ImageFeatures extends SaaSposeResponse
     }
 
 
-    /*
+    /**
      * Gets image_id
      *
      * @return string
@@ -233,7 +234,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this->container['image_id'];
     }
 
-    /*
+    /**
      * Sets image_id
      *
      * @param string $image_id Gets the image identifier.
@@ -247,7 +248,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets features_count
      *
      * @return int
@@ -257,7 +258,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this->container['features_count'];
     }
 
-    /*
+    /**
      * Sets features_count
      *
      * @param int $features_count Gets the features count.
@@ -271,7 +272,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets feature_length_in_bits
      *
      * @return int
@@ -281,7 +282,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this->container['feature_length_in_bits'];
     }
 
-    /*
+    /**
      * Sets feature_length_in_bits
      *
      * @param int $feature_length_in_bits Gets the feature length in bits.
@@ -295,7 +296,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets features
      *
      * @return string
@@ -305,7 +306,7 @@ class ImageFeatures extends SaaSposeResponse
         return $this->container['features'];
     }
 
-    /*
+    /**
      * Sets features
      *
      * @param string $features Gets the features.
@@ -323,7 +324,7 @@ class ImageFeatures extends SaaSposeResponse
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -335,7 +336,7 @@ class ImageFeatures extends SaaSposeResponse
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -347,7 +348,7 @@ class ImageFeatures extends SaaSposeResponse
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -364,7 +365,7 @@ class ImageFeatures extends SaaSposeResponse
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -376,7 +377,7 @@ class ImageFeatures extends SaaSposeResponse
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

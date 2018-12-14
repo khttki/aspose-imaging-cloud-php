@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * DjvuProperties
  *
  * @description Represents properties of djvu file.
@@ -40,14 +41,14 @@ class DjvuProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "DjvuProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -58,7 +59,7 @@ class DjvuProperties implements ArrayAccess
         'pages_count' => 'int'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -69,7 +70,7 @@ class DjvuProperties implements ArrayAccess
         'pages_count' => 'int32'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -79,7 +80,7 @@ class DjvuProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -89,7 +90,7 @@ class DjvuProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -101,7 +102,7 @@ class DjvuProperties implements ArrayAccess
         'pages_count' => 'PagesCount'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -112,7 +113,7 @@ class DjvuProperties implements ArrayAccess
         'pages_count' => 'setPagesCount'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -123,7 +124,7 @@ class DjvuProperties implements ArrayAccess
         'pages_count' => 'getPagesCount'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -134,7 +135,7 @@ class DjvuProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -144,7 +145,7 @@ class DjvuProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -154,7 +155,7 @@ class DjvuProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -168,14 +169,14 @@ class DjvuProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -188,7 +189,7 @@ class DjvuProperties implements ArrayAccess
         $this->container['pages_count'] = isset($data['pages_count']) ? $data['pages_count'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -206,7 +207,7 @@ class DjvuProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -225,7 +226,7 @@ class DjvuProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets background_color
      *
      * @return string
@@ -235,7 +236,7 @@ class DjvuProperties implements ArrayAccess
         return $this->container['background_color'];
     }
 
-    /*
+    /**
      * Sets background_color
      *
      * @param string $background_color Gets or sets background color.
@@ -249,7 +250,7 @@ class DjvuProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets has_background_color
      *
      * @return bool
@@ -259,7 +260,7 @@ class DjvuProperties implements ArrayAccess
         return $this->container['has_background_color'];
     }
 
-    /*
+    /**
      * Sets has_background_color
      *
      * @param bool $has_background_color Gets or sets a value indicating whether background color is used.
@@ -273,7 +274,7 @@ class DjvuProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets pages_count
      *
      * @return int
@@ -283,7 +284,7 @@ class DjvuProperties implements ArrayAccess
         return $this->container['pages_count'];
     }
 
-    /*
+    /**
      * Sets pages_count
      *
      * @param int $pages_count Gets or sets pages count.
@@ -296,7 +297,7 @@ class DjvuProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -308,7 +309,7 @@ class DjvuProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -320,7 +321,7 @@ class DjvuProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -337,7 +338,7 @@ class DjvuProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -349,7 +350,7 @@ class DjvuProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

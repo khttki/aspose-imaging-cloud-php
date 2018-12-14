@@ -31,52 +31,52 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getImageBmp operation.
  */
 class GetImageBmpRequest extends ImagingRequest
 {
-    /*
+    /**
      * Filename of image.
      */
     public $name;
-	
-    /*
+    
+    /**
      * Color depth.
      */
     public $bits_per_pixel;
-	
-    /*
+    
+    /**
      * New horizontal resolution.
      */
     public $horizontal_resolution;
-	
-    /*
+    
+    /**
      * New vertical resolution.
      */
     public $vertical_resolution;
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public $from_scratch;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the GetImageBmpRequest class.
      *  
      * @param string $name Filename of image.
@@ -101,7 +101,7 @@ class GetImageBmpRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Filename of image.
      */
     public function get_name()
@@ -109,16 +109,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->name;
     }
 
-    /*
+    /**
      * Filename of image.
+     *
+     * @return 
      */
     public function set_name($value)
     {
         $this->name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Color depth.
      */
     public function get_bits_per_pixel()
@@ -126,16 +128,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->bits_per_pixel;
     }
 
-    /*
+    /**
      * Color depth.
+     *
+     * @return 
      */
     public function set_bits_per_pixel($value)
     {
         $this->bits_per_pixel = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * New horizontal resolution.
      */
     public function get_horizontal_resolution()
@@ -143,16 +147,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->horizontal_resolution;
     }
 
-    /*
+    /**
      * New horizontal resolution.
+     *
+     * @return 
      */
     public function set_horizontal_resolution($value)
     {
         $this->horizontal_resolution = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * New vertical resolution.
      */
     public function get_vertical_resolution()
@@ -160,16 +166,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->vertical_resolution;
     }
 
-    /*
+    /**
      * New vertical resolution.
+     *
+     * @return 
      */
     public function set_vertical_resolution($value)
     {
         $this->vertical_resolution = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public function get_from_scratch()
@@ -177,16 +185,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->from_scratch;
     }
 
-    /*
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return 
      */
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -194,16 +204,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public function get_folder()
@@ -211,16 +223,18 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder with image to process.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -228,8 +242,10 @@ class GetImageBmpRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -237,7 +253,7 @@ class GetImageBmpRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

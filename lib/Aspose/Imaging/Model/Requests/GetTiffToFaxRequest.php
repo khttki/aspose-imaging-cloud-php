@@ -31,32 +31,32 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getTiffToFax operation.
  */
 class GetTiffToFaxRequest extends ImagingRequest
 {
-    /*
+    /**
      * Filename of image.
      */
     public $name;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
     
-    /*
+    /**
      * Initializes a new instance of the GetTiffToFaxRequest class.
      *  
      * @param string $name Filename of image.
@@ -73,7 +73,7 @@ class GetTiffToFaxRequest extends ImagingRequest
         $this->out_path = $out_path;
     }
 
-    /*
+    /**
      * Filename of image.
      */
     public function get_name()
@@ -81,16 +81,18 @@ class GetTiffToFaxRequest extends ImagingRequest
         return $this->name;
     }
 
-    /*
+    /**
      * Filename of image.
+     *
+     * @return 
      */
     public function set_name($value)
     {
         $this->name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -98,16 +100,18 @@ class GetTiffToFaxRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
         $this->storage = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public function get_folder()
@@ -115,16 +119,18 @@ class GetTiffToFaxRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder with image to process.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -132,8 +138,10 @@ class GetTiffToFaxRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
@@ -141,7 +149,7 @@ class GetTiffToFaxRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

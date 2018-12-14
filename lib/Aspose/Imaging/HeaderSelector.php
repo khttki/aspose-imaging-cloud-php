@@ -11,10 +11,10 @@
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- * 
+ *
  *  The above copyright notice and this permission notice shall be included in all
  *  copies or substantial portions of the Software.
- * 
+ *
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,31 +28,31 @@
 
 namespace Aspose\Imaging;
 
-/*
+/**
  * Header selector
  */
 class HeaderSelector
 {
-    /*
+    /**
      * Selects headers for request
      * @param string[] $accept type of header
      * @param string[] $contentTypes types of content
-     * @return array 
+     * @return array
      */
     public function selectHeaders($accept, $contentTypes)
     {
         $headers = [];
 
-        $accept = $this->_selectAcceptHeader($accept);
+        $accept = $this->selectAcceptHeader($accept);
         if ($accept !== null) {
             $headers['Accept'] = $accept;
         }
 
-        $headers['Content-Type'] = $this->_selectContentTypeHeader($contentTypes);
+        $headers['Content-Type'] = $this->selectContentTypeHeader($contentTypes);
         return $headers;
     }
 
-    /*
+    /**
      * Selects headers for multipart form
      * @param string[] $accept type of header
      * @return array
@@ -65,14 +65,14 @@ class HeaderSelector
         return $headers;
     }
 
-    /*
+    /**
      * Return the header 'Accept' based on an array of Accept provided
      *
      * @param string[] $accept Array of header
      *
      * @return string Accept (e.g. application/json)
      */
-    private function _selectAcceptHeader($accept)
+    private function selectAcceptHeader($accept)
     {
         if (count($accept) === 0 || (count($accept) === 1 && $accept[0] === '')) {
             return null;
@@ -83,14 +83,14 @@ class HeaderSelector
         }
     }
 
-    /*
+    /**
      * Return the content type based on an array of content-type provided
      *
      * @param string[] $contentType Array fo content-type
      *
      * @return string Content-Type (e.g. application/json)
      */
-    private function _selectContentTypeHeader($contentType)
+    private function selectContentTypeHeader($contentType)
     {
         if (count($contentType) === 0 || (count($contentType) === 1 && $contentType[0] === '')) {
             return 'application/json';
@@ -101,4 +101,3 @@ class HeaderSelector
         }
     }
 }
-

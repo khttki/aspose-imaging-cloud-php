@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * ExifData
  *
  * @description Represents common EXIF data section.
@@ -40,14 +41,14 @@ class ExifData implements ArrayAccess
 {
     const DISCRIMINATOR = 'Type';
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "ExifData";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -156,7 +157,7 @@ class ExifData implements ArrayAccess
         'white_point' => 'double[]'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -265,7 +266,7 @@ class ExifData implements ArrayAccess
         'white_point' => 'double'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -275,7 +276,7 @@ class ExifData implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -285,7 +286,7 @@ class ExifData implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -395,7 +396,7 @@ class ExifData implements ArrayAccess
         'white_point' => 'WhitePoint'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -504,7 +505,7 @@ class ExifData implements ArrayAccess
         'white_point' => 'setWhitePoint'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -613,7 +614,7 @@ class ExifData implements ArrayAccess
         'white_point' => 'getWhitePoint'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -624,7 +625,7 @@ class ExifData implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -634,7 +635,7 @@ class ExifData implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -644,7 +645,7 @@ class ExifData implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -658,14 +659,14 @@ class ExifData implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -780,7 +781,7 @@ class ExifData implements ArrayAccess
         $this->container[$discriminator] = static::$swaggerModelName;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -941,7 +942,7 @@ class ExifData implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -1092,7 +1093,7 @@ class ExifData implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets aperture_value
      *
      * @return double
@@ -1102,7 +1103,7 @@ class ExifData implements ArrayAccess
         return $this->container['aperture_value'];
     }
 
-    /*
+    /**
      * Sets aperture_value
      *
      * @param double $aperture_value Gets or sets the aperture.
@@ -1116,7 +1117,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets body_serial_number
      *
      * @return string
@@ -1126,7 +1127,7 @@ class ExifData implements ArrayAccess
         return $this->container['body_serial_number'];
     }
 
-    /*
+    /**
      * Sets body_serial_number
      *
      * @param string $body_serial_number Gets or sets the body serial number.
@@ -1140,7 +1141,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets brightness_value
      *
      * @return double
@@ -1150,7 +1151,7 @@ class ExifData implements ArrayAccess
         return $this->container['brightness_value'];
     }
 
-    /*
+    /**
      * Sets brightness_value
      *
      * @param double $brightness_value Gets or sets the brightness.
@@ -1164,7 +1165,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets cfa_pattern
      *
      * @return string
@@ -1174,7 +1175,7 @@ class ExifData implements ArrayAccess
         return $this->container['cfa_pattern'];
     }
 
-    /*
+    /**
      * Sets cfa_pattern
      *
      * @param string $cfa_pattern Gets or sets the CFA pattern.
@@ -1193,7 +1194,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets camera_owner_name
      *
      * @return string
@@ -1203,7 +1204,7 @@ class ExifData implements ArrayAccess
         return $this->container['camera_owner_name'];
     }
 
-    /*
+    /**
      * Sets camera_owner_name
      *
      * @param string $camera_owner_name Gets or sets the camera owner name.
@@ -1217,7 +1218,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets color_space
      *
      * @return string
@@ -1227,7 +1228,7 @@ class ExifData implements ArrayAccess
         return $this->container['color_space'];
     }
 
-    /*
+    /**
      * Sets color_space
      *
      * @param string $color_space Gets or sets the color space.
@@ -1241,7 +1242,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets components_configuration
      *
      * @return string
@@ -1251,7 +1252,7 @@ class ExifData implements ArrayAccess
         return $this->container['components_configuration'];
     }
 
-    /*
+    /**
      * Sets components_configuration
      *
      * @param string $components_configuration Gets or sets the components configuration.
@@ -1270,7 +1271,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets compressed_bits_per_pixel
      *
      * @return double
@@ -1280,7 +1281,7 @@ class ExifData implements ArrayAccess
         return $this->container['compressed_bits_per_pixel'];
     }
 
-    /*
+    /**
      * Sets compressed_bits_per_pixel
      *
      * @param double $compressed_bits_per_pixel Gets or sets the compressed bits per pixel.
@@ -1294,7 +1295,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets contrast
      *
      * @return string
@@ -1304,7 +1305,7 @@ class ExifData implements ArrayAccess
         return $this->container['contrast'];
     }
 
-    /*
+    /**
      * Sets contrast
      *
      * @param string $contrast Gets or sets the contrast.
@@ -1318,7 +1319,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets custom_rendered
      *
      * @return string
@@ -1328,7 +1329,7 @@ class ExifData implements ArrayAccess
         return $this->container['custom_rendered'];
     }
 
-    /*
+    /**
      * Sets custom_rendered
      *
      * @param string $custom_rendered Gets or sets the value indincating if custom rendering is performed.
@@ -1342,7 +1343,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets date_time_digitized
      *
      * @return string
@@ -1352,7 +1353,7 @@ class ExifData implements ArrayAccess
         return $this->container['date_time_digitized'];
     }
 
-    /*
+    /**
      * Sets date_time_digitized
      *
      * @param string $date_time_digitized Gets or sets date and time when image was digitized.
@@ -1366,7 +1367,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets date_time_original
      *
      * @return string
@@ -1376,7 +1377,7 @@ class ExifData implements ArrayAccess
         return $this->container['date_time_original'];
     }
 
-    /*
+    /**
      * Sets date_time_original
      *
      * @param string $date_time_original Gets or sets date and time of the original image.
@@ -1390,7 +1391,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets device_setting_description
      *
      * @return string
@@ -1400,7 +1401,7 @@ class ExifData implements ArrayAccess
         return $this->container['device_setting_description'];
     }
 
-    /*
+    /**
      * Sets device_setting_description
      *
      * @param string $device_setting_description Gets or sets the device setting description.
@@ -1419,7 +1420,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets digital_zoom_ratio
      *
      * @return double
@@ -1429,7 +1430,7 @@ class ExifData implements ArrayAccess
         return $this->container['digital_zoom_ratio'];
     }
 
-    /*
+    /**
      * Sets digital_zoom_ratio
      *
      * @param double $digital_zoom_ratio Gets or sets the digital zoom ratio.
@@ -1443,7 +1444,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exif_version
      *
      * @return string
@@ -1453,7 +1454,7 @@ class ExifData implements ArrayAccess
         return $this->container['exif_version'];
     }
 
-    /*
+    /**
      * Sets exif_version
      *
      * @param string $exif_version Gets or sets EXIF version.
@@ -1472,7 +1473,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exposure_bias_value
      *
      * @return double
@@ -1482,7 +1483,7 @@ class ExifData implements ArrayAccess
         return $this->container['exposure_bias_value'];
     }
 
-    /*
+    /**
      * Sets exposure_bias_value
      *
      * @param double $exposure_bias_value Gets or sets the exposure bias.
@@ -1496,7 +1497,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exposure_index
      *
      * @return double
@@ -1506,7 +1507,7 @@ class ExifData implements ArrayAccess
         return $this->container['exposure_index'];
     }
 
-    /*
+    /**
      * Sets exposure_index
      *
      * @param double $exposure_index Gets or sets the exposure index.
@@ -1520,7 +1521,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exposure_mode
      *
      * @return string
@@ -1530,7 +1531,7 @@ class ExifData implements ArrayAccess
         return $this->container['exposure_mode'];
     }
 
-    /*
+    /**
      * Sets exposure_mode
      *
      * @param string $exposure_mode Gets or sets the exposure mode.
@@ -1544,7 +1545,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exposure_program
      *
      * @return string
@@ -1554,7 +1555,7 @@ class ExifData implements ArrayAccess
         return $this->container['exposure_program'];
     }
 
-    /*
+    /**
      * Sets exposure_program
      *
      * @param string $exposure_program Gets or sets the exposure program.
@@ -1568,7 +1569,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exposure_time
      *
      * @return double
@@ -1578,7 +1579,7 @@ class ExifData implements ArrayAccess
         return $this->container['exposure_time'];
     }
 
-    /*
+    /**
      * Sets exposure_time
      *
      * @param double $exposure_time Gets or sets the exposure time.
@@ -1592,7 +1593,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets f_number
      *
      * @return double
@@ -1602,7 +1603,7 @@ class ExifData implements ArrayAccess
         return $this->container['f_number'];
     }
 
-    /*
+    /**
      * Sets f_number
      *
      * @param double $f_number Gets or sets the focal number.
@@ -1616,7 +1617,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets file_source
      *
      * @return string
@@ -1626,7 +1627,7 @@ class ExifData implements ArrayAccess
         return $this->container['file_source'];
     }
 
-    /*
+    /**
      * Sets file_source
      *
      * @param string $file_source Gets or sets the file source.
@@ -1640,7 +1641,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets flash
      *
      * @return string
@@ -1650,7 +1651,7 @@ class ExifData implements ArrayAccess
         return $this->container['flash'];
     }
 
-    /*
+    /**
      * Sets flash
      *
      * @param string $flash Gets or sets the flash.
@@ -1664,7 +1665,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets flash_energy
      *
      * @return double
@@ -1674,7 +1675,7 @@ class ExifData implements ArrayAccess
         return $this->container['flash_energy'];
     }
 
-    /*
+    /**
      * Sets flash_energy
      *
      * @param double $flash_energy Gets or sets the flash energy.
@@ -1688,7 +1689,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets flashpix_version
      *
      * @return string
@@ -1698,7 +1699,7 @@ class ExifData implements ArrayAccess
         return $this->container['flashpix_version'];
     }
 
-    /*
+    /**
      * Sets flashpix_version
      *
      * @param string $flashpix_version Gets or sets the Flashpix version.
@@ -1717,7 +1718,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets focal_length
      *
      * @return double
@@ -1727,7 +1728,7 @@ class ExifData implements ArrayAccess
         return $this->container['focal_length'];
     }
 
-    /*
+    /**
      * Sets focal_length
      *
      * @param double $focal_length Gets or sets the focal length.
@@ -1741,7 +1742,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets focal_length_in35_mm_film
      *
      * @return int
@@ -1751,7 +1752,7 @@ class ExifData implements ArrayAccess
         return $this->container['focal_length_in35_mm_film'];
     }
 
-    /*
+    /**
      * Sets focal_length_in35_mm_film
      *
      * @param int $focal_length_in35_mm_film Gets or sets the focal length in 35mm film.
@@ -1765,7 +1766,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets focal_plane_resolution_unit
      *
      * @return string
@@ -1775,7 +1776,7 @@ class ExifData implements ArrayAccess
         return $this->container['focal_plane_resolution_unit'];
     }
 
-    /*
+    /**
      * Sets focal_plane_resolution_unit
      *
      * @param string $focal_plane_resolution_unit Gets or sets the focal plane resolution unit.
@@ -1789,7 +1790,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets focal_plane_x_resolution
      *
      * @return double
@@ -1799,7 +1800,7 @@ class ExifData implements ArrayAccess
         return $this->container['focal_plane_x_resolution'];
     }
 
-    /*
+    /**
      * Sets focal_plane_x_resolution
      *
      * @param double $focal_plane_x_resolution Gets or sets the focal plane X resolution.
@@ -1813,7 +1814,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets focal_plane_y_resolution
      *
      * @return double
@@ -1823,7 +1824,7 @@ class ExifData implements ArrayAccess
         return $this->container['focal_plane_y_resolution'];
     }
 
-    /*
+    /**
      * Sets focal_plane_y_resolution
      *
      * @param double $focal_plane_y_resolution Gets or sets the focal plane Y resolution.
@@ -1837,7 +1838,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_altitude
      *
      * @return double
@@ -1847,7 +1848,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_altitude'];
     }
 
-    /*
+    /**
      * Sets gps_altitude
      *
      * @param double $gps_altitude Gets or sets the GPS altitude.
@@ -1861,7 +1862,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_altitude_ref
      *
      * @return string
@@ -1871,7 +1872,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_altitude_ref'];
     }
 
-    /*
+    /**
      * Sets gps_altitude_ref
      *
      * @param string $gps_altitude_ref Gets or sets the GPS altitude reference (if it's above or below sea level).
@@ -1885,7 +1886,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_area_information
      *
      * @return string
@@ -1895,7 +1896,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_area_information'];
     }
 
-    /*
+    /**
      * Sets gps_area_information
      *
      * @param string $gps_area_information Gets or sets the GPS area information.
@@ -1914,7 +1915,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gpsdop
      *
      * @return double
@@ -1924,7 +1925,7 @@ class ExifData implements ArrayAccess
         return $this->container['gpsdop'];
     }
 
-    /*
+    /**
      * Sets gpsdop
      *
      * @param double $gpsdop Gets or sets the GPS DOP (data degree of precision).
@@ -1938,7 +1939,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_bearing
      *
      * @return double
@@ -1948,7 +1949,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_bearing'];
     }
 
-    /*
+    /**
      * Sets gps_dest_bearing
      *
      * @param double $gps_dest_bearing Gets or sets the GPS bearing of the destination.
@@ -1962,7 +1963,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_bearing_ref
      *
      * @return string
@@ -1972,7 +1973,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_bearing_ref'];
     }
 
-    /*
+    /**
      * Sets gps_dest_bearing_ref
      *
      * @param string $gps_dest_bearing_ref Gets or sets the GPS reference unit for bearing of the destination.
@@ -1986,7 +1987,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_distance
      *
      * @return double
@@ -1996,7 +1997,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_distance'];
     }
 
-    /*
+    /**
      * Sets gps_dest_distance
      *
      * @param double $gps_dest_distance Gets or sets the GPS destination distance.
@@ -2010,7 +2011,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_distance_ref
      *
      * @return string
@@ -2020,7 +2021,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_distance_ref'];
     }
 
-    /*
+    /**
      * Sets gps_dest_distance_ref
      *
      * @param string $gps_dest_distance_ref Gets or sets the GPS reference unit for destination distance.
@@ -2034,7 +2035,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_latitude
      *
      * @return double[]
@@ -2044,7 +2045,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_latitude'];
     }
 
-    /*
+    /**
      * Sets gps_dest_latitude
      *
      * @param double[] $gps_dest_latitude Gets or sets the GPS destination latitude.
@@ -2058,7 +2059,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_latitude_ref
      *
      * @return string
@@ -2068,7 +2069,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_latitude_ref'];
     }
 
-    /*
+    /**
      * Sets gps_dest_latitude_ref
      *
      * @param string $gps_dest_latitude_ref Gets or sets the GPS reference destination latitude (north or south).
@@ -2082,7 +2083,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_longitude
      *
      * @return double[]
@@ -2092,7 +2093,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_longitude'];
     }
 
-    /*
+    /**
      * Sets gps_dest_longitude
      *
      * @param double[] $gps_dest_longitude Gets or sets the GPS destination longtitude.
@@ -2106,7 +2107,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_dest_longitude_ref
      *
      * @return string
@@ -2116,7 +2117,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_dest_longitude_ref'];
     }
 
-    /*
+    /**
      * Sets gps_dest_longitude_ref
      *
      * @param string $gps_dest_longitude_ref Gets or sets the GPS reference destination longtitude (east or west).
@@ -2130,7 +2131,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_differential
      *
      * @return int
@@ -2140,7 +2141,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_differential'];
     }
 
-    /*
+    /**
      * Sets gps_differential
      *
      * @param int $gps_differential Gets or sets the GPS differential.
@@ -2154,7 +2155,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_img_direction
      *
      * @return double
@@ -2164,7 +2165,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_img_direction'];
     }
 
-    /*
+    /**
      * Sets gps_img_direction
      *
      * @param double $gps_img_direction Gets or sets the GPS image direction.
@@ -2178,7 +2179,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_img_direction_ref
      *
      * @return string
@@ -2188,7 +2189,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_img_direction_ref'];
     }
 
-    /*
+    /**
      * Sets gps_img_direction_ref
      *
      * @param string $gps_img_direction_ref Gets or sets the GPS reference image direction.
@@ -2202,7 +2203,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_date_stamp
      *
      * @return string
@@ -2212,7 +2213,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_date_stamp'];
     }
 
-    /*
+    /**
      * Sets gps_date_stamp
      *
      * @param string $gps_date_stamp Gets or sets the GPS date stamp.
@@ -2226,7 +2227,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_latitude
      *
      * @return double[]
@@ -2236,7 +2237,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_latitude'];
     }
 
-    /*
+    /**
      * Sets gps_latitude
      *
      * @param double[] $gps_latitude Gets or sets the GPS latitude.
@@ -2250,7 +2251,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_latitude_ref
      *
      * @return string
@@ -2260,7 +2261,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_latitude_ref'];
     }
 
-    /*
+    /**
      * Sets gps_latitude_ref
      *
      * @param string $gps_latitude_ref Gets or sets the GPS latitude reference (north or south).
@@ -2274,7 +2275,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_longitude
      *
      * @return double[]
@@ -2284,7 +2285,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_longitude'];
     }
 
-    /*
+    /**
      * Sets gps_longitude
      *
      * @param double[] $gps_longitude Gets or sets the GPS longitude.
@@ -2298,7 +2299,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_longitude_ref
      *
      * @return string
@@ -2308,7 +2309,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_longitude_ref'];
     }
 
-    /*
+    /**
      * Sets gps_longitude_ref
      *
      * @param string $gps_longitude_ref Gets or sets the GPS longitude reference (east or west).
@@ -2322,7 +2323,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_map_datum
      *
      * @return string
@@ -2332,7 +2333,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_map_datum'];
     }
 
-    /*
+    /**
      * Sets gps_map_datum
      *
      * @param string $gps_map_datum Gets or sets the geodetic survey data used by the GPS receiver.
@@ -2346,7 +2347,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_measure_mode
      *
      * @return string
@@ -2356,7 +2357,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_measure_mode'];
     }
 
-    /*
+    /**
      * Sets gps_measure_mode
      *
      * @param string $gps_measure_mode Gets or sets the GPS measure mode.
@@ -2370,7 +2371,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_processing_method
      *
      * @return string
@@ -2380,7 +2381,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_processing_method'];
     }
 
-    /*
+    /**
      * Sets gps_processing_method
      *
      * @param string $gps_processing_method Gets or setsthe GPS processing method.
@@ -2399,7 +2400,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_satellites
      *
      * @return string
@@ -2409,7 +2410,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_satellites'];
     }
 
-    /*
+    /**
      * Sets gps_satellites
      *
      * @param string $gps_satellites Gets or sets the GPS satellites info.
@@ -2423,7 +2424,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_speed
      *
      * @return double
@@ -2433,7 +2434,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_speed'];
     }
 
-    /*
+    /**
      * Sets gps_speed
      *
      * @param double $gps_speed Gets or sets the GPS speed.
@@ -2447,7 +2448,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_speed_ref
      *
      * @return string
@@ -2457,7 +2458,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_speed_ref'];
     }
 
-    /*
+    /**
      * Sets gps_speed_ref
      *
      * @param string $gps_speed_ref Gets or sets the GPS speed reference unit.
@@ -2471,7 +2472,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_status
      *
      * @return string
@@ -2481,7 +2482,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_status'];
     }
 
-    /*
+    /**
      * Sets gps_status
      *
      * @param string $gps_status Gets or sets the GPS status.
@@ -2495,7 +2496,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_timestamp
      *
      * @return double[]
@@ -2505,7 +2506,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_timestamp'];
     }
 
-    /*
+    /**
      * Sets gps_timestamp
      *
      * @param double[] $gps_timestamp Gets or sets the GPS times tamp.
@@ -2519,7 +2520,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_track
      *
      * @return string
@@ -2529,7 +2530,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_track'];
     }
 
-    /*
+    /**
      * Sets gps_track
      *
      * @param string $gps_track Gets or sets the GPS track.
@@ -2543,7 +2544,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_track_ref
      *
      * @return string
@@ -2553,7 +2554,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_track_ref'];
     }
 
-    /*
+    /**
      * Sets gps_track_ref
      *
      * @param string $gps_track_ref Gets or sets the GPS track reference.
@@ -2567,7 +2568,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gps_version_id
      *
      * @return string
@@ -2577,7 +2578,7 @@ class ExifData implements ArrayAccess
         return $this->container['gps_version_id'];
     }
 
-    /*
+    /**
      * Sets gps_version_id
      *
      * @param string $gps_version_id Gets or sets the GPS version ID.
@@ -2596,7 +2597,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gain_control
      *
      * @return string
@@ -2606,7 +2607,7 @@ class ExifData implements ArrayAccess
         return $this->container['gain_control'];
     }
 
-    /*
+    /**
      * Sets gain_control
      *
      * @param string $gain_control Gets or sets the gain control.
@@ -2620,7 +2621,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets gamma
      *
      * @return double
@@ -2630,7 +2631,7 @@ class ExifData implements ArrayAccess
         return $this->container['gamma'];
     }
 
-    /*
+    /**
      * Sets gamma
      *
      * @param double $gamma Gets or sets the gamma.
@@ -2644,7 +2645,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets iso_speed
      *
      * @return int
@@ -2654,7 +2655,7 @@ class ExifData implements ArrayAccess
         return $this->container['iso_speed'];
     }
 
-    /*
+    /**
      * Sets iso_speed
      *
      * @param int $iso_speed Gets or sets the ISO speed.
@@ -2668,7 +2669,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets iso_speed_latitude_yyy
      *
      * @return int
@@ -2678,7 +2679,7 @@ class ExifData implements ArrayAccess
         return $this->container['iso_speed_latitude_yyy'];
     }
 
-    /*
+    /**
      * Sets iso_speed_latitude_yyy
      *
      * @param int $iso_speed_latitude_yyy Gets or sets the ISO speed latitude YYY value.
@@ -2692,7 +2693,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets iso_speed_latitude_zzz
      *
      * @return int
@@ -2702,7 +2703,7 @@ class ExifData implements ArrayAccess
         return $this->container['iso_speed_latitude_zzz'];
     }
 
-    /*
+    /**
      * Sets iso_speed_latitude_zzz
      *
      * @param int $iso_speed_latitude_zzz Gets or sets the ISO speed latitude ZZZ value.
@@ -2716,7 +2717,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets photographic_sensitivity
      *
      * @return int
@@ -2726,7 +2727,7 @@ class ExifData implements ArrayAccess
         return $this->container['photographic_sensitivity'];
     }
 
-    /*
+    /**
      * Sets photographic_sensitivity
      *
      * @param int $photographic_sensitivity Gets or sets the photographic sensitivity.
@@ -2740,7 +2741,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets image_unique_id
      *
      * @return string
@@ -2750,7 +2751,7 @@ class ExifData implements ArrayAccess
         return $this->container['image_unique_id'];
     }
 
-    /*
+    /**
      * Sets image_unique_id
      *
      * @param string $image_unique_id Gets or sets the image unique ID.
@@ -2764,7 +2765,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets lens_make
      *
      * @return string
@@ -2774,7 +2775,7 @@ class ExifData implements ArrayAccess
         return $this->container['lens_make'];
     }
 
-    /*
+    /**
      * Sets lens_make
      *
      * @param string $lens_make Gets or sets the lens manufacturer.
@@ -2788,7 +2789,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets lens_model
      *
      * @return string
@@ -2798,7 +2799,7 @@ class ExifData implements ArrayAccess
         return $this->container['lens_model'];
     }
 
-    /*
+    /**
      * Sets lens_model
      *
      * @param string $lens_model Gets or sets the lens model.
@@ -2812,7 +2813,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets lens_serial_number
      *
      * @return string
@@ -2822,7 +2823,7 @@ class ExifData implements ArrayAccess
         return $this->container['lens_serial_number'];
     }
 
-    /*
+    /**
      * Sets lens_serial_number
      *
      * @param string $lens_serial_number Gets or sets the lens serial number.
@@ -2836,7 +2837,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets lens_specification
      *
      * @return double[]
@@ -2846,7 +2847,7 @@ class ExifData implements ArrayAccess
         return $this->container['lens_specification'];
     }
 
-    /*
+    /**
      * Sets lens_specification
      *
      * @param double[] $lens_specification Gets or sets the lens specification.
@@ -2860,7 +2861,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets light_source
      *
      * @return string
@@ -2870,7 +2871,7 @@ class ExifData implements ArrayAccess
         return $this->container['light_source'];
     }
 
-    /*
+    /**
      * Sets light_source
      *
      * @param string $light_source Gets or sets the light source.
@@ -2884,7 +2885,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets maker_note_raw_data
      *
      * @return string
@@ -2894,7 +2895,7 @@ class ExifData implements ArrayAccess
         return $this->container['maker_note_raw_data'];
     }
 
-    /*
+    /**
      * Sets maker_note_raw_data
      *
      * @param string $maker_note_raw_data Gets or sets the maker note raw data.
@@ -2913,7 +2914,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets max_aperture_value
      *
      * @return double
@@ -2923,7 +2924,7 @@ class ExifData implements ArrayAccess
         return $this->container['max_aperture_value'];
     }
 
-    /*
+    /**
      * Sets max_aperture_value
      *
      * @param double $max_aperture_value Gets or sets the max aperture.
@@ -2937,7 +2938,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets metering_mode
      *
      * @return string
@@ -2947,7 +2948,7 @@ class ExifData implements ArrayAccess
         return $this->container['metering_mode'];
     }
 
-    /*
+    /**
      * Sets metering_mode
      *
      * @param string $metering_mode Gets or sets the metering mode.
@@ -2961,7 +2962,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets oecf
      *
      * @return string
@@ -2971,7 +2972,7 @@ class ExifData implements ArrayAccess
         return $this->container['oecf'];
     }
 
-    /*
+    /**
      * Sets oecf
      *
      * @param string $oecf Gets or sets the OECF (Opto-Electric Conversion Function).
@@ -2990,7 +2991,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets pixel_x_dimension
      *
      * @return int
@@ -3000,7 +3001,7 @@ class ExifData implements ArrayAccess
         return $this->container['pixel_x_dimension'];
     }
 
-    /*
+    /**
      * Sets pixel_x_dimension
      *
      * @param int $pixel_x_dimension Gets or sets the pixel X dimension.
@@ -3014,7 +3015,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets pixel_y_dimension
      *
      * @return int
@@ -3024,7 +3025,7 @@ class ExifData implements ArrayAccess
         return $this->container['pixel_y_dimension'];
     }
 
-    /*
+    /**
      * Sets pixel_y_dimension
      *
      * @param int $pixel_y_dimension Gets or sets the pixel Y dimension.
@@ -3038,7 +3039,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets recommended_exposure_index
      *
      * @return int
@@ -3048,7 +3049,7 @@ class ExifData implements ArrayAccess
         return $this->container['recommended_exposure_index'];
     }
 
-    /*
+    /**
      * Sets recommended_exposure_index
      *
      * @param int $recommended_exposure_index Gets or sets the recommended exposure index.
@@ -3062,7 +3063,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets related_sound_file
      *
      * @return string
@@ -3072,7 +3073,7 @@ class ExifData implements ArrayAccess
         return $this->container['related_sound_file'];
     }
 
-    /*
+    /**
      * Sets related_sound_file
      *
      * @param string $related_sound_file Gets or sets the related sound file.
@@ -3086,7 +3087,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets saturation
      *
      * @return string
@@ -3096,7 +3097,7 @@ class ExifData implements ArrayAccess
         return $this->container['saturation'];
     }
 
-    /*
+    /**
      * Sets saturation
      *
      * @param string $saturation Gets or sets the saturation.
@@ -3110,7 +3111,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets scene_capture_type
      *
      * @return string
@@ -3120,7 +3121,7 @@ class ExifData implements ArrayAccess
         return $this->container['scene_capture_type'];
     }
 
-    /*
+    /**
      * Sets scene_capture_type
      *
      * @param string $scene_capture_type Gets or sets the scene capture type.
@@ -3134,7 +3135,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets scene_type
      *
      * @return int
@@ -3144,7 +3145,7 @@ class ExifData implements ArrayAccess
         return $this->container['scene_type'];
     }
 
-    /*
+    /**
      * Sets scene_type
      *
      * @param int $scene_type Gets or sets the scene type.
@@ -3158,7 +3159,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets sensing_method
      *
      * @return string
@@ -3168,7 +3169,7 @@ class ExifData implements ArrayAccess
         return $this->container['sensing_method'];
     }
 
-    /*
+    /**
      * Sets sensing_method
      *
      * @param string $sensing_method Gets or sets the sensing method.
@@ -3182,7 +3183,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets sensitivity_type
      *
      * @return int
@@ -3192,7 +3193,7 @@ class ExifData implements ArrayAccess
         return $this->container['sensitivity_type'];
     }
 
-    /*
+    /**
      * Sets sensitivity_type
      *
      * @param int $sensitivity_type Gets or sets the sensitivity type.
@@ -3206,7 +3207,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets sharpness
      *
      * @return int
@@ -3216,7 +3217,7 @@ class ExifData implements ArrayAccess
         return $this->container['sharpness'];
     }
 
-    /*
+    /**
      * Sets sharpness
      *
      * @param int $sharpness Gets or sets the sharpness.
@@ -3230,7 +3231,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets shutter_speed_value
      *
      * @return double
@@ -3240,7 +3241,7 @@ class ExifData implements ArrayAccess
         return $this->container['shutter_speed_value'];
     }
 
-    /*
+    /**
      * Sets shutter_speed_value
      *
      * @param double $shutter_speed_value Gets or sets the shutter speed.
@@ -3254,7 +3255,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets spatial_frequency_response
      *
      * @return string
@@ -3264,7 +3265,7 @@ class ExifData implements ArrayAccess
         return $this->container['spatial_frequency_response'];
     }
 
-    /*
+    /**
      * Sets spatial_frequency_response
      *
      * @param string $spatial_frequency_response Gets or sets the spatial frequency response.
@@ -3283,7 +3284,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets spectral_sensitivity
      *
      * @return string
@@ -3293,7 +3294,7 @@ class ExifData implements ArrayAccess
         return $this->container['spectral_sensitivity'];
     }
 
-    /*
+    /**
      * Sets spectral_sensitivity
      *
      * @param string $spectral_sensitivity Gets or sets the spectral sensitivity.
@@ -3307,7 +3308,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets standard_output_sensitivity
      *
      * @return int
@@ -3317,7 +3318,7 @@ class ExifData implements ArrayAccess
         return $this->container['standard_output_sensitivity'];
     }
 
-    /*
+    /**
      * Sets standard_output_sensitivity
      *
      * @param int $standard_output_sensitivity Gets or sets the standard output sensitivity.
@@ -3331,7 +3332,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subject_area
      *
      * @return int[]
@@ -3341,7 +3342,7 @@ class ExifData implements ArrayAccess
         return $this->container['subject_area'];
     }
 
-    /*
+    /**
      * Sets subject_area
      *
      * @param int[] $subject_area Gets or sets the subject area.
@@ -3355,7 +3356,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subject_distance
      *
      * @return double
@@ -3365,7 +3366,7 @@ class ExifData implements ArrayAccess
         return $this->container['subject_distance'];
     }
 
-    /*
+    /**
      * Sets subject_distance
      *
      * @param double $subject_distance Gets or sets the subject distance.
@@ -3379,7 +3380,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subject_distance_range
      *
      * @return string
@@ -3389,7 +3390,7 @@ class ExifData implements ArrayAccess
         return $this->container['subject_distance_range'];
     }
 
-    /*
+    /**
      * Sets subject_distance_range
      *
      * @param string $subject_distance_range Gets or sets the subject distance range.
@@ -3403,7 +3404,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subject_location
      *
      * @return int[]
@@ -3413,7 +3414,7 @@ class ExifData implements ArrayAccess
         return $this->container['subject_location'];
     }
 
-    /*
+    /**
      * Sets subject_location
      *
      * @param int[] $subject_location Gets or sets the subject location.
@@ -3427,7 +3428,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subsec_time
      *
      * @return string
@@ -3437,7 +3438,7 @@ class ExifData implements ArrayAccess
         return $this->container['subsec_time'];
     }
 
-    /*
+    /**
      * Sets subsec_time
      *
      * @param string $subsec_time Gets or sets the fractions of seconds for the DateTime tag.
@@ -3451,7 +3452,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subsec_time_digitized
      *
      * @return string
@@ -3461,7 +3462,7 @@ class ExifData implements ArrayAccess
         return $this->container['subsec_time_digitized'];
     }
 
-    /*
+    /**
      * Sets subsec_time_digitized
      *
      * @param string $subsec_time_digitized Gets or sets the fractions of seconds for the DateTimeDigitized tag.
@@ -3475,7 +3476,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets subsec_time_original
      *
      * @return string
@@ -3485,7 +3486,7 @@ class ExifData implements ArrayAccess
         return $this->container['subsec_time_original'];
     }
 
-    /*
+    /**
      * Sets subsec_time_original
      *
      * @param string $subsec_time_original Gets or sets the fractions of seconds for the DateTimeOriginal tag.
@@ -3499,7 +3500,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets user_comment
      *
      * @return string
@@ -3509,7 +3510,7 @@ class ExifData implements ArrayAccess
         return $this->container['user_comment'];
     }
 
-    /*
+    /**
      * Sets user_comment
      *
      * @param string $user_comment Gets or sets the user comment.
@@ -3523,7 +3524,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets white_balance
      *
      * @return string
@@ -3533,7 +3534,7 @@ class ExifData implements ArrayAccess
         return $this->container['white_balance'];
     }
 
-    /*
+    /**
      * Sets white_balance
      *
      * @param string $white_balance Gets or sets the white balance.
@@ -3547,7 +3548,7 @@ class ExifData implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets white_point
      *
      * @return double[]
@@ -3557,7 +3558,7 @@ class ExifData implements ArrayAccess
         return $this->container['white_point'];
     }
 
-    /*
+    /**
      * Sets white_point
      *
      * @param double[] $white_point Gets or sets the white point.
@@ -3570,7 +3571,7 @@ class ExifData implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -3582,7 +3583,7 @@ class ExifData implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -3594,7 +3595,7 @@ class ExifData implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -3611,7 +3612,7 @@ class ExifData implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -3623,7 +3624,7 @@ class ExifData implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

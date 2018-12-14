@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * TiffOptions
  *
  * @description Represents options for TIFF frame.
@@ -40,14 +41,14 @@ class TiffOptions implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "TiffOptions";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -101,7 +102,7 @@ class TiffOptions implements ArrayAccess
         'bits_per_pixel' => 'int'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -155,7 +156,7 @@ class TiffOptions implements ArrayAccess
         'bits_per_pixel' => 'int32'
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -165,7 +166,7 @@ class TiffOptions implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -175,7 +176,7 @@ class TiffOptions implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -230,7 +231,7 @@ class TiffOptions implements ArrayAccess
         'bits_per_pixel' => 'BitsPerPixel'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -284,7 +285,7 @@ class TiffOptions implements ArrayAccess
         'bits_per_pixel' => 'setBitsPerPixel'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -338,7 +339,7 @@ class TiffOptions implements ArrayAccess
         'bits_per_pixel' => 'getBitsPerPixel'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -349,7 +350,7 @@ class TiffOptions implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -359,7 +360,7 @@ class TiffOptions implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -369,7 +370,7 @@ class TiffOptions implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -383,14 +384,14 @@ class TiffOptions implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -446,7 +447,7 @@ class TiffOptions implements ArrayAccess
         $this->container['bits_per_pixel'] = isset($data['bits_per_pixel']) ? $data['bits_per_pixel'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -494,7 +495,7 @@ class TiffOptions implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -543,7 +544,7 @@ class TiffOptions implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets is_valid
      *
      * @return bool
@@ -553,7 +554,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['is_valid'];
     }
 
-    /*
+    /**
      * Sets is_valid
      *
      * @param bool $is_valid Gets or sets a value indicating whether TIFF image has valid data.
@@ -567,7 +568,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets artist
      *
      * @return string
@@ -577,7 +578,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['artist'];
     }
 
-    /*
+    /**
      * Sets artist
      *
      * @param string $artist Gets or sets the artist.
@@ -591,7 +592,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets byte_order
      *
      * @return string
@@ -601,7 +602,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['byte_order'];
     }
 
-    /*
+    /**
      * Sets byte_order
      *
      * @param string $byte_order Gets or sets the byte order.
@@ -615,7 +616,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets bits_per_sample
      *
      * @return int[]
@@ -625,7 +626,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['bits_per_sample'];
     }
 
-    /*
+    /**
      * Sets bits_per_sample
      *
      * @param int[] $bits_per_sample Gets or sets the bits per sample.
@@ -639,7 +640,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets compression
      *
      * @return string
@@ -649,7 +650,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['compression'];
     }
 
-    /*
+    /**
      * Sets compression
      *
      * @param string $compression Gets or sets the compression.
@@ -663,7 +664,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets copyright
      *
      * @return string
@@ -673,7 +674,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['copyright'];
     }
 
-    /*
+    /**
      * Sets copyright
      *
      * @param string $copyright Gets or sets the copyright info.
@@ -687,7 +688,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets color_map
      *
      * @return int[]
@@ -697,7 +698,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['color_map'];
     }
 
-    /*
+    /**
      * Sets color_map
      *
      * @param int[] $color_map Gets or sets the color map.
@@ -711,7 +712,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets date_time
      *
      * @return string
@@ -721,7 +722,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['date_time'];
     }
 
-    /*
+    /**
      * Sets date_time
      *
      * @param string $date_time Gets or sets the date and time.
@@ -735,7 +736,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets document_name
      *
      * @return string
@@ -745,7 +746,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['document_name'];
     }
 
-    /*
+    /**
      * Sets document_name
      *
      * @param string $document_name Gets or sets the document name.
@@ -759,7 +760,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets alpha_storage
      *
      * @return string
@@ -769,7 +770,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['alpha_storage'];
     }
 
-    /*
+    /**
      * Sets alpha_storage
      *
      * @param string $alpha_storage Gets or sets the alpha storage.
@@ -783,7 +784,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets fill_order
      *
      * @return string
@@ -793,7 +794,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['fill_order'];
     }
 
-    /*
+    /**
      * Sets fill_order
      *
      * @param string $fill_order Gets or sets the fill order.
@@ -807,7 +808,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets half_tone_hints
      *
      * @return int[]
@@ -817,7 +818,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['half_tone_hints'];
     }
 
-    /*
+    /**
      * Sets half_tone_hints
      *
      * @param int[] $half_tone_hints Gets or sets the half-tone hints.
@@ -831,7 +832,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets image_description
      *
      * @return string
@@ -841,7 +842,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['image_description'];
     }
 
-    /*
+    /**
      * Sets image_description
      *
      * @param string $image_description Gets or sets the image description.
@@ -855,7 +856,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets ink_names
      *
      * @return string
@@ -865,7 +866,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['ink_names'];
     }
 
-    /*
+    /**
      * Sets ink_names
      *
      * @param string $ink_names Gets or sets the ink names.
@@ -879,7 +880,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets scanner_manufacturer
      *
      * @return string
@@ -889,7 +890,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['scanner_manufacturer'];
     }
 
-    /*
+    /**
      * Sets scanner_manufacturer
      *
      * @param string $scanner_manufacturer Gets or sets the scanner manufacturer.
@@ -903,7 +904,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets max_sample_value
      *
      * @return int[]
@@ -913,7 +914,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['max_sample_value'];
     }
 
-    /*
+    /**
      * Sets max_sample_value
      *
      * @param int[] $max_sample_value Gets or sets the max sample value.
@@ -927,7 +928,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets min_sample_value
      *
      * @return int[]
@@ -937,7 +938,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['min_sample_value'];
     }
 
-    /*
+    /**
      * Sets min_sample_value
      *
      * @param int[] $min_sample_value Gets or sets the min sample value.
@@ -951,7 +952,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets scanner_model
      *
      * @return string
@@ -961,7 +962,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['scanner_model'];
     }
 
-    /*
+    /**
      * Sets scanner_model
      *
      * @param string $scanner_model Gets or sets the scanner model.
@@ -975,7 +976,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets page_name
      *
      * @return string
@@ -985,7 +986,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['page_name'];
     }
 
-    /*
+    /**
      * Sets page_name
      *
      * @param string $page_name Gets or sets the page name.
@@ -999,7 +1000,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets orientation
      *
      * @return string
@@ -1009,7 +1010,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['orientation'];
     }
 
-    /*
+    /**
      * Sets orientation
      *
      * @param string $orientation Gets or sets the orientation.
@@ -1023,7 +1024,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets page_number
      *
      * @return int[]
@@ -1033,7 +1034,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['page_number'];
     }
 
-    /*
+    /**
      * Sets page_number
      *
      * @param int[] $page_number Gets or sets the page number.
@@ -1047,7 +1048,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets photometric
      *
      * @return string
@@ -1057,7 +1058,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['photometric'];
     }
 
-    /*
+    /**
      * Sets photometric
      *
      * @param string $photometric Gets or sets the photometric interpretation.
@@ -1071,7 +1072,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets planar_configuration
      *
      * @return string
@@ -1081,7 +1082,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['planar_configuration'];
     }
 
-    /*
+    /**
      * Sets planar_configuration
      *
      * @param string $planar_configuration Gets or sets the planar configuration.
@@ -1095,7 +1096,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets resolution_unit
      *
      * @return string
@@ -1105,7 +1106,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['resolution_unit'];
     }
 
-    /*
+    /**
      * Sets resolution_unit
      *
      * @param string $resolution_unit Gets or sets the resolution unit.
@@ -1119,7 +1120,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets rows_per_strip
      *
      * @return int
@@ -1129,7 +1130,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['rows_per_strip'];
     }
 
-    /*
+    /**
      * Sets rows_per_strip
      *
      * @param int $rows_per_strip Gets or sets the rows per strip.
@@ -1143,7 +1144,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets sample_format
      *
      * @return string[]
@@ -1153,7 +1154,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['sample_format'];
     }
 
-    /*
+    /**
      * Sets sample_format
      *
      * @param string[] $sample_format Gets or sets the sample format.
@@ -1167,7 +1168,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets samples_per_pixel
      *
      * @return int
@@ -1177,7 +1178,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['samples_per_pixel'];
     }
 
-    /*
+    /**
      * Sets samples_per_pixel
      *
      * @param int $samples_per_pixel Gets or sets the samples per pixel.
@@ -1191,7 +1192,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets smax_sample_value
      *
      * @return int[]
@@ -1201,7 +1202,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['smax_sample_value'];
     }
 
-    /*
+    /**
      * Sets smax_sample_value
      *
      * @param int[] $smax_sample_value Gets or sets the Smax sample value.
@@ -1215,7 +1216,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets smin_sample_value
      *
      * @return int[]
@@ -1225,7 +1226,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['smin_sample_value'];
     }
 
-    /*
+    /**
      * Sets smin_sample_value
      *
      * @param int[] $smin_sample_value Gets or sets the Smin sample value.
@@ -1239,7 +1240,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets software_type
      *
      * @return string
@@ -1249,7 +1250,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['software_type'];
     }
 
-    /*
+    /**
      * Sets software_type
      *
      * @param string $software_type Gets or sets the software type.
@@ -1263,7 +1264,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets strip_byte_counts
      *
      * @return int[]
@@ -1273,7 +1274,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['strip_byte_counts'];
     }
 
-    /*
+    /**
      * Sets strip_byte_counts
      *
      * @param int[] $strip_byte_counts Gets or sets the strip byte counts.
@@ -1287,7 +1288,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets strip_offsets
      *
      * @return int[]
@@ -1297,7 +1298,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['strip_offsets'];
     }
 
-    /*
+    /**
      * Sets strip_offsets
      *
      * @param int[] $strip_offsets Gets or sets the strip offsets.
@@ -1311,7 +1312,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets sub_file_type
      *
      * @return string
@@ -1321,7 +1322,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['sub_file_type'];
     }
 
-    /*
+    /**
      * Sets sub_file_type
      *
      * @param string $sub_file_type Gets or sets the subfile type.
@@ -1335,7 +1336,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets target_printer
      *
      * @return string
@@ -1345,7 +1346,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['target_printer'];
     }
 
-    /*
+    /**
      * Sets target_printer
      *
      * @param string $target_printer Gets or sets the target printer.
@@ -1359,7 +1360,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets threshholding
      *
      * @return string
@@ -1369,7 +1370,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['threshholding'];
     }
 
-    /*
+    /**
      * Sets threshholding
      *
      * @param string $threshholding Gets or sets the threshholding.
@@ -1383,7 +1384,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets total_pages
      *
      * @return int
@@ -1393,7 +1394,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['total_pages'];
     }
 
-    /*
+    /**
      * Sets total_pages
      *
      * @param int $total_pages Gets or sets the total pages count.
@@ -1407,7 +1408,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets xposition
      *
      * @return double
@@ -1417,7 +1418,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['xposition'];
     }
 
-    /*
+    /**
      * Sets xposition
      *
      * @param double $xposition Gets or sets the X position.
@@ -1431,7 +1432,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets xresolution
      *
      * @return double
@@ -1441,7 +1442,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['xresolution'];
     }
 
-    /*
+    /**
      * Sets xresolution
      *
      * @param double $xresolution Gets or sets the X resolution.
@@ -1455,7 +1456,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets yposition
      *
      * @return double
@@ -1465,7 +1466,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['yposition'];
     }
 
-    /*
+    /**
      * Sets yposition
      *
      * @param double $yposition Gets or sets the Y position.
@@ -1479,7 +1480,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets yresolution
      *
      * @return double
@@ -1489,7 +1490,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['yresolution'];
     }
 
-    /*
+    /**
      * Sets yresolution
      *
      * @param double $yresolution Gets or sets the Y resolution.
@@ -1503,7 +1504,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets fax_t4_options
      *
      * @return string
@@ -1513,7 +1514,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['fax_t4_options'];
     }
 
-    /*
+    /**
      * Sets fax_t4_options
      *
      * @param string $fax_t4_options Gets or sets the FaxT4 Options.
@@ -1527,7 +1528,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets predictor
      *
      * @return string
@@ -1537,7 +1538,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['predictor'];
     }
 
-    /*
+    /**
      * Sets predictor
      *
      * @param string $predictor Gets or sets the predictor (a mathematical operator that is applied to the image data before an encoding scheme is applied).
@@ -1551,7 +1552,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets image_length
      *
      * @return int
@@ -1561,7 +1562,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['image_length'];
     }
 
-    /*
+    /**
      * Sets image_length
      *
      * @param int $image_length Gets or sets the image length.
@@ -1575,7 +1576,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets image_width
      *
      * @return int
@@ -1585,7 +1586,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['image_width'];
     }
 
-    /*
+    /**
      * Sets image_width
      *
      * @param int $image_width Gets or sets the image width.
@@ -1599,7 +1600,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets valid_tag_count
      *
      * @return int
@@ -1609,7 +1610,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['valid_tag_count'];
     }
 
-    /*
+    /**
      * Sets valid_tag_count
      *
      * @param int $valid_tag_count Gets or sets the valid tag count.
@@ -1623,7 +1624,7 @@ class TiffOptions implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets bits_per_pixel
      *
      * @return int
@@ -1633,7 +1634,7 @@ class TiffOptions implements ArrayAccess
         return $this->container['bits_per_pixel'];
     }
 
-    /*
+    /**
      * Sets bits_per_pixel
      *
      * @param int $bits_per_pixel Gets or sets the bits per pixel.
@@ -1646,7 +1647,7 @@ class TiffOptions implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -1658,7 +1659,7 @@ class TiffOptions implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -1670,7 +1671,7 @@ class TiffOptions implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -1687,7 +1688,7 @@ class TiffOptions implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -1699,7 +1700,7 @@ class TiffOptions implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

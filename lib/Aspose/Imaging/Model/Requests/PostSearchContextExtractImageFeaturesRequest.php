@@ -31,42 +31,42 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postSearchContextExtractImageFeatures operation.
  */
 class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
 {
-    /*
+    /**
      * The search context identifier.
      */
     public $search_context_id;
-	
-    /*
+    
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * The image identifier.
      */
     public $image_id;
-	
-    /*
+    
+    /**
      * Images folder.
      */
     public $images_folder;
-	
-    /*
+    
+    /**
      * The folder.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * The storage.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostSearchContextExtractImageFeaturesRequest class.
      *  
      * @param string $search_context_id The search context identifier.
@@ -87,7 +87,7 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * The search context identifier.
      */
     public function get_search_context_id()
@@ -95,16 +95,18 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this->search_context_id;
     }
 
-    /*
+    /**
      * The search context identifier.
+     *
+     * @return 
      */
     public function set_search_context_id($value)
     {
         $this->search_context_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Input image
      */
     public function get_image_data()
@@ -112,16 +114,18 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The image identifier.
      */
     public function get_image_id()
@@ -129,16 +133,18 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this->image_id;
     }
 
-    /*
+    /**
      * The image identifier.
+     *
+     * @return 
      */
     public function set_image_id($value)
     {
         $this->image_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Images folder.
      */
     public function get_images_folder()
@@ -146,16 +152,18 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this->images_folder;
     }
 
-    /*
+    /**
      * Images folder.
+     *
+     * @return 
      */
     public function set_images_folder($value)
     {
         $this->images_folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The folder.
      */
     public function get_folder()
@@ -163,16 +171,18 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * The folder.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The storage.
      */
     public function get_storage()
@@ -180,8 +190,10 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * The storage.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -189,7 +201,7 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

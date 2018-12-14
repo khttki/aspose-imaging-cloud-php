@@ -31,17 +31,17 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageProperties operation.
  */
 class PostImagePropertiesRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
     
-    /*
+    /**
      * Initializes a new instance of the PostImagePropertiesRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -52,7 +52,7 @@ class PostImagePropertiesRequest extends ImagingRequest
         $this->image_data = $image_data;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -60,8 +60,10 @@ class PostImagePropertiesRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
@@ -69,7 +71,7 @@ class PostImagePropertiesRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

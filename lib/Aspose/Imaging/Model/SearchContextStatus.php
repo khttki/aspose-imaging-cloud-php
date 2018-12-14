@@ -28,8 +28,9 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * SearchContextStatus
  *
  * @description Search context status.
@@ -38,14 +39,14 @@ class SearchContextStatus extends SaaSposeResponse
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "SearchContextStatus";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -55,7 +56,7 @@ class SearchContextStatus extends SaaSposeResponse
         'search_status' => 'string'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -65,7 +66,7 @@ class SearchContextStatus extends SaaSposeResponse
         'search_status' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -75,7 +76,7 @@ class SearchContextStatus extends SaaSposeResponse
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -85,7 +86,7 @@ class SearchContextStatus extends SaaSposeResponse
         return self::$swaggerFormats + parent::swaggerFormats();
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -96,7 +97,7 @@ class SearchContextStatus extends SaaSposeResponse
         'search_status' => 'SearchStatus'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -106,7 +107,7 @@ class SearchContextStatus extends SaaSposeResponse
         'search_status' => 'setSearchStatus'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -116,7 +117,7 @@ class SearchContextStatus extends SaaSposeResponse
         'search_status' => 'getSearchStatus'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -127,7 +128,7 @@ class SearchContextStatus extends SaaSposeResponse
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -137,7 +138,7 @@ class SearchContextStatus extends SaaSposeResponse
         return parent::setters() + self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -147,7 +148,7 @@ class SearchContextStatus extends SaaSposeResponse
         return parent::getters() + self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -162,7 +163,7 @@ class SearchContextStatus extends SaaSposeResponse
     
 
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -176,7 +177,7 @@ class SearchContextStatus extends SaaSposeResponse
         $this->container['search_status'] = isset($data['search_status']) ? $data['search_status'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -188,7 +189,7 @@ class SearchContextStatus extends SaaSposeResponse
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -204,7 +205,7 @@ class SearchContextStatus extends SaaSposeResponse
     }
 
 
-    /*
+    /**
      * Gets id
      *
      * @return string
@@ -214,7 +215,7 @@ class SearchContextStatus extends SaaSposeResponse
         return $this->container['id'];
     }
 
-    /*
+    /**
      * Sets id
      *
      * @param string $id Gets or sets the identifier.
@@ -228,7 +229,7 @@ class SearchContextStatus extends SaaSposeResponse
         return $this;
     }
 
-    /*
+    /**
      * Gets search_status
      *
      * @return string
@@ -238,7 +239,7 @@ class SearchContextStatus extends SaaSposeResponse
         return $this->container['search_status'];
     }
 
-    /*
+    /**
      * Sets search_status
      *
      * @param string $search_status Gets or sets the status.
@@ -251,7 +252,7 @@ class SearchContextStatus extends SaaSposeResponse
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -263,7 +264,7 @@ class SearchContextStatus extends SaaSposeResponse
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -275,7 +276,7 @@ class SearchContextStatus extends SaaSposeResponse
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -292,7 +293,7 @@ class SearchContextStatus extends SaaSposeResponse
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -304,7 +305,7 @@ class SearchContextStatus extends SaaSposeResponse
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

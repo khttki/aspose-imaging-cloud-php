@@ -31,32 +31,32 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getSearchContextFindDuplicates operation.
  */
 class GetSearchContextFindDuplicatesRequest extends ImagingRequest
 {
-    /*
+    /**
      * The search context identifier.
      */
     public $search_context_id;
-	
-    /*
+    
+    /**
      * The similarity threshold.
      */
     public $similarity_threshold;
-	
-    /*
+    
+    /**
      * The folder.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * The storage.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the GetSearchContextFindDuplicatesRequest class.
      *  
      * @param string $search_context_id The search context identifier.
@@ -73,7 +73,7 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * The search context identifier.
      */
     public function get_search_context_id()
@@ -81,16 +81,18 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         return $this->search_context_id;
     }
 
-    /*
+    /**
      * The search context identifier.
+     *
+     * @return 
      */
     public function set_search_context_id($value)
     {
         $this->search_context_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The similarity threshold.
      */
     public function get_similarity_threshold()
@@ -98,16 +100,18 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         return $this->similarity_threshold;
     }
 
-    /*
+    /**
      * The similarity threshold.
+     *
+     * @return 
      */
     public function set_similarity_threshold($value)
     {
         $this->similarity_threshold = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The folder.
      */
     public function get_folder()
@@ -115,16 +119,18 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * The folder.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The storage.
      */
     public function get_storage()
@@ -132,8 +138,10 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * The storage.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -141,7 +149,7 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

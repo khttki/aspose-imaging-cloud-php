@@ -31,67 +31,67 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getImageGif operation.
  */
 class GetImageGifRequest extends ImagingRequest
 {
-    /*
+    /**
      * Filename of image.
      */
     public $name;
-	
-    /*
+    
+    /**
      * Index of the background color.
      */
     public $background_color_index;
-	
-    /*
+    
+    /**
      * Color resolution.
      */
     public $color_resolution;
-	
-    /*
+    
+    /**
      * Specifies if image has trailer.
      */
     public $has_trailer;
-	
-    /*
+    
+    /**
      * Specifies if image is interlaced.
      */
     public $interlaced;
-	
-    /*
+    
+    /**
      * Specifies if palette is sorted.
      */
     public $is_palette_sorted;
-	
-    /*
+    
+    /**
      * Pixel aspect ratio.
      */
     public $pixel_aspect_ratio;
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public $from_scratch;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the GetImageGifRequest class.
      *  
      * @param string $name Filename of image.
@@ -122,7 +122,7 @@ class GetImageGifRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Filename of image.
      */
     public function get_name()
@@ -130,16 +130,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->name;
     }
 
-    /*
+    /**
      * Filename of image.
+     *
+     * @return 
      */
     public function set_name($value)
     {
         $this->name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Index of the background color.
      */
     public function get_background_color_index()
@@ -147,16 +149,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->background_color_index;
     }
 
-    /*
+    /**
      * Index of the background color.
+     *
+     * @return 
      */
     public function set_background_color_index($value)
     {
         $this->background_color_index = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Color resolution.
      */
     public function get_color_resolution()
@@ -164,16 +168,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->color_resolution;
     }
 
-    /*
+    /**
      * Color resolution.
+     *
+     * @return 
      */
     public function set_color_resolution($value)
     {
         $this->color_resolution = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies if image has trailer.
      */
     public function get_has_trailer()
@@ -181,16 +187,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->has_trailer;
     }
 
-    /*
+    /**
      * Specifies if image has trailer.
+     *
+     * @return 
      */
     public function set_has_trailer($value)
     {
         $this->has_trailer = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies if image is interlaced.
      */
     public function get_interlaced()
@@ -198,16 +206,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->interlaced;
     }
 
-    /*
+    /**
      * Specifies if image is interlaced.
+     *
+     * @return 
      */
     public function set_interlaced($value)
     {
         $this->interlaced = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies if palette is sorted.
      */
     public function get_is_palette_sorted()
@@ -215,16 +225,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->is_palette_sorted;
     }
 
-    /*
+    /**
      * Specifies if palette is sorted.
+     *
+     * @return 
      */
     public function set_is_palette_sorted($value)
     {
         $this->is_palette_sorted = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Pixel aspect ratio.
      */
     public function get_pixel_aspect_ratio()
@@ -232,16 +244,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->pixel_aspect_ratio;
     }
 
-    /*
+    /**
      * Pixel aspect ratio.
+     *
+     * @return 
      */
     public function set_pixel_aspect_ratio($value)
     {
         $this->pixel_aspect_ratio = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public function get_from_scratch()
@@ -249,16 +263,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->from_scratch;
     }
 
-    /*
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return 
      */
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -266,16 +282,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public function get_folder()
@@ -283,16 +301,18 @@ class GetImageGifRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder with image to process.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -300,8 +320,10 @@ class GetImageGifRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -309,7 +331,7 @@ class GetImageGifRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

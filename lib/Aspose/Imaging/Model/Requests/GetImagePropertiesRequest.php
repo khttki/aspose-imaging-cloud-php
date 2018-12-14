@@ -31,27 +31,27 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getImageProperties operation.
  */
 class GetImagePropertiesRequest extends ImagingRequest
 {
-    /*
+    /**
      * Filename of an image.
      */
     public $name;
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the GetImagePropertiesRequest class.
      *  
      * @param string $name Filename of an image.
@@ -66,7 +66,7 @@ class GetImagePropertiesRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Filename of an image.
      */
     public function get_name()
@@ -74,16 +74,18 @@ class GetImagePropertiesRequest extends ImagingRequest
         return $this->name;
     }
 
-    /*
+    /**
      * Filename of an image.
+     *
+     * @return 
      */
     public function set_name($value)
     {
         $this->name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public function get_folder()
@@ -91,16 +93,18 @@ class GetImagePropertiesRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder with image to process.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -108,8 +112,10 @@ class GetImagePropertiesRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -117,7 +123,7 @@ class GetImagePropertiesRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

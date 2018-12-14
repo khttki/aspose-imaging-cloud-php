@@ -31,17 +31,17 @@ namespace Aspose\Imaging\Model\Requests;
 use Aspose\Imaging\Configuration;
 use Aspose\Imaging\HeaderSelector;
 
-/*
+/**
  * Request model base class for Aspose.Imaging SDK
  */
 abstract class ImagingRequest
 {
-    /*
+    /**
      * Header selector
      */
     protected $headerSelector;
     
-    /*
+    /**
      * Imaging base request constructor
      */
     protected function __constrcut()
@@ -49,14 +49,14 @@ abstract class ImagingRequest
         $headerSelector = new HeaderSelector();
     }
     
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.
      */
     public abstract function getHttpRequestInfo(Configuration $config);
     
-    /*
+    /**
      * Executes url parsing
      */
     protected function parseURL($url, $queryParams, Configuration $config) 

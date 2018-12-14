@@ -31,37 +31,37 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postSearchContextAddTag operation.
  */
 class PostSearchContextAddTagRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * The search context identifier.
      */
     public $search_context_id;
-	
-    /*
+    
+    /**
      * The tag.
      */
     public $tag_name;
-	
-    /*
+    
+    /**
      * The folder.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * The storage.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostSearchContextAddTagRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -80,7 +80,7 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -88,16 +88,18 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The search context identifier.
      */
     public function get_search_context_id()
@@ -105,16 +107,18 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         return $this->search_context_id;
     }
 
-    /*
+    /**
      * The search context identifier.
+     *
+     * @return 
      */
     public function set_search_context_id($value)
     {
         $this->search_context_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The tag.
      */
     public function get_tag_name()
@@ -122,16 +126,18 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         return $this->tag_name;
     }
 
-    /*
+    /**
      * The tag.
+     *
+     * @return 
      */
     public function set_tag_name($value)
     {
         $this->tag_name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The folder.
      */
     public function get_folder()
@@ -139,16 +145,18 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * The folder.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The storage.
      */
     public function get_storage()
@@ -156,8 +164,10 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * The storage.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -165,7 +175,7 @@ class PostSearchContextAddTagRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

@@ -31,57 +31,57 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for getImageWebP operation.
  */
 class GetImageWebPRequest extends ImagingRequest
 {
-    /*
+    /**
      * Filename of image.
      */
     public $name;
-	
-    /*
+    
+    /**
      * If WEBP is lossless.
      */
     public $loss_less;
-	
-    /*
+    
+    /**
      * Quality.
      */
     public $quality;
-	
-    /*
+    
+    /**
      * The animation loop count.
      */
     public $anim_loop_count;
-	
-    /*
+    
+    /**
      * Color of the animation background.
      */
     public $anim_background_color;
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public $from_scratch;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the GetImageWebPRequest class.
      *  
      * @param string $name Filename of image.
@@ -108,7 +108,7 @@ class GetImageWebPRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Filename of image.
      */
     public function get_name()
@@ -116,16 +116,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->name;
     }
 
-    /*
+    /**
      * Filename of image.
+     *
+     * @return 
      */
     public function set_name($value)
     {
         $this->name = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * If WEBP is lossless.
      */
     public function get_loss_less()
@@ -133,16 +135,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->loss_less;
     }
 
-    /*
+    /**
      * If WEBP is lossless.
+     *
+     * @return 
      */
     public function set_loss_less($value)
     {
         $this->loss_less = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Quality.
      */
     public function get_quality()
@@ -150,16 +154,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->quality;
     }
 
-    /*
+    /**
      * Quality.
+     *
+     * @return 
      */
     public function set_quality($value)
     {
         $this->quality = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The animation loop count.
      */
     public function get_anim_loop_count()
@@ -167,16 +173,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->anim_loop_count;
     }
 
-    /*
+    /**
      * The animation loop count.
+     *
+     * @return 
      */
     public function set_anim_loop_count($value)
     {
         $this->anim_loop_count = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Color of the animation background.
      */
     public function get_anim_background_color()
@@ -184,16 +192,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->anim_background_color;
     }
 
-    /*
+    /**
      * Color of the animation background.
+     *
+     * @return 
      */
     public function set_anim_background_color($value)
     {
         $this->anim_background_color = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public function get_from_scratch()
@@ -201,16 +211,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->from_scratch;
     }
 
-    /*
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return 
      */
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -218,16 +230,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder with image to process.
      */
     public function get_folder()
@@ -235,16 +249,18 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder with image to process.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -252,8 +268,10 @@ class GetImageWebPRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -261,7 +279,7 @@ class GetImageWebPRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

@@ -28,15 +28,16 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * Jpeg2000Codec
  *
  * @description Represents JPEG2000 image type
  */
 class Jpeg2000Codec
 {
-    /*
+    /**
      * Possible values of this enum
      */
     const J2_K = 'J2K';

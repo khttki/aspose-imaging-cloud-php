@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * DicomProperties
  *
  * @description Represents information about image in dicom format.
@@ -40,14 +41,14 @@ class DicomProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "DicomProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -79,7 +80,7 @@ class DicomProperties implements ArrayAccess
         'dicom_found' => 'bool'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -111,7 +112,7 @@ class DicomProperties implements ArrayAccess
         'dicom_found' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -121,7 +122,7 @@ class DicomProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -131,7 +132,7 @@ class DicomProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -164,7 +165,7 @@ class DicomProperties implements ArrayAccess
         'dicom_found' => 'DicomFound'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -196,7 +197,7 @@ class DicomProperties implements ArrayAccess
         'dicom_found' => 'setDicomFound'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -228,7 +229,7 @@ class DicomProperties implements ArrayAccess
         'dicom_found' => 'getDicomFound'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -239,7 +240,7 @@ class DicomProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -249,7 +250,7 @@ class DicomProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -259,7 +260,7 @@ class DicomProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -273,14 +274,14 @@ class DicomProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -314,7 +315,7 @@ class DicomProperties implements ArrayAccess
         $this->container['dicom_found'] = isset($data['dicom_found']) ? $data['dicom_found'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -396,7 +397,7 @@ class DicomProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -475,7 +476,7 @@ class DicomProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets planar_configuration
      *
      * @return int
@@ -485,7 +486,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['planar_configuration'];
     }
 
-    /*
+    /**
      * Sets planar_configuration
      *
      * @param int $planar_configuration Gets or sets the planar configuration.
@@ -499,7 +500,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets reds
      *
      * @return string
@@ -509,7 +510,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['reds'];
     }
 
-    /*
+    /**
      * Sets reds
      *
      * @param string $reds Gets or sets the array of red colors.
@@ -528,7 +529,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets greens
      *
      * @return string
@@ -538,7 +539,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['greens'];
     }
 
-    /*
+    /**
      * Sets greens
      *
      * @param string $greens Gets or sets the array of green colors.
@@ -557,7 +558,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets blues
      *
      * @return string
@@ -567,7 +568,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['blues'];
     }
 
-    /*
+    /**
      * Sets blues
      *
      * @param string $blues Gets or sets the array of blue colors.
@@ -586,7 +587,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets dicom_header_info_by_bytes
      *
      * @return string
@@ -596,7 +597,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['dicom_header_info_by_bytes'];
     }
 
-    /*
+    /**
      * Sets dicom_header_info_by_bytes
      *
      * @param string $dicom_header_info_by_bytes Gets or sets the header information by bytes.
@@ -615,7 +616,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets signed_image
      *
      * @return bool
@@ -625,7 +626,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['signed_image'];
     }
 
-    /*
+    /**
      * Sets signed_image
      *
      * @param bool $signed_image Gets or sets a value indicating whether it's a signed image.
@@ -639,7 +640,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets dicom_info
      *
      * @return string[]
@@ -649,7 +650,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['dicom_info'];
     }
 
-    /*
+    /**
      * Sets dicom_info
      *
      * @param string[] $dicom_info Gets or sets the header information of the DICOM file.
@@ -663,7 +664,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets samples_per_pixel
      *
      * @return int
@@ -673,7 +674,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['samples_per_pixel'];
     }
 
-    /*
+    /**
      * Sets samples_per_pixel
      *
      * @param int $samples_per_pixel Gets or sets samples per pixel count.
@@ -687,7 +688,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets bits_allocated
      *
      * @return int
@@ -697,7 +698,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['bits_allocated'];
     }
 
-    /*
+    /**
      * Sets bits_allocated
      *
      * @param int $bits_allocated Gets or sets allocated bits count.
@@ -711,7 +712,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets photo_interpretation
      *
      * @return string
@@ -721,7 +722,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['photo_interpretation'];
     }
 
-    /*
+    /**
      * Sets photo_interpretation
      *
      * @param string $photo_interpretation Gets or sets the photo interpretation.
@@ -735,7 +736,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets width_tag_found
      *
      * @return bool
@@ -745,7 +746,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['width_tag_found'];
     }
 
-    /*
+    /**
      * Sets width_tag_found
      *
      * @param bool $width_tag_found Gets or sets a value indicating whether width tag found.
@@ -759,7 +760,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets height_tag_found
      *
      * @return bool
@@ -769,7 +770,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['height_tag_found'];
     }
 
-    /*
+    /**
      * Sets height_tag_found
      *
      * @param bool $height_tag_found Gets or sets a value indicating whether height tag found.
@@ -783,7 +784,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets width
      *
      * @return int
@@ -793,7 +794,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['width'];
     }
 
-    /*
+    /**
      * Sets width
      *
      * @param int $width Gets or sets the width.
@@ -807,7 +808,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets height
      *
      * @return int
@@ -817,7 +818,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['height'];
     }
 
-    /*
+    /**
      * Sets height
      *
      * @param int $height Gets or sets the height.
@@ -831,7 +832,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets window_centre
      *
      * @return double
@@ -841,7 +842,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['window_centre'];
     }
 
-    /*
+    /**
      * Sets window_centre
      *
      * @param double $window_centre Gets or sets the window centre.
@@ -855,7 +856,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets window_width
      *
      * @return double
@@ -865,7 +866,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['window_width'];
     }
 
-    /*
+    /**
      * Sets window_width
      *
      * @param double $window_width Gets or sets the width of the window.
@@ -879,7 +880,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets pixel_representation
      *
      * @return int
@@ -889,7 +890,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['pixel_representation'];
     }
 
-    /*
+    /**
      * Sets pixel_representation
      *
      * @param int $pixel_representation Gets or sets data representation of the pixel samples.
@@ -903,7 +904,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets rescale_intercept
      *
      * @return double
@@ -913,7 +914,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['rescale_intercept'];
     }
 
-    /*
+    /**
      * Sets rescale_intercept
      *
      * @param double $rescale_intercept Gets or sets a value of the rescale intercept.
@@ -927,7 +928,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets rescale_slope
      *
      * @return double
@@ -937,7 +938,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['rescale_slope'];
     }
 
-    /*
+    /**
      * Sets rescale_slope
      *
      * @param double $rescale_slope Gets or sets a value of the rescale slope.
@@ -951,7 +952,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets number_of_frames
      *
      * @return int
@@ -961,7 +962,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['number_of_frames'];
     }
 
-    /*
+    /**
      * Sets number_of_frames
      *
      * @param int $number_of_frames Gets or sets the number of frames.
@@ -975,7 +976,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets length_value
      *
      * @return int
@@ -985,7 +986,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['length_value'];
     }
 
-    /*
+    /**
      * Sets length_value
      *
      * @param int $length_value Gets or sets the length of element.
@@ -999,7 +1000,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets is_little_endian
      *
      * @return bool
@@ -1009,7 +1010,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['is_little_endian'];
     }
 
-    /*
+    /**
      * Sets is_little_endian
      *
      * @param bool $is_little_endian Indicates if DICOM image has little endian byte order.
@@ -1023,7 +1024,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets offset
      *
      * @return int
@@ -1033,7 +1034,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['offset'];
     }
 
-    /*
+    /**
      * Sets offset
      *
      * @param int $offset Gets or sets the offset.
@@ -1047,7 +1048,7 @@ class DicomProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets dicom_found
      *
      * @return bool
@@ -1057,7 +1058,7 @@ class DicomProperties implements ArrayAccess
         return $this->container['dicom_found'];
     }
 
-    /*
+    /**
      * Sets dicom_found
      *
      * @param bool $dicom_found Gets or sets a value indicating whether \"DICOM\" data is found.
@@ -1070,7 +1071,7 @@ class DicomProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -1082,7 +1083,7 @@ class DicomProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -1094,7 +1095,7 @@ class DicomProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -1111,7 +1112,7 @@ class DicomProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -1123,7 +1124,7 @@ class DicomProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

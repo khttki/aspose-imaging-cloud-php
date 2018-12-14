@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * TiffFrame
  *
  * @description Represents information about TIFF frame.
@@ -40,14 +41,14 @@ class TiffFrame implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "TiffFrame";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -59,7 +60,7 @@ class TiffFrame implements ArrayAccess
         'exif_data' => '\Aspose\Imaging\Model\ExifData'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -71,7 +72,7 @@ class TiffFrame implements ArrayAccess
         'exif_data' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -81,7 +82,7 @@ class TiffFrame implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -91,7 +92,7 @@ class TiffFrame implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -104,7 +105,7 @@ class TiffFrame implements ArrayAccess
         'exif_data' => 'ExifData'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -116,7 +117,7 @@ class TiffFrame implements ArrayAccess
         'exif_data' => 'setExifData'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -128,7 +129,7 @@ class TiffFrame implements ArrayAccess
         'exif_data' => 'getExifData'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -139,7 +140,7 @@ class TiffFrame implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -149,7 +150,7 @@ class TiffFrame implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -159,7 +160,7 @@ class TiffFrame implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -173,14 +174,14 @@ class TiffFrame implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -194,7 +195,7 @@ class TiffFrame implements ArrayAccess
         $this->container['exif_data'] = isset($data['exif_data']) ? $data['exif_data'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -212,7 +213,7 @@ class TiffFrame implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -231,7 +232,7 @@ class TiffFrame implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets frame_options
      *
      * @return \Aspose\Imaging\Model\TiffOptions
@@ -241,7 +242,7 @@ class TiffFrame implements ArrayAccess
         return $this->container['frame_options'];
     }
 
-    /*
+    /**
      * Sets frame_options
      *
      * @param \Aspose\Imaging\Model\TiffOptions $frame_options Gets or sets options for the frame.
@@ -255,7 +256,7 @@ class TiffFrame implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets height
      *
      * @return int
@@ -265,7 +266,7 @@ class TiffFrame implements ArrayAccess
         return $this->container['height'];
     }
 
-    /*
+    /**
      * Sets height
      *
      * @param int $height Gets or sets the frame height.
@@ -279,7 +280,7 @@ class TiffFrame implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets width
      *
      * @return int
@@ -289,7 +290,7 @@ class TiffFrame implements ArrayAccess
         return $this->container['width'];
     }
 
-    /*
+    /**
      * Sets width
      *
      * @param int $width Gets or sets the frame width.
@@ -303,7 +304,7 @@ class TiffFrame implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets exif_data
      *
      * @return \Aspose\Imaging\Model\ExifData
@@ -313,7 +314,7 @@ class TiffFrame implements ArrayAccess
         return $this->container['exif_data'];
     }
 
-    /*
+    /**
      * Sets exif_data
      *
      * @param \Aspose\Imaging\Model\ExifData $exif_data Gets or sets the EXIF data.
@@ -326,7 +327,7 @@ class TiffFrame implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -338,7 +339,7 @@ class TiffFrame implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -350,7 +351,7 @@ class TiffFrame implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -367,7 +368,7 @@ class TiffFrame implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -379,7 +380,7 @@ class TiffFrame implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

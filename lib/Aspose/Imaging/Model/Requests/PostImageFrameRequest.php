@@ -31,72 +31,72 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageFrame operation.
  */
 class PostImageFrameRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * Number of a frame.
      */
     public $frame_id;
-	
-    /*
+    
+    /**
      * New width.
      */
     public $new_width;
-	
-    /*
+    
+    /**
      * New height.
      */
     public $new_height;
-	
-    /*
+    
+    /**
      * X position of start point for cropping rectangle.
      */
     public $x;
-	
-    /*
+    
+    /**
      * Y position of start point for cropping rectangle.
      */
     public $y;
-	
-    /*
+    
+    /**
      * Width of cropping rectangle.
      */
     public $rect_width;
-	
-    /*
+    
+    /**
      * Height of cropping rectangle.
      */
     public $rect_height;
-	
-    /*
+    
+    /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
      */
     public $rotate_flip_method;
-	
-    /*
+    
+    /**
      * If result will include all other frames or just a specified frame.
      */
     public $save_other_frames;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostImageFrameRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -129,7 +129,7 @@ class PostImageFrameRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -137,16 +137,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Number of a frame.
      */
     public function get_frame_id()
@@ -154,16 +156,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->frame_id;
     }
 
-    /*
+    /**
      * Number of a frame.
+     *
+     * @return 
      */
     public function set_frame_id($value)
     {
         $this->frame_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * New width.
      */
     public function get_new_width()
@@ -171,16 +175,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->new_width;
     }
 
-    /*
+    /**
      * New width.
+     *
+     * @return 
      */
     public function set_new_width($value)
     {
         $this->new_width = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * New height.
      */
     public function get_new_height()
@@ -188,16 +194,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->new_height;
     }
 
-    /*
+    /**
      * New height.
+     *
+     * @return 
      */
     public function set_new_height($value)
     {
         $this->new_height = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * X position of start point for cropping rectangle.
      */
     public function get_x()
@@ -205,16 +213,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->x;
     }
 
-    /*
+    /**
      * X position of start point for cropping rectangle.
+     *
+     * @return 
      */
     public function set_x($value)
     {
         $this->x = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Y position of start point for cropping rectangle.
      */
     public function get_y()
@@ -222,16 +232,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->y;
     }
 
-    /*
+    /**
      * Y position of start point for cropping rectangle.
+     *
+     * @return 
      */
     public function set_y($value)
     {
         $this->y = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Width of cropping rectangle.
      */
     public function get_rect_width()
@@ -239,16 +251,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->rect_width;
     }
 
-    /*
+    /**
      * Width of cropping rectangle.
+     *
+     * @return 
      */
     public function set_rect_width($value)
     {
         $this->rect_width = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Height of cropping rectangle.
      */
     public function get_rect_height()
@@ -256,16 +270,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->rect_height;
     }
 
-    /*
+    /**
      * Height of cropping rectangle.
+     *
+     * @return 
      */
     public function set_rect_height($value)
     {
         $this->rect_height = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
      */
     public function get_rotate_flip_method()
@@ -273,16 +289,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->rotate_flip_method;
     }
 
-    /*
+    /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+     *
+     * @return 
      */
     public function set_rotate_flip_method($value)
     {
         $this->rotate_flip_method = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * If result will include all other frames or just a specified frame.
      */
     public function get_save_other_frames()
@@ -290,16 +308,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->save_other_frames;
     }
 
-    /*
+    /**
      * If result will include all other frames or just a specified frame.
+     *
+     * @return 
      */
     public function set_save_other_frames($value)
     {
         $this->save_other_frames = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -307,16 +327,18 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -324,8 +346,10 @@ class PostImageFrameRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -333,7 +357,7 @@ class PostImageFrameRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

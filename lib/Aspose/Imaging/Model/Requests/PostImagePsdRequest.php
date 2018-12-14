@@ -31,42 +31,42 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImagePsd operation.
  */
 class PostImagePsdRequest extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * Count of color channels.
      */
     public $channels_count;
-	
-    /*
+    
+    /**
      * Compression method.
      */
     public $compression_method;
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public $from_scratch;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostImagePsdRequest class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -87,7 +87,7 @@ class PostImagePsdRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -95,16 +95,18 @@ class PostImagePsdRequest extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Count of color channels.
      */
     public function get_channels_count()
@@ -112,16 +114,18 @@ class PostImagePsdRequest extends ImagingRequest
         return $this->channels_count;
     }
 
-    /*
+    /**
      * Count of color channels.
+     *
+     * @return 
      */
     public function set_channels_count($value)
     {
         $this->channels_count = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Compression method.
      */
     public function get_compression_method()
@@ -129,16 +133,18 @@ class PostImagePsdRequest extends ImagingRequest
         return $this->compression_method;
     }
 
-    /*
+    /**
      * Compression method.
+     *
+     * @return 
      */
     public function set_compression_method($value)
     {
         $this->compression_method = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public function get_from_scratch()
@@ -146,16 +152,18 @@ class PostImagePsdRequest extends ImagingRequest
         return $this->from_scratch;
     }
 
-    /*
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return 
      */
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -163,16 +171,18 @@ class PostImagePsdRequest extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -180,8 +190,10 @@ class PostImagePsdRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -189,7 +201,7 @@ class PostImagePsdRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

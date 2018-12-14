@@ -31,32 +31,32 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for deleteSearchContextImage operation.
  */
 class DeleteSearchContextImageRequest extends ImagingRequest
 {
-    /*
+    /**
      * Search context identifier.
      */
     public $search_context_id;
-	
-    /*
+    
+    /**
      * Image identifier.
      */
     public $image_id;
-	
-    /*
+    
+    /**
      * Folder.
      */
     public $folder;
-	
-    /*
+    
+    /**
      * Storage
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the DeleteSearchContextImageRequest class.
      *  
      * @param string $search_context_id Search context identifier.
@@ -73,7 +73,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Search context identifier.
      */
     public function get_search_context_id()
@@ -81,16 +81,18 @@ class DeleteSearchContextImageRequest extends ImagingRequest
         return $this->search_context_id;
     }
 
-    /*
+    /**
      * Search context identifier.
+     *
+     * @return 
      */
     public function set_search_context_id($value)
     {
         $this->search_context_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Image identifier.
      */
     public function get_image_id()
@@ -98,16 +100,18 @@ class DeleteSearchContextImageRequest extends ImagingRequest
         return $this->image_id;
     }
 
-    /*
+    /**
      * Image identifier.
+     *
+     * @return 
      */
     public function set_image_id($value)
     {
         $this->image_id = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Folder.
      */
     public function get_folder()
@@ -115,16 +119,18 @@ class DeleteSearchContextImageRequest extends ImagingRequest
         return $this->folder;
     }
 
-    /*
+    /**
      * Folder.
+     *
+     * @return 
      */
     public function set_folder($value)
     {
         $this->folder = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Storage
      */
     public function get_storage()
@@ -132,8 +138,10 @@ class DeleteSearchContextImageRequest extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Storage
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -141,7 +149,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

@@ -31,42 +31,42 @@ namespace Aspose\Imaging\Model\Requests;
 use \InvalidArgumentException;
 use Aspose\Imaging\Configuration;
 
-/*
+/**
  * Request model for postImageJpeg2000 operation.
  */
 class PostImageJpeg2000Request extends ImagingRequest
 {
-    /*
+    /**
      * Input image
      */
     public $image_data;
-	
-    /*
+    
+    /**
      * The comment.
      */
     public $comment;
-	
-    /*
+    
+    /**
      * The codec.
      */
     public $codec;
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public $from_scratch;
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public $out_path;
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public $storage;
     
-    /*
+    /**
      * Initializes a new instance of the PostImageJpeg2000Request class.
      *  
      * @param \SplFileObject $image_data Input image
@@ -87,7 +87,7 @@ class PostImageJpeg2000Request extends ImagingRequest
         $this->storage = $storage;
     }
 
-    /*
+    /**
      * Input image
      */
     public function get_image_data()
@@ -95,16 +95,18 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this->image_data;
     }
 
-    /*
+    /**
      * Input image
+     *
+     * @return 
      */
     public function set_image_data($value)
     {
         $this->image_data = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The comment.
      */
     public function get_comment()
@@ -112,16 +114,18 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this->comment;
     }
 
-    /*
+    /**
      * The comment.
+     *
+     * @return 
      */
     public function set_comment($value)
     {
         $this->comment = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * The codec.
      */
     public function get_codec()
@@ -129,16 +133,18 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this->codec;
     }
 
-    /*
+    /**
      * The codec.
+     *
+     * @return 
      */
     public function set_codec($value)
     {
         $this->codec = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      */
     public function get_from_scratch()
@@ -146,16 +152,18 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this->from_scratch;
     }
 
-    /*
+    /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return 
      */
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
      */
     public function get_out_path()
@@ -163,16 +171,18 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this->out_path;
     }
 
-    /*
+    /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return 
      */
     public function set_out_path($value)
     {
         $this->out_path = $value;
         return $this;
     }
-	
-    /*
+    
+    /**
      * Your Aspose Cloud Storage name.
      */
     public function get_storage()
@@ -180,8 +190,10 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this->storage;
     }
 
-    /*
+    /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return 
      */
     public function set_storage($value)
     {
@@ -189,7 +201,7 @@ class PostImageJpeg2000Request extends ImagingRequest
         return $this;
     }
 
-    /*
+    /**
      * Prepares initial info for HTTP request
      *
      * @param Configuration $config Imaging API configuration.

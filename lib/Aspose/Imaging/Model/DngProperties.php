@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * DngProperties
  *
  * @description Represents information about image in DNG format.
@@ -40,14 +41,14 @@ class DngProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "DngProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -66,7 +67,7 @@ class DngProperties implements ArrayAccess
         'translation_cfa_dng' => 'string[]'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -85,7 +86,7 @@ class DngProperties implements ArrayAccess
         'translation_cfa_dng' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -95,7 +96,7 @@ class DngProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -105,7 +106,7 @@ class DngProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -125,7 +126,7 @@ class DngProperties implements ArrayAccess
         'translation_cfa_dng' => 'TranslationCfaDng'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -144,7 +145,7 @@ class DngProperties implements ArrayAccess
         'translation_cfa_dng' => 'setTranslationCfaDng'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -163,7 +164,7 @@ class DngProperties implements ArrayAccess
         'translation_cfa_dng' => 'getTranslationCfaDng'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -174,7 +175,7 @@ class DngProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -184,7 +185,7 @@ class DngProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -194,7 +195,7 @@ class DngProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -208,14 +209,14 @@ class DngProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -236,7 +237,7 @@ class DngProperties implements ArrayAccess
         $this->container['translation_cfa_dng'] = isset($data['translation_cfa_dng']) ? $data['translation_cfa_dng'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -263,7 +264,7 @@ class DngProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -291,7 +292,7 @@ class DngProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets dng_version
      *
      * @return int
@@ -301,7 +302,7 @@ class DngProperties implements ArrayAccess
         return $this->container['dng_version'];
     }
 
-    /*
+    /**
      * Sets dng_version
      *
      * @param int $dng_version Gets or sets the DNG version.
@@ -315,7 +316,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets description
      *
      * @return string
@@ -325,7 +326,7 @@ class DngProperties implements ArrayAccess
         return $this->container['description'];
     }
 
-    /*
+    /**
      * Sets description
      *
      * @param string $description Gets or sets the description of colors (RGBG, RGBE, GMCY or GBTG).
@@ -339,7 +340,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets model
      *
      * @return string
@@ -349,7 +350,7 @@ class DngProperties implements ArrayAccess
         return $this->container['model'];
     }
 
-    /*
+    /**
      * Sets model
      *
      * @param string $model Gets or sets the camera model.
@@ -363,7 +364,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets camera_manufacturer
      *
      * @return string
@@ -373,7 +374,7 @@ class DngProperties implements ArrayAccess
         return $this->container['camera_manufacturer'];
     }
 
-    /*
+    /**
      * Sets camera_manufacturer
      *
      * @param string $camera_manufacturer Gets or sets the camera manufacturer.
@@ -387,7 +388,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets is_foveon
      *
      * @return int
@@ -397,7 +398,7 @@ class DngProperties implements ArrayAccess
         return $this->container['is_foveon'];
     }
 
-    /*
+    /**
      * Sets is_foveon
      *
      * @param int $is_foveon Gets or sets the value indicating whether it's a Foveon matrix.
@@ -411,7 +412,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets software
      *
      * @return string
@@ -421,7 +422,7 @@ class DngProperties implements ArrayAccess
         return $this->container['software'];
     }
 
-    /*
+    /**
      * Sets software
      *
      * @param string $software Gets or sets the software.
@@ -435,7 +436,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets raw_count
      *
      * @return int
@@ -445,7 +446,7 @@ class DngProperties implements ArrayAccess
         return $this->container['raw_count'];
     }
 
-    /*
+    /**
      * Sets raw_count
      *
      * @param int $raw_count Gets or sets the number of RAW images in file (0 means that the file has not been recognized).
@@ -459,7 +460,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets filters
      *
      * @return int
@@ -469,7 +470,7 @@ class DngProperties implements ArrayAccess
         return $this->container['filters'];
     }
 
-    /*
+    /**
      * Sets filters
      *
      * @param int $filters Gets or sets the bit mask describing the order of color pixels in the matrix.
@@ -483,7 +484,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets colors_count
      *
      * @return int
@@ -493,7 +494,7 @@ class DngProperties implements ArrayAccess
         return $this->container['colors_count'];
     }
 
-    /*
+    /**
      * Sets colors_count
      *
      * @param int $colors_count Gets or sets the colors count.
@@ -507,7 +508,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets xmp_data
      *
      * @return string
@@ -517,7 +518,7 @@ class DngProperties implements ArrayAccess
         return $this->container['xmp_data'];
     }
 
-    /*
+    /**
      * Sets xmp_data
      *
      * @param string $xmp_data Gets or sets the XMP data.
@@ -531,7 +532,7 @@ class DngProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets translation_cfa_dng
      *
      * @return string[]
@@ -541,7 +542,7 @@ class DngProperties implements ArrayAccess
         return $this->container['translation_cfa_dng'];
     }
 
-    /*
+    /**
      * Sets translation_cfa_dng
      *
      * @param string[] $translation_cfa_dng Gets or sets the translation array for CFA mosaic of DNG format.
@@ -554,7 +555,7 @@ class DngProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -566,7 +567,7 @@ class DngProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -578,7 +579,7 @@ class DngProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -595,7 +596,7 @@ class DngProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -607,7 +608,7 @@ class DngProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string

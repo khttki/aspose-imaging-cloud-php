@@ -30,8 +30,9 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\SaaSposeResponse;
 
-/*
+/**
  * JpegProperties
  *
  * @description Represents information about image in JPEG format.
@@ -40,14 +41,14 @@ class JpegProperties implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
-    /*
+    /**
      * The original name of the model.
      *
      * @var string
      */
     protected static $swaggerModelName = "JpegProperties";
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -58,7 +59,7 @@ class JpegProperties implements ArrayAccess
         'jpeg_jfif_data' => '\Aspose\Imaging\Model\JfifData'
     ];
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @var string[]
@@ -69,7 +70,7 @@ class JpegProperties implements ArrayAccess
         'jpeg_jfif_data' => null
     ];
 
-    /*
+    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @return array
@@ -79,7 +80,7 @@ class JpegProperties implements ArrayAccess
         return self::$swaggerTypes;
     }
 
-    /*
+    /**
      * Array of property to format mappings. Used for (de)serialization
      *
      * @return array
@@ -89,7 +90,7 @@ class JpegProperties implements ArrayAccess
         return self::$swaggerFormats;
     }
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -101,7 +102,7 @@ class JpegProperties implements ArrayAccess
         'jpeg_jfif_data' => 'JpegJfifData'
     ];
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
@@ -112,7 +113,7 @@ class JpegProperties implements ArrayAccess
         'jpeg_jfif_data' => 'setJpegJfifData'
     ];
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
@@ -123,7 +124,7 @@ class JpegProperties implements ArrayAccess
         'jpeg_jfif_data' => 'getJpegJfifData'
     ];
 
-    /*
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -134,7 +135,7 @@ class JpegProperties implements ArrayAccess
         return self::$attributeMap;
     }
 
-    /*
+    /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @return array
@@ -144,7 +145,7 @@ class JpegProperties implements ArrayAccess
         return self::$setters;
     }
 
-    /*
+    /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @return array
@@ -154,7 +155,7 @@ class JpegProperties implements ArrayAccess
         return self::$getters;
     }
 
-    /*
+    /**
      * The original name of the model.
      *
      * @return string
@@ -168,14 +169,14 @@ class JpegProperties implements ArrayAccess
 
     
 
-    /*
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
      */
     protected $container = [];
 
-    /*
+    /**
      * Constructor
      *
      * @param mixed[] $data Associated array of property values
@@ -188,7 +189,7 @@ class JpegProperties implements ArrayAccess
         $this->container['jpeg_jfif_data'] = isset($data['jpeg_jfif_data']) ? $data['jpeg_jfif_data'] : null;
     }
 
-    /*
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -200,7 +201,7 @@ class JpegProperties implements ArrayAccess
         return $invalidProperties;
     }
 
-    /*
+    /**
      * Validate all the properties in the model
      * return true if all passed
      *
@@ -213,7 +214,7 @@ class JpegProperties implements ArrayAccess
     }
 
 
-    /*
+    /**
      * Gets comment
      *
      * @return string
@@ -223,7 +224,7 @@ class JpegProperties implements ArrayAccess
         return $this->container['comment'];
     }
 
-    /*
+    /**
      * Sets comment
      *
      * @param string $comment Gets or sets the comment.
@@ -237,7 +238,7 @@ class JpegProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets jpeg_exif_data
      *
      * @return \Aspose\Imaging\Model\JpegExifData
@@ -247,7 +248,7 @@ class JpegProperties implements ArrayAccess
         return $this->container['jpeg_exif_data'];
     }
 
-    /*
+    /**
      * Sets jpeg_exif_data
      *
      * @param \Aspose\Imaging\Model\JpegExifData $jpeg_exif_data Gets or sets the JPEG EXIF data.
@@ -261,7 +262,7 @@ class JpegProperties implements ArrayAccess
         return $this;
     }
 
-    /*
+    /**
      * Gets jpeg_jfif_data
      *
      * @return \Aspose\Imaging\Model\JfifData
@@ -271,7 +272,7 @@ class JpegProperties implements ArrayAccess
         return $this->container['jpeg_jfif_data'];
     }
 
-    /*
+    /**
      * Sets jpeg_jfif_data
      *
      * @param \Aspose\Imaging\Model\JfifData $jpeg_jfif_data Gets or sets the JPEG JFIF data.
@@ -284,7 +285,7 @@ class JpegProperties implements ArrayAccess
 
         return $this;
     }
-    /*
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
@@ -296,7 +297,7 @@ class JpegProperties implements ArrayAccess
         return isset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets offset.
      *
      * @param integer $offset Offset
@@ -308,7 +309,7 @@ class JpegProperties implements ArrayAccess
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
-    /*
+    /**
      * Sets value based on offset.
      *
      * @param integer $offset Offset
@@ -325,7 +326,7 @@ class JpegProperties implements ArrayAccess
         }
     }
 
-    /*
+    /**
      * Unsets offset.
      *
      * @param integer $offset Offset
@@ -337,7 +338,7 @@ class JpegProperties implements ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /*
+    /**
      * Gets the string presentation of the object
      *
      * @return string
