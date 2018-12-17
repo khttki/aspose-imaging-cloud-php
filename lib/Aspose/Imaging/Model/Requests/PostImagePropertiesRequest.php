@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageProperties operation.
@@ -38,13 +40,15 @@ class PostImagePropertiesRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * Initializes a new instance of the PostImagePropertiesRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      */
     public function __construct($image_data)             
     {
@@ -54,6 +58,8 @@ class PostImagePropertiesRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -63,7 +69,7 @@ class PostImagePropertiesRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -74,9 +80,9 @@ class PostImagePropertiesRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -97,11 +103,7 @@ class PostImagePropertiesRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -117,7 +119,7 @@ class PostImagePropertiesRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

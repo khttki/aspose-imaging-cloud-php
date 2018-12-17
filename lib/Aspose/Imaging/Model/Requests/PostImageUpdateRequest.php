@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageUpdate operation.
@@ -38,63 +40,85 @@ class PostImageUpdateRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @var string
      */
     public $format;
     
     /**
      * New width of the scaled image.
+     *
+     * @var int
      */
     public $new_width;
     
     /**
      * New height of the scaled image.
+     *
+     * @var int
      */
     public $new_height;
     
     /**
      * X position of start point for cropping rectangle.
+     *
+     * @var int
      */
     public $x;
     
     /**
      * Y position of start point for cropping rectangle.
+     *
+     * @var int
      */
     public $y;
     
     /**
      * Width of cropping rectangle.
+     *
+     * @var int
      */
     public $rect_width;
     
     /**
      * Height of cropping rectangle.
+     *
+     * @var int
      */
     public $rect_height;
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+     *
+     * @var string
      */
     public $rotate_flip_method;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Initializes a new instance of the PostImageUpdateRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      * @param int $new_width New width of the scaled image.
      * @param int $new_height New height of the scaled image.
@@ -124,6 +148,8 @@ class PostImageUpdateRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -133,7 +159,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -143,6 +169,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @return string
      */
     public function get_format()
     {
@@ -152,7 +180,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_format($value)
     {
@@ -162,6 +190,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * New width of the scaled image.
+     *
+     * @return int
      */
     public function get_new_width()
     {
@@ -171,7 +201,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * New width of the scaled image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_new_width($value)
     {
@@ -181,6 +211,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * New height of the scaled image.
+     *
+     * @return int
      */
     public function get_new_height()
     {
@@ -190,7 +222,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * New height of the scaled image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_new_height($value)
     {
@@ -200,6 +232,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * X position of start point for cropping rectangle.
+     *
+     * @return int
      */
     public function get_x()
     {
@@ -209,7 +243,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * X position of start point for cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_x($value)
     {
@@ -219,6 +253,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * Y position of start point for cropping rectangle.
+     *
+     * @return int
      */
     public function get_y()
     {
@@ -228,7 +264,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Y position of start point for cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_y($value)
     {
@@ -238,6 +274,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * Width of cropping rectangle.
+     *
+     * @return int
      */
     public function get_rect_width()
     {
@@ -247,7 +285,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Width of cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_rect_width($value)
     {
@@ -257,6 +295,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * Height of cropping rectangle.
+     *
+     * @return int
      */
     public function get_rect_height()
     {
@@ -266,7 +306,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Height of cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_rect_height($value)
     {
@@ -276,6 +316,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+     *
+     * @return string
      */
     public function get_rotate_flip_method()
     {
@@ -285,7 +327,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_rotate_flip_method($value)
     {
@@ -295,6 +337,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -304,7 +348,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -314,6 +358,8 @@ class PostImageUpdateRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -323,7 +369,7 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -334,9 +380,9 @@ class PostImageUpdateRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -489,11 +535,7 @@ class PostImageUpdateRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -509,7 +551,7 @@ class PostImageUpdateRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

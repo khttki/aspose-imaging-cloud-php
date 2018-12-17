@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for getImageTiff operation.
@@ -38,51 +40,71 @@ class GetImageTiffRequest extends ImagingRequest
 {
     /**
      * Filename of image.
+     *
+     * @var string
      */
     public $name;
     
     /**
      * Compression.
+     *
+     * @var string
      */
     public $compression;
     
     /**
      * New resolution unit.
+     *
+     * @var string
      */
     public $resolution_unit;
     
     /**
      * Bit depth.
+     *
+     * @var int
      */
     public $bit_depth;
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @var bool
      */
     public $from_scratch;
     
     /**
      * New horizontal resolution.
+     *
+     * @var double
      */
     public $horizontal_resolution;
     
     /**
      * New verstical resolution.
+     *
+     * @var double
      */
     public $vertical_resolution;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Folder with image to process.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
@@ -117,6 +139,8 @@ class GetImageTiffRequest extends ImagingRequest
 
     /**
      * Filename of image.
+     *
+     * @return string
      */
     public function get_name()
     {
@@ -126,7 +150,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Filename of image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_name($value)
     {
@@ -136,6 +160,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * Compression.
+     *
+     * @return string
      */
     public function get_compression()
     {
@@ -145,7 +171,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Compression.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_compression($value)
     {
@@ -155,6 +181,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * New resolution unit.
+     *
+     * @return string
      */
     public function get_resolution_unit()
     {
@@ -164,7 +192,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * New resolution unit.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_resolution_unit($value)
     {
@@ -174,6 +202,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * Bit depth.
+     *
+     * @return int
      */
     public function get_bit_depth()
     {
@@ -183,7 +213,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Bit depth.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_bit_depth($value)
     {
@@ -193,6 +223,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return bool
      */
     public function get_from_scratch()
     {
@@ -202,7 +234,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_from_scratch($value)
     {
@@ -212,6 +244,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * New horizontal resolution.
+     *
+     * @return double
      */
     public function get_horizontal_resolution()
     {
@@ -221,7 +255,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * New horizontal resolution.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_horizontal_resolution($value)
     {
@@ -231,6 +265,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * New verstical resolution.
+     *
+     * @return double
      */
     public function get_vertical_resolution()
     {
@@ -240,7 +276,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * New verstical resolution.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_vertical_resolution($value)
     {
@@ -250,6 +286,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -259,7 +297,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -269,6 +307,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * Folder with image to process.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -278,7 +318,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Folder with image to process.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -288,6 +328,8 @@ class GetImageTiffRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -297,7 +339,7 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -308,9 +350,9 @@ class GetImageTiffRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
@@ -449,7 +491,7 @@ class GetImageTiffRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

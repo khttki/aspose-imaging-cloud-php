@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for getImageEmf operation.
@@ -38,51 +40,71 @@ class GetImageEmfRequest extends ImagingRequest
 {
     /**
      * Filename of image.
+     *
+     * @var string
      */
     public $name;
     
     /**
      * Color of the background.
+     *
+     * @var string
      */
     public $bk_color;
     
     /**
      * Width of the page.
+     *
+     * @var int
      */
     public $page_width;
     
     /**
      * Height of the page.
+     *
+     * @var int
      */
     public $page_height;
     
     /**
      * Border width.
+     *
+     * @var int
      */
     public $border_x;
     
     /**
      * Border height.
+     *
+     * @var int
      */
     public $border_y;
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @var bool
      */
     public $from_scratch;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Folder with image to process.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
@@ -117,6 +139,8 @@ class GetImageEmfRequest extends ImagingRequest
 
     /**
      * Filename of image.
+     *
+     * @return string
      */
     public function get_name()
     {
@@ -126,7 +150,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Filename of image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_name($value)
     {
@@ -136,6 +160,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Color of the background.
+     *
+     * @return string
      */
     public function get_bk_color()
     {
@@ -145,7 +171,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Color of the background.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_bk_color($value)
     {
@@ -155,6 +181,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Width of the page.
+     *
+     * @return int
      */
     public function get_page_width()
     {
@@ -164,7 +192,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Width of the page.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_page_width($value)
     {
@@ -174,6 +202,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Height of the page.
+     *
+     * @return int
      */
     public function get_page_height()
     {
@@ -183,7 +213,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Height of the page.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_page_height($value)
     {
@@ -193,6 +223,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Border width.
+     *
+     * @return int
      */
     public function get_border_x()
     {
@@ -202,7 +234,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Border width.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_border_x($value)
     {
@@ -212,6 +244,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Border height.
+     *
+     * @return int
      */
     public function get_border_y()
     {
@@ -221,7 +255,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Border height.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_border_y($value)
     {
@@ -231,6 +265,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return bool
      */
     public function get_from_scratch()
     {
@@ -240,7 +276,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_from_scratch($value)
     {
@@ -250,6 +286,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -259,7 +297,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -269,6 +307,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Folder with image to process.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -278,7 +318,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Folder with image to process.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -288,6 +328,8 @@ class GetImageEmfRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -297,7 +339,7 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -308,9 +350,9 @@ class GetImageEmfRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
@@ -457,7 +499,7 @@ class GetImageEmfRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

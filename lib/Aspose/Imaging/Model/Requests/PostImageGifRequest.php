@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageGif operation.
@@ -38,58 +40,78 @@ class PostImageGifRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * Index of the background color.
+     *
+     * @var int
      */
     public $background_color_index;
     
     /**
      * Color resolution.
+     *
+     * @var int
      */
     public $color_resolution;
     
     /**
      * Specifies if image has trailer.
+     *
+     * @var bool
      */
     public $has_trailer;
     
     /**
      * Specifies if image is interlaced.
+     *
+     * @var bool
      */
     public $interlaced;
     
     /**
      * Specifies if palette is sorted.
+     *
+     * @var bool
      */
     public $is_palette_sorted;
     
     /**
      * Pixel aspect ratio.
+     *
+     * @var int
      */
     public $pixel_aspect_ratio;
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @var bool
      */
     public $from_scratch;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Initializes a new instance of the PostImageGifRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      * @param int $background_color_index Index of the background color.
      * @param int $color_resolution Color resolution.
      * @param bool $has_trailer Specifies if image has trailer.
@@ -117,6 +139,8 @@ class PostImageGifRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -126,7 +150,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -136,6 +160,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Index of the background color.
+     *
+     * @return int
      */
     public function get_background_color_index()
     {
@@ -145,7 +171,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Index of the background color.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_background_color_index($value)
     {
@@ -155,6 +181,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Color resolution.
+     *
+     * @return int
      */
     public function get_color_resolution()
     {
@@ -164,7 +192,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Color resolution.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_color_resolution($value)
     {
@@ -174,6 +202,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Specifies if image has trailer.
+     *
+     * @return bool
      */
     public function get_has_trailer()
     {
@@ -183,7 +213,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Specifies if image has trailer.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_has_trailer($value)
     {
@@ -193,6 +223,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Specifies if image is interlaced.
+     *
+     * @return bool
      */
     public function get_interlaced()
     {
@@ -202,7 +234,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Specifies if image is interlaced.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_interlaced($value)
     {
@@ -212,6 +244,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Specifies if palette is sorted.
+     *
+     * @return bool
      */
     public function get_is_palette_sorted()
     {
@@ -221,7 +255,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Specifies if palette is sorted.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_is_palette_sorted($value)
     {
@@ -231,6 +265,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Pixel aspect ratio.
+     *
+     * @return int
      */
     public function get_pixel_aspect_ratio()
     {
@@ -240,7 +276,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Pixel aspect ratio.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_pixel_aspect_ratio($value)
     {
@@ -250,6 +286,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return bool
      */
     public function get_from_scratch()
     {
@@ -259,7 +297,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_from_scratch($value)
     {
@@ -269,6 +307,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -278,7 +318,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -288,6 +328,8 @@ class PostImageGifRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -297,7 +339,7 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -308,9 +350,9 @@ class PostImageGifRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -421,11 +463,7 @@ class PostImageGifRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -441,7 +479,7 @@ class PostImageGifRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

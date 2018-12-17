@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for deleteSearchContextImage operation.
@@ -38,21 +40,29 @@ class DeleteSearchContextImageRequest extends ImagingRequest
 {
     /**
      * Search context identifier.
+     *
+     * @var string
      */
     public $search_context_id;
     
     /**
      * Image identifier.
+     *
+     * @var string
      */
     public $image_id;
     
     /**
      * Folder.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * Storage
+     *
+     * @var string
      */
     public $storage;
     
@@ -75,6 +85,8 @@ class DeleteSearchContextImageRequest extends ImagingRequest
 
     /**
      * Search context identifier.
+     *
+     * @return string
      */
     public function get_search_context_id()
     {
@@ -84,7 +96,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     /**
      * Search context identifier.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_search_context_id($value)
     {
@@ -94,6 +106,8 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     
     /**
      * Image identifier.
+     *
+     * @return string
      */
     public function get_image_id()
     {
@@ -103,7 +117,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     /**
      * Image identifier.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_id($value)
     {
@@ -113,6 +127,8 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     
     /**
      * Folder.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -122,7 +138,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     /**
      * Folder.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -132,6 +148,8 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     
     /**
      * Storage
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -141,7 +159,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     /**
      * Storage
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -152,9 +170,9 @@ class DeleteSearchContextImageRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'search_context_id' is set
         if ($this->search_context_id === null) {
@@ -225,7 +243,7 @@ class DeleteSearchContextImageRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

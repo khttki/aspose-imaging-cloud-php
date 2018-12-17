@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageCrop operation.
@@ -38,48 +40,64 @@ class PostImageCropRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @var string
      */
     public $format;
     
     /**
      * X position of start point for cropping rectangle.
+     *
+     * @var int
      */
     public $x;
     
     /**
      * Y position of start point for cropping rectangle.
+     *
+     * @var int
      */
     public $y;
     
     /**
      * Width of cropping rectangle.
+     *
+     * @var int
      */
     public $width;
     
     /**
      * Height of cropping rectangle.
+     *
+     * @var int
      */
     public $height;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Initializes a new instance of the PostImageCropRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      * @param int $x X position of start point for cropping rectangle.
      * @param int $y Y position of start point for cropping rectangle.
@@ -103,6 +121,8 @@ class PostImageCropRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -112,7 +132,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -122,6 +142,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @return string
      */
     public function get_format()
     {
@@ -131,7 +153,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_format($value)
     {
@@ -141,6 +163,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * X position of start point for cropping rectangle.
+     *
+     * @return int
      */
     public function get_x()
     {
@@ -150,7 +174,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * X position of start point for cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_x($value)
     {
@@ -160,6 +184,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * Y position of start point for cropping rectangle.
+     *
+     * @return int
      */
     public function get_y()
     {
@@ -169,7 +195,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Y position of start point for cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_y($value)
     {
@@ -179,6 +205,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * Width of cropping rectangle.
+     *
+     * @return int
      */
     public function get_width()
     {
@@ -188,7 +216,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Width of cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_width($value)
     {
@@ -198,6 +226,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * Height of cropping rectangle.
+     *
+     * @return int
      */
     public function get_height()
     {
@@ -207,7 +237,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Height of cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_height($value)
     {
@@ -217,6 +247,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -226,7 +258,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -236,6 +268,8 @@ class PostImageCropRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -245,7 +279,7 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -256,9 +290,9 @@ class PostImageCropRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -369,11 +403,7 @@ class PostImageCropRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -389,7 +419,7 @@ class PostImageCropRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

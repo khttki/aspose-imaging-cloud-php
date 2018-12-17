@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postSearchContextFindByTags operation.
@@ -38,31 +40,43 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
 {
     /**
      * Tags array for searching
+     *
+     * @var string
      */
     public $tags;
     
     /**
      * The search context identifier.
+     *
+     * @var string
      */
     public $search_context_id;
     
     /**
      * The similarity threshold.
+     *
+     * @var double
      */
     public $similarity_threshold;
     
     /**
      * The maximum count.
+     *
+     * @var int
      */
     public $max_count;
     
     /**
      * The folder.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * The storage.
+     *
+     * @var string
      */
     public $storage;
     
@@ -89,6 +103,8 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
 
     /**
      * Tags array for searching
+     *
+     * @return string
      */
     public function get_tags()
     {
@@ -98,7 +114,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * Tags array for searching
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_tags($value)
     {
@@ -108,6 +124,8 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     
     /**
      * The search context identifier.
+     *
+     * @return string
      */
     public function get_search_context_id()
     {
@@ -117,7 +135,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * The search context identifier.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_search_context_id($value)
     {
@@ -127,6 +145,8 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     
     /**
      * The similarity threshold.
+     *
+     * @return double
      */
     public function get_similarity_threshold()
     {
@@ -136,7 +156,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * The similarity threshold.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_similarity_threshold($value)
     {
@@ -146,6 +166,8 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     
     /**
      * The maximum count.
+     *
+     * @return int
      */
     public function get_max_count()
     {
@@ -155,7 +177,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * The maximum count.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_max_count($value)
     {
@@ -165,6 +187,8 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     
     /**
      * The folder.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -174,7 +198,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * The folder.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -184,6 +208,8 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     
     /**
      * The storage.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -193,7 +219,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * The storage.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -204,9 +230,9 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'tags' is set
         if ($this->tags === null) {
@@ -299,7 +325,7 @@ class PostSearchContextFindByTagsRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageRotateFlip operation.
@@ -38,33 +40,43 @@ class PostImageRotateFlipRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @var string
      */
     public $format;
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     *
+     * @var string
      */
     public $method;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Initializes a new instance of the PostImageRotateFlipRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      * @param string $method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
@@ -82,6 +94,8 @@ class PostImageRotateFlipRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -91,7 +105,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -101,6 +115,8 @@ class PostImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @return string
      */
     public function get_format()
     {
@@ -110,7 +126,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_format($value)
     {
@@ -120,6 +136,8 @@ class PostImageRotateFlipRequest extends ImagingRequest
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     *
+     * @return string
      */
     public function get_method()
     {
@@ -129,7 +147,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_method($value)
     {
@@ -139,6 +157,8 @@ class PostImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -148,7 +168,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -158,6 +178,8 @@ class PostImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -167,7 +189,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -178,9 +200,9 @@ class PostImageRotateFlipRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -249,11 +271,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -269,7 +287,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

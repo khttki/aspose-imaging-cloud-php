@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="ApiTester.php">
@@ -11,10 +11,10 @@
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- *
+ * 
  *  The above copyright notice and this permission notice shall be included in all
  *  copies or substantial portions of the Software.
- *
+ * 
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,12 +28,16 @@
 
 namespace Aspose\Imaging\Tests\Base;
 
-use Aspose\Imaging;
-use Aspose\Storage\Api\StorageApi;
-use Aspose\Storage\Model;
-use Aspose\Storage\Model\Requests;
-use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Stream;
+use \Aspose\Imaging;
+use \Aspose\Imaging\Model;
+use \Aspose\Imaging\Model\Requests as ImagingRequests;
+use \Aspose\Storage\Api\StorageApi;
+use \Aspose\Storage\Model as StorageModel;
+use \Aspose\Storage\Model\Requests as StorageRequests;
+use \PHPUnit\Framework\TestCase;
+use \GuzzleHttp\Stream;
+use \InvalidArgumentException;
+use \ReflectionClass;
 
 /**
  * Base class for API tester
@@ -80,7 +84,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const LocalTestFolder = __DIR__ . "..\\..\\..\\..\\..\\TestData\\";
+    const LocalTestFolder = ".\\testdata\\";
 
     /**
      * The local test folder
@@ -102,14 +106,21 @@ abstract class ApiTester extends TestCase
         "psd",
         "tiff"
     ];
- 
+
     /**
      * If any test failed
      * 
      * @var bool 
      */
-    protected static $failedAnyTest = false;
+    public static $failedAnyTest = false;
 
+    /**
+     * If async tests should be run
+     * 
+     * @var bool 
+     */
+    protected static $asyncMode;
+ 
     /**
      * The temporary folder
      * 
@@ -120,14 +131,14 @@ abstract class ApiTester extends TestCase
     /**
      * The input test files
      * 
-     * @var Aspose\Storage\Model\FileResponse[] 
+     * @var \Aspose\Imaging\Storage\Model\FileResponse[] 
      */
     protected $inputTestFiles;
 
     /**
      * Aspose.Imaging API
      * 
-     * @var Aspose\Imaging\ImagingApi 
+     * @var \Aspose\Imaging\ImagingApi 
      */
     protected $imagingApi;
 
@@ -171,23 +182,24 @@ abstract class ApiTester extends TestCase
      * 
      * @var bool 
      */
-    protected $initialized;
+    protected $initialized = false;
 
     /**
      * @before
      */
     public function initFixture()
     {
-        if ($initialized)
+        if ($this->initialized)
         {
-            if (!$this->storageApi->getIsExist(new GetIsExistRequest($this->tempFolder, null, $this->testStorage))->fileExist->isExist)
+            if (!$this->storageApi->getIsExist(new StorageRequests\GetIsExistRequest($this->tempFolder, null, $this->testStorage))->getFileExist()->getIsExist())
             {
-                $this->storageApi->putCreateFolder(new PutCreateFolderRequest($this->tempFolder, $this->testStorage, $this->testStorage));
+                $this->storageApi->putCreateFolder(new StorageRequests\PutCreateFolderRequest($this->tempFolder, $this->testStorage, $this->testStorage));
             }
             
             return;
         }
 
+        $asyncMode = getenv("AsyncMode") === "true" ? true : false;
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
         {
@@ -200,33 +212,46 @@ abstract class ApiTester extends TestCase
 
         $this->testStorage = getenv("StorageName");
 
-        if (!empty($this->testStorage))
+        if (empty($this->testStorage))
         {
-            echo "Storage name is not set by environment variable. Using the default one.";
+            echo "Storage name is not set by environment variable. Using the default one.\n";
             $this->testStorage = $this::DefaultStorage;
         }
 
-        $this->createApiInstances();
-        if (!$this->failedAnyTest && $this->removeResult && $this->storageApi->getIsExist(
-            new GetIsExistRequest($this->tempFolder, null, $this->testStorage))->fileExist->isExist)
+        $this->createApiInstances($this::AppKey, $this::AppSid, $this::BaseUrl, $this::ApiVersion, false);
+        if (!self::$failedAnyTest && $this->removeResult && $this->storageApi->getIsExist(
+            new StorageRequests\GetIsExistRequest($this->tempFolder, null, $this->testStorage))->fileExist->isExist)
         {
-            $this->storageApi->deleteFolder(new DeleteFolderRequest($this->tempFolder, $this->testStorage, true));
-            $this->storageApi->putCreateFolder(new PutCreateFolderRequest($this->tempFolder, $this->testStorage, $this->testStorage));
+            $this->storageApi->deleteFolder(new StorageRequests\DeleteFolderRequest($this->tempFolder, $this->testStorage, true));
+            $this->storageApi->putCreateFolder(new StorageRequests\PutCreateFolderRequest($this->tempFolder, $this->testStorage, $this->testStorage));
         }
 
-        $initialized = true;
+        $this->initialized = true;
     }
 
     /**
      * @after
      */
-    public static function finalizeFixture()
+    public function finalizeFixture()
     {
-        if (!$this->failedAnyTest && $this->removeResult && $this->storageApi->getIsExist(
-            new GetIsExistRequest($this->tempFolder, null, $this->testStorage))->fileExist->isExist)
+        if (!self::$failedAnyTest && $this->removeResult && $this->storageApi->getIsExist(
+            new StorageRequests\GetIsExistRequest($this->tempFolder, null, $this->testStorage))->fileExist->isExist)
         {
-            $this->storageApi->deleteFolder(new DeleteFolderRequest($this->tempFolder, $this->testStorage, true));
+            $this->storageApi->deleteFolder(new StorageRequests\DeleteFolderRequest($this->tempFolder, $this->testStorage, true));
         }
+    }
+
+    /**
+     * Storage options provider
+     *
+     * @return array
+     */
+    public function storageOptionsProvider()
+    {
+        return [
+            [true],
+            [false]
+        ];
     }
 
     /**
@@ -236,15 +261,14 @@ abstract class ApiTester extends TestCase
      * @param string $appSid The application SID.
      * @param string $baseUrl The base URL.
      * @param string $apiVersion The API version.
-     * @param boolean $debug Debug mode.
+     * @param bool $debug Debug mode.
      * @return void
      */
-    protected function createApiInstances(string $appKey = $this::AppKey, string $appSid = $this::AppSid, string $baseUrl = $this::BaseUrl, 
-         string $apiVersion = $this::ApiVersion, bool $debug = false)
+    protected function createApiInstances($appKey, $appSid, $baseUrl, $apiVersion, $debug)
     {
         if ($appKey === $this::AppKey || $appSid === $this::AppSid)
         {
-            echo "Access data isn't set explicitly. Trying to obtain it from environment variables.";
+            echo "Access data isn't set explicitly. Trying to obtain it from environment variables.\n";
 
             $appKey = getenv("AppKEY");
             $appSid = getenv("AppSID");
@@ -254,13 +278,13 @@ abstract class ApiTester extends TestCase
 
         if (empty($appKey) || empty($appSid) || empty($baseUrl) || empty($apiVersion))
         {
-            echo "Access data isn't set completely by environment variables. Filling unset data with default values.";
+            echo "Access data isn't set completely by environment variables. Filling unset data with default values.\n";
         }
 
         if (empty($apiVersion))
         {
             $apiVersion = $this::ApiVersion;
-            echo "Set default API version";
+            echo "Set default API version\n";
         }
 
         $serverAccessPath = $this::LocalTestFolder . $this::ServerAccessFile;
@@ -276,19 +300,19 @@ abstract class ApiTester extends TestCase
             if (empty($appKey))
             {
                 $appKey = $accessData->{'AppKey'};
-                echo "Set default App key";
+                echo "Set default App key\n";
             }
 
             if (empty($appSid))
             {
                 $appSid = $accessData->{'AppSid'};
-                echo "Set default App SID";
+                echo "Set default App SID\n";
             }
 
             if (empty($baseUrl))
             {
                 $baseUrl = $accessData->{'BaseURL'};
-                echo "Set default base URL";
+                echo "Set default base URL\n";
             }
         }
         else
@@ -296,14 +320,20 @@ abstract class ApiTester extends TestCase
             throw new InvalidArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
         }
 
-        echo "App key: " . $appKey;
-        echo "App SID: " . $appSid;
-        echo "Storage: " . $this->testStorage;
-        echo "Base URL: " . $baseUrl;
-        echo "API version: " . $apiVersion;
+        echo "App key: " . $appKey . "\n";
+        echo "App SID: " . $appSid . "\n";
+        echo "Storage: " . $this->testStorage . "\n";
+        echo "Base URL: " . $baseUrl . "\n";
+        echo "API version: " . $apiVersion . "\n";
 
-        $this->imagingApi = new ImagingApi($appKey, $appSid, $baseUrl, $apiVersion, $debug);
-        $storageConfig = new Aspose\Storage\Configuration();
+        $imagingConfig = new Imaging\Configuration();
+        $imagingConfig->setBaseUrl($baseUrl);
+        $imagingConfig->setAppKey($appKey);
+        $imagingConfig->setAppSid($appSid);
+        $imagingConfig->setApiVersion($apiVersion);
+        $this->imagingApi = new Imaging\ImagingApi($imagingConfig);
+
+        $storageConfig = new \Aspose\Storage\Configuration();
         $storageConfig->setHost($baseUrl);
         $storageConfig->setAppKey($appKey);
         $storageConfig->setAppSid($appSid);
@@ -313,14 +343,98 @@ abstract class ApiTester extends TestCase
     }
 
     /**
-     * Fetches the input test files info.
+     * Tests the typical GET request.
      *
-     * @return Aspose\Storage\Model\FileResponse[]
+     * @ignore Internal method.
+     * 
+     * @param string $testMethodName Name of the test method.
+     * @param bool $saveResultToStorage If save result to storage.
+     * @param string $parametersLine The parameters line.
+     * @param string $inputFileName Name of the input file.
+     * @param string $resultFileName Name of the result file.
+     * @param callable $requestInvoker The request invoker.
+     * @param callable $propertiesTester The properties tester.
+     * @param string $folder The folder.
+     * @param string $storage The storage.
+     * @return void
      */
-    private function fetchInputTestFilesInfo()
+    protected function getRequestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName,
+        callable $requestInvoker, callable $propertiesTester, $folder, $storage)
     {
-        $filesResponse = this->storageApi->getListFiles(new GetListFilesRequest($this->originalDataFolder, $this->testStorage));
-        return $filesResponse->files;
+        $this->requestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName, 
+            function() use ($inputFileName, $saveResultToStorage, $folder, $resultFileName, $requestInvoker) 
+            {
+                return $this->obtainGetResponse($inputFileName, $saveResultToStorage ? $folder . "/" . $resultFileName : null, $requestInvoker);
+            },
+            $propertiesTester, $folder, $storage);
+    }
+
+    /**
+     * Tests the typical POST request.
+     *
+     * @ignore Internal method.
+     * 
+     * @param string $testMethodName Name of the test method.
+     * @param bool $saveResultToStorage If save result to storage.
+     * @param string $parametersLine The parameters line.
+     * @param string $inputFileName Name of the input file.
+     * @param string $resultFileName Name of the result file.
+     * @param callable $requestInvoker The request invoker.
+     * @param callable $propertiesTester The properties tester.
+     * @param string $folder The folder.
+     * @param string $storage The storage.
+     * @return void
+     */
+    protected function postRequestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName, 
+        callable $requestInvoker, callable $propertiesTester, $folder, $storage)
+    {
+        $this->requestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName,
+            function() use ($inputFileName, $saveResultToStorage, $folder, $resultFileName, $storage, $requestInvoker) 
+            {
+                return $this->obtainPostResponse($folder . "/" . $inputFileName, $saveResultToStorage ? $folder . "/" . $resultFileName : null, $storage, $requestInvoker);
+            },
+            $propertiesTester, $folder, $storage);
+    }
+
+    /**
+     * Checks if input file exists.
+     *
+     * @param string $inputFileName Name of the input file.
+     * @return bool
+     */
+    protected function checkInputFileExists($inputFileName)
+    {
+        foreach ($this->inputTestFiles as $storageFileInfo)
+        {
+            if ($storageFileInfo->getName() == $inputFileName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Gets the storage file information.
+     *
+     * @param string $folder The folder which contains a file.
+     * @param string $fileName Name of the file.
+     * @param string $storage The storage.
+     * @return \Aspose\Storage\Model\FileResponse
+     */
+    protected function getStorageFileInfo($folder, $fileName, $storage)
+    {
+        $fileListResponse = $this->storageApi->getListFiles(new StorageRequests\GetListFilesRequest($this->folder, $this->storage));
+        foreach ($fileListResponse->getFiles() as $storageFileInfo)
+        {
+            if ($storageFileInfo->getName() === $fileName)
+            {
+                return $storageFileInfo;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -329,241 +443,163 @@ abstract class ApiTester extends TestCase
      * @param string $inputFileName Name of the input file.
      * @param string $outPath The output path to save the result.
      * @param mixed $requestInvoker Request invoker.
-     * @return GuzzleHttp\Stream\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
-    private function obtainGetResponse(string $inputFileName, string $outPath, $requestInvoker)
+    private function obtainGetResponse($inputFileName, $outPath, $requestInvoker)
     {
         $response = $requestInvoker($inputFileName, $outPath);
 
         if (empty($outPath))
         {
             $this->assertNotNull($response);
-            $this->assertGreaterThan(0, $response->getContentLength());
+            $this->assertGreaterThan(0, $response->getSize());
+            return $response;
+        }
+
+        return null;
+    }
+        
+    /**
+     * Obtains the typical POST request response.
+     *
+     * @param string $inputPath The input path.
+     * @param string $outPath The output path to save the result.
+     * @param string $storage The storage.
+     * @param callable $requestInvoker The request invoker.
+     * @return Psr\Http\Message\StreamInterface
+     */
+    private function obtainPostResponse($inputPath, $outPath, $storage, callable $requestInvoker)
+    {
+        $downContents = $this->storageApi->getDownload(new StorageRequests\GetDownloadRequest($inputPath, null, $storage));
+        $response = $requestInvoker($downContents->fread($downContents->getSize()), $outPath);
+        if (!isset($outPath))
+        {
+            $this->assertNotNull($response);
+            $this->assertGreaterThan(0, $response->getSize());
             return $response;
         }
 
         return null;
     }
 
-        /// <summary>
-        /// Tests the typical GET request.
-        /// </summary>
-        /// <param name="testMethodName">Name of the test method.</param>
-        /// <param name="saveResultToStorage">if set to <c>true</c> [save result to storage].</param>
-        /// <param name="parametersLine">The parameters line.</param>
-        /// <param name="inputFileName">Name of the input file.</param>
-        /// <param name="resultFileName">Name of the result file.</param>
-        /// <param name="requestInvoker">The request invoker.</param>
-        /// <param name="propertiesTester">The properties tester.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
-        protected void TestGetRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName,
-            GetRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
+    /**
+     * Fetches the input test files info.
+     *
+     * @return StorageModel\FileResponse[]
+     */
+    private function fetchInputTestFilesInfo()
+    {
+        $filesResponse = $this->storageApi->getListFiles(new StorageRequests\GetListFilesRequest($this->originalDataFolder, $this->testStorage));
+        return $filesResponse->getFiles();
+    }
+
+    /**
+     * Tests the typical request.
+     *
+     * @ignore Internal method.
+     * 
+     * @param string $testMethodName Name of the test method.
+     * @param boolean $saveResultToStorage If save result to storage.
+     * @param string $parametersLine The parameters line.
+     * @param string $inputFileName Name of the input file.
+     * @param string $resultFileName Name of the result file.
+     * @param callable $invokeRequestAction The invoke request action.
+     * @param callable $propertiesTester The properties tester.
+     * @param string $folder The folder.
+     * @param string $storage The storage.
+     * @return void
+     */
+    private function requestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName, 
+        callable $invokeRequestAction, callable $propertiesTester, $folder, $storage)
+    {
+        echo $testMethodName . "\n";
+
+        if (!$this->checkInputFileExists($inputFileName))
         {
-            this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
-                () => this.ObtainGetResponse(inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, requestInvoker),
-                propertiesTester, folder, storage);
+            throw new ArgumentException(
+                "Input file " . $inputFileName . " doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
         }
 
-        /// <summary>
-        /// Tests the typical POST request.
-        /// </summary>
-        /// <param name="testMethodName">Name of the test method.</param>
-        /// <param name="saveResultToStorage">if set to <c>true</c> [save result to storage].</param>
-        /// <param name="parametersLine">The parameters line.</param>
-        /// <param name="inputFileName">Name of the input file.</param>
-        /// <param name="resultFileName">Name of the result file.</param>
-        /// <param name="requestInvoker">The request invoker.</param>
-        /// <param name="propertiesTester">The properties tester.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
-        protected void TestPostRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, 
-            PostRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
+        if (!$this->storageApi->getIsExist(new StorageRequests\GetIsExistRequest($folder . "/" . $inputFileName, null, $storage))->getFileExist()->getIsExist())
         {
-            this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
-                () => this.ObtainPostResponse(folder + "/" + inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, storage, requestInvoker),
-                propertiesTester, folder, storage);
+            $downFile = $this->storageApi->getDownload(new StorageRequests\GetDownloadRequest($this->originalDataFolder . "/" . $inputFileName, null, $storage));
+            $this->assertNotNull($downFile);
+            $putResponse = $this->storageApi->putCreate(new StorageRequests\PutCreateRequest($folder . "/" . $inputFileName, $downFile, null, $storage));
+            $this->assertEquals(200, $putResponse->getCode());
         }
 
-        /// <summary>
-        /// Checks if input file exists.
-        /// </summary>
-        /// <param name="inputFileName">Name of the input file.</param>
-        /// <returns></returns>
-        protected bool CheckInputFileExists(string inputFileName)
+        $passed = false;
+        $outPath = null;
+
+        try
         {
-            foreach (FileResponse storageFileInfo in InputTestFiles)
+            echo $parametersLine . "\n";
+
+            if ($saveResultToStorage)
             {
-                if (storageFileInfo.Name == inputFileName)
+                $outPath = $folder . "/" . $resultFileName;
+
+                // remove output file from the storage (if exists)
+                if ($this->storageApi->getIsExist(new StorageRequests\GetIsExistRequest($outPath, null, $storage))->getFileExist()->getIsExist())
                 {
-                    return true;
+                    $this->storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
                 }
             }
 
-            return false;
-        }
+            $resultProperties = null;
+            $response = $invokeRequestAction();
 
-        /// <summary>
-        /// Gets the storage file information.
-        /// </summary>
-        /// <param name="folder">The folder which contains a file.</param>
-        /// <param name="fileName">Name of the file.</param>
-        /// <param name="storage">The storage.</param>
-        /// <returns></returns>
-        protected FileResponse GetStorageFileInfo(string folder, string fileName,
-            string storage)
-        {
-            FilesResponse fileListResponse = this.StorageApi.GetListFiles(new GetListFilesRequest(folder, storage));
-
-            foreach (FileResponse storageFileInfo in fileListResponse.Files)
+            if ($saveResultToStorage)
             {
-                if (storageFileInfo.Name == fileName)
+                $resultInfo = $this->getStorageFileInfo($folder, $resultFileName, $storage);
+                if (!isset($resultInfo))
                 {
-                    return storageFileInfo;
-                }
-            }
-
-            return null;
-        }
-        
-        /// <summary>
-        /// Obtains the typical POST request response.
-        /// </summary>
-        /// <param name="inputPath">The input path.</param>
-        /// <param name="requestInvoker">The request invoker.</param>
-        /// <param name="outPath">The output path to save the result.</param>
-        /// <param name="storage">The storage.</param>
-        private Stream ObtainPostResponse(string inputPath, string outPath, string storage, PostRequestInvokerDelegate requestInvoker)
-        {
-            using (Stream iStream = this.StorageApi.GetDownload(new GetDownloadRequest(inputPath, null, storage)))
-            {
-                var response = requestInvoker.Invoke(iStream, outPath);
-
-                if (string.IsNullOrEmpty(outPath))
-                {
-                    Assert.NotNull(response);
-                    Assert.Greater(response.Length, 0);
-                    return response;
+                    throw new ArgumentException(
+                        "Result file " . $resultFileName . " doesn't exist in the specified storage folder: "
+                        . $folder . "Result isn't present in the storage by an unknown reason.");
                 }
 
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Tests the typical request.
-        /// </summary>
-        /// <param name="testMethodName">Name of the test method.</param>
-        /// <param name="saveResultToStorage">if set to <c>true</c> [save result to storage].</param>
-        /// <param name="parametersLine">The parameters line.</param>
-        /// <param name="inputFileName">Name of the input file.</param>
-        /// <param name="resultFileName">Name of the result file.</param>
-        /// <param name="invokeRequestAction">The invoke request action.</param>
-        /// <param name="propertiesTester">The properties tester.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
-        private void TestRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, 
-            Newtonsoft.Json.Serialization.Func<Stream> invokeRequestAction, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
-        {
-            Console.WriteLine(testMethodName);
-
-            if (!CheckInputFileExists(inputFileName))
-            {
-                throw new ArgumentException(
-                    $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
-            }
-
-            if (!this.StorageApi.GetIsExist(new GetIsExistRequest(folder + "/" + inputFileName, null, storage)).FileExist.IsExist.Value)
-            {
-                var downStream = this.StorageApi.GetDownload(new GetDownloadRequest(OriginalDataFolder + "/" + inputFileName, null, storage));
-                Assert.NotNull(downStream);
-                var putResponse = this.StorageApi.PutCreate(new PutCreateRequest(folder + "/" + inputFileName, downStream, null, storage));
-                Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status.ToUpperInvariant());
-            }
-
-            bool passed = false;
-            string outPath = null;
-
-            try
-            {
-                Console.WriteLine(parametersLine);
-
-                if (saveResultToStorage)
-                {
-                    outPath = folder + "/" + resultFileName;
-
-                    // remove output file from the storage (if exists)
-                    if (this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
-                    {
-                        this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
-                    }
-                }
-
-                ImagingResponse resultProperties = null;
-
-                using (Stream response = invokeRequestAction.Invoke())
-                {
-                    if (saveResultToStorage)
-                    {
-                        FileResponse resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
-                        if (resultInfo == null)
-                        {
-                            throw new ArgumentException(
-                                $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. Result isn't present in the storage by an unknown reason.");
-                        }
-
-                        resultProperties =
-                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                        Assert.NotNull(resultProperties);
-                    }
-                    else if (!this.ImagingApi.Configuration.ApiVersion.Contains("v1."))
-                    {
-                        resultProperties =
-                            this.ImagingApi.PostImageProperties(new PostImagePropertiesRequest(response));
-                        Assert.NotNull(resultProperties);
-                    }
-
-                    ImagingResponse originalProperties =
-                        this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage));
-                    Assert.NotNull(originalProperties);
-
-                    if (resultProperties != null)
-                    {
-                        propertiesTester?.Invoke(originalProperties, resultProperties, response);
-                    }
-                }
+                $resultProperties = self::$asyncMode ?
+                        $this->imagingApi->getImagePropertiesAsync(new StorageRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait() :
+                        $this->imagingApi->getImageProperties(new StorageRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage));
                 
-                passed = true;
+                $this->assertNotNull($resultProperties);
             }
-            catch (Exception ex)
+            else if (!preg_match('/\bv1\\.\b/', $this->imagingApi->getConfig()->getApiVersion()))
             {
-                FailedAnyTest = true;
-                Console.WriteLine(ex.Message);
-                throw;
+                $resultProperties = self::$asyncMode ?
+                    $this->imagingApi->postImagePropertiesAsync(new StorageRequests\PostImagePropertiesRequest($response->getContents()))->wait() :
+                    $this->imagingApi->postImageProperties(new StorageRequests\PostImagePropertiesRequest($response->getContents()));
+                $this->assertNotNull($resultProperties);
             }
-            finally
-            {
-                if (passed && saveResultToStorage && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
-                {
-                    this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
-                }
 
-                Console.WriteLine($"Test passed: {passed}");
+            $originalProperties = self::$asyncMode ?
+                $this->imagingApi->getImagePropertiesAsync(new StorageRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait() :
+                $this->imagingApi->getImageProperties(new StorageRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage));
+            $this->assertNotNull($originalProperties);
+
+            if (isset($resultProperties) && isset($propertiesTester))
+            {
+                $propertiesTester($originalProperties, $resultProperties, $response);
             }
+                
+            $passed = true;
         }
-
-        /// <summary>
-        /// Returns environment variable value
-        /// </summary>
-        /// <param name="variableName"></param>
-        /// <returns>Environment variable value</returns>
-        private string GetEnvironmentVariable(string variableName)
+        catch (Exception $ex)
         {
-            return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process) ??
-                    Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User))
-                   ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine);
+            self::$failedAnyTest = true;
+            echo $ex->getMessage() . "\n";
+            throw $ex;
         }
+        finally
+        {
+            if ($passed && $saveResultToStorage && $this->removeResult && $this->storageApi->getIsExist(
+                new StorageRequests\GetIsExistRequest($outPath, null, $storage))->getFileExist()->getIsExist())
+            {
+                $this->storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
+            }
 
-        #endregion
+            echo "Test passed: " . $passed . "\n";
+        }
     }
 }

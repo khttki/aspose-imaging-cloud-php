@@ -1,4 +1,5 @@
 vendor/
+testReports/
 .vs/
 .vscode/
 composer.lock

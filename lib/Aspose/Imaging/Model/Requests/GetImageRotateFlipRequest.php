@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for getImageRotateFlip operation.
@@ -38,31 +40,43 @@ class GetImageRotateFlipRequest extends ImagingRequest
 {
     /**
      * Filename of an image.
+     *
+     * @var string
      */
     public $name;
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @var string
      */
     public $format;
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     *
+     * @var string
      */
     public $method;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Folder with image to process.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
@@ -89,6 +103,8 @@ class GetImageRotateFlipRequest extends ImagingRequest
 
     /**
      * Filename of an image.
+     *
+     * @return string
      */
     public function get_name()
     {
@@ -98,7 +114,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * Filename of an image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_name($value)
     {
@@ -108,6 +124,8 @@ class GetImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     *
+     * @return string
      */
     public function get_format()
     {
@@ -117,7 +135,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_format($value)
     {
@@ -127,6 +145,8 @@ class GetImageRotateFlipRequest extends ImagingRequest
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     *
+     * @return string
      */
     public function get_method()
     {
@@ -136,7 +156,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_method($value)
     {
@@ -146,6 +166,8 @@ class GetImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -155,7 +177,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -165,6 +187,8 @@ class GetImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Folder with image to process.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -174,7 +198,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * Folder with image to process.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -184,6 +208,8 @@ class GetImageRotateFlipRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -193,7 +219,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -204,9 +230,9 @@ class GetImageRotateFlipRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
@@ -301,7 +327,7 @@ class GetImageRotateFlipRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

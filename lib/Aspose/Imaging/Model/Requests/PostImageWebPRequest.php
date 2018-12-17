@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageWebP operation.
@@ -38,48 +40,64 @@ class PostImageWebPRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * If WEBP is lossless.
+     *
+     * @var bool
      */
     public $loss_less;
     
     /**
      * Quality.
+     *
+     * @var int
      */
     public $quality;
     
     /**
      * The animation loop count.
+     *
+     * @var int
      */
     public $anim_loop_count;
     
     /**
      * Color of the animation background.
+     *
+     * @var string
      */
     public $anim_background_color;
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @var bool
      */
     public $from_scratch;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Initializes a new instance of the PostImageWebPRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      * @param bool $loss_less If WEBP is lossless.
      * @param int $quality Quality.
      * @param int $anim_loop_count The animation loop count.
@@ -103,6 +121,8 @@ class PostImageWebPRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -112,7 +132,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -122,6 +142,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * If WEBP is lossless.
+     *
+     * @return bool
      */
     public function get_loss_less()
     {
@@ -131,7 +153,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * If WEBP is lossless.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_loss_less($value)
     {
@@ -141,6 +163,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * Quality.
+     *
+     * @return int
      */
     public function get_quality()
     {
@@ -150,7 +174,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Quality.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_quality($value)
     {
@@ -160,6 +184,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * The animation loop count.
+     *
+     * @return int
      */
     public function get_anim_loop_count()
     {
@@ -169,7 +195,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * The animation loop count.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_anim_loop_count($value)
     {
@@ -179,6 +205,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * Color of the animation background.
+     *
+     * @return string
      */
     public function get_anim_background_color()
     {
@@ -188,7 +216,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Color of the animation background.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_anim_background_color($value)
     {
@@ -198,6 +226,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return bool
      */
     public function get_from_scratch()
     {
@@ -207,7 +237,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_from_scratch($value)
     {
@@ -217,6 +247,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -226,7 +258,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -236,6 +268,8 @@ class PostImageWebPRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -245,7 +279,7 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -256,9 +290,9 @@ class PostImageWebPRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -365,11 +399,7 @@ class PostImageWebPRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -385,7 +415,7 @@ class PostImageWebPRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

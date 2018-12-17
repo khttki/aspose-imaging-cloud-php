@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postTiffAppend operation.
@@ -38,21 +40,29 @@ class PostTiffAppendRequest extends ImagingRequest
 {
     /**
      * Original image file name.
+     *
+     * @var string
      */
     public $name;
     
     /**
      * Image file name to be appended to original one.
+     *
+     * @var string
      */
     public $append_file;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Folder with images to process.
+     *
+     * @var string
      */
     public $folder;
     
@@ -75,6 +85,8 @@ class PostTiffAppendRequest extends ImagingRequest
 
     /**
      * Original image file name.
+     *
+     * @return string
      */
     public function get_name()
     {
@@ -84,7 +96,7 @@ class PostTiffAppendRequest extends ImagingRequest
     /**
      * Original image file name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_name($value)
     {
@@ -94,6 +106,8 @@ class PostTiffAppendRequest extends ImagingRequest
     
     /**
      * Image file name to be appended to original one.
+     *
+     * @return string
      */
     public function get_append_file()
     {
@@ -103,7 +117,7 @@ class PostTiffAppendRequest extends ImagingRequest
     /**
      * Image file name to be appended to original one.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_append_file($value)
     {
@@ -113,6 +127,8 @@ class PostTiffAppendRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -122,7 +138,7 @@ class PostTiffAppendRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -132,6 +148,8 @@ class PostTiffAppendRequest extends ImagingRequest
     
     /**
      * Folder with images to process.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -141,7 +159,7 @@ class PostTiffAppendRequest extends ImagingRequest
     /**
      * Folder with images to process.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -152,9 +170,9 @@ class PostTiffAppendRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
@@ -225,7 +243,7 @@ class PostTiffAppendRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

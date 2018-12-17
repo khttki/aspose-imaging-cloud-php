@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postImageFrame operation.
@@ -38,68 +40,92 @@ class PostImageFrameRequest extends ImagingRequest
 {
     /**
      * Input image
+     *
+     * @var string
      */
     public $image_data;
     
     /**
      * Number of a frame.
+     *
+     * @var int
      */
     public $frame_id;
     
     /**
      * New width.
+     *
+     * @var int
      */
     public $new_width;
     
     /**
      * New height.
+     *
+     * @var int
      */
     public $new_height;
     
     /**
      * X position of start point for cropping rectangle.
+     *
+     * @var int
      */
     public $x;
     
     /**
      * Y position of start point for cropping rectangle.
+     *
+     * @var int
      */
     public $y;
     
     /**
      * Width of cropping rectangle.
+     *
+     * @var int
      */
     public $rect_width;
     
     /**
      * Height of cropping rectangle.
+     *
+     * @var int
      */
     public $rect_height;
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+     *
+     * @var string
      */
     public $rotate_flip_method;
     
     /**
      * If result will include all other frames or just a specified frame.
+     *
+     * @var bool
      */
     public $save_other_frames;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
     /**
      * Initializes a new instance of the PostImageFrameRequest class.
      *  
-     * @param \SplFileObject $image_data Input image
+     * @param string $image_data Input image
      * @param int $frame_id Number of a frame.
      * @param int $new_width New width.
      * @param int $new_height New height.
@@ -131,6 +157,8 @@ class PostImageFrameRequest extends ImagingRequest
 
     /**
      * Input image
+     *
+     * @return string
      */
     public function get_image_data()
     {
@@ -140,7 +168,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Input image
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_image_data($value)
     {
@@ -150,6 +178,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * Number of a frame.
+     *
+     * @return int
      */
     public function get_frame_id()
     {
@@ -159,7 +189,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Number of a frame.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_frame_id($value)
     {
@@ -169,6 +199,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * New width.
+     *
+     * @return int
      */
     public function get_new_width()
     {
@@ -178,7 +210,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * New width.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_new_width($value)
     {
@@ -188,6 +220,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * New height.
+     *
+     * @return int
      */
     public function get_new_height()
     {
@@ -197,7 +231,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * New height.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_new_height($value)
     {
@@ -207,6 +241,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * X position of start point for cropping rectangle.
+     *
+     * @return int
      */
     public function get_x()
     {
@@ -216,7 +252,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * X position of start point for cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_x($value)
     {
@@ -226,6 +262,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * Y position of start point for cropping rectangle.
+     *
+     * @return int
      */
     public function get_y()
     {
@@ -235,7 +273,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Y position of start point for cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_y($value)
     {
@@ -245,6 +283,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * Width of cropping rectangle.
+     *
+     * @return int
      */
     public function get_rect_width()
     {
@@ -254,7 +294,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Width of cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_rect_width($value)
     {
@@ -264,6 +304,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * Height of cropping rectangle.
+     *
+     * @return int
      */
     public function get_rect_height()
     {
@@ -273,7 +315,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Height of cropping rectangle.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_rect_height($value)
     {
@@ -283,6 +325,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+     *
+     * @return string
      */
     public function get_rotate_flip_method()
     {
@@ -292,7 +336,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_rotate_flip_method($value)
     {
@@ -302,6 +346,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * If result will include all other frames or just a specified frame.
+     *
+     * @return bool
      */
     public function get_save_other_frames()
     {
@@ -311,7 +357,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * If result will include all other frames or just a specified frame.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_save_other_frames($value)
     {
@@ -321,6 +367,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -330,7 +378,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -340,6 +388,8 @@ class PostImageFrameRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -349,7 +399,7 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -360,9 +410,9 @@ class PostImageFrameRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'image_data' is set
         if ($this->image_data === null) {
@@ -492,11 +542,7 @@ class PostImageFrameRequest extends ImagingRequest
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $filename = ObjectSerializer::toFormValue($this->image_data);
-            $handle = fopen($filename, "rb");
-            $fsize = filesize($filename);
-            $contents = fread($handle, $fsize);
-            $formParams['image_data'] = $contents;
+            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
@@ -512,7 +558,7 @@ class PostImageFrameRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

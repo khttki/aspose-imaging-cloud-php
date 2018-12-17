@@ -28,8 +28,8 @@
 
 namespace Aspose\Imaging\Model\Requests;
 
-use Aspose\Imaging\Configuration;
-use Aspose\Imaging\HeaderSelector;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\HeaderSelector;
 
 /**
  * Request model base class for Aspose.Imaging SDK
@@ -44,7 +44,7 @@ abstract class ImagingRequest
     /**
      * Imaging base request constructor
      */
-    protected function __constrcut()
+    protected function __construct()
     {
         $headerSelector = new HeaderSelector();
     }
@@ -52,20 +52,20 @@ abstract class ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public abstract function getHttpRequestInfo(Configuration $config);
+    public abstract function getHttpRequestInfo($config);
     
     /**
      * Executes url parsing
      */
-    protected function parseURL($url, $queryParams, Configuration $config) 
+    protected function parseURL($url, $queryParams, $config) 
     {
         // parse the url
         $UrlToSign = trim($url, "/");
         $urlQuery = http_build_query($queryParams);
  
-        $urlPartToSign = parse_url($UrlToSign, PHP_URL_SCHEME) . '://' . $config->getBasePath() .  "/" . parse_url($UrlToSign, PHP_URL_HOST) . parse_url($UrlToSign, PHP_URL_PATH) . "?" . $urlQuery;
+        $urlPartToSign = parse_url($UrlToSign, PHP_URL_SCHEME) . '://' . $config->getBaseUrl() .  "/" . parse_url($UrlToSign, PHP_URL_HOST) . parse_url($UrlToSign, PHP_URL_PATH) . "?" . $urlQuery;
         
         return $urlPartToSign;
     }

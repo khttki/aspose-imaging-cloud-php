@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for getImageGif operation.
@@ -38,56 +40,78 @@ class GetImageGifRequest extends ImagingRequest
 {
     /**
      * Filename of image.
+     *
+     * @var string
      */
     public $name;
     
     /**
      * Index of the background color.
+     *
+     * @var int
      */
     public $background_color_index;
     
     /**
      * Color resolution.
+     *
+     * @var int
      */
     public $color_resolution;
     
     /**
      * Specifies if image has trailer.
+     *
+     * @var bool
      */
     public $has_trailer;
     
     /**
      * Specifies if image is interlaced.
+     *
+     * @var bool
      */
     public $interlaced;
     
     /**
      * Specifies if palette is sorted.
+     *
+     * @var bool
      */
     public $is_palette_sorted;
     
     /**
      * Pixel aspect ratio.
+     *
+     * @var int
      */
     public $pixel_aspect_ratio;
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @var bool
      */
     public $from_scratch;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @var string
      */
     public $out_path;
     
     /**
      * Folder with image to process.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
@@ -124,6 +148,8 @@ class GetImageGifRequest extends ImagingRequest
 
     /**
      * Filename of image.
+     *
+     * @return string
      */
     public function get_name()
     {
@@ -133,7 +159,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Filename of image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_name($value)
     {
@@ -143,6 +169,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Index of the background color.
+     *
+     * @return int
      */
     public function get_background_color_index()
     {
@@ -152,7 +180,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Index of the background color.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_background_color_index($value)
     {
@@ -162,6 +190,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Color resolution.
+     *
+     * @return int
      */
     public function get_color_resolution()
     {
@@ -171,7 +201,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Color resolution.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_color_resolution($value)
     {
@@ -181,6 +211,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Specifies if image has trailer.
+     *
+     * @return bool
      */
     public function get_has_trailer()
     {
@@ -190,7 +222,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Specifies if image has trailer.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_has_trailer($value)
     {
@@ -200,6 +232,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Specifies if image is interlaced.
+     *
+     * @return bool
      */
     public function get_interlaced()
     {
@@ -209,7 +243,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Specifies if image is interlaced.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_interlaced($value)
     {
@@ -219,6 +253,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Specifies if palette is sorted.
+     *
+     * @return bool
      */
     public function get_is_palette_sorted()
     {
@@ -228,7 +264,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Specifies if palette is sorted.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_is_palette_sorted($value)
     {
@@ -238,6 +274,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Pixel aspect ratio.
+     *
+     * @return int
      */
     public function get_pixel_aspect_ratio()
     {
@@ -247,7 +285,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Pixel aspect ratio.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_pixel_aspect_ratio($value)
     {
@@ -257,6 +295,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return bool
      */
     public function get_from_scratch()
     {
@@ -266,7 +306,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_from_scratch($value)
     {
@@ -276,6 +316,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
+     *
+     * @return string
      */
     public function get_out_path()
     {
@@ -285,7 +327,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Path to updated file (if this is empty, response contains streamed image).
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_out_path($value)
     {
@@ -295,6 +337,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Folder with image to process.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -304,7 +348,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Folder with image to process.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -314,6 +358,8 @@ class GetImageGifRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -323,7 +369,7 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -334,9 +380,9 @@ class GetImageGifRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
@@ -473,7 +519,7 @@ class GetImageGifRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for postCreateSearchContext operation.
@@ -38,21 +40,29 @@ class PostCreateSearchContextRequest extends ImagingRequest
 {
     /**
      * The image features detector.
+     *
+     * @var string
      */
     public $detector;
     
     /**
      * The matching algorithm.
+     *
+     * @var string
      */
     public $matching_algorithm;
     
     /**
      * The folder.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * The storage.
+     *
+     * @var string
      */
     public $storage;
     
@@ -75,6 +85,8 @@ class PostCreateSearchContextRequest extends ImagingRequest
 
     /**
      * The image features detector.
+     *
+     * @return string
      */
     public function get_detector()
     {
@@ -84,7 +96,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
     /**
      * The image features detector.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_detector($value)
     {
@@ -94,6 +106,8 @@ class PostCreateSearchContextRequest extends ImagingRequest
     
     /**
      * The matching algorithm.
+     *
+     * @return string
      */
     public function get_matching_algorithm()
     {
@@ -103,7 +117,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
     /**
      * The matching algorithm.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_matching_algorithm($value)
     {
@@ -113,6 +127,8 @@ class PostCreateSearchContextRequest extends ImagingRequest
     
     /**
      * The folder.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -122,7 +138,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
     /**
      * The folder.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -132,6 +148,8 @@ class PostCreateSearchContextRequest extends ImagingRequest
     
     /**
      * The storage.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -141,7 +159,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
     /**
      * The storage.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -152,9 +170,9 @@ class PostCreateSearchContextRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
 
         $resourcePath = '/imaging/ai/imageSearch/create';
@@ -222,7 +240,7 @@ class PostCreateSearchContextRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }

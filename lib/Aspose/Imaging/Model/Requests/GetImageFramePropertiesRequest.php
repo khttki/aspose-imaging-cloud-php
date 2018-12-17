@@ -29,7 +29,9 @@
 namespace Aspose\Imaging\Model\Requests;
 
 use \InvalidArgumentException;
-use Aspose\Imaging\Configuration;
+use \Aspose\Imaging\Configuration;
+use \Aspose\Imaging\ObjectSerializer;
+use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
  * Request model for getImageFrameProperties operation.
@@ -38,21 +40,29 @@ class GetImageFramePropertiesRequest extends ImagingRequest
 {
     /**
      * Filename with image.
+     *
+     * @var string
      */
     public $name;
     
     /**
      * Number of a frame.
+     *
+     * @var int
      */
     public $frame_id;
     
     /**
      * Folder with image to process.
+     *
+     * @var string
      */
     public $folder;
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @var string
      */
     public $storage;
     
@@ -75,6 +85,8 @@ class GetImageFramePropertiesRequest extends ImagingRequest
 
     /**
      * Filename with image.
+     *
+     * @return string
      */
     public function get_name()
     {
@@ -84,7 +96,7 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     /**
      * Filename with image.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_name($value)
     {
@@ -94,6 +106,8 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     
     /**
      * Number of a frame.
+     *
+     * @return int
      */
     public function get_frame_id()
     {
@@ -103,7 +117,7 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     /**
      * Number of a frame.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_frame_id($value)
     {
@@ -113,6 +127,8 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     
     /**
      * Folder with image to process.
+     *
+     * @return string
      */
     public function get_folder()
     {
@@ -122,7 +138,7 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     /**
      * Folder with image to process.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_folder($value)
     {
@@ -132,6 +148,8 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     
     /**
      * Your Aspose Cloud Storage name.
+     *
+     * @return string
      */
     public function get_storage()
     {
@@ -141,7 +159,7 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     /**
      * Your Aspose Cloud Storage name.
      *
-     * @return 
+     * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_storage($value)
     {
@@ -152,9 +170,9 @@ class GetImageFramePropertiesRequest extends ImagingRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param Configuration $config Imaging API configuration.
+     * @param \Aspose\Imaging\Configuration $config Imaging API configuration.
      */
-    public function getHttpRequestInfo(Configuration $config)
+    public function getHttpRequestInfo($config)
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
@@ -220,7 +238,7 @@ class GetImageFramePropertiesRequest extends ImagingRequest
             );
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $httpBody, $multipart];
+        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
         return $httpInfo;        
     }
 }
