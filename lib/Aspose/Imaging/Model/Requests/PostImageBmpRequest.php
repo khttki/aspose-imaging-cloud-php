@@ -100,7 +100,6 @@ class PostImageBmpRequest extends ImagingRequest
      */
     public function __construct($image_data, $bits_per_pixel, $horizontal_resolution, $vertical_resolution, $from_scratch = null, $out_path = null, $storage = null)             
     {
-        parent::__construct();
         $this->image_data = $image_data;
         $this->bits_per_pixel = $bits_per_pixel;
         $this->horizontal_resolution = $horizontal_resolution;
@@ -350,28 +349,32 @@ class PostImageBmpRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
+            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['multipart/form-data'],
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

@@ -4,9 +4,8 @@
     colors="true"
     stopOnError="false"
     stopOnFailure="false"
-    strict="true"
     verbose="true">
     <logging>
-      <log type="junit" target="./testReports/junit.xml" logIncompleteSkipped="false"/>
+      <log type="junit" target="./testReports/junit.xml" logIncompleteSkipped="true"/>
     </logging>
 </phpunit>

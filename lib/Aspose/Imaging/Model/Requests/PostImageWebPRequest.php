@@ -108,7 +108,6 @@ class PostImageWebPRequest extends ImagingRequest
      */
     public function __construct($image_data, $loss_less, $quality, $anim_loop_count, $anim_background_color, $from_scratch = null, $out_path = null, $storage = null)             
     {
-        parent::__construct();
         $this->image_data = $image_data;
         $this->loss_less = $loss_less;
         $this->quality = $quality;
@@ -394,28 +393,32 @@ class PostImageWebPRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
+            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['multipart/form-data'],
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

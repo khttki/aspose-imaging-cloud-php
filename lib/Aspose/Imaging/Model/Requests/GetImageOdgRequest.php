@@ -84,7 +84,6 @@ class GetImageOdgRequest extends ImagingRequest
      */
     public function __construct($name, $from_scratch = null, $out_path = null, $folder = null, $storage = null)             
     {
-        parent::__construct();
         $this->name = $name;
         $this->from_scratch = $from_scratch;
         $this->out_path = $out_path;
@@ -263,23 +262,27 @@ class GetImageOdgRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['multipart/form-data'],
-                ['application/json']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

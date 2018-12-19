@@ -108,7 +108,6 @@ class GetImageBmpRequest extends ImagingRequest
      */
     public function __construct($name, $bits_per_pixel, $horizontal_resolution, $vertical_resolution, $from_scratch = null, $out_path = null, $folder = null, $storage = null)             
     {
-        parent::__construct();
         $this->name = $name;
         $this->bits_per_pixel = $bits_per_pixel;
         $this->horizontal_resolution = $horizontal_resolution;
@@ -395,23 +394,27 @@ class GetImageBmpRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['multipart/form-data'],
-                ['application/json']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

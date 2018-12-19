@@ -66,7 +66,6 @@ class ImagingApi
     {
         $this->client = $client ?: new Client();
         $this->configuration = $config ?: new Configuration();
-        $this->headerSelector = new HeaderSelector();
         $this->requestToken();
     }
 
@@ -4056,30 +4055,37 @@ class ImagingApi
     private function getHttpRequest($imagingRequest, $httpMethod)
     {
         $initialInfo = $imagingRequest->getHttpRequestInfo($this->configuration);
-        $resourcePath = $initialInfo->resourcePath;
-        $formParams = $initialInfo->formParams;
-        $queryParams = $initialInfo->queryParams;
-        $headerParams = $initialInfo->headerParams;
-        $headers = $initialInfo->headers;
-        $httpBody = "";
-        $multipart = $initialInfo->multipart;
+        $resourcePath = $initialInfo['resourcePath'];
+        $formParams = $initialInfo['formParams'];
+        $queryParams = $initialInfo['queryParams'];
+        $headerParams = $initialInfo['headerParams'];
+        $headers = $initialInfo['headers'];
+        $initialHttpBody = $initialInfo['httpBody'];
+        $httpBody = '';
+        $multipart = $initialInfo['multipart'];
 
         // for model (json/xml)
-        if (isset($initialInfo->httpBody)) {
-            $httpBody = $initialInfo->httpBody;
+        if (isset($initialHttpBody)) {
+            $httpBody = $initialHttpBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
-            if ($multipart) {
+            if ($multipart && count($formParams) > 1) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
+                        'headers' => [
+                            'Content-Disposition' => 'form-data',
+                            'Content-Type' => 'application/octet-stream',
+                            'Content-Length' => strlen($formParamValue)
+                        ]
                     ];
                 }
+                
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
 
@@ -4088,8 +4094,13 @@ class ImagingApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = $formParams["data"];
+                $httpBody = reset($formParams);
             }
+        }
+
+        if (isset($$httpBody))
+        {
+            $headers['Content-Length'] = strlen($httpBody);
         }
 
         if ($this->configuration->getAccessToken() !== null) {
@@ -4111,12 +4122,12 @@ class ImagingApi
     
         $req = new Request(
             $httpMethod,
-            $this->configuration->getApiBaseUrl() . $resourcePath,
+            $this->configuration->getApiBaseUrl() . "/" . $resourcePath,
             $headers,
             $httpBody
         );
         if ($this->configuration->getDebug()) {
-            $this->writeRequestLog($httpMethod, $this->configuration->getApiBaseUrl() . $resourcePath, $headers, $httpBody);
+            $this->writeRequestLog($httpMethod, $this->configuration->getApiBaseUrl() . "/" . $resourcePath, $headers, $httpBody);
         }
         
         return $req;
@@ -4184,7 +4195,7 @@ class ImagingApi
     private function processException($exception)
     {
         $response = $exception->getResponse();
-        $statusCode = $response->getStatusCode();
+        $statusCode = isset($response) ? $response->getStatusCode() : null;
           
         if ($exception instanceof RepeatRequestException) {
             $this->refreshToken();
@@ -4211,7 +4222,8 @@ class ImagingApi
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->configuration->getDebugFile());
             }
         }
-
+        
+        $options[RequestOptions::TIMEOUT] = 1200;
         return $options;
     }
     

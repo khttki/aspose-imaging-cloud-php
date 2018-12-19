@@ -68,7 +68,6 @@ class GetSearchContextStatusRequest extends ImagingRequest
      */
     public function __construct($search_context_id, $folder = null, $storage = null)             
     {
-        parent::__construct();
         $this->search_context_id = $search_context_id;
         $this->folder = $folder;
         $this->storage = $storage;
@@ -183,23 +182,27 @@ class GetSearchContextStatusRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

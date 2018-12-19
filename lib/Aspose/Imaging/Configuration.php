@@ -329,10 +329,10 @@ class Configuration
     public function getApiBaseUrl()
     {
         $length = strlen($this->baseUrl);
-        if (substr($this->baseUrl, -$length) == "/") {
-            return $this->baseUrl + $this->apiVersion;
+        if (substr($this->baseUrl, -1, 1) === "/") {
+            return $this->baseUrl . $this->apiVersion;
         } else {
-            return $this->baseUrl + "/" + $this->apiVersion;
+            return $this->baseUrl . "/" . $this->apiVersion;
         }
     }
 

@@ -108,6 +108,25 @@ class ObjectSerializer
     }
 
     /**
+     * Transforms parameter to camelCase or PascalCase
+     *
+     * @param $string String to transform.
+     * @param bool $pascalCase Transorm to PascalCase instead of camelCase.
+     * @return $string Transformed string.
+     */
+    public static function toStandardName($string, $pascalCase = false) 
+    {
+        $str = str_replace('-', '', ucwords($string, '-'));
+        $str = str_replace('_', '', ucwords($str, '-'));
+
+        if (!$pascalCase) {
+            $str = lcfirst($str);
+        }
+
+        return $str;
+    }
+
+    /**
      * Take value and turn it into a string suitable for inclusion in
      * the query, by imploding comma-separated if it's an object.
      * If it's a string, pass through unchanged. It will be url-encoded

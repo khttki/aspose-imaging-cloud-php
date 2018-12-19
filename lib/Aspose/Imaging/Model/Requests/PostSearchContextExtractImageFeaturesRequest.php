@@ -92,7 +92,6 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
      */
     public function __construct($search_context_id, $image_data = null, $image_id = null, $images_folder = null, $folder = null, $storage = null)             
     {
-        parent::__construct();
         $this->search_context_id = $search_context_id;
         $this->image_data = $image_data;
         $this->image_id = $image_id;
@@ -293,28 +292,32 @@ class PostSearchContextExtractImageFeaturesRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // form params
         if ($this->image_data !== null) {
             $multipart = true;
-            $formParams['image_data'] = ObjectSerializer::toFormValue($this->image_data);
+            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

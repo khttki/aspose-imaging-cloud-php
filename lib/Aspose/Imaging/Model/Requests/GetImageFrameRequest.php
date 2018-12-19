@@ -148,7 +148,6 @@ class GetImageFrameRequest extends ImagingRequest
      */
     public function __construct($name, $frame_id, $new_width = null, $new_height = null, $x = null, $y = null, $rect_width = null, $rect_height = null, $rotate_flip_method = null, $save_other_frames = null, $out_path = null, $folder = null, $storage = null)             
     {
-        parent::__construct();
         $this->name = $name;
         $this->frame_id = $frame_id;
         $this->new_width = $new_width;
@@ -582,23 +581,27 @@ class GetImageFrameRequest extends ImagingRequest
         }
     
     
-        $resourcePath = $this->parseURL($resourcePath, $queryParams, $config);
+        $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
         // body params
         $httpBody = null;
 
         if ($multipart) {
-            $headers= $this->headerSelector->selectHeadersForMultipart(
-                ['multipart/form-data']
-            );
+            $headers['Content-Type'] = 'multipart/form-data';
         } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['multipart/form-data'],
-                ['application/json']
-            );
+            $headers['Content-Type'] = 'application/json';
         }
         
-        list($httpInfo) = [$resourcePath, $formParams, $queryParams, $headerParams, $headers, $httpBody, $multipart];
+        $httpInfo = array(
+            "resourcePath" => $resourcePath,
+            "queryParams" => $queryParams,
+            "headerParams" => $headerParams,
+            "headers" => $headers,
+            "httpBody" => $httpBody,
+            "multipart" => $multipart,
+            "formParams" => $formParams
+        );
+        
         return $httpInfo;        
     }
 }

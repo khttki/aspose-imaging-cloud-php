@@ -28,7 +28,7 @@
 
 namespace Aspose\Imaging\Tests\Api;
 
-use \Aspose\Imaging\Tests\Api\ImagingApiTester;
+use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging;
 use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
@@ -38,11 +38,12 @@ use \GuzzleHttp\Stream;
 /**
  * Class for testing BmpApi
  * 
+ * @group Imaging
  * @group v1.0
  * @group v2.0
  * @group Bmp
  */
-class BmpApiTest extends ImagingApiTester
+class BmpApiTest extends ApiTester
 {
     /**
      * Test GetImageBmp
@@ -61,8 +62,8 @@ class BmpApiTest extends ImagingApiTester
         $verticalResolution = 300;
         $fromScratch = null;
         $outName = $name . "_specific.bmp";
-        $folder = $this->tempFolder;
-        $storage = $this->testStorage;
+        $folder = self::$tempFolder;
+        $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageBmpTest", 
@@ -74,19 +75,19 @@ class BmpApiTest extends ImagingApiTester
             function($fileName, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageBmpRequest($fileName, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? $this->imagingApi->getImageBmpAsync($request)->wait() : $this->imagingApi->getImageBmp($request);
+                return self::$asyncMode === true ? self::$imagingApi->getImageBmpAsync($request)->wait() : self::$imagingApi->getImageBmp($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {
-                $this->assertNotNull($resultProperties->bmpProperties);
-                $this->assertEquals($bitsPerPixel, $resultProperties->bitsPerPixel);
-                $this->assertEquals($verticalResolution, ceil($resultProperties->verticalResolution));
-                $this->assertEquals($horizontalResolution, ceil($resultProperties->horizontalResolution));
+                $this->assertNotNull($resultProperties->getBmpProperties());
+                $this->assertEquals($bitsPerPixel, $resultProperties->getBitsPerPixel());
+                $this->assertEquals($verticalResolution, ceil($resultProperties->getVerticalResolution()));
+                $this->assertEquals($horizontalResolution, ceil($resultProperties->getHorizontalResolution()));
 
-                $this->assertNotNull($originalProperties->bmpProperties);
-                $this->assertEquals($originalProperties->bmpProperties->compression, $resultProperties->bmpProperties->compression);
-                $this->assertEquals($originalProperties->width, $resultProperties->width);
-                $this->assertEquals($originalProperties->height, $resultProperties->height);
+                $this->assertNotNull($originalProperties->getBmpProperties());
+                $this->assertEquals($originalProperties->getBmpProperties()->getCompression(), $resultProperties->getBmpProperties()->getCompression());
+                $this->assertEquals($originalProperties->getWidth(), $resultProperties->getWidth());
+                $this->assertEquals($originalProperties->getHeight(), $resultProperties->getHeight());
             },
             $folder,
             $storage);
@@ -109,8 +110,8 @@ class BmpApiTest extends ImagingApiTester
         $verticalResolution = 300;
         $fromScratch = null;
         $outName = $name . "_specific.bmp";
-        $folder = $this->tempFolder;
-        $storage = $this->testStorage;
+        $folder = self::$tempFolder;
+        $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
             "postImageBmpTest", 
@@ -122,19 +123,19 @@ class BmpApiTest extends ImagingApiTester
             function($inputStream, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageBmpRequest($inputStream, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? $this->imagingApi->postImageBmpAsync($request)->wait() : $this->imagingApi->postImageBmp($request);
+                return self::$asyncMode === true ? self::$imagingApi->postImageBmpAsync($request)->wait() : self::$imagingApi->postImageBmp($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {
-                $this->assertNotNull($resultProperties->bmpProperties);
-                $this->assertEquals($bitsPerPixel, $resultProperties->bitsPerPixel);
-                $this->assertEquals($verticalResolution, ceil($resultProperties->verticalResolution));
-                $this->assertEquals($horizontalResolution, ceil($resultProperties->horizontalResolution));
+                $this->assertNotNull($resultProperties->getBmpProperties());
+                $this->assertEquals($bitsPerPixel, $resultProperties->getBitsPerPixel());
+                $this->assertEquals($verticalResolution, ceil($resultProperties->getVerticalResolution()));
+                $this->assertEquals($horizontalResolution, ceil($resultProperties->getHorizontalResolution()));
 
-                $this->assertNotNull($originalProperties->bmpProperties);
-                $this->assertEquals($originalProperties->bmpProperties->compression, $resultProperties->bmpProperties->compression);
-                $this->assertEquals($originalProperties->width, $resultProperties->width);
-                $this->assertEquals($originalProperties->height, $resultProperties->height);
+                $this->assertNotNull($originalProperties->getBmpProperties());
+                $this->assertEquals($originalProperties->getBmpProperties()->getCompression(), $resultProperties->getBmpProperties()->getCompression());
+                $this->assertEquals($originalProperties->getWidth(), $resultProperties->getWidth());
+                $this->assertEquals($originalProperties->getHeight(), $resultProperties->getHeight());
             },
             $folder,
             $storage);
