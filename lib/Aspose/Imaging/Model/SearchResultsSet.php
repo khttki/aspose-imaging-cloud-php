@@ -28,7 +28,7 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\SaaSposeResponse;
+use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * SearchResultsSet

@@ -188,6 +188,7 @@ abstract class ApiTester extends TestCase
      */
     public static function initFixture()
     {
+        echo "\r\n";
         self::$asyncMode = getenv("AsyncMode") === "true" ? true : false;
         echo "Async mode: " . (self::$asyncMode === true ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
@@ -483,7 +484,7 @@ abstract class ApiTester extends TestCase
      * Tests the typical request.
      *
      * @param string $testMethodName Name of the test method.
-     * @param boolean $saveResultToStorage If save result to storage.
+     * @param bool $saveResultToStorage If save result to storage.
      * @param string $parametersLine The parameters line.
      * @param string $inputFileName Name of the input file.
      * @param string $resultFileName Name of the result file.
@@ -496,12 +497,12 @@ abstract class ApiTester extends TestCase
     private function requestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName, 
         callable $invokeRequestAction, callable $propertiesTester, $folder, $storage)
     {
-        echo "\r\n" . $testMethodName . "\r\n";
+        echo "\r\n" . $testMethodName . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
 
         if (!$this->checkInputFileExists($inputFileName))
         {
             throw new ArgumentException(
-                "Input file " . $inputFileName . " doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
+                "Input file " . $inputFileName . " doesn't exist in the specified storage folder: " . $folder . ". Please, upload it first.");
         }
 
         if (!self::$storageApi->getIsExist(new StorageRequests\GetIsExistRequest($folder . "/" . $inputFileName, null, $storage))->getFileExist()->getIsExist())

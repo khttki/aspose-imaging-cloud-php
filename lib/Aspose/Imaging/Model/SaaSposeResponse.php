@@ -26,7 +26,7 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-namespace Aspose\Imaging;
+namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;

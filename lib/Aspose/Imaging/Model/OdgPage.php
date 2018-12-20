@@ -30,7 +30,7 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\SaaSposeResponse;
+use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * OdgPage
