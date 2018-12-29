@@ -71,7 +71,7 @@ class DicomApiTest extends ApiTester
             function($fileName, $outPath) use ($fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageDicomRequest($fileName, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageDicomAsync($request)->wait() : self::$imagingApi->getImageDicom($request);
+                return self::$asyncMode ? self::$imagingApi->getImageDicomAsync($request)->wait() : self::$imagingApi->getImageDicom($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -111,7 +111,7 @@ class DicomApiTest extends ApiTester
             function($inputStream, $outPath) use ($fromScratch, $storage)
             {
                 $request = new Requests\PostImageDicomRequest($inputStream, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageDicomAsync($request)->wait() : self::$imagingApi->postImageDicom($request);
+                return self::$asyncMode ? self::$imagingApi->postImageDicomAsync($request)->wait() : self::$imagingApi->postImageDicom($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {

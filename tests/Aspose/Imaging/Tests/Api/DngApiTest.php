@@ -71,7 +71,7 @@ class DngApiTest extends ApiTester
             function($fileName, $outPath) use ($fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageDngRequest($fileName, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageDngAsync($request)->wait() : self::$imagingApi->getImageDng($request);
+                return self::$asyncMode ? self::$imagingApi->getImageDngAsync($request)->wait() : self::$imagingApi->getImageDng($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -110,7 +110,7 @@ class DngApiTest extends ApiTester
             function($inputStream, $outPath) use ($fromScratch, $storage)
             {
                 $request = new Requests\PostImageDngRequest($inputStream, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageDngAsync($request)->wait() : self::$imagingApi->postImageDng($request);
+                return self::$asyncMode ? self::$imagingApi->postImageDngAsync($request)->wait() : self::$imagingApi->postImageDng($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {

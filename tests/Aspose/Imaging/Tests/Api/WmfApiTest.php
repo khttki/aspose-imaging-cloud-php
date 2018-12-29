@@ -77,7 +77,7 @@ class WmfApiTest extends ApiTester
             function($fileName, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageWmfRequest($fileName, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageWmfAsync($request)->wait() : self::$imagingApi->getImageWmf($request);
+                return self::$asyncMode ? self::$imagingApi->getImageWmfAsync($request)->wait() : self::$imagingApi->getImageWmf($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
@@ -121,7 +121,7 @@ class WmfApiTest extends ApiTester
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageWmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageWmfAsync($request)->wait() : self::$imagingApi->postImageWmf($request);
+                return self::$asyncMode ? self::$imagingApi->postImageWmfAsync($request)->wait() : self::$imagingApi->postImageWmf($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {

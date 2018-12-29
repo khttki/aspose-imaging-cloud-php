@@ -76,7 +76,7 @@ class WebpApiTest extends ApiTester
             function($fileName, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageWebpRequest($fileName, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageWebpAsync($request)->wait() : self::$imagingApi->getImageWebp($request);
+                return self::$asyncMode ? self::$imagingApi->getImageWebpAsync($request)->wait() : self::$imagingApi->getImageWebp($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {
@@ -120,7 +120,7 @@ class WebpApiTest extends ApiTester
             function($inputStream, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageWebpRequest($inputStream, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageWebpAsync($request)->wait() : self::$imagingApi->postImageWebp($request);
+                return self::$asyncMode ? self::$imagingApi->postImageWebpAsync($request)->wait() : self::$imagingApi->postImageWebp($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {

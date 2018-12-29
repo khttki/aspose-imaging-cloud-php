@@ -75,7 +75,7 @@ class BmpApiTest extends ApiTester
             function($fileName, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageBmpRequest($fileName, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageBmpAsync($request)->wait() : self::$imagingApi->getImageBmp($request);
+                return self::$asyncMode ? self::$imagingApi->getImageBmpAsync($request)->wait() : self::$imagingApi->getImageBmp($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {
@@ -123,7 +123,7 @@ class BmpApiTest extends ApiTester
             function($inputStream, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageBmpRequest($inputStream, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageBmpAsync($request)->wait() : self::$imagingApi->postImageBmp($request);
+                return self::$asyncMode ? self::$imagingApi->postImageBmpAsync($request)->wait() : self::$imagingApi->postImageBmp($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {

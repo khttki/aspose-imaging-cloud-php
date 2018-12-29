@@ -71,7 +71,7 @@ class OdgApiTest extends ApiTester
             function($fileName, $outPath) use ($fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageOdgRequest($fileName, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageOdgAsync($request)->wait() : self::$imagingApi->getImageOdg($request);
+                return self::$asyncMode ? self::$imagingApi->getImageOdgAsync($request)->wait() : self::$imagingApi->getImageOdg($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -137,7 +137,7 @@ class OdgApiTest extends ApiTester
             function($inputStream, $outPath) use ($fromScratch, $storage)
             {
                 $request = new Requests\PostImageOdgRequest($inputStream, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageOdgAsync($request)->wait() : self::$imagingApi->postImageOdg($request);
+                return self::$asyncMode ? self::$imagingApi->postImageOdgAsync($request)->wait() : self::$imagingApi->postImageOdg($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {

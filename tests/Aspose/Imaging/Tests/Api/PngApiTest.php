@@ -71,7 +71,7 @@ class PngApiTest extends ApiTester
             function($fileName, $outPath) use ($fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImagePngRequest($fileName, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImagePngAsync($request)->wait() : self::$imagingApi->getImagePng($request);
+                return self::$asyncMode ? self::$imagingApi->getImagePngAsync($request)->wait() : self::$imagingApi->getImagePng($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -110,7 +110,7 @@ class PngApiTest extends ApiTester
             function($inputStream, $outPath) use ($fromScratch, $storage)
             {
                 $request = new Requests\PostImagePngRequest($inputStream, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImagePngAsync($request)->wait() : self::$imagingApi->postImagePng($request);
+                return self::$asyncMode ? self::$imagingApi->postImagePngAsync($request)->wait() : self::$imagingApi->postImagePng($request);
             },
             function($originalProperties, $resultProperties, $resultStream)
             {

@@ -3920,7 +3920,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function putSearchContextImage($request)
     {
@@ -3985,7 +3985,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \GuzzleHttp\Stream\StreamInterface
      */
     public function putSearchContextImageFeatures($request)
     {
@@ -4088,17 +4088,13 @@ class ImagingApi
                 
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = reset($formParams);
             }
         }
 
-        if (isset($$httpBody))
+        if (isset($httpBody))
         {
             $headers['Content-Length'] = strlen($httpBody);
         }
@@ -4126,10 +4122,11 @@ class ImagingApi
             $headers,
             $httpBody
         );
+
         if ($this->configuration->getDebug()) {
             $this->writeRequestLog($httpMethod, $this->configuration->getApiBaseUrl() . "/" . $resourcePath, $headers, $httpBody);
         }
-        
+
         return $req;
     }
     

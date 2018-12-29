@@ -77,7 +77,7 @@ class EmfApiTest extends ApiTester
             function($fileName, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageEmfRequest($fileName, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageEmfAsync($request)->wait() : self::$imagingApi->getImageEmf($request);
+                return self::$asyncMode ? self::$imagingApi->getImageEmfAsync($request)->wait() : self::$imagingApi->getImageEmf($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
@@ -121,7 +121,7 @@ class EmfApiTest extends ApiTester
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageEmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageEmfAsync($request)->wait() : self::$imagingApi->postImageEmf($request);
+                return self::$asyncMode ? self::$imagingApi->postImageEmfAsync($request)->wait() : self::$imagingApi->postImageEmf($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {

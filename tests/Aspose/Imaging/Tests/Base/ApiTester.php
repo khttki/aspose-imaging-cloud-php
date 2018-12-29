@@ -176,7 +176,7 @@ abstract class ApiTester extends TestCase
      */
     protected static $removeResult;
 
-        /**
+    /**
      * Original test data folder
      * 
      * @var string 
@@ -190,7 +190,8 @@ abstract class ApiTester extends TestCase
     {
         echo "\r\n";
         self::$asyncMode = getenv("AsyncMode") === "true" ? true : false;
-        echo "Async mode: " . (self::$asyncMode === true ? "true" : "false") . "\r\n";
+        self::$asyncMode = true;
+        echo "Async mode: " . (self::$asyncMode ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
         {
@@ -544,7 +545,7 @@ abstract class ApiTester extends TestCase
                         . $folder . "Result isn't present in the storage by an unknown reason.");
                 }
 
-                $resultProperties = self::$asyncMode === true ?
+                $resultProperties = self::$asyncMode ?
                         self::$imagingApi->getImagePropertiesAsync(new ImagingRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait() :
                         self::$imagingApi->getImageProperties(new ImagingRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage));
                 
@@ -552,13 +553,13 @@ abstract class ApiTester extends TestCase
             }
             else if (!preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()))
             {
-                $resultProperties = self::$asyncMode === true ?
+                $resultProperties = self::$asyncMode ?
                     self::$imagingApi->postImagePropertiesAsync(new ImagingRequests\PostImagePropertiesRequest($response->getContents()))->wait() :
                     self::$imagingApi->postImageProperties(new ImagingRequests\PostImagePropertiesRequest($response->getContents()));
                 $this->assertNotNull($resultProperties);
             }
 
-            $originalProperties = self::$asyncMode === true ?
+            $originalProperties = self::$asyncMode ?
                 self::$imagingApi->getImagePropertiesAsync(new ImagingRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait() :
                 self::$imagingApi->getImageProperties(new ImagingRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage));
             $this->assertNotNull($originalProperties);

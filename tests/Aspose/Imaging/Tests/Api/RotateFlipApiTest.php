@@ -120,7 +120,7 @@ class RotateFlipApiTest extends ApiTester
                     function($fileName, $outPath) use ($format, $method, $folder, $storage)
                     {
                         $request = new Requests\GetImageRotateFlipRequest($fileName, $format, $method, $outPath, $folder, $storage);
-                        return self::$asyncMode === true ? self::$imagingApi->getImageRotateFlipAsync($request)->wait() : self::$imagingApi->getImageRotateFlip($request);
+                        return self::$asyncMode ? self::$imagingApi->getImageRotateFlipAsync($request)->wait() : self::$imagingApi->getImageRotateFlip($request);
                     },
                     function($originalProperties, $resultProperties, $resultStream)
                     {
@@ -201,7 +201,7 @@ class RotateFlipApiTest extends ApiTester
                     function($inputStream, $outPath) use ($format, $method, $storage)
                     {
                         $request = new Requests\PostImageRotateFlipRequest($inputStream, $format,$method, $outPath, $storage);
-                        return self::$asyncMode === true ? self::$imagingApi->postImageRotateFlipAsync($request)->wait() : self::$imagingApi->postImageRotateFlip($request);
+                        return self::$asyncMode ? self::$imagingApi->postImageRotateFlipAsync($request)->wait() : self::$imagingApi->postImageRotateFlip($request);
                     },
                     function($originalProperties, $resultProperties, $resultStream)
                     {

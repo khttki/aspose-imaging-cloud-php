@@ -81,7 +81,7 @@ class FramesPostApiTest extends ApiTester
             {
                 $request = new Requests\PostImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageFrameAsync($request)->wait() : self::$imagingApi->postImageFrame($request);
+                return self::$asyncMode ? self::$imagingApi->postImageFrameAsync($request)->wait() : self::$imagingApi->postImageFrame($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)
@@ -101,7 +101,7 @@ class FramesPostApiTest extends ApiTester
                 if (!$saveResultToStorage) return;
 
                 $framePropertiesRequest = new Requests\GetImageFramePropertiesRequest($outName, 0, $folder, $storage);
-                $framePropertiesResponse = self::$asyncMode === true ? 
+                $framePropertiesResponse = self::$asyncMode ? 
                     self::$imagingApi->getImageFramePropertiesAsync($framePropertiesRequest)->wait() :
                     self::$imagingApi->getImageFrameProperties($framePropertiesRequest);
 
@@ -156,7 +156,7 @@ class FramesPostApiTest extends ApiTester
             {
                 $request = new Requests\PostImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageFrameAsync($request)->wait() : self::$imagingApi->postImageFrame($request);
+                return self::$asyncMode ? self::$imagingApi->postImageFrameAsync($request)->wait() : self::$imagingApi->postImageFrame($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)

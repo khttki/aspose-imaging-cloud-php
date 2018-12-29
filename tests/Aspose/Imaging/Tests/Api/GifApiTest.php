@@ -81,7 +81,7 @@ class GifApiTest extends ApiTester
             {
                 $request = new Requests\GetImageGifRequest($fileName, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                     $isPaletteSorted, $pixelAspectRatio, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->getImageGifAsync($request)->wait() : self::$imagingApi->getImageGif($request);
+                return self::$asyncMode ? self::$imagingApi->getImageGifAsync($request)->wait() : self::$imagingApi->getImageGif($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                 $isPaletteSorted, $pixelAspectRatio)
@@ -135,7 +135,7 @@ class GifApiTest extends ApiTester
             {
                 $request = new Requests\PostImageGifRequest($inputStream, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                     $isPaletteSorted, $pixelAspectRatio, $fromScratch, $outPath, $storage);
-                return self::$asyncMode === true ? self::$imagingApi->postImageGifAsync($request)->wait() : self::$imagingApi->postImageGif($request);
+                return self::$asyncMode ? self::$imagingApi->postImageGifAsync($request)->wait() : self::$imagingApi->postImageGif($request);
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                 $isPaletteSorted, $pixelAspectRatio)

@@ -128,7 +128,7 @@ class UpdateApiTest extends ApiTester
                     {
                         $request = new Requests\GetImageUpdateRequest($fileName, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
                             $outPath, $folder, $storage);
-                        return self::$asyncMode === true ? self::$imagingApi->getImageUpdateAsync($request)->wait() : self::$imagingApi->getImageUpdate($request);
+                        return self::$asyncMode ? self::$imagingApi->getImageUpdateAsync($request)->wait() : self::$imagingApi->getImageUpdate($request);
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod)
                     {
@@ -202,7 +202,7 @@ class UpdateApiTest extends ApiTester
                     {
                         $request = new Requests\PostImageUpdateRequest($inputStream, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
                             $outPath, $storage);
-                        return self::$asyncMode === true ? self::$imagingApi->postImageUpdateAsync($request)->wait() : self::$imagingApi->postImageUpdate($request);
+                        return self::$asyncMode ? self::$imagingApi->postImageUpdateAsync($request)->wait() : self::$imagingApi->postImageUpdate($request);
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod)
                     {
