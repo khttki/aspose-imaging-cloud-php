@@ -38,7 +38,7 @@ use \GuzzleHttp\RequestOptions;
 use \Aspose\Imaging\Model\Requests;
 
 /**
- * Aspose.Imaging for Cloud APIs.
+ * Aspose.Imaging Cloud APIs.
  */
 class ImagingApi
 {
