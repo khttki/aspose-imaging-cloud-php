@@ -186,7 +186,7 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $multipart = false;
+        $headers = [];
     
         // path params
         if ($this->search_context_id !== null) {
@@ -230,12 +230,6 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
 
         // body params
         $httpBody = null;
-
-        if ($multipart) {
-            $headers['Content-Type'] = 'multipart/form-data';
-        } else {
-            $headers['Content-Type'] = 'application/json';
-        }
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,
@@ -243,8 +237,7 @@ class GetSearchContextFindDuplicatesRequest extends ImagingRequest
             "headerParams" => $headerParams,
             "headers" => $headers,
             "httpBody" => $httpBody,
-            "multipart" => $multipart,
-            "formParams" => $formParams
+            "formParams" => $formParams,
         );
         
         return $httpInfo;        

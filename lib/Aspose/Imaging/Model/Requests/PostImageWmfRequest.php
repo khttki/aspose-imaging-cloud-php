@@ -352,7 +352,7 @@ class PostImageWmfRequest extends ImagingRequest
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $multipart = false;
+        $headers = [];
     
 
         // query params
@@ -441,17 +441,10 @@ class PostImageWmfRequest extends ImagingRequest
 
         // form params
         if ($this->image_data !== null) {
-            $multipart = true;
             $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
-
-        if ($multipart) {
-            $headers['Content-Type'] = 'multipart/form-data';
-        } else {
-            $headers['Content-Type'] = 'application/json';
-        }
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,
@@ -459,8 +452,7 @@ class PostImageWmfRequest extends ImagingRequest
             "headerParams" => $headerParams,
             "headers" => $headers,
             "httpBody" => $httpBody,
-            "multipart" => $multipart,
-            "formParams" => $formParams
+            "formParams" => $formParams,
         );
         
         return $httpInfo;        

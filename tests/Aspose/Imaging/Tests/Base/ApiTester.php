@@ -190,7 +190,6 @@ abstract class ApiTester extends TestCase
     {
         echo "\r\n";
         self::$asyncMode = getenv("AsyncMode") === "true" ? true : false;
-        self::$asyncMode = true;
         echo "Async mode: " . (self::$asyncMode ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))

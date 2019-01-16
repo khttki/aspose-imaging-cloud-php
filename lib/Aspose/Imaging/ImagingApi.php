@@ -85,7 +85,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function deleteSearchContext($request)
     {
@@ -150,7 +150,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function deleteSearchContextImage($request)
     {
@@ -280,7 +280,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageBmp($request)
     {
@@ -345,7 +345,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageCrop($request)
     {
@@ -410,7 +410,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageDicom($request)
     {
@@ -475,7 +475,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageDng($request)
     {
@@ -540,7 +540,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageEmf($request)
     {
@@ -605,7 +605,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageFrame($request)
     {
@@ -735,7 +735,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageGif($request)
     {
@@ -800,7 +800,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageJpeg2000($request)
     {
@@ -865,7 +865,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageJpg($request)
     {
@@ -930,7 +930,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageOdg($request)
     {
@@ -995,7 +995,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImagePng($request)
     {
@@ -1125,7 +1125,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImagePsd($request)
     {
@@ -1190,7 +1190,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageResize($request)
     {
@@ -1255,7 +1255,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageRotateFlip($request)
     {
@@ -1320,7 +1320,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageSaveAs($request)
     {
@@ -1385,7 +1385,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageTiff($request)
     {
@@ -1450,7 +1450,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageUpdate($request)
     {
@@ -1515,7 +1515,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageWebP($request)
     {
@@ -1580,7 +1580,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getImageWmf($request)
     {
@@ -1639,7 +1639,7 @@ class ImagingApi
     }
     
     /**
-     * Extract features from image without adding to search context.
+     * Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\GetSearchContextExtractImageFeaturesRequest $request Request object for operation
      *
@@ -1669,7 +1669,7 @@ class ImagingApi
     }
 
     /**
-     * Extract features from image without adding to search context.
+     * Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\GetSearchContextExtractImageFeaturesRequest $request Request object for operation
@@ -1769,7 +1769,7 @@ class ImagingApi
     }
     
     /**
-     * Find similar images.
+     * Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\GetSearchContextFindSimilarRequest $request Request object for operation
      *
@@ -1799,7 +1799,7 @@ class ImagingApi
     }
 
     /**
-     * Find similar images.
+     * Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\GetSearchContextFindSimilarRequest $request Request object for operation
@@ -1840,7 +1840,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getSearchContextImage($request)
     {
@@ -2035,7 +2035,7 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getTiffToFax($request)
     {
@@ -2159,13 +2159,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of BMP image. Image is passed in a request stream.
+     * Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageBmpRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageBmp($request)
     {
@@ -2189,7 +2189,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of BMP image. Image is passed in a request stream.
+     * Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageBmpRequest $request Request object for operation
@@ -2224,13 +2224,13 @@ class ImagingApi
     }
     
     /**
-     * Crop an image. Image is passed in a request stream.
+     * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageCropRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageCrop($request)
     {
@@ -2254,7 +2254,7 @@ class ImagingApi
     }
 
     /**
-     * Crop an image. Image is passed in a request stream.
+     * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageCropRequest $request Request object for operation
@@ -2289,13 +2289,13 @@ class ImagingApi
     }
     
     /**
-     * Rasterize DICOM image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageDicomRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageDicom($request)
     {
@@ -2319,7 +2319,7 @@ class ImagingApi
     }
 
     /**
-     * Rasterize DICOM image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageDicomRequest $request Request object for operation
@@ -2354,13 +2354,13 @@ class ImagingApi
     }
     
     /**
-     * Rasterize DNG image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageDngRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageDng($request)
     {
@@ -2384,7 +2384,7 @@ class ImagingApi
     }
 
     /**
-     * Rasterize DNG image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageDngRequest $request Request object for operation
@@ -2419,13 +2419,13 @@ class ImagingApi
     }
     
     /**
-     * Rasterize EMF image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageEmfRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageEmf($request)
     {
@@ -2449,7 +2449,7 @@ class ImagingApi
     }
 
     /**
-     * Rasterize EMF image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageEmfRequest $request Request object for operation
@@ -2484,13 +2484,13 @@ class ImagingApi
     }
     
     /**
-     * Get separate frame from existing TIFF image. Image is passed in a request stream.
+     * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageFrameRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageFrame($request)
     {
@@ -2514,7 +2514,7 @@ class ImagingApi
     }
 
     /**
-     * Get separate frame from existing TIFF image. Image is passed in a request stream.
+     * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageFrameRequest $request Request object for operation
@@ -2549,7 +2549,7 @@ class ImagingApi
     }
     
     /**
-     * Get separate frame properties of existing TIFF image. Image is passed in a request stream.
+     * Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageFramePropertiesRequest $request Request object for operation
      *
@@ -2579,7 +2579,7 @@ class ImagingApi
     }
 
     /**
-     * Get separate frame properties of existing TIFF image. Image is passed in a request stream.
+     * Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageFramePropertiesRequest $request Request object for operation
@@ -2614,13 +2614,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of GIF image. Image is passed in a request stream.
+     * Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageGifRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageGif($request)
     {
@@ -2644,7 +2644,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of GIF image. Image is passed in a request stream.
+     * Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageGifRequest $request Request object for operation
@@ -2679,13 +2679,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of JPEG2000 image. Image is passed in a request stream.
+     * Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageJpeg2000Request $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageJpeg2000($request)
     {
@@ -2709,7 +2709,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of JPEG2000 image. Image is passed in a request stream.
+     * Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageJpeg2000Request $request Request object for operation
@@ -2744,13 +2744,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of JPEG image. Image is passed in a request stream.
+     * Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageJpgRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageJpg($request)
     {
@@ -2774,7 +2774,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of JPEG image. Image is passed in a request stream.
+     * Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageJpgRequest $request Request object for operation
@@ -2809,13 +2809,13 @@ class ImagingApi
     }
     
     /**
-     * Rasterize ODG image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageOdgRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageOdg($request)
     {
@@ -2839,7 +2839,7 @@ class ImagingApi
     }
 
     /**
-     * Rasterize ODG image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageOdgRequest $request Request object for operation
@@ -2874,13 +2874,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of PNG image. Image is passed in a request stream.
+     * Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImagePngRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImagePng($request)
     {
@@ -2904,7 +2904,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of PNG image. Image is passed in a request stream.
+     * Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImagePngRequest $request Request object for operation
@@ -2939,7 +2939,7 @@ class ImagingApi
     }
     
     /**
-     * Get properties of an image. Image is passed in a request stream.
+     * Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImagePropertiesRequest $request Request object for operation
      *
@@ -2969,7 +2969,7 @@ class ImagingApi
     }
 
     /**
-     * Get properties of an image. Image is passed in a request stream.
+     * Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImagePropertiesRequest $request Request object for operation
@@ -3004,13 +3004,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of PSD image. Image is passed in a request stream.
+     * Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImagePsdRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImagePsd($request)
     {
@@ -3034,7 +3034,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of PSD image. Image is passed in a request stream.
+     * Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImagePsdRequest $request Request object for operation
@@ -3069,13 +3069,13 @@ class ImagingApi
     }
     
     /**
-     * Resize an image. Image is passed in a request stream.
+     * Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageResizeRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageResize($request)
     {
@@ -3099,7 +3099,7 @@ class ImagingApi
     }
 
     /**
-     * Resize an image. Image is passed in a request stream.
+     * Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageResizeRequest $request Request object for operation
@@ -3134,13 +3134,13 @@ class ImagingApi
     }
     
     /**
-     * Rotate and/or flip an image. Image is passed in a request stream.
+     * Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageRotateFlipRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageRotateFlip($request)
     {
@@ -3164,7 +3164,7 @@ class ImagingApi
     }
 
     /**
-     * Rotate and/or flip an image. Image is passed in a request stream.
+     * Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageRotateFlipRequest $request Request object for operation
@@ -3199,13 +3199,13 @@ class ImagingApi
     }
     
     /**
-     * Export existing image to another format. Image is passed in a request stream.
+     * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageSaveAsRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageSaveAs($request)
     {
@@ -3229,7 +3229,7 @@ class ImagingApi
     }
 
     /**
-     * Export existing image to another format. Image is passed in a request stream.
+     * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageSaveAsRequest $request Request object for operation
@@ -3264,13 +3264,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of TIFF image. Image is passed in a request stream.
+     * Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageTiffRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageTiff($request)
     {
@@ -3294,7 +3294,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of TIFF image. Image is passed in a request stream.
+     * Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageTiffRequest $request Request object for operation
@@ -3329,13 +3329,13 @@ class ImagingApi
     }
     
     /**
-     * Perform scaling, cropping and flipping of an image in a single request. Image is passed in a request stream.
+     * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageUpdateRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageUpdate($request)
     {
@@ -3359,7 +3359,7 @@ class ImagingApi
     }
 
     /**
-     * Perform scaling, cropping and flipping of an image in a single request. Image is passed in a request stream.
+     * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageUpdateRequest $request Request object for operation
@@ -3394,13 +3394,13 @@ class ImagingApi
     }
     
     /**
-     * Update parameters of WEBP image. Image is passed in a request stream.
+     * Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageWebPRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageWebP($request)
     {
@@ -3424,7 +3424,7 @@ class ImagingApi
     }
 
     /**
-     * Update parameters of WEBP image. Image is passed in a request stream.
+     * Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageWebPRequest $request Request object for operation
@@ -3459,13 +3459,13 @@ class ImagingApi
     }
     
     /**
-     * Rasterize WMF image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageWmfRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postImageWmf($request)
     {
@@ -3489,7 +3489,7 @@ class ImagingApi
     }
 
     /**
-     * Rasterize WMF image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageWmfRequest $request Request object for operation
@@ -3524,13 +3524,13 @@ class ImagingApi
     }
     
     /**
-     * Add image and images features to search context.
+     * Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextAddImageRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postSearchContextAddImage($request)
     {
@@ -3554,7 +3554,7 @@ class ImagingApi
     }
 
     /**
-     * Add image and images features to search context.
+     * Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextAddImageRequest $request Request object for operation
@@ -3589,13 +3589,13 @@ class ImagingApi
     }
     
     /**
-     * Add tag and reference image to search context.
+     * Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextAddTagRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postSearchContextAddTag($request)
     {
@@ -3619,7 +3619,7 @@ class ImagingApi
     }
 
     /**
-     * Add tag and reference image to search context.
+     * Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextAddTagRequest $request Request object for operation
@@ -3654,7 +3654,7 @@ class ImagingApi
     }
     
     /**
-     * Compare two images.
+     * Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextCompareImagesRequest $request Request object for operation
      *
@@ -3684,7 +3684,7 @@ class ImagingApi
     }
 
     /**
-     * Compare two images.
+     * Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextCompareImagesRequest $request Request object for operation
@@ -3719,13 +3719,13 @@ class ImagingApi
     }
     
     /**
-     * Extract images features and add them to search context
+     * Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextExtractImageFeaturesRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function postSearchContextExtractImageFeatures($request)
     {
@@ -3749,7 +3749,7 @@ class ImagingApi
     }
 
     /**
-     * Extract images features and add them to search context
+     * Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextExtractImageFeaturesRequest $request Request object for operation
@@ -3784,7 +3784,7 @@ class ImagingApi
     }
     
     /**
-     * Find images by tag.
+     * Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextFindByTagsRequest $request Request object for operation
      *
@@ -3814,7 +3814,7 @@ class ImagingApi
     }
 
     /**
-     * Find images by tag.
+     * Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostSearchContextFindByTagsRequest $request Request object for operation
@@ -3914,7 +3914,7 @@ class ImagingApi
     }
     
     /**
-     * Update image and images features in search context.
+     * Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PutSearchContextImageRequest $request Request object for operation
      *
@@ -3944,7 +3944,7 @@ class ImagingApi
     }
 
     /**
-     * Update image and images features in search context.
+     * Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PutSearchContextImageRequest $request Request object for operation
@@ -3979,13 +3979,13 @@ class ImagingApi
     }
     
     /**
-     * Update images features in search context.
+     * Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PutSearchContextImageFeaturesRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Stream\StreamInterface
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function putSearchContextImageFeatures($request)
     {
@@ -4009,7 +4009,7 @@ class ImagingApi
     }
 
     /**
-     * Update images features in search context.
+     * Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PutSearchContextImageFeaturesRequest $request Request object for operation
@@ -4062,7 +4062,6 @@ class ImagingApi
         $headers = $initialInfo['headers'];
         $initialHttpBody = $initialInfo['httpBody'];
         $httpBody = '';
-        $multipart = $initialInfo['multipart'];
 
         // for model (json/xml)
         if (isset($initialHttpBody)) {
@@ -4072,33 +4071,28 @@ class ImagingApi
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
-            if ($multipart && count($formParams) > 1) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue,
-                        'headers' => [
-                            'Content-Disposition' => 'form-data',
-                            'Content-Type' => 'application/octet-stream',
-                            'Content-Length' => strlen($formParamValue)
-                        ]
-                    ];
-                }
-                
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
+            $multipartContents = [];
+            foreach ($formParams as $formParamName => $formParamValue) {
+                $multipartContents[] = [
+                    'name' => $formParamName,
+                    'contents' => $formParamValue,
+                    'headers' => [
+                        'Content-Disposition' => 'form-data',
+                        'Content-Length' => strlen($formParamValue)
+                    ]
+                ];
+            }
+            
+            if (!preg_match('/\bv1\\.\b/', $this->getConfig()->getApiVersion())) {
+                $boundary = sha1(uniqid('', true));
+                $headers['Content-Type'] = "multipart/form-data; boundary=" . $boundary;
+                $httpBody = new MultipartStream($multipartContents, $boundary);
             } else {
-                // for HTTP post (form)
+                unset($headers['Content-Type']);
                 $httpBody = reset($formParams);
             }
         }
-
-        if (isset($httpBody))
-        {
-            $headers['Content-Length'] = strlen($httpBody);
-        }
-
+        
         if ($this->configuration->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->configuration->getAccessToken();
         }
@@ -4122,11 +4116,10 @@ class ImagingApi
             $headers,
             $httpBody
         );
-
         if ($this->configuration->getDebug()) {
             $this->writeRequestLog($httpMethod, $this->configuration->getApiBaseUrl() . "/" . $resourcePath, $headers, $httpBody);
         }
-
+        
         return $req;
     }
     

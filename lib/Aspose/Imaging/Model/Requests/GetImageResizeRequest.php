@@ -284,7 +284,7 @@ class GetImageResizeRequest extends ImagingRequest
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $multipart = false;
+        $headers = [];
     
         // path params
         if ($this->name !== null) {
@@ -358,12 +358,6 @@ class GetImageResizeRequest extends ImagingRequest
 
         // body params
         $httpBody = null;
-
-        if ($multipart) {
-            $headers['Content-Type'] = 'multipart/form-data';
-        } else {
-            $headers['Content-Type'] = 'application/json';
-        }
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,
@@ -371,8 +365,7 @@ class GetImageResizeRequest extends ImagingRequest
             "headerParams" => $headerParams,
             "headers" => $headers,
             "httpBody" => $httpBody,
-            "multipart" => $multipart,
-            "formParams" => $formParams
+            "formParams" => $formParams,
         );
         
         return $httpInfo;        

@@ -126,7 +126,7 @@ class PostImageFramePropertiesRequest extends ImagingRequest
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $multipart = false;
+        $headers = [];
     
         // path params
         if ($this->frame_id !== null) {
@@ -140,17 +140,10 @@ class PostImageFramePropertiesRequest extends ImagingRequest
 
         // form params
         if ($this->image_data !== null) {
-            $multipart = true;
             $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
         }
         // body params
         $httpBody = null;
-
-        if ($multipart) {
-            $headers['Content-Type'] = 'multipart/form-data';
-        } else {
-            $headers['Content-Type'] = 'application/json';
-        }
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,
@@ -158,8 +151,7 @@ class PostImageFramePropertiesRequest extends ImagingRequest
             "headerParams" => $headerParams,
             "headers" => $headers,
             "httpBody" => $httpBody,
-            "multipart" => $multipart,
-            "formParams" => $formParams
+            "formParams" => $formParams,
         );
         
         return $httpInfo;        

@@ -50,7 +50,7 @@ class EmfApiTest extends ApiTester
      * 
      * @test
      * @dataProvider storageOptionsProvider
-     *
+     * 
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
@@ -82,8 +82,16 @@ class EmfApiTest extends ApiTester
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
                 $this->assertNotNull($resultProperties->getPngProperties());
-                $this->assertEquals((int)(($pageWidth + $borderX * 2) * ($resultProperties->getHorizontalResolution() / 72)), $resultProperties->getWidth());
-                $this->assertEquals((int)(($pageHeight + $borderY * 2) * ($resultProperties->getVerticalResolution() / 72)), $resultProperties->getHeight());
+                if (preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()))
+                {
+                    $this->assertEquals((int)(($pageWidth + $borderX * 2) * ($resultProperties->getHorizontalResolution() / 72)), $resultProperties->getWidth());
+                    $this->assertEquals((int)(($pageHeight + $borderY * 2) * ($resultProperties->getVerticalResolution() / 72)), $resultProperties->getHeight());
+                }
+                else 
+                {
+                    $this->assertEquals($pageWidth + $borderX * 2, $resultProperties->getWidth());
+                    $this->assertEquals($pageHeight + $borderY * 2, $resultProperties->getHeight());
+                }
             },
             $folder,
             $storage);
@@ -94,7 +102,7 @@ class EmfApiTest extends ApiTester
      * 
      * @test
      * @dataProvider storageOptionsProvider
-     *
+     * 
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
@@ -126,8 +134,16 @@ class EmfApiTest extends ApiTester
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
                 $this->assertNotNull($resultProperties->getPngProperties());
-                $this->assertEquals((int)(($pageWidth + $borderX * 2) * ($resultProperties->getHorizontalResolution() / 72)), $resultProperties->getWidth());
-                $this->assertEquals((int)(($pageHeight + $borderY * 2) * ($resultProperties->getVerticalResolution() / 72)), $resultProperties->getHeight());
+                if (preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()))
+                {
+                    $this->assertEquals((int)(($pageWidth + $borderX * 2) * ($resultProperties->getHorizontalResolution() / 72)), $resultProperties->getWidth());
+                    $this->assertEquals((int)(($pageHeight + $borderY * 2) * ($resultProperties->getVerticalResolution() / 72)), $resultProperties->getHeight());
+                }
+                else 
+                {
+                    $this->assertEquals($pageWidth + $borderX * 2, $resultProperties->getWidth());
+                    $this->assertEquals($pageHeight + $borderY * 2, $resultProperties->getHeight());
+                }
             },
             $folder,
             $storage);

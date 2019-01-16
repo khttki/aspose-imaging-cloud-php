@@ -6,6 +6,6 @@
     stopOnFailure="false"
     verbose="true">
     <logging>
-      <log type="junit" target="./testReports/junit.xml" logIncompleteSkipped="true"/>
+      <log type="junit" target="test-reports\junit.xml" logIncompleteSkipped="true"/>
     </logging>
 </phpunit>
