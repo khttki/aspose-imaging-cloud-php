@@ -121,6 +121,13 @@ abstract class ApiTester extends TestCase
     protected static $asyncMode;
 
     /**
+     * If extended tests should be run
+     * 
+     * @var bool
+     */
+    protected static $extendedTests;
+
+    /**
      * Aspose.Imaging API
      * 
      * @var \Aspose\Imaging\ImagingApi 
@@ -190,7 +197,9 @@ abstract class ApiTester extends TestCase
     {
         echo "\r\n";
         self::$asyncMode = getenv("AsyncMode") === "true" ? true : false;
+        self::$extendedTests = getenv("ExtendedTests") === "true" ? true : false;
         echo "Async mode: " . (self::$asyncMode ? "true" : "false") . "\r\n";
+        echo "Extended tests: " . (self::$extendedTests ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
         {
