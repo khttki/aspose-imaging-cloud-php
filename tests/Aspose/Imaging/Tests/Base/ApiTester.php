@@ -584,8 +584,7 @@ abstract class ApiTester extends TestCase
                 self::$storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
             }
 
-            echo "Test passed: ";
-            echo ($passed === true ? "true" : "false") . "\r\n";
+            echo "Test passed: " . var_export($passed, true) . "\r\n";
         }
     }
 }

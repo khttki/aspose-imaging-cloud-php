@@ -68,6 +68,16 @@ abstract class TestImagingAiBase extends ApiTester
      */
     public function initTest()
     {
+        $buildNumber = getenv("BUILD_NUMBER");
+        if (!empty($buildNumber))
+        {
+            self::$tempFolder = self::$cloudTestFolderPrefix . '_' . $buildNumber;
+        }
+        else
+        {
+            self::$tempFolder = self::$cloudTestFolderPrefix . '_' . get_current_user();
+        }
+
         $this->searchContextId = $this->createSearchContext();
     }
 
@@ -76,11 +86,10 @@ abstract class TestImagingAiBase extends ApiTester
      */
     public function finalizeTest()
     {
-        if ($this->searchContextId)
+        if (isset($this->searchContextId))
         {
             $this->deleteSearchContext($this->searchContextId);
         }
-
         if (self::$storageApi->getIsExist(
             new StorageRequests\GetIsExistRequest(self::$tempFolder, null, self::$testStorage))->getFileExist()->getIsExist())
         {
@@ -97,7 +106,7 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function getStoragePath($imageName, $folder = null)
     {
-        if ($folder)
+        if (isset($folder))
         {
             return $folder . "/" . $imageName;
         }
@@ -132,14 +141,9 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function deleteSearchContext($searchContextId)
     {
-        if (self::$asyncMode)
-        {
-            self::$imagingApi->deleteSearchContextAsync(new ImagingRequests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage))->wait();
-        }
-        else
-        {
+        self::$asyncMode ?
+            self::$imagingApi->deleteSearchContextAsync(new ImagingRequests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage))->wait() :
             self::$imagingApi->deleteSearchContext(new ImagingRequests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage));
-        }
     }
 
     /**
@@ -199,10 +203,10 @@ abstract class TestImagingAiBase extends ApiTester
         {
             sleep($sleepTime);
             $status = self::$asyncMode ? 
-            self::$imagingApi->getSearchContextStatusAsync(
-                new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->wait()->getSearchStatus() :
-            self::$imagingApi->getSearchContextStatus(
-                new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->getSearchStatus();  
+                self::$imagingApi->getSearchContextStatusAsync(
+                    new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->wait()->getSearchStatus() :
+                self::$imagingApi->getSearchContextStatus(
+                    new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->getSearchStatus();  
         }
     }
 
@@ -228,7 +232,9 @@ abstract class TestImagingAiBase extends ApiTester
             echo $ex->getMessage() . "\r\n";
             throw $ex;
         }
-
-        echo "Test passed: " . $passed . "\r\n";
+        finally
+        {
+            echo "Test passed: " . var_export($passed, true) . "\r\n";
+        }
     }
 }

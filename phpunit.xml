@@ -4,7 +4,8 @@
     colors="true"
     stopOnError="false"
     stopOnFailure="false"
-    verbose="true">
+    verbose="true"
+    processIsolation="false">
     <logging>
       <log type="junit" target="test-reports\junit.xml" logIncompleteSkipped="true"/>
     </logging>
