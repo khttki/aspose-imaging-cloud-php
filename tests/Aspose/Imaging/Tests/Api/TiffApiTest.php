@@ -214,7 +214,7 @@ class TiffApiTest extends ApiTester
 
         $resultFileName = $inputFileName . "_merged.tiff";
         $outPath = null;
-        $inputPath = $folder + "/" + $inputFileName;
+        $inputPath = $folder . "/" . $inputFileName;
         $storage = self::$testStorage;
 
         try

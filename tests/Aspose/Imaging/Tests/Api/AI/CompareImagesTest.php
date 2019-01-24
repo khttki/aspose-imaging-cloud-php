@@ -102,8 +102,7 @@ class CompareImagesTest extends TestImagingAiBase
             $image = $this->getStoragePath($this->comparableImage);
             $this->addImageFeaturesToSearchContext($image);
 
-            $storagePath = self::$originalDataFolder + "/" + $this->comparingImageSimilarLess15;
-
+            $storagePath = self::$originalDataFolder . "/" . $this->comparingImageSimilarLess15;
             $imageStream = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($storagePath, null, self::$testStorage));
             $this->assertNotNull($imageStream);
 
