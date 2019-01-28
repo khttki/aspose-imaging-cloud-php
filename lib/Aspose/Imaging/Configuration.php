@@ -88,8 +88,9 @@ class Configuration
      * @var string
      */
     public $refreshToken = '';
+    
     /*
-     * Version of Aspose.Words Cloud API
+     * Version of Aspose.Imaging Cloud API
      *
      */
     private $clientVersion = '19.1';
