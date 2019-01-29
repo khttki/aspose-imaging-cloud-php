@@ -45,11 +45,11 @@ Process options, change and return image in the PNG format:
 * Image features extraction (for now, AKAZE detector is supported)
 
 # Usage
-1. Please, add the following [Packagist package](https://packagist.org/packages/aspose/imaging-cloud-php) to your composer.json as a dependency.
+1. Please, add the following [Packagist package](https://packagist.org/packages/aspose/imaging-sdk-php) to your composer.json as a dependency.
 ```json
 {
     "require": {
-        "aspose/imaging-cloud-php": ">=19.1"
+        "aspose/imaging-sdk-php": ">=19.1"
     }
 }
 ```
@@ -76,7 +76,7 @@ All Aspose.Imaging Cloud SDKs, helper scripts and templates are licensed under [
 # Contact Us
 Your feedback is very important to us. Please feel free to contact via
 + [**Free Support Forum**](https://forum.aspose.cloud/c/imaging)
-+ [**Paid Support Helpdesk**](https://helpdesk.aspose.imaging/)
++ [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
 
 # Resources
 + [**Web API reference**](https://apireference.aspose.cloud/imaging/)
