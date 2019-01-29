@@ -1,0 +1,9 @@
+vendor/
+test-reports/
+.vs/
+.vscode/
+composer.lock
+.swagger-codegen-ignore
+.php_cs.cache
+php_errors.log
+.git
