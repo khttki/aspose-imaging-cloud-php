@@ -27,15 +27,16 @@
  */
 
 namespace Aspose\Imaging\Model;
+
+use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * ImagingResponse
  *
  * @description Represents information about image.
  */
-class ImagingResponse extends SaaSposeResponse 
+class ImagingResponse implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -105,7 +106,7 @@ class ImagingResponse extends SaaSposeResponse
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /**
@@ -115,7 +116,7 @@ class ImagingResponse extends SaaSposeResponse
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /**
@@ -205,7 +206,7 @@ class ImagingResponse extends SaaSposeResponse
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -215,7 +216,7 @@ class ImagingResponse extends SaaSposeResponse
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -225,7 +226,7 @@ class ImagingResponse extends SaaSposeResponse
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -242,6 +243,12 @@ class ImagingResponse extends SaaSposeResponse
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -251,8 +258,6 @@ class ImagingResponse extends SaaSposeResponse
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['bits_per_pixel'] = isset($data['bits_per_pixel']) ? $data['bits_per_pixel'] : null;
@@ -280,8 +285,26 @@ class ImagingResponse extends SaaSposeResponse
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
+        }
+        if ($this->container['bits_per_pixel'] === null) {
+            $invalidProperties[] = "'bits_per_pixel' can't be null";
+        }
+        if ($this->container['horizontal_resolution'] === null) {
+            $invalidProperties[] = "'horizontal_resolution' can't be null";
+        }
+        if ($this->container['vertical_resolution'] === null) {
+            $invalidProperties[] = "'vertical_resolution' can't be null";
+        }
+        if ($this->container['is_cached'] === null) {
+            $invalidProperties[] = "'is_cached' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,10 +316,25 @@ class ImagingResponse extends SaaSposeResponse
      */
     public function valid()
     {
-        if (!parent::valid()) {
+
+        if ($this->container['height'] === null) {
             return false;
         }
-
+        if ($this->container['width'] === null) {
+            return false;
+        }
+        if ($this->container['bits_per_pixel'] === null) {
+            return false;
+        }
+        if ($this->container['horizontal_resolution'] === null) {
+            return false;
+        }
+        if ($this->container['vertical_resolution'] === null) {
+            return false;
+        }
+        if ($this->container['is_cached'] === null) {
+            return false;
+        }
         return true;
     }
 

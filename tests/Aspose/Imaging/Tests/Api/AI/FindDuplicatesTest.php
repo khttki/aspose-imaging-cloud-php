@@ -28,13 +28,13 @@
 
 namespace Aspose\Imaging\Tests\Api\AI;
 
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
+use \Aspose\Imaging\Model\Requests;
 
 /**
  * Class for testing image duplicates search
  * 
  * @group AI
- * @group v2.0
+ * @group v3.0
  */
 class FindDuplicatesTest extends TestImagingAiBase
 {
@@ -83,10 +83,9 @@ class FindDuplicatesTest extends TestImagingAiBase
 
             $response = self::$asyncMode ?
                 self::$imagingApi->getSearchContextFindDuplicatesAsync(
-                    new ImagingRequests\GetSearchContextFindDuplicatesRequest($this->searchContextId, 80))->wait() :
+                    new Requests\GetSearchContextFindDuplicatesRequest($this->searchContextId, 80, null, self::$testStorage))->wait() :
                 self::$imagingApi->getSearchContextFindDuplicates(
-                    new ImagingRequests\GetSearchContextFindDuplicatesRequest($this->searchContextId, 80));
-            $this->assertEquals(200, $response->getCode());
+                    new Requests\GetSearchContextFindDuplicatesRequest($this->searchContextId, 80, null, self::$testStorage));
             $this->assertEquals(1, count($response->getDuplicates()));
         });
     }

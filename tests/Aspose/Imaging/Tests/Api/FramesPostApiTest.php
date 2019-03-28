@@ -39,7 +39,7 @@ use \GuzzleHttp\Stream;
  * Class for testing FramesApi
  * 
  * @group Imaging
- * @group v2.0
+ * @group v3.0
  * @group Tiff
  */
 class FramesPostApiTest extends ApiTester

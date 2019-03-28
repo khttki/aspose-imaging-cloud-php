@@ -30,7 +30,6 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * DicomProperties
@@ -409,18 +408,6 @@ class DicomProperties implements ArrayAccess
         if ($this->container['planar_configuration'] === null) {
             return false;
         }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['reds'])) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['greens'])) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['blues'])) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['dicom_header_info_by_bytes'])) {
-            return false;
-        }
         if ($this->container['signed_image'] === null) {
             return false;
         }
@@ -519,11 +506,6 @@ class DicomProperties implements ArrayAccess
      */
     public function setReds($reds)
     {
-
-        if (!is_null($reds) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $reds))) {
-            throw new \InvalidArgumentException("invalid value for $reds when calling DicomProperties., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['reds'] = $reds;
 
         return $this;
@@ -548,11 +530,6 @@ class DicomProperties implements ArrayAccess
      */
     public function setGreens($greens)
     {
-
-        if (!is_null($greens) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $greens))) {
-            throw new \InvalidArgumentException("invalid value for $greens when calling DicomProperties., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['greens'] = $greens;
 
         return $this;
@@ -577,11 +554,6 @@ class DicomProperties implements ArrayAccess
      */
     public function setBlues($blues)
     {
-
-        if (!is_null($blues) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $blues))) {
-            throw new \InvalidArgumentException("invalid value for $blues when calling DicomProperties., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['blues'] = $blues;
 
         return $this;
@@ -606,11 +578,6 @@ class DicomProperties implements ArrayAccess
      */
     public function setDicomHeaderInfoByBytes($dicom_header_info_by_bytes)
     {
-
-        if (!is_null($dicom_header_info_by_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $dicom_header_info_by_bytes))) {
-            throw new \InvalidArgumentException("invalid value for $dicom_header_info_by_bytes when calling DicomProperties., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['dicom_header_info_by_bytes'] = $dicom_header_info_by_bytes;
 
         return $this;

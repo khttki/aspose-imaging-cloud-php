@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="PostImageDicomRequest.php">
+ * <copyright company="Aspose" file="MoveFolderRequest.php">
  *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,135 +34,135 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for postImageDicom operation.
+ * Request model for moveFolder operation.
  */
-class PostImageDicomRequest extends ImagingRequest
+class MoveFolderRequest extends ImagingRequest
 {
     /**
-     * Input image
+     * Folder path to move e.g. '/folder'
      *
      * @var string
      */
-    public $image_data;
+    public $src_path;
     
     /**
-     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-     *
-     * @var bool
-     */
-    public $from_scratch;
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
+     * Destination folder path to move to e.g '/dst'
      *
      * @var string
      */
-    public $out_path;
+    public $dest_path;
     
     /**
-     * Your Aspose Cloud Storage name.
+     * Source storage name
      *
      * @var string
      */
-    public $storage;
+    public $src_storage_name;
     
     /**
-     * Initializes a new instance of the PostImageDicomRequest class.
+     * Destination storage name
+     *
+     * @var string
+     */
+    public $dest_storage_name;
+    
+    /**
+     * Initializes a new instance of the MoveFolderRequest class.
      *  
-     * @param string $image_data Input image
-     * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
-     * @param string $storage Your Aspose Cloud Storage name.
+     * @param string $src_path Folder path to move e.g. '/folder'
+     * @param string $dest_path Destination folder path to move to e.g '/dst'
+     * @param string $src_storage_name Source storage name
+     * @param string $dest_storage_name Destination storage name
      */
-    public function __construct($image_data, $from_scratch = null, $out_path = null, $storage = null)             
+    public function __construct($src_path, $dest_path, $src_storage_name = null, $dest_storage_name = null)             
     {
-        $this->image_data = $image_data;
-        $this->from_scratch = $from_scratch;
-        $this->out_path = $out_path;
-        $this->storage = $storage;
+        $this->src_path = $src_path;
+        $this->dest_path = $dest_path;
+        $this->src_storage_name = $src_storage_name;
+        $this->dest_storage_name = $dest_storage_name;
     }
 
     /**
-     * Input image
+     * Folder path to move e.g. '/folder'
      *
      * @return string
      */
-    public function get_image_data()
+    public function get_src_path()
     {
-        return $this->image_data;
+        return $this->src_path;
     }
 
     /**
-     * Input image
+     * Folder path to move e.g. '/folder'
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_image_data($value)
+    public function set_src_path($value)
     {
-        $this->image_data = $value;
+        $this->src_path = $value;
         return $this;
     }
     
     /**
-     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     * Destination folder path to move to e.g '/dst'
      *
-     * @return bool
+     * @return string
      */
-    public function get_from_scratch()
+    public function get_dest_path()
     {
-        return $this->from_scratch;
+        return $this->dest_path;
     }
 
     /**
-     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     * Destination folder path to move to e.g '/dst'
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_from_scratch($value)
+    public function set_dest_path($value)
     {
-        $this->from_scratch = $value;
+        $this->dest_path = $value;
         return $this;
     }
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
+     * Source storage name
      *
      * @return string
      */
-    public function get_out_path()
+    public function get_src_storage_name()
     {
-        return $this->out_path;
+        return $this->src_storage_name;
     }
 
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
+     * Source storage name
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_out_path($value)
+    public function set_src_storage_name($value)
     {
-        $this->out_path = $value;
+        $this->src_storage_name = $value;
         return $this;
     }
     
     /**
-     * Your Aspose Cloud Storage name.
+     * Destination storage name
      *
      * @return string
      */
-    public function get_storage()
+    public function get_dest_storage_name()
     {
-        return $this->storage;
+        return $this->dest_storage_name;
     }
 
     /**
-     * Your Aspose Cloud Storage name.
+     * Destination storage name
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_storage($value)
+    public function set_dest_storage_name($value)
     {
-        $this->storage = $value;
+        $this->dest_storage_name = $value;
         return $this;
     }
 
@@ -173,22 +173,31 @@ class PostImageDicomRequest extends ImagingRequest
      */
     public function getHttpRequestInfo($config)
     {
-        // verify the required parameter 'image_data' is set
-        if ($this->image_data === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $image_data when calling postImageDicom');
+        // verify the required parameter 'src_path' is set
+        if ($this->src_path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $src_path when calling moveFolder');
+        }
+        // verify the required parameter 'dest_path' is set
+        if ($this->dest_path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $dest_path when calling moveFolder');
         }
 
-        $resourcePath = '/imaging/dicom';
+        $resourcePath = '/imaging/storage/folder/move/{srcPath}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $headers = [];
     
+        // path params
+        if ($this->src_path !== null) {
+            $localName = lcfirst('srcPath');
+            $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($this->src_path), $resourcePath);
+        }
 
         // query params
-        if ($this->from_scratch !== null) {
-            $localName = lcfirst('fromScratch');
-            $localValue = is_bool($this->from_scratch) ? ($this->from_scratch ? 'true' : 'false') : $this->from_scratch;
+        if ($this->dest_path !== null) {
+            $localName = lcfirst('destPath');
+            $localValue = is_bool($this->dest_path) ? ($this->dest_path ? 'true' : 'false') : $this->dest_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -196,9 +205,9 @@ class PostImageDicomRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
+        if ($this->src_storage_name !== null) {
+            $localName = lcfirst('srcStorageName');
+            $localValue = is_bool($this->src_storage_name) ? ($this->src_storage_name ? 'true' : 'false') : $this->src_storage_name;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -206,9 +215,9 @@ class PostImageDicomRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->storage !== null) {
-            $localName = lcfirst('storage');
-            $localValue = is_bool($this->storage) ? ($this->storage ? 'true' : 'false') : $this->storage;
+        if ($this->dest_storage_name !== null) {
+            $localName = lcfirst('destStorageName');
+            $localValue = is_bool($this->dest_storage_name) ? ($this->dest_storage_name ? 'true' : 'false') : $this->dest_storage_name;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -219,10 +228,6 @@ class PostImageDicomRequest extends ImagingRequest
     
         $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
-        // form params
-        if ($this->image_data !== null) {
-            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
-        }
         // body params
         $httpBody = null;
         

@@ -28,7 +28,6 @@
 
 namespace Aspose\Imaging\Model;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * JpegExifData
@@ -270,6 +269,12 @@ class JpegExifData extends ExifData
     {
         $invalidProperties = parent::listInvalidProperties();
 
+        if ($this->container['x_resolution'] === null) {
+            $invalidProperties[] = "'x_resolution' can't be null";
+        }
+        if ($this->container['y_resolution'] === null) {
+            $invalidProperties[] = "'y_resolution' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -285,6 +290,12 @@ class JpegExifData extends ExifData
             return false;
         }
 
+        if ($this->container['x_resolution'] === null) {
+            return false;
+        }
+        if ($this->container['y_resolution'] === null) {
+            return false;
+        }
         return true;
     }
 

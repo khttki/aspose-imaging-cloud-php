@@ -28,15 +28,14 @@
 
 namespace Aspose\Imaging\Tests\Api\AI;
 
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
-use \Aspose\Storage\Model\Requests as StorageRequests;
+use \Aspose\Imaging\Model\Requests;
 use \DateTime;
 
 /**
  * Class for testing image comparison
  * 
  * @group AI
- * @group v2.0
+ * @group v3.0
  */
 class SearchContextTest extends TestImagingAiBase
 {
@@ -87,14 +86,13 @@ class SearchContextTest extends TestImagingAiBase
             {
                 self::$asyncMode ?
                     self::$imagingApi->getSearchContextStatusAsync(
-                        new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->wait() :
+                        new Requests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->wait() :
                     self::$imagingApi->getSearchContextStatus(
-                        new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage));
+                        new Requests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage));
             }
             catch (\Exception $ex)
             {
                 $exceptionThrown = true;
-                $this->assertRegExp('/\bnot found\b/', $ex->getMessage());
             }
 
             $this->assertTrue($exceptionThrown);
@@ -133,24 +131,23 @@ class SearchContextTest extends TestImagingAiBase
             $destServerPath = self::$tempFolder . "/" . $image;
 
             self::$asyncMode ? 
-                self::$imagingApi->deleteSearchContextImageAsync(new ImagingRequests\DeleteSearchContextImageRequest(
+                self::$imagingApi->deleteSearchContextImageAsync(new Requests\DeleteSearchContextImageRequest(
                     $this->searchContextId, $destServerPath, null, self::$testStorage))->wait() :
-                self::$imagingApi->deleteSearchContextImage(new ImagingRequests\DeleteSearchContextImageRequest(
+                self::$imagingApi->deleteSearchContextImage(new Requests\DeleteSearchContextImageRequest(
                     $this->searchContextId, $destServerPath, null, self::$testStorage));
 
             $exceptionThrown = false;
             try
             {
                 self::$asyncMode ? 
-                    self::$imagingApi->getSearchContextImageAsync(new ImagingRequests\GetSearchContextImageRequest(
+                    self::$imagingApi->getSearchContextImageAsync(new Requests\GetSearchContextImageRequest(
                         $this->searchContextId, $destServerPath, null, self::$testStorage))->wait() :
-                    self::$imagingApi->getSearchContextImage(new ImagingRequests\GetSearchContextImageRequest(
+                    self::$imagingApi->getSearchContextImage(new Requests\GetSearchContextImageRequest(
                         $this->searchContextId, $destServerPath, null, self::$testStorage));
             }
             catch (\Exception $ex)
             {
                 $exceptionThrown = true;
-                $this->assertRegExp('/\bnot found\b/', $ex->getMessage());
             }
 
             $this->assertTrue($exceptionThrown);
@@ -195,14 +192,15 @@ class SearchContextTest extends TestImagingAiBase
             $destServerPath = self::$tempFolder . "/" . $image;
 
             $storagePath = self::$originalDataFolder . "/" . $image;
-            $imageStream = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($storagePath, null, self::$testStorage));
+            $imageStream = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($storagePath, self::$testStorage));
             $this->assertNotNull($imageStream);
+            $imageContents = $imageStream->getContents();
 
             self::$asyncMode ? 
-                self::$imagingApi->putSearchContextImageAsync(new ImagingRequests\PutSearchContextImageRequest(
-                    $this->searchContextId, $destServerPath, $imageStream->fread($imageStream->getSize()), null, self::$testStorage))->wait() :
-                self::$imagingApi->putSearchContextImage(new ImagingRequests\PutSearchContextImageRequest(
-                    $this->searchContextId, $destServerPath, $imageStream->fread($imageStream->getSize()), null, self::$testStorage));
+                self::$imagingApi->putSearchContextImageAsync(new Requests\PutSearchContextImageRequest(
+                    $this->searchContextId, $destServerPath, $imageContents, null, self::$testStorage))->wait() :
+                self::$imagingApi->putSearchContextImage(new Requests\PutSearchContextImageRequest(
+                    $this->searchContextId, $destServerPath, $imageContents, null, self::$testStorage));
 
             $responseStream = $this->getImage($image);
             $this->assertLessThanOrEqual(40000, $responseStream->getSize());
@@ -227,11 +225,10 @@ class SearchContextTest extends TestImagingAiBase
             $destServerPath = self::$tempFolder . "/" . $image;
 
             $response = self::$asyncMode ? 
-                self::$imagingApi->getSearchContextExtractImageFeaturesAsync(new ImagingRequests\GetSearchContextExtractImageFeaturesRequest(
+                self::$imagingApi->getSearchContextExtractImageFeaturesAsync(new Requests\GetSearchContextExtractImageFeaturesRequest(
                     $this->searchContextId, $destServerPath, null, null, self::$testStorage))->wait() :
-                self::$imagingApi->getSearchContextExtractImageFeatures(new ImagingRequests\GetSearchContextExtractImageFeaturesRequest(
+                self::$imagingApi->getSearchContextExtractImageFeatures(new Requests\GetSearchContextExtractImageFeaturesRequest(
                     $this->searchContextId, $destServerPath, null, null, self::$testStorage));
-            $this->assertEquals(200, $response->getCode());
             $this->assertRegExp('/\bComparingImageSimilar15\\.jpg\b/', $response->getImageId());
             $this->assertGreaterThan(0, count($response->getFeatures()));
         });
@@ -264,20 +261,19 @@ class SearchContextTest extends TestImagingAiBase
         $this->runTestWithLogging("extractAndAddImageFeaturesFromFolderTest", function()
         {
             self::$asyncMode ? 
-                self::$imagingApi->postSearchContextExtractImageFeaturesAsync(new ImagingRequests\PostSearchContextExtractImageFeaturesRequest(
+                self::$imagingApi->postSearchContextExtractImageFeaturesAsync(new Requests\PostSearchContextExtractImageFeaturesRequest(
                     $this->searchContextId, null, null, self::$originalDataFolder . "/FindSimilar", null, self::$testStorage))->wait() :
-                self::$imagingApi->postSearchContextExtractImageFeatures(new ImagingRequests\PostSearchContextExtractImageFeaturesRequest(
+                self::$imagingApi->postSearchContextExtractImageFeatures(new Requests\PostSearchContextExtractImageFeaturesRequest(
                     $this->searchContextId, null, null, self::$originalDataFolder . "/FindSimilar", null, self::$testStorage));
 
             $this->waitSearchContextIdle();
 
             $response = self::$asyncMode ? 
-                self::$imagingApi->getSearchContextImageFeaturesAsync(new ImagingRequests\GetSearchContextImageFeaturesRequest(
+                self::$imagingApi->getSearchContextImageFeaturesAsync(new Requests\GetSearchContextImageFeaturesRequest(
                     $this->searchContextId, self::$originalDataFolder . "/FindSimilar/3.jpg", null, self::$testStorage))->wait() :
-                self::$imagingApi->getSearchContextImageFeatures(new ImagingRequests\GetSearchContextImageFeaturesRequest(
+                self::$imagingApi->getSearchContextImageFeatures(new Requests\GetSearchContextImageFeaturesRequest(
                     $this->searchContextId, self::$originalDataFolder . "/FindSimilar/3.jpg", null, self::$testStorage));
 
-            $this->assertEquals(200, $response->getCode());
             $this->assertRegExp('/\b3\\.jpg\b/', $response->getImageId());
             $this->assertGreaterThan(0, count($response->getFeatures()));
         });
@@ -318,24 +314,23 @@ class SearchContextTest extends TestImagingAiBase
             $destServerPath = self::$tempFolder . "/" . $image;
 
             self::$asyncMode ? 
-                self::$imagingApi->deleteSearchContextImageAsync(new ImagingRequests\DeleteSearchContextImageRequest(
+                self::$imagingApi->deleteSearchContextImageAsync(new Requests\DeleteSearchContextImageRequest(
                     $this->searchContextId, $destServerPath, null, self::$testStorage))->wait() :
-                self::$imagingApi->deleteSearchContextImage(new ImagingRequests\DeleteSearchContextImageRequest(
+                self::$imagingApi->deleteSearchContextImage(new Requests\DeleteSearchContextImageRequest(
                     $this->searchContextId, $destServerPath, null, self::$testStorage));
 
             $exceptionThrown = false;
             try
             {
                 self::$asyncMode ? 
-                    self::$imagingApi->getSearchContextImageAsync(new ImagingRequests\GetSearchContextImageRequest(
+                    self::$imagingApi->getSearchContextImageAsync(new Requests\GetSearchContextImageRequest(
                         $this->searchContextId, $destServerPath, null, self::$testStorage))->wait() :
-                    self::$imagingApi->getSearchContextImage(new ImagingRequests\GetSearchContextImageRequest(
+                    self::$imagingApi->getSearchContextImage(new Requests\GetSearchContextImageRequest(
                         $this->searchContextId, $destServerPath, null, self::$testStorage));
             }
             catch (\Exception $ex)
             {
                 $exceptionThrown = true;
-                $this->assertRegExp('/\bnot found\b/', $ex->getMessage());
             }
 
             $this->assertTrue($exceptionThrown);
@@ -351,8 +346,6 @@ class SearchContextTest extends TestImagingAiBase
      */
     public function updateImageFeaturesTest()
     {
-        /* Test is crashing PHP process silently for an unknown reason - to be investigated.
-        / markTestSkipped is not used since it's making build unstable
         $this->runTestWithLogging("updateImageFeaturesTest", function()
         {
             $image = $this->testImage;
@@ -360,25 +353,26 @@ class SearchContextTest extends TestImagingAiBase
             $response = $this->getImageFeatures($image);
             $this->assertRegExp('/\bComparingImageSimilar15\\.jpg\b/', $response->getImageId());
             $features = $response->getFeatures();
-            $featuresLength = count($features);
+            $featuresLength = strlen($features);
 
             $destServerPath = self::$originalDataFolder . "/" . $image;
             $storagePath = self::$originalDataFolder . "/" . $this->smallTestImage;
 
-            $imageStream = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($storagePath, null, self::$testStorage));
+            $imageStream = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($storagePath, self::$testStorage));
             $this->assertNotNull($imageStream);
+            $imageContents = $imageStream->getContents();
 
             self::$asyncMode ? 
-                self::$imagingApi->putSearchContextImageFeaturesAsync(new ImagingRequests\PutSearchContextImageFeaturesRequest(
-                    $this->searchContextId, $destServerPath, $imageStream->fread($imageStream->getSize()), null, self::$testStorage))->wait() : 
-                self::$imagingApi->putSearchContextImageFeatures(new ImagingRequests\PutSearchContextImageFeaturesRequest(
-                    $this->searchContextId, $destServerPath, $imageStream->fread($imageStream->getSize()), null, self::$testStorage));
+                self::$imagingApi->putSearchContextImageFeaturesAsync(new Requests\PutSearchContextImageFeaturesRequest(
+                    $this->searchContextId, $destServerPath, $imageContents, null, self::$testStorage))->wait() : 
+                self::$imagingApi->putSearchContextImageFeatures(new Requests\PutSearchContextImageFeaturesRequest(
+                    $this->searchContextId, $destServerPath, $imageContents, null, self::$testStorage));
 
+            $this->waitSearchContextIdle();
             $response = $this->getImageFeatures($image);
             $this->assertRegExp('/\bComparingImageSimilar15\\.jpg\b/', $response->getImageId());
-            $this->assertNotEquals($featuresLength, count($response->getFeatures()));
+            $this->assertNotEquals($featuresLength, strlen($response->getFeatures()));
         });
-        */
     }
 
     /**
@@ -392,18 +386,19 @@ class SearchContextTest extends TestImagingAiBase
         $destServerPath = self::$tempFolder . "/" . $image;
         $storagePath = self::$originalDataFolder . "/" . $image;
 
-        $imageStream = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($storagePath, null, self::$testStorage));
+        $imageStream = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($storagePath, self::$testStorage));
         $this->assertNotNull($imageStream);
+        $imageContents = $imageStream->getContents();
 
         self::$asyncMode ? 
-            self::$imagingApi->postSearchContextAddImageAsync(new ImagingRequests\PostSearchContextAddImageRequest(
-                $this->searchContextId, $destServerPath, $imageStream->fread($imageStream->getSize()), null, self::$testStorage))->wait() :
-            self::$imagingApi->postSearchContextAddImage(new ImagingRequests\PostSearchContextAddImageRequest(
-                $this->searchContextId, $destServerPath, $imageStream->fread($imageStream->getSize()), null, self::$testStorage));  
+            self::$imagingApi->postSearchContextAddImageAsync(new Requests\PostSearchContextAddImageRequest(
+                $this->searchContextId, $destServerPath, $imageContents, null, self::$testStorage))->wait() :
+            self::$imagingApi->postSearchContextAddImage(new Requests\PostSearchContextAddImageRequest(
+                $this->searchContextId, $destServerPath, $imageContents, null, self::$testStorage));  
 
-        $existResponse = self::$storageApi->getIsExist(new StorageRequests\GetIsExistRequest($destServerPath, null, self::$testStorage));
+        $existResponse = self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($destServerPath, self::$testStorage));
         $this->assertNotNull($existResponse);
-        $this->assertTrue($existResponse->getFileExist()->getIsExist());
+        $this->assertTrue($existResponse->getExists());
     }
 
     /**
@@ -416,9 +411,9 @@ class SearchContextTest extends TestImagingAiBase
     {
         $destServerPath = self::$tempFolder . "/" . $image;
         return self::$asyncMode ? 
-            self::$imagingApi->getSearchContextImageAsync(new ImagingRequests\GetSearchContextImageRequest(
+            self::$imagingApi->getSearchContextImageAsync(new Requests\GetSearchContextImageRequest(
                 $this->searchContextId, $destServerPath, null, self::$testStorage))->wait() :
-            self::$imagingApi->getSearchContextImage(new ImagingRequests\GetSearchContextImageRequest(
+            self::$imagingApi->getSearchContextImage(new Requests\GetSearchContextImageRequest(
                 $this->searchContextId, $destServerPath, null, self::$testStorage));
     }
 
@@ -432,10 +427,12 @@ class SearchContextTest extends TestImagingAiBase
     {
         $destServerPath = self::$originalDataFolder . "/" . $image;
         self::$asyncMode ? 
-            self::$imagingApi->postSearchContextExtractImageFeaturesAsync(new ImagingRequests\PostSearchContextExtractImageFeaturesRequest(
-                $this->searchContextId, null, $destServerPath, null, self::$testStorage))->wait() : 
-            self::$imagingApi->postSearchContextExtractImageFeatures(new ImagingRequests\PostSearchContextExtractImageFeaturesRequest(
-                $this->searchContextId, null, $destServerPath, null, self::$testStorage));
+            self::$imagingApi->postSearchContextExtractImageFeaturesAsync(new Requests\PostSearchContextExtractImageFeaturesRequest(
+                $this->searchContextId, null, $destServerPath, null, null, self::$testStorage))->wait() : 
+            self::$imagingApi->postSearchContextExtractImageFeatures(new Requests\PostSearchContextExtractImageFeaturesRequest(
+                $this->searchContextId, null, $destServerPath, null, null, self::$testStorage));
+        
+        $this->waitSearchContextIdle();
     }
 
     /**
@@ -448,11 +445,10 @@ class SearchContextTest extends TestImagingAiBase
     {
         $destServerPath = self::$originalDataFolder . "/" . $image;
         $response = self::$asyncMode ?
-            self::$imagingApi->getSearchContextImageFeaturesAsync(new ImagingRequests\GetSearchContextImageFeaturesRequest(
+            self::$imagingApi->getSearchContextImageFeaturesAsync(new Requests\GetSearchContextImageFeaturesRequest(
                 $this->searchContextId, $destServerPath, null, self::$testStorage))->wait() :
-            self::$imagingApi->getSearchContextImageFeatures(new ImagingRequests\GetSearchContextImageFeaturesRequest(
-                $this->searchContextId, $destServerPath, null, self::$testStorage));  
-        $this->assertEquals(200, $response->getCode());
+            self::$imagingApi->getSearchContextImageFeatures(new Requests\GetSearchContextImageFeaturesRequest(
+                $this->searchContextId, $destServerPath, null, self::$testStorage));
         return $response;
     }
 }

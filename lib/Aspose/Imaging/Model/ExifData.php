@@ -30,7 +30,6 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * ExifData
@@ -957,22 +956,10 @@ class ExifData implements ArrayAccess
         if ($this->container['brightness_value'] === null) {
             return false;
         }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['cfa_pattern'])) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['components_configuration'])) {
-            return false;
-        }
         if ($this->container['compressed_bits_per_pixel'] === null) {
             return false;
         }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['device_setting_description'])) {
-            return false;
-        }
         if ($this->container['digital_zoom_ratio'] === null) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['exif_version'])) {
             return false;
         }
         if ($this->container['exposure_bias_value'] === null) {
@@ -990,9 +977,6 @@ class ExifData implements ArrayAccess
         if ($this->container['flash_energy'] === null) {
             return false;
         }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['flashpix_version'])) {
-            return false;
-        }
         if ($this->container['focal_length'] === null) {
             return false;
         }
@@ -1006,9 +990,6 @@ class ExifData implements ArrayAccess
             return false;
         }
         if ($this->container['gps_altitude'] === null) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['gps_area_information'])) {
             return false;
         }
         if ($this->container['gpsdop'] === null) {
@@ -1026,13 +1007,7 @@ class ExifData implements ArrayAccess
         if ($this->container['gps_img_direction'] === null) {
             return false;
         }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['gps_processing_method'])) {
-            return false;
-        }
         if ($this->container['gps_speed'] === null) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['gps_version_id'])) {
             return false;
         }
         if ($this->container['gamma'] === null) {
@@ -1050,13 +1025,7 @@ class ExifData implements ArrayAccess
         if ($this->container['photographic_sensitivity'] === null) {
             return false;
         }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['maker_note_raw_data'])) {
-            return false;
-        }
         if ($this->container['max_aperture_value'] === null) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['oecf'])) {
             return false;
         }
         if ($this->container['pixel_x_dimension'] === null) {
@@ -1078,9 +1047,6 @@ class ExifData implements ArrayAccess
             return false;
         }
         if ($this->container['shutter_speed_value'] === null) {
-            return false;
-        }
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['spatial_frequency_response'])) {
             return false;
         }
         if ($this->container['standard_output_sensitivity'] === null) {
@@ -1184,11 +1150,6 @@ class ExifData implements ArrayAccess
      */
     public function setCfaPattern($cfa_pattern)
     {
-
-        if (!is_null($cfa_pattern) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $cfa_pattern))) {
-            throw new \InvalidArgumentException("invalid value for $cfa_pattern when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['cfa_pattern'] = $cfa_pattern;
 
         return $this;
@@ -1261,11 +1222,6 @@ class ExifData implements ArrayAccess
      */
     public function setComponentsConfiguration($components_configuration)
     {
-
-        if (!is_null($components_configuration) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $components_configuration))) {
-            throw new \InvalidArgumentException("invalid value for $components_configuration when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['components_configuration'] = $components_configuration;
 
         return $this;
@@ -1410,11 +1366,6 @@ class ExifData implements ArrayAccess
      */
     public function setDeviceSettingDescription($device_setting_description)
     {
-
-        if (!is_null($device_setting_description) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $device_setting_description))) {
-            throw new \InvalidArgumentException("invalid value for $device_setting_description when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['device_setting_description'] = $device_setting_description;
 
         return $this;
@@ -1463,11 +1414,6 @@ class ExifData implements ArrayAccess
      */
     public function setExifVersion($exif_version)
     {
-
-        if (!is_null($exif_version) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $exif_version))) {
-            throw new \InvalidArgumentException("invalid value for $exif_version when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['exif_version'] = $exif_version;
 
         return $this;
@@ -1708,11 +1654,6 @@ class ExifData implements ArrayAccess
      */
     public function setFlashpixVersion($flashpix_version)
     {
-
-        if (!is_null($flashpix_version) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $flashpix_version))) {
-            throw new \InvalidArgumentException("invalid value for $flashpix_version when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['flashpix_version'] = $flashpix_version;
 
         return $this;
@@ -1905,11 +1846,6 @@ class ExifData implements ArrayAccess
      */
     public function setGpsAreaInformation($gps_area_information)
     {
-
-        if (!is_null($gps_area_information) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $gps_area_information))) {
-            throw new \InvalidArgumentException("invalid value for $gps_area_information when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['gps_area_information'] = $gps_area_information;
 
         return $this;
@@ -2390,11 +2326,6 @@ class ExifData implements ArrayAccess
      */
     public function setGpsProcessingMethod($gps_processing_method)
     {
-
-        if (!is_null($gps_processing_method) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $gps_processing_method))) {
-            throw new \InvalidArgumentException("invalid value for $gps_processing_method when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['gps_processing_method'] = $gps_processing_method;
 
         return $this;
@@ -2587,11 +2518,6 @@ class ExifData implements ArrayAccess
      */
     public function setGpsVersionId($gps_version_id)
     {
-
-        if (!is_null($gps_version_id) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $gps_version_id))) {
-            throw new \InvalidArgumentException("invalid value for $gps_version_id when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['gps_version_id'] = $gps_version_id;
 
         return $this;
@@ -2904,11 +2830,6 @@ class ExifData implements ArrayAccess
      */
     public function setMakerNoteRawData($maker_note_raw_data)
     {
-
-        if (!is_null($maker_note_raw_data) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $maker_note_raw_data))) {
-            throw new \InvalidArgumentException("invalid value for $maker_note_raw_data when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['maker_note_raw_data'] = $maker_note_raw_data;
 
         return $this;
@@ -2981,11 +2902,6 @@ class ExifData implements ArrayAccess
      */
     public function setOecf($oecf)
     {
-
-        if (!is_null($oecf) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $oecf))) {
-            throw new \InvalidArgumentException("invalid value for $oecf when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['oecf'] = $oecf;
 
         return $this;
@@ -3274,11 +3190,6 @@ class ExifData implements ArrayAccess
      */
     public function setSpatialFrequencyResponse($spatial_frequency_response)
     {
-
-        if (!is_null($spatial_frequency_response) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $spatial_frequency_response))) {
-            throw new \InvalidArgumentException("invalid value for $spatial_frequency_response when calling ExifData., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['spatial_frequency_response'] = $spatial_frequency_response;
 
         return $this;

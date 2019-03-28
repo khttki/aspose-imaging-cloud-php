@@ -39,8 +39,7 @@ use \GuzzleHttp\Stream;
  * Class for testing ResizeApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Resize
  */
 class ResizeApiTest extends ApiTester

@@ -28,14 +28,13 @@
 
 namespace Aspose\Imaging\Tests\Api\AI;
 
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
-use \Aspose\Storage\Model\Requests as StorageRequests;
+use \Aspose\Imaging\Model\Requests;
 
 /**
  * Class for testing image search
  * 
  * @group AI
- * @group v2.0
+ * @group v3.0
  */
 class FindImagesTest extends TestImagingAiBase
 {
@@ -70,11 +69,10 @@ class FindImagesTest extends TestImagingAiBase
 
             $response = self::$asyncMode ?
                 self::$imagingApi->getSearchContextFindSimilarAsync(
-                    new ImagingRequests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage))->wait() :
+                    new Requests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage))->wait() :
                 self::$imagingApi->getSearchContextFindSimilar(
-                    new ImagingRequests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage));       
+                    new Requests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage));       
 
-            $this->assertEquals(200, $response->getCode());
             $this->assertGreaterThanOrEqual(1, count($response->getResults()));
         });
     }
@@ -88,8 +86,6 @@ class FindImagesTest extends TestImagingAiBase
      */
     public function findSimilarImagesByTagTest()
     {
-        /* AI results is unstable in this test - the bug is known
-        / markTestSkipped is not used since it's making build unstable
         $this->runTestWithLogging("findSimilarImagesByTagTest", function()
         {
             $this->addImageFeaturesToSearchContext(self::$originalDataFolder . "/FindSimilar", true);
@@ -98,26 +94,25 @@ class FindImagesTest extends TestImagingAiBase
 
             $storagePath = self::$originalDataFolder . "/" . $this->imageToFindByTag;
 
-            $tagImageStream = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($storagePath, null, self::$testStorage));
+            $tagImageStream = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($storagePath, self::$testStorage));
             $this->assertNotNull($tagImageStream);
+            $imageContents = $tagImageStream->getContents();
 
-            self::$asyncMode ? self::$imagingApi->postSearchContextAddTagAsync(new ImagingRequests\PostSearchContextAddTagRequest(
-                             $tagImageStream->fread($tagImageStream->getSize()), $this->searchContextId, $tag, null, self::$testStorage))->wait() :
-                             self::$imagingApi->postSearchContextAddTag(new ImagingRequests\PostSearchContextAddTagRequest(
-                                $tagImageStream->fread($tagImageStream->getSize()), $this->searchContextId, $tag, null, self::$testStorage));
+            self::$asyncMode ? self::$imagingApi->postSearchContextAddTagAsync(new Requests\PostSearchContextAddTagRequest(
+                             $imageContents, $this->searchContextId, $tag, null, self::$testStorage))->wait() :
+                             self::$imagingApi->postSearchContextAddTag(new Requests\PostSearchContextAddTagRequest(
+                                $imageContents, $this->searchContextId, $tag, null, self::$testStorage));
 
             $tags = json_encode([$tag]);
             
             $response = self::$asyncMode ? 
                 self::$imagingApi->postSearchContextFindByTagsAsync(
-                    new ImagingRequests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage))->wait() :
+                    new Requests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage))->wait() :
                 self::$imagingApi->postSearchContextFindByTags(
-                    new ImagingRequests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage));
+                    new Requests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage));
 
-            $this->assertEquals(200, $response->getCode());
             $this->assertEquals(1, count($response->getResults()));
             $this->assertRegExp('/\b2\\.jpg\b/', $response->getResults()[0]->getImageId());
         });
-        */
     }
 }

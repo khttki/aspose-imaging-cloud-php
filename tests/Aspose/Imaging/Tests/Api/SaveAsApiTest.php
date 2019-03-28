@@ -39,8 +39,7 @@ use \GuzzleHttp\Stream;
  * Class for testing SaveAsApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group SaveAs
  */
 class SaveAsApiTest extends ApiTester

@@ -39,8 +39,7 @@ use \GuzzleHttp\Stream;
  * Class for testing Jpeg2000Api
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Jpeg2000
  */
 class Jpeg2000ApiTest extends ApiTester

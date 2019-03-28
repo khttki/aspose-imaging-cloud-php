@@ -27,15 +27,16 @@
  */
 
 namespace Aspose\Imaging\Model;
+
+use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * SearchContextStatus
  *
  * @description Search context status.
  */
-class SearchContextStatus extends SaaSposeResponse 
+class SearchContextStatus implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -73,7 +74,7 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /**
@@ -83,7 +84,7 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /**
@@ -125,7 +126,7 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -135,7 +136,7 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -145,7 +146,7 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -162,6 +163,12 @@ class SearchContextStatus extends SaaSposeResponse
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -171,8 +178,6 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['search_status'] = isset($data['search_status']) ? $data['search_status'] : null;
     }
@@ -184,7 +189,7 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         return $invalidProperties;
     }
@@ -197,9 +202,6 @@ class SearchContextStatus extends SaaSposeResponse
      */
     public function valid()
     {
-        if (!parent::valid()) {
-            return false;
-        }
 
         return true;
     }

@@ -28,14 +28,13 @@
 
 namespace Aspose\Imaging\Tests\Api\AI;
 
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
-use \Aspose\Storage\Model\Requests as StorageRequests;
+use \Aspose\Imaging\Model\Requests;
 
 /**
  * Class for testing image comparison
  * 
  * @group AI
- * @group v2.0
+ * @group v3.0
  */
 class CompareImagesTest extends TestImagingAiBase
 {
@@ -79,9 +78,9 @@ class CompareImagesTest extends TestImagingAiBase
 
             $response = self::$asyncMode ?
                 self::$imagingApi->postSearchContextCompareImagesAsync(
-                    new ImagingRequests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage))->wait() :
+                    new Requests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage))->wait() :
                 self::$imagingApi->postSearchContextCompareImages(
-                    new ImagingRequests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage));    
+                    new Requests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage));    
             
             $this->assertEquals(1, count($response->getResults()));
             $this->assertGreaterThanOrEqual(70, $response->getResults()[0]->getSimilarity());
@@ -92,6 +91,7 @@ class CompareImagesTest extends TestImagingAiBase
      * Tests loaded image comparison
      *
      * @test
+     * @group AiTest
      * 
      * @return void
      */
@@ -103,16 +103,16 @@ class CompareImagesTest extends TestImagingAiBase
             $this->addImageFeaturesToSearchContext($image);
 
             $storagePath = self::$originalDataFolder . "/" . $this->comparingImageSimilarLess15;
-            $imageStream = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($storagePath, null, self::$testStorage));
+            $imageStream = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($storagePath, self::$testStorage));
             $this->assertNotNull($imageStream);
+            $imageContents = $imageStream->getContents();
 
             $response = self::$asyncMode ? 
-                self::$imagingApi->postSearchContextCompareImagesAsync(new ImagingRequests\PostSearchContextCompareImagesRequest(
-                    $this->searchContextId, $image, $imageStream->fread($imageStream->getSize()), null, null, null, self::$testStorage))->wait() :
-                self::$imagingApi->postSearchContextCompareImages(new ImagingRequests\PostSearchContextCompareImagesRequest(
-                    $this->searchContextId, $image, $imageStream->fread($imageStream->getSize()), null, null, null, self::$testStorage));  
+                self::$imagingApi->postSearchContextCompareImagesAsync(new Requests\PostSearchContextCompareImagesRequest(
+                    $this->searchContextId, $image, $imageContents, null, null, self::$testStorage))->wait() :
+                self::$imagingApi->postSearchContextCompareImages(new Requests\PostSearchContextCompareImagesRequest(
+                    $this->searchContextId, $image, $imageContents, null, null, self::$testStorage));  
 
-            $this->assertEquals(200, $response->getCode());
             $this->assertEquals(1, count($response->getResults()));
             $this->assertLessThanOrEqual(15, $response->getResults()[0]->getSimilarity());
         });

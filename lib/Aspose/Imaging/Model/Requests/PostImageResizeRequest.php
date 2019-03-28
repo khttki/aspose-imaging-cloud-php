@@ -46,7 +46,7 @@ class PostImageResizeRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -84,7 +84,7 @@ class PostImageResizeRequest extends ImagingRequest
      * Initializes a new instance of the PostImageResizeRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param int $new_width New width.
      * @param int $new_height New height.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
@@ -122,7 +122,7 @@ class PostImageResizeRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -132,7 +132,7 @@ class PostImageResizeRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

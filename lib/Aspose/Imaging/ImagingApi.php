@@ -36,6 +36,7 @@ use \GuzzleHttp\Psr7\MultipartStream;
 use \GuzzleHttp\Psr7\Request;
 use \GuzzleHttp\RequestOptions;
 use \Aspose\Imaging\Model\Requests;
+use \Aspose\Imaging\ObjectSerializer;
 
 /**
  * Aspose.Imaging Cloud APIs.
@@ -79,33 +80,298 @@ class ImagingApi
     }
     
     /**
+     * Copy file
+     *
+     * @param \Aspose\Imaging\Model\Requests\CopyFileRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function copyFile($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Copy file
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CopyFileRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function copyFileAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Copy folder
+     *
+     * @param \Aspose\Imaging\Model\Requests\CopyFolderRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function copyFolder($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Copy folder
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CopyFolderRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function copyFolderAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Create the folder
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateFolderRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function createFolder($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Create the folder
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateFolderRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFolderAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Delete file
+     *
+     * @param \Aspose\Imaging\Model\Requests\DeleteFileRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteFile($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Delete file
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\DeleteFileRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteFileAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Delete folder
+     *
+     * @param \Aspose\Imaging\Model\Requests\DeleteFolderRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteFolder($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Delete folder
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\DeleteFolderRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteFolderAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Deletes the search context.
      *
      * @param \Aspose\Imaging\Model\Requests\DeleteSearchContextRequest $request Request object for operation
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function deleteSearchContext($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'DELETE');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return deleteSearchContext($request);
-        } 
     }
 
     /**
@@ -119,26 +385,20 @@ class ImagingApi
      */
     public function deleteSearchContextAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'DELETE');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return deleteSearchContextAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -150,27 +410,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function deleteSearchContextImage($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'DELETE');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return deleteSearchContextImage($request);
-        } 
     }
 
     /**
@@ -184,26 +439,20 @@ class ImagingApi
      */
     public function deleteSearchContextImageAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'DELETE');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return deleteSearchContextImageAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -215,27 +464,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Aspose\Imaging\Model\SaaSposeResponse
+     * @return void
      */
     public function deleteSearchContextImageFeatures($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SaaSposeResponse';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'DELETE');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return deleteSearchContextImageFeatures($request);
-        } 
     }
 
     /**
@@ -249,26 +493,236 @@ class ImagingApi
      */
     public function deleteSearchContextImageFeaturesAsync($request) 
     {
-        $returnType = '\Aspose\Imaging\Model\SaaSposeResponse';
+        $returnType = '';
         $isBinary = false;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'DELETE');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return deleteSearchContextImageFeaturesAsync($request);
-                    } 
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Download file
+     *
+     * @param \Aspose\Imaging\Model\Requests\DownloadFileRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function downloadFile($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Download file
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\DownloadFileRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function downloadFileAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Get disc usage
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetDiscUsageRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\DiscUsage
+     */
+    public function getDiscUsage($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\DiscUsage';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Get disc usage
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetDiscUsageRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDiscUsageAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\DiscUsage';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Get file versions
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetFileVersionsRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\FileVersions
+     */
+    public function getFileVersions($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\FileVersions';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Get file versions
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetFileVersionsRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFileVersionsAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\FileVersions';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Get all files and folders within a folder
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetFilesListRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\FilesList
+     */
+    public function getFilesList($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\FilesList';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Get all files and folders within a folder
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetFilesListRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFilesListAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\FilesList';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
                 }
             );
     }
@@ -284,23 +738,18 @@ class ImagingApi
      */
     public function getImageBmp($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageBmp($request);
-        } 
     }
 
     /**
@@ -323,17 +772,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageBmpAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -349,23 +792,18 @@ class ImagingApi
      */
     public function getImageCrop($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageCrop($request);
-        } 
     }
 
     /**
@@ -388,153 +826,17 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageCropAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
     
     /**
-     * Rasterize existing DICOM image to PNG using given parameters.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImageDicomRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function getImageDicom($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return getImageDicom($request);
-        } 
-    }
-
-    /**
-     * Rasterize existing DICOM image to PNG using given parameters.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImageDicomRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getImageDicomAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageDicomAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Rasterize existing DNG image to PNG using given parameters.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImageDngRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function getImageDng($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return getImageDng($request);
-        } 
-    }
-
-    /**
-     * Rasterize existing DNG image to PNG using given parameters.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImageDngRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getImageDngAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageDngAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Rasterize existing EMF image to PNG using given parameters.
+     * Process existing EMF imaging using given parameters.
      *
      * @param \Aspose\Imaging\Model\Requests\GetImageEmfRequest $request Request object for operation
      *
@@ -544,27 +846,22 @@ class ImagingApi
      */
     public function getImageEmf($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageEmf($request);
-        } 
     }
 
     /**
-     * Rasterize existing EMF image to PNG using given parameters.
+     * Process existing EMF imaging using given parameters.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\GetImageEmfRequest $request Request object for operation
@@ -583,17 +880,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageEmfAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -609,23 +900,18 @@ class ImagingApi
      */
     public function getImageFrame($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageFrame($request);
-        } 
     }
 
     /**
@@ -648,17 +934,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageFrameAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -674,23 +954,18 @@ class ImagingApi
      */
     public function getImageFrameProperties($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImagingResponse';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImagingResponse';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageFrameProperties($request);
-        } 
     }
 
     /**
@@ -713,17 +988,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageFramePropertiesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -739,23 +1008,18 @@ class ImagingApi
      */
     public function getImageGif($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageGif($request);
-        } 
     }
 
     /**
@@ -778,17 +1042,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageGifAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -804,23 +1062,18 @@ class ImagingApi
      */
     public function getImageJpeg2000($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageJpeg2000($request);
-        } 
     }
 
     /**
@@ -843,17 +1096,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageJpeg2000Async($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -869,23 +1116,18 @@ class ImagingApi
      */
     public function getImageJpg($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageJpg($request);
-        } 
     }
 
     /**
@@ -908,147 +1150,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageJpgAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Rasterize existing ODG image to PNG using given parameters.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImageOdgRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function getImageOdg($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return getImageOdg($request);
-        } 
-    }
-
-    /**
-     * Rasterize existing ODG image to PNG using given parameters.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImageOdgRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getImageOdgAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageOdgAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Update parameters of existing PNG image.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImagePngRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function getImagePng($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return getImagePng($request);
-        } 
-    }
-
-    /**
-     * Update parameters of existing PNG image.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\GetImagePngRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getImagePngAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImagePngAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1064,23 +1170,18 @@ class ImagingApi
      */
     public function getImageProperties($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImagingResponse';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImagingResponse';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageProperties($request);
-        } 
     }
 
     /**
@@ -1103,17 +1204,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImagePropertiesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1129,23 +1224,18 @@ class ImagingApi
      */
     public function getImagePsd($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImagePsd($request);
-        } 
     }
 
     /**
@@ -1168,17 +1258,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImagePsdAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1194,23 +1278,18 @@ class ImagingApi
      */
     public function getImageResize($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageResize($request);
-        } 
     }
 
     /**
@@ -1233,17 +1312,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageResizeAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1259,23 +1332,18 @@ class ImagingApi
      */
     public function getImageRotateFlip($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageRotateFlip($request);
-        } 
     }
 
     /**
@@ -1298,17 +1366,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageRotateFlipAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1324,23 +1386,18 @@ class ImagingApi
      */
     public function getImageSaveAs($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageSaveAs($request);
-        } 
     }
 
     /**
@@ -1363,17 +1420,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageSaveAsAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1389,23 +1440,18 @@ class ImagingApi
      */
     public function getImageTiff($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageTiff($request);
-        } 
     }
 
     /**
@@ -1428,17 +1474,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageTiffAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1454,23 +1494,18 @@ class ImagingApi
      */
     public function getImageUpdate($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageUpdate($request);
-        } 
     }
 
     /**
@@ -1493,17 +1528,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageUpdateAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1519,23 +1548,18 @@ class ImagingApi
      */
     public function getImageWebP($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageWebP($request);
-        } 
     }
 
     /**
@@ -1558,23 +1582,17 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageWebPAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
     
     /**
-     * Rasterize existing WMF image to PNG using given parameters.
+     * Process existing WMF image using given parameters.
      *
      * @param \Aspose\Imaging\Model\Requests\GetImageWmfRequest $request Request object for operation
      *
@@ -1584,27 +1602,22 @@ class ImagingApi
      */
     public function getImageWmf($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getImageWmf($request);
-        } 
     }
 
     /**
-     * Rasterize existing WMF image to PNG using given parameters.
+     * Process existing WMF image using given parameters.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\GetImageWmfRequest $request Request object for operation
@@ -1623,17 +1636,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getImageWmfAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1649,23 +1656,18 @@ class ImagingApi
      */
     public function getSearchContextExtractImageFeatures($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImageFeatures';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImageFeatures';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getSearchContextExtractImageFeatures($request);
-        } 
     }
 
     /**
@@ -1688,17 +1690,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getSearchContextExtractImageFeaturesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1714,23 +1710,18 @@ class ImagingApi
      */
     public function getSearchContextFindDuplicates($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImageDuplicatesSet';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImageDuplicatesSet';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getSearchContextFindDuplicates($request);
-        } 
     }
 
     /**
@@ -1753,17 +1744,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getSearchContextFindDuplicatesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1779,23 +1764,18 @@ class ImagingApi
      */
     public function getSearchContextFindSimilar($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SearchResultsSet';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\SearchResultsSet';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getSearchContextFindSimilar($request);
-        } 
     }
 
     /**
@@ -1818,17 +1798,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getSearchContextFindSimilarAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1844,23 +1818,18 @@ class ImagingApi
      */
     public function getSearchContextImage($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getSearchContextImage($request);
-        } 
     }
 
     /**
@@ -1883,17 +1852,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getSearchContextImageAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1909,23 +1872,18 @@ class ImagingApi
      */
     public function getSearchContextImageFeatures($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImageFeatures';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImageFeatures';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getSearchContextImageFeatures($request);
-        } 
     }
 
     /**
@@ -1948,17 +1906,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getSearchContextImageFeaturesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -1974,23 +1926,18 @@ class ImagingApi
      */
     public function getSearchContextStatus($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SearchContextStatus';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\SearchContextStatus';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getSearchContextStatus($request);
-        } 
     }
 
     /**
@@ -2013,17 +1960,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getSearchContextStatusAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2039,23 +1980,18 @@ class ImagingApi
      */
     public function getTiffToFax($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'GET');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return getTiffToFax($request);
-        } 
     }
 
     /**
@@ -2078,17 +2014,173 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return getTiffToFaxAsync($request);
-                    } 
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Move file
+     *
+     * @param \Aspose\Imaging\Model\Requests\MoveFileRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function moveFile($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Move file
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\MoveFileRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveFileAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Move folder
+     *
+     * @param \Aspose\Imaging\Model\Requests\MoveFolderRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function moveFolder($request)
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Move folder
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\MoveFolderRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveFolderAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Check if file or folder exists
+     *
+     * @param \Aspose\Imaging\Model\Requests\ObjectExistsRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\ObjectExist
+     */
+    public function objectExists($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\ObjectExist';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Check if file or folder exists
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\ObjectExistsRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function objectExistsAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\ObjectExist';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
                 }
             );
     }
@@ -2104,23 +2196,18 @@ class ImagingApi
      */
     public function postCreateSearchContext($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SearchContextStatus';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\SearchContextStatus';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postCreateSearchContext($request);
-        } 
     }
 
     /**
@@ -2143,17 +2230,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postCreateSearchContextAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2169,23 +2250,18 @@ class ImagingApi
      */
     public function postImageBmp($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageBmp($request);
-        } 
     }
 
     /**
@@ -2208,17 +2284,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageBmpAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2234,23 +2304,18 @@ class ImagingApi
      */
     public function postImageCrop($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageCrop($request);
-        } 
     }
 
     /**
@@ -2273,153 +2338,17 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageCropAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
     
     /**
-     * Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImageDicomRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function postImageDicom($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return postImageDicom($request);
-        } 
-    }
-
-    /**
-     * Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImageDicomRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postImageDicomAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageDicomAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImageDngRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function postImageDng($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return postImageDng($request);
-        } 
-    }
-
-    /**
-     * Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImageDngRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postImageDngAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageDngAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Process existing EMF imaging using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageEmfRequest $request Request object for operation
      *
@@ -2429,27 +2358,22 @@ class ImagingApi
      */
     public function postImageEmf($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageEmf($request);
-        } 
     }
 
     /**
-     * Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Process existing EMF imaging using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageEmfRequest $request Request object for operation
@@ -2468,17 +2392,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageEmfAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2494,23 +2412,18 @@ class ImagingApi
      */
     public function postImageFrame($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageFrame($request);
-        } 
     }
 
     /**
@@ -2533,17 +2446,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageFrameAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2559,23 +2466,18 @@ class ImagingApi
      */
     public function postImageFrameProperties($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImagingResponse';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImagingResponse';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageFrameProperties($request);
-        } 
     }
 
     /**
@@ -2598,17 +2500,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageFramePropertiesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2624,23 +2520,18 @@ class ImagingApi
      */
     public function postImageGif($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageGif($request);
-        } 
     }
 
     /**
@@ -2663,17 +2554,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageGifAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2689,23 +2574,18 @@ class ImagingApi
      */
     public function postImageJpeg2000($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageJpeg2000($request);
-        } 
     }
 
     /**
@@ -2728,17 +2608,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageJpeg2000Async($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2754,23 +2628,18 @@ class ImagingApi
      */
     public function postImageJpg($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageJpg($request);
-        } 
     }
 
     /**
@@ -2793,147 +2662,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageJpgAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImageOdgRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function postImageOdg($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return postImageOdg($request);
-        } 
-    }
-
-    /**
-     * Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImageOdgRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postImageOdgAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageOdgAsync($request);
-                    } 
-                }
-            );
-    }
-    
-    /**
-     * Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImagePngRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function postImagePng($request)
-    {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
-            
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
-        }
-        catch(RepeatRequestException $e) {
-            return postImagePng($request);
-        } 
-    }
-
-    /**
-     * Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\PostImagePngRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postImagePngAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImagePngAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -2949,23 +2682,18 @@ class ImagingApi
      */
     public function postImageProperties($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\ImagingResponse';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\ImagingResponse';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageProperties($request);
-        } 
     }
 
     /**
@@ -2988,17 +2716,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImagePropertiesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3014,23 +2736,18 @@ class ImagingApi
      */
     public function postImagePsd($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImagePsd($request);
-        } 
     }
 
     /**
@@ -3053,17 +2770,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImagePsdAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3079,23 +2790,18 @@ class ImagingApi
      */
     public function postImageResize($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageResize($request);
-        } 
     }
 
     /**
@@ -3118,17 +2824,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageResizeAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3144,23 +2844,18 @@ class ImagingApi
      */
     public function postImageRotateFlip($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageRotateFlip($request);
-        } 
     }
 
     /**
@@ -3183,17 +2878,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageRotateFlipAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3209,23 +2898,18 @@ class ImagingApi
      */
     public function postImageSaveAs($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageSaveAs($request);
-        } 
     }
 
     /**
@@ -3248,17 +2932,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageSaveAsAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3274,23 +2952,18 @@ class ImagingApi
      */
     public function postImageTiff($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageTiff($request);
-        } 
     }
 
     /**
@@ -3313,17 +2986,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageTiffAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3339,23 +3006,18 @@ class ImagingApi
      */
     public function postImageUpdate($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageUpdate($request);
-        } 
     }
 
     /**
@@ -3378,17 +3040,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageUpdateAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3404,23 +3060,18 @@ class ImagingApi
      */
     public function postImageWebP($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageWebP($request);
-        } 
     }
 
     /**
@@ -3443,23 +3094,17 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageWebPAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
     
     /**
-     * Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageWmfRequest $request Request object for operation
      *
@@ -3469,27 +3114,22 @@ class ImagingApi
      */
     public function postImageWmf($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postImageWmf($request);
-        } 
     }
 
     /**
-     * Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\PostImageWmfRequest $request Request object for operation
@@ -3508,17 +3148,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postImageWmfAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3530,27 +3164,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function postSearchContextAddImage($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postSearchContextAddImage($request);
-        } 
     }
 
     /**
@@ -3564,26 +3193,20 @@ class ImagingApi
      */
     public function postSearchContextAddImageAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postSearchContextAddImageAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3595,27 +3218,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function postSearchContextAddTag($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postSearchContextAddTag($request);
-        } 
     }
 
     /**
@@ -3629,26 +3247,20 @@ class ImagingApi
      */
     public function postSearchContextAddTagAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postSearchContextAddTagAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3664,23 +3276,18 @@ class ImagingApi
      */
     public function postSearchContextCompareImages($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SearchResultsSet';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\SearchResultsSet';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postSearchContextCompareImages($request);
-        } 
     }
 
     /**
@@ -3703,17 +3310,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postSearchContextCompareImagesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3725,27 +3326,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function postSearchContextExtractImageFeatures($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postSearchContextExtractImageFeatures($request);
-        } 
     }
 
     /**
@@ -3759,26 +3355,20 @@ class ImagingApi
      */
     public function postSearchContextExtractImageFeaturesAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postSearchContextExtractImageFeaturesAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3794,23 +3384,18 @@ class ImagingApi
      */
     public function postSearchContextFindByTags($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SearchResultsSet';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '\Aspose\Imaging\Model\SearchResultsSet';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postSearchContextFindByTags($request);
-        } 
     }
 
     /**
@@ -3833,17 +3418,11 @@ class ImagingApi
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postSearchContextFindByTagsAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3855,27 +3434,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Aspose\Imaging\Model\SaaSposeResponse
+     * @return void
      */
     public function postTiffAppend($request)
     {
-        try {
-            $returnType = '\Aspose\Imaging\Model\SaaSposeResponse';
-            $isBinary = false;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'POST');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = false;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return postTiffAppend($request);
-        } 
     }
 
     /**
@@ -3889,26 +3463,20 @@ class ImagingApi
      */
     public function postTiffAppendAsync($request) 
     {
-        $returnType = '\Aspose\Imaging\Model\SaaSposeResponse';
+        $returnType = '';
         $isBinary = false;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return postTiffAppendAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3920,27 +3488,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function putSearchContextImage($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'PUT');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return putSearchContextImage($request);
-        } 
     }
 
     /**
@@ -3954,26 +3517,20 @@ class ImagingApi
      */
     public function putSearchContextImageAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'PUT');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return putSearchContextImageAsync($request);
-                    } 
+                    $this->processException($exception);
                 }
             );
     }
@@ -3985,27 +3542,22 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return void
      */
     public function putSearchContextImageFeatures($request)
     {
-        try {
-            $returnType = '\SplFileObject';
-            $isBinary = true;
-            $hasReturnType = true;
-            $request = $this->getHttpRequest($request, 'PUT');
-            $options = $this->createHttpClientOptions();
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'PUT');
+        $options = $this->createHttpClientOptions();
             
-            try {
-                $response = $this->client->send($request, $options);
-                return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
-            } catch (RequestException $e) {
-                $this->processException($e);
-            }
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
         }
-        catch(RepeatRequestException $e) {
-            return putSearchContextImageFeatures($request);
-        } 
     }
 
     /**
@@ -4019,26 +3571,128 @@ class ImagingApi
      */
     public function putSearchContextImageFeaturesAsync($request) 
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $isBinary = true;
-        $hasReturnType = true;
+        $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'PUT');
         $options = $this->createHttpClientOptions();
 
         return $this->client
             ->sendAsync($request, $options)
             ->then(
-                function ($response) use ($hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($response, $hasReturnType, $returnType, $isBinary);
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
                 },
                 function ($exception) use ($request) {
-                    try 
-                    {
-                        $this->processException($exception);
-                    }                   
-                    catch(RepeatRequestException $e) {
-                        return putSearchContextImageFeaturesAsync($request);
-                    } 
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Check if storage exists
+     *
+     * @param \Aspose\Imaging\Model\Requests\StorageExistsRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\StorageExist
+     */
+    public function storageExists($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\StorageExist';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Check if storage exists
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\StorageExistsRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function storageExistsAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\StorageExist';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Upload file
+     *
+     * @param \Aspose\Imaging\Model\Requests\UploadFileRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\FilesUploadResult
+     */
+    public function uploadFile($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\FilesUploadResult';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Upload file
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\UploadFileRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadFileAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\FilesUploadResult';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
                 }
             );
     }
@@ -4083,14 +3737,9 @@ class ImagingApi
                 ];
             }
             
-            if (!preg_match('/\bv1\\.\b/', $this->getConfig()->getApiVersion())) {
-                $boundary = sha1(uniqid('', true));
-                $headers['Content-Type'] = "multipart/form-data; boundary=" . $boundary;
-                $httpBody = new MultipartStream($multipartContents, $boundary);
-            } else {
-                unset($headers['Content-Type']);
-                $httpBody = reset($formParams);
-            }
+            $boundary = sha1(uniqid('', true));
+            $headers['Content-Type'] = "multipart/form-data; boundary=" . $boundary;
+            $httpBody = new MultipartStream($multipartContents, $boundary);
         }
         
         if ($this->configuration->getAccessToken() !== null) {
@@ -4126,27 +3775,32 @@ class ImagingApi
     /**
      * Processes Imaging API response
      *
+     * @param \GuzzleHttp\Psr7\Request $request Imaging operation request
      * @param \Psr\Http\Message\ResponseInterface $response Imaging operation response
      * @param bool $hasReturnType If response has a return type
      * @param string $returnType Return type of response
      * @param bool $isBinary If response should be binary
      *
      * @throws \Aspose\Imaging\ApiException
-     * @throws \Aspose\Imaging\RepeatRequestException
      * @return mixed
      */
-    private function processResponse($response, $hasReturnType, $returnType, $isBinary)
+    private function processResponse($request, $response, $hasReturnType, $returnType, $isBinary)
     {
         $statusCode = $response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
-            if ($statusCode === 401) {
-                $this->requestToken();
-                throw new RepeatRequestException("Request must be retried", $statusCode);
+            $body = $response->getBody();
+            $error = null;
+            if (isset($body)) {
+                try {
+                    $error = ObjectSerializer::deserialize($body->getContents(), '\Aspose\Imaging\Model\Error', []);
+                } catch (\Throwable $th) {
+                    // suppress exception
+                }
             }
-          
+
             throw new ApiException(
-                sprintf('[%d] Error connecting to the API (%s); Body: (%s)', $statusCode, $exception->getRequest()->getUri(), $response->getBody()), $statusCode
+                sprintf('[%d] Error connecting to the API (%s); Body: (%s)', $statusCode, $request->getUri(), $response->getBody()), $statusCode, $error
             );
         }
         
@@ -4180,17 +3834,11 @@ class ImagingApi
      * @param \GuzzleHttp\Exception\RequestException $exception The initial exception
      *
      * @throws \Aspose\Imaging\ApiException
-     * @throws \Aspose\Imaging\RepeatRequestException
      */
     private function processException($exception)
     {
         $response = $exception->getResponse();
         $statusCode = isset($response) ? $response->getStatusCode() : null;
-          
-        if ($exception instanceof RepeatRequestException) {
-            $this->refreshToken();
-            throw new RepeatRequestException("Request must be retried", $statusCode);
-        }
 
         throw new ApiException(
             sprintf('[%d] Error connecting to the API (%s); Message: (%s)', $statusCode, $exception->getRequest()->getUri(), $exception->getMessage()), $statusCode
@@ -4252,24 +3900,13 @@ class ImagingApi
      */
     private function requestToken() 
     {
-        $requestUrl = $this->configuration->getBaseUrl() . "/oauth2/token";
+        $requestUrl = $this->configuration->getBaseUrl() . "/connect/token";
         $postData = "grant_type=client_credentials" . "&client_id=" . $this->configuration->getAppSid() . "&client_secret=" . $this->configuration->getAppKey();
-        $response = $this->client->send(new Request('POST', $requestUrl, [], $postData));
+        $headers = [];
+        $headers['Content-Type'] = "application/x-www-form-urlencoded";
+        $headers['Content-Length'] = strlen($postData);
+        $response = $this->client->send(new Request('POST', $requestUrl, $headers, $postData));
         $result = json_decode($response->getBody()->getContents(), true);
         $this->configuration->setAccessToken($result["access_token"]);
-        $this->configuration->setRefreshToken($result["refresh_token"]);
-    }
-  
-    /**
-     * Refresh token. OBSOLETE WILL BE REMOVED SOON
-     */
-    private function refreshToken() 
-    {
-        $requestUrl = $this->configuration->getBaseUrl() . "/oauth2/token";
-        $postData = "grant_type=refresh_token&refresh_token=" . $this->configuration->getRefreshToken();
-        $response = $this->client->send(new Request('POST', $requestUrl, [], $postData));
-        $result = json_decode($response->getBody()->getContents(), true);
-        $this->configuration->setAccessToken($result["access_token"]);
-        $this->configuration->setRefreshToken($result["refresh_token"]);
     }
 }

@@ -30,7 +30,6 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * WebPProperties
@@ -257,7 +256,7 @@ class WebPProperties implements ArrayAccess
     /**
      * Sets lossless
      *
-     * @param bool $lossless Gets or sets a value indicating whether these  is lossless.
+     * @param bool $lossless Gets or sets a value indicating whether these WebPOptions is lossless.
      *
      * @return $this
      */
