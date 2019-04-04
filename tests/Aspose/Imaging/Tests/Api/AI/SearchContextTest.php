@@ -29,7 +29,6 @@
 namespace Aspose\Imaging\Tests\Api\AI;
 
 use \Aspose\Imaging\Model\Requests;
-use \DateTime;
 
 /**
  * Class for testing image comparison

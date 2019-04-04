@@ -29,11 +29,7 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing WmfApi

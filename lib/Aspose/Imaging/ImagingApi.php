@@ -29,13 +29,10 @@
 namespace Aspose\Imaging;
 
 use \GuzzleHttp\Client;
-use \GuzzleHttp\Stream;
-use \GuzzleHttp\ClientInterface;
 use \GuzzleHttp\Exception\RequestException;
 use \GuzzleHttp\Psr7\MultipartStream;
 use \GuzzleHttp\Psr7\Request;
 use \GuzzleHttp\RequestOptions;
-use \Aspose\Imaging\Model\Requests;
 use \Aspose\Imaging\ObjectSerializer;
 
 /**
@@ -3659,7 +3656,6 @@ class ImagingApi
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
-            
         try {
             $response = $this->client->send($request, $options);
             return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
@@ -3730,8 +3726,9 @@ class ImagingApi
                 $multipartContents[] = [
                     'name' => $formParamName,
                     'contents' => $formParamValue,
+                    'filename' => $formParamName,
                     'headers' => [
-                        'Content-Disposition' => 'form-data',
+                        'Content-Type' => 'application/octet-stream',
                         'Content-Length' => strlen($formParamValue)
                     ]
                 ];

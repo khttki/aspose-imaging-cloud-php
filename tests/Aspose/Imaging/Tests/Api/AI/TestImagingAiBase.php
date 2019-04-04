@@ -29,7 +29,6 @@
 namespace Aspose\Imaging\Tests\Api\AI;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
 use \DateTime;
 use \Exception;
