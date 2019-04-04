@@ -38,39 +38,39 @@ use \Aspose\Imaging\Model\Requests;
  */
 class StorageApiTests extends StorageApiTester {
 
-	/**
+    /**
      * @test
-	 * 
+     * 
      * @return void
      */
-	public function getDiscUsageTest()  {
-		try {
-			$discUsage = self::$imagingApi->getDiscUsage(new Requests\GetDiscUsageRequest(self::$testStorage));
-			$this->assertTrue($discUsage->getUsedSize() < $discUsage->getTotalSize());
-			$this->assertTrue($discUsage->getTotalSize() > 0);
-			$this->assertTrue($discUsage->getUsedSize() > 0);
-		} catch (\Aspose\Imaging\ApiException $ex) {
-			$this->assertTrue($ex->getCode() === 501);
-		}
-	}
+    public function getDiscUsageTest()  {
+        try {
+            $discUsage = self::$imagingApi->getDiscUsage(new Requests\GetDiscUsageRequest(self::$testStorage));
+            $this->assertTrue($discUsage->getUsedSize() < $discUsage->getTotalSize());
+            $this->assertTrue($discUsage->getTotalSize() > 0);
+            $this->assertTrue($discUsage->getUsedSize() > 0);
+        } catch (\Aspose\Imaging\ApiException $ex) {
+            $this->assertTrue($ex->getCode() === 501);
+        }
+    }
 
-	/**
+    /**
      * @test
-	 * 
+     * 
      * @return void
     */
-	public function storageExistsTest()  {
-		$storageExists = self::$imagingApi->storageExists(new Requests\StorageExistsRequest(self::$testStorage));
-		$this->assertTrue($storageExists->getExists());
-	}
+    public function storageExistsTest()  {
+        $storageExists = self::$imagingApi->storageExists(new Requests\StorageExistsRequest(self::$testStorage));
+        $this->assertTrue($storageExists->getExists());
+    }
 
-	/**
+    /**
      * @test
-	 * 
+     * 
      * @return void
     */
-	public function storageDoesNotExistTest()  {
-		$storageExists = self::$imagingApi->storageExists(new Requests\StorageExistsRequest("NotExistingStorage"));
-		$this->assertFalse($storageExists->getExists());
-	}
+    public function storageDoesNotExistTest()  {
+        $storageExists = self::$imagingApi->storageExists(new Requests\StorageExistsRequest("NotExistingStorage"));
+        $this->assertFalse($storageExists->getExists());
+    }
 }

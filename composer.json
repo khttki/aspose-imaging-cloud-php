@@ -1,18 +1,18 @@
 {
-    "description": 	"Aspose.Imaging Cloud PHP SDK",
-    "name": 		"aspose/imaging-sdk-php",
-    "version": 		"19.3",
-    "type": 		"library",
-    "keywords" : 	["aspose", "imaging", "cloud", "rest", "api", "sdk", "image", "bmp", "dicom", "dng", "djvu", "djv", "emf", "gif", "jpg", "jpe", "jpeg", "jpeg2000", "jp2", "jpx", "jpm", "j2k", "odg", "pdf", "png", "tiff", "tif", "webp", "wmf", "cdr", "cmx", "pdf", "svg", "reverse", "search"],
-	"license": 		"MIT",
+    "description":     "Aspose.Imaging Cloud PHP SDK",
+    "name":         "aspose/imaging-sdk-php",
+    "version":         "19.4",
+    "type":         "library",
+    "keywords" :     ["aspose", "imaging", "cloud", "rest", "api", "sdk", "image", "bmp", "dicom", "dng", "djvu", "djv", "emf", "gif", "jpg", "jpe", "jpeg", "jpeg2000", "jp2", "jpx", "jpm", "j2k", "odg", "pdf", "png", "tiff", "tif", "webp", "wmf", "cdr", "cmx", "pdf", "svg", "reverse", "search"],
+    "license":         "MIT",
     "homepage": "https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-php",
     "authors": [
-		{
+        {
             "name": "Maksym Shnurenok",
             "homepage": "https://github.com/aspose-imaging-cloud"
-		}
+        }
     ],
-	"config": {
+    "config": {
         "platform": {
             "php": "5.6.39"
         }
@@ -28,7 +28,7 @@
         "ext-mbstring": "*",
         "phpunit/phpunit": "^4.8"
     },
-	"autoload": {
+    "autoload": {
         "psr-0": {
             "Aspose": ["lib/"]
         }

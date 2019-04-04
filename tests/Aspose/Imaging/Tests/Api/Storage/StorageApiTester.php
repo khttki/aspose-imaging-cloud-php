@@ -36,83 +36,83 @@ use \Aspose\Imaging\Tests\Base\ApiTester;
 class StorageApiTester extends ApiTester
 {
 
-	/**
+    /**
      * The original data folder
      * 
      * @var string 
      */
-	protected static $originalDataFolder = "ImagingIntegrationTestData/Storage";
+    protected static $originalDataFolder = "ImagingIntegrationTestData/Storage";
 
-	/**
+    /**
      * The cloud test folder prefix
      * 
      * @var string 
      */
-	protected static $cloudTestFolderPrefix = "ImagingStorageCloudTestDotNet";
+    protected static $cloudTestFolderPrefix = "ImagingStorageCloudTestDotNet";
 
-	/**
+    /**
      * Get file with name
-	 * 
+     * 
      * @param \Aspose\Imaging\Model\StorageFile[] $files
      * @param string $name
      * @return \Aspose\Imaging\Model\StorageFile
      */
-	protected function getFileWithName($files, $name)
-	{
-		$result = null;
+    protected function getFileWithName($files, $name)
+    {
+        $result = null;
 
-		foreach ($files as $file) {
-			if ($file->getName() === $name) {
-				$result = $file;
-				break;
-			}
-		}
+        foreach ($files as $file) {
+            if ($file->getName() === $name) {
+                $result = $file;
+                break;
+            }
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
+    /**
      * Get file version
-	 * 
+     * 
      * @param \Aspose\Imaging\Model\FileVersion[] $versions
      * @param bool $recent
      * @return \Aspose\Imaging\Model\FileVersion
      */
-	protected function getFileVersion($versions, $recent)
-	{
-		$result = null;
+    protected function getFileVersion($versions, $recent)
+    {
+        $result = null;
 
-		foreach ($versions as $version) {
-				if ($version->getIsLatest() === $recent) {
-					$result = $version;
-					break;
-				}
-			}
+        foreach ($versions as $version) {
+                if ($version->getIsLatest() === $recent) {
+                    $result = $version;
+                    break;
+                }
+            }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
+    /**
      * If string starts with certain chars
-	 * 
+     * 
      * @param string $haystack
      * @param bool $needle
      * @return bool
      */
-	protected function startsWith($haystack, $needle)
-	{
-		return strncmp($haystack, $needle, strlen($needle)) === 0;
-	}
+    protected function startsWith($haystack, $needle)
+    {
+        return strncmp($haystack, $needle, strlen($needle)) === 0;
+    }
 
-	/**
+    /**
      * If string ends with certain chars
-	 * 
+     * 
      * @param string $haystack
      * @param bool $needle
      * @return bool
      */
-	protected function endsWith($haystack, $needle)
-	{
-		return $needle === '' || substr_compare($haystack, $needle, -strlen($needle)) === 0;
-	}
+    protected function endsWith($haystack, $needle)
+    {
+        return $needle === '' || substr_compare($haystack, $needle, -strlen($needle)) === 0;
+    }
 }

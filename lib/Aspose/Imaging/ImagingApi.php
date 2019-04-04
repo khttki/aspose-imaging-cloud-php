@@ -3656,6 +3656,7 @@ class ImagingApi
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
+            
         try {
             $response = $this->client->send($request, $options);
             return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
