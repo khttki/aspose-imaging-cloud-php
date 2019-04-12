@@ -44,6 +44,8 @@ class StorageApiTests extends StorageApiTester {
      * @return void
      */
     public function getDiscUsageTest()  {
+        $this->markTestSkipped("IMAGINGCLOUD-292");
+        
         try {
             $discUsage = self::$imagingApi->getDiscUsageAsync(new Requests\GetDiscUsageRequest(self::$testStorage))->wait();
             $this->assertTrue($discUsage->getUsedSize() < $discUsage->getTotalSize());
