@@ -68,7 +68,7 @@ class TiffApiTest extends ApiTester
             function($fileName, $outPath) use ($folder, $storage)
             {
                 $request = new Requests\GetTiffToFaxRequest($fileName, $storage, $folder, $outPath);
-                return self::$asyncMode ? self::$imagingApi->getTiffToFaxAsync($request)->wait() : self::$imagingApi->getTiffToFax($request);
+                return self::$imagingApi->getTiffToFaxAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -116,7 +116,7 @@ class TiffApiTest extends ApiTester
             {
                 $request = new Requests\GetImageTiffRequest($fileName, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, $verticalResolution,
                     $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageTiffAsync($request)->wait() : self::$imagingApi->getImageTiff($request);
+                return self::$imagingApi->getImageTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
             {
@@ -168,7 +168,7 @@ class TiffApiTest extends ApiTester
             {
                 $request = new Requests\PostImageTiffRequest($inputStream, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, 
                     $verticalResolution, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageTiffAsync($request)->wait() : self::$imagingApi->postImageTiff($request);
+                return self::$imagingApi->postImageTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
             {
@@ -245,19 +245,20 @@ class TiffApiTest extends ApiTester
                     . $folder . "Result isn't present in the storage by an unknown reason.");
             }
 
-            $resultProperties = self::$asyncMode ?
-                self::$imagingApi->getImagePropertiesAsync(new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait() :
-                self::$imagingApi->getImageProperties(new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage));
+            $resultProperties = 
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
             $this->assertNotNull($resultProperties);
 
-            $originalProperties = self::$asyncMode ?
-                self::$imagingApi->getImagePropertiesAsync(new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait() :
-                self::$imagingApi->getImageProperties(new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage));
+            $originalProperties =
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait();
             $this->assertNotNull($originalProperties);
 
             $this->assertNotNull($resultProperties->getTiffProperties());
             $this->assertNotNull($originalProperties->getTiffProperties());
-            $this->assertEquals(count($originalProperties->getTiffProperties()->getFrames()) * 2, count($resultProperties->getTiffProperties()->getFrames()));
+            $this->assertEquals(count($originalProperties->getTiffProperties()->getFrames()) * 2, 
+                count($resultProperties->getTiffProperties()->getFrames()));
             $this->assertEquals($originalProperties->getWidth(), $resultProperties->getWidth());
             $this->assertEquals($originalProperties->getHeight(), $resultProperties->getHeight());
 

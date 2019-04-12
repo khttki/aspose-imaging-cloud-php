@@ -112,13 +112,6 @@ abstract class ApiTester extends TestCase
     public static $failedAnyTest = false;
 
     /**
-     * If async tests should be run
-     * 
-     * @var bool 
-     */
-    protected static $asyncMode;
-
-    /**
      * If extended tests should be run
      * 
      * @var bool
@@ -187,9 +180,7 @@ abstract class ApiTester extends TestCase
     public static function initFixture()
     {
         echo "\r\n";
-        self::$asyncMode = getenv("AsyncMode") === "true" ? true : false;
         self::$extendedTests = getenv("ExtendedTests") === "true" ? true : false;
-        echo "Async mode: " . (self::$asyncMode ? "true" : "false") . "\r\n";
         echo "Extended tests: " . (self::$extendedTests ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
@@ -537,24 +528,23 @@ abstract class ApiTester extends TestCase
 
                 if (!preg_match('/.pdf$/', $resultFileName))
                 {
-                    $resultProperties = self::$asyncMode ?
-                    self::$imagingApi->getImagePropertiesAsync(new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait() :
-                    self::$imagingApi->getImageProperties(new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage));
-            
+                    $resultProperties = 
+                        self::$imagingApi->getImagePropertiesAsync(
+                            new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
                     $this->assertNotNull($resultProperties);
                 }
             }
             else if (!preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()) && !preg_match('/.pdf$/', $resultFileName))
             {
-                $resultProperties = self::$asyncMode ?
-                    self::$imagingApi->postImagePropertiesAsync(new Requests\PostImagePropertiesRequest($response->getContents()))->wait() :
-                    self::$imagingApi->postImageProperties(new Requests\PostImagePropertiesRequest($response->getContents()));
+                $resultProperties = 
+                    self::$imagingApi->postImagePropertiesAsync(
+                        new Requests\PostImagePropertiesRequest($response->getContents()))->wait();
                 $this->assertNotNull($resultProperties);
             }
 
-            $originalProperties = self::$asyncMode ?
-                self::$imagingApi->getImagePropertiesAsync(new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait() :
-                self::$imagingApi->getImageProperties(new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage));
+            $originalProperties = 
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait();
             $this->assertNotNull($originalProperties);
 
             if (isset($resultProperties) && isset($propertiesTester))

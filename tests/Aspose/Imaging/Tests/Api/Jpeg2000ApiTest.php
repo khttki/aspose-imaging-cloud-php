@@ -68,7 +68,7 @@ class Jpeg2000ApiTest extends ApiTester
             function($fileName, $outPath) use ($comment, $codec, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageJpeg2000Request($fileName, $comment, $codec, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageJpeg2000Async($request)->wait() : self::$imagingApi->getImageJpeg2000($request);
+                return self::$imagingApi->getImageJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)
             {
@@ -117,7 +117,7 @@ class Jpeg2000ApiTest extends ApiTester
             function($inputStream, $outPath) use ($comment, $codec, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageJpeg2000Request($inputStream, $comment, $codec, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageJpeg2000Async($request)->wait() : self::$imagingApi->postImageJpeg2000($request);
+                return self::$imagingApi->postImageJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)
             {

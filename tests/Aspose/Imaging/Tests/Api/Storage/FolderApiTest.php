@@ -50,20 +50,20 @@ class FolderApiTests extends StorageApiTester {
     public function createFolderTest() {
         $folder = self::$tempFolder . "/DummyFolder";
         try {
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($folder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($folder, self::$testStorage, true))->wait();
             }
 
-            $this->assertFalse(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            $this->assertFalse(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
 
-            self::$imagingApi->createFolder(new Requests\CreateFolderRequest($folder, self::$testStorage));
-            $this->assertTrue(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            self::$imagingApi->createFolderAsync(new Requests\CreateFolderRequest($folder, self::$testStorage))->wait();
+            $this->assertTrue(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
         } finally {
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($folder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($folder, self::$testStorage, true))->wait();
             }
 
-            $this->assertFalse(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            $this->assertFalse(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
         }
     }
 
@@ -75,18 +75,18 @@ class FolderApiTests extends StorageApiTester {
     public function copyFolderTest() {
         $folder = self::$tempFolder . "/Storage";
         try {
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($folder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($folder, self::$testStorage, true))->wait();
             }
 
-            $this->assertFalse(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            $this->assertFalse(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
 
-            self::$imagingApi->copyFolder(new Requests\CopyFolderRequest(self::$originalDataFolder, $folder, self::$testStorage, self::$testStorage));
-            $this->assertTrue(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            self::$imagingApi->copyFolderAsync(new Requests\CopyFolderRequest(self::$originalDataFolder, $folder, self::$testStorage, self::$testStorage))->wait();
+            $this->assertTrue(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
             $originalFiles = self::$imagingApi
-                    ->getFilesList(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage))->getValue();
-            $copiedFiles = self::$imagingApi->getFilesList(new Requests\GetFilesListRequest($folder, self::$testStorage))
-                    ->getValue();
+                    ->getFilesListAsync(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage))->wait()->getValue();
+            $copiedFiles = self::$imagingApi->getFilesListAsync(new Requests\GetFilesListRequest($folder, self::$testStorage))
+                    ->wait()->getValue();
             $this->assertTrue(sizeof($originalFiles) > 0);
             $this->assertTrue(sizeof($copiedFiles) > 0);
             $this->assertEquals(sizeof($originalFiles), sizeof($copiedFiles));
@@ -97,11 +97,11 @@ class FolderApiTests extends StorageApiTester {
                 $this->assertEquals($originalFiles[$x]->getSize(), $copiedFiles[$x]->getSize());
             }
         } finally {
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($folder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($folder, self::$testStorage, true))->wait();
             }
 
-            $this->assertFalse(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            $this->assertFalse(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
         }
     }
 
@@ -114,31 +114,31 @@ class FolderApiTests extends StorageApiTester {
         $tmpFolder = self::$tempFolder . "/Temp";
         $folder = self::$tempFolder . "/Storage";
         try {
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($folder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($folder, self::$testStorage, true))->wait();
             }
 
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($tmpFolder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($tmpFolder, self::$testStorage, true))->wait();
             }
 
             $this->assertFalse(
-                    self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->getExists());
-            $this->assertFalse(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+                    self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->wait()->getExists());
+            $this->assertFalse(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
 
-            self::$imagingApi->copyFolder(new Requests\CopyFolderRequest(self::$originalDataFolder, $tmpFolder, self::$testStorage, self::$testStorage));
+            self::$imagingApi->copyFolderAsync(new Requests\CopyFolderRequest(self::$originalDataFolder, $tmpFolder, self::$testStorage, self::$testStorage))->wait();
             $this->assertTrue(
-                    self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->getExists());
+                    self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->wait()->getExists());
 
-            self::$imagingApi->moveFolder(new Requests\MoveFolderRequest($tmpFolder, $folder, self::$testStorage, self::$testStorage));
+            self::$imagingApi->moveFolderAsync(new Requests\MoveFolderRequest($tmpFolder, $folder, self::$testStorage, self::$testStorage))->wait();
             $this->assertFalse(
-                    self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->getExists());
-            $this->assertTrue(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+                    self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($tmpFolder, self::$testStorage, null))->wait()->getExists());
+            $this->assertTrue(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
 
             $originalFiles = self::$imagingApi
-                    ->getFilesList(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage))->getValue();
-            $copiedFiles = self::$imagingApi->getFilesList(new Requests\GetFilesListRequest($folder, self::$testStorage))
-                    ->getValue();
+                    ->getFilesListAsync(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage))->wait()->getValue();
+            $copiedFiles = self::$imagingApi->getFilesListAsync(new Requests\GetFilesListRequest($folder, self::$testStorage))
+                    ->wait()->getValue();
             $this->assertTrue(sizeof($originalFiles) > 0);
             $this->assertTrue(sizeof($copiedFiles) > 0);
             $this->assertEquals(sizeof($originalFiles), sizeof($copiedFiles));
@@ -149,11 +149,11 @@ class FolderApiTests extends StorageApiTester {
                 $this->assertEquals($originalFiles[$x]->getSize(), $copiedFiles[$x]->getSize());
             }
         } finally {
-            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists()) {
-                self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest($folder, self::$testStorage, true));
+            if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
+                self::$imagingApi->deleteFolderAsync(new Requests\DeleteFolderRequest($folder, self::$testStorage, true))->wait();
             }
 
-            $this->assertFalse(self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->getExists());
+            $this->assertFalse(self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists());
         }
     }
 
@@ -163,8 +163,8 @@ class FolderApiTests extends StorageApiTester {
      * @return void
      */
     public function filesListTest() {
-        $files = self::$imagingApi->getFilesList(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage))
-                ->getValue();
+        $files = self::$imagingApi->getFilesListAsync(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage))
+                ->wait()->getValue();
         $this->assertEquals(3, sizeof($files));
         $folder1 = $this->getFileWithName($files, "Folder1");
         $this->assertNotNull($folder1);
@@ -182,8 +182,8 @@ class FolderApiTests extends StorageApiTester {
                 strlen(trim($storageFile->getPath(), "/")));
 
         $files = self::$imagingApi
-                ->getFilesList(new Requests\GetFilesListRequest(self::$originalDataFolder . "/" . $folder1->getName(), self::$testStorage))
-                ->getValue();
+                ->getFilesListAsync(new Requests\GetFilesListRequest(self::$originalDataFolder . "/" . $folder1->getName(), self::$testStorage))
+                ->wait()->getValue();
         $this->assertEquals(1, sizeof($files));
         $folder1File = $this->getFileWithName($files, "Folder1.txt");
         $this->assertNotNull($folder1File);
@@ -193,8 +193,8 @@ class FolderApiTests extends StorageApiTester {
             strlen(trim($folder1File->getPath(), "/")));
 
         $files = self::$imagingApi
-                ->getFilesList(new Requests\GetFilesListRequest(self::$originalDataFolder . "/" . $folder2->getName(), self::$testStorage))
-                ->getValue();
+                ->getFilesListAsync(new Requests\GetFilesListRequest(self::$originalDataFolder . "/" . $folder2->getName(), self::$testStorage))
+                ->wait()->getValue();
         $this->assertEquals(2, sizeof($files));
         $folder2File = $this->getFileWithName($files, "Folder2.txt");
         $this->assertNotNull($folder2File);
@@ -208,9 +208,9 @@ class FolderApiTests extends StorageApiTester {
         $this->assertTrue($this->endsWith(trim($folder3->getPath(), "/"), $folder3->getName()));
 
         $files = self::$imagingApi
-                ->getFilesList(new Requests\GetFilesListRequest(
+                ->getFilesListAsync(new Requests\GetFilesListRequest(
                         self::$originalDataFolder . "/" . $folder2->getName() . "/" . $folder3->getName(), self::$testStorage))
-                ->getValue();
+                ->wait()->getValue();
         $this->assertEquals(1, sizeof($files));
         $folder3File = $this->getFileWithName($files, "Folder3.txt");
         $this->assertNotNull($folder3File);

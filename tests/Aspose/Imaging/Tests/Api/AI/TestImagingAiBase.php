@@ -120,11 +120,9 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function createSearchContext()
     {
-        $response = self::$asyncMode ?
+        $response = 
             self::$imagingApi->postCreateSearchContextAsync(
-                new Requests\PostCreateSearchContextRequest(null, null, null, self::$testStorage))->wait() :
-            self::$imagingApi->postCreateSearchContext(
-                new Requests\PostCreateSearchContextRequest(null, null, null, self::$testStorage));
+                new Requests\PostCreateSearchContextRequest(null, null, null, self::$testStorage))->wait();
         
         return $response->getId();
     }
@@ -137,9 +135,7 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function deleteSearchContext($searchContextId)
     {
-        self::$asyncMode ?
-            self::$imagingApi->deleteSearchContextAsync(new Requests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage))->wait() :
-            self::$imagingApi->deleteSearchContext(new Requests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage));
+        self::$imagingApi->deleteSearchContextAsync(new Requests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage))->wait();
     }
 
     /**
@@ -150,9 +146,8 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function getSearchContextStatus($searchContextId)
     {
-        $response = self::$asyncMode ?
-            self::$imagingApi->getSearchContextStatusAsync(new Requests\GetSearchContextStatusRequest($searchContextId, null, self::$testStorage))->wait() :
-            self::$imagingApi->getSearchContextStatus(new Requests\GetSearchContextStatusRequest($searchContextId, null, self::$testStorage));
+        $response = 
+            self::$imagingApi->getSearchContextStatusAsync(new Requests\GetSearchContextStatusRequest($searchContextId, null, self::$testStorage))->wait();
         return $response->getSearchStatus();
     }
 
@@ -171,8 +166,7 @@ abstract class TestImagingAiBase extends ApiTester
             new Requests\PostSearchContextExtractImageFeaturesRequest(
                 $this->searchContextId, null, $storageSourcePath, null, null, self::$testStorage);
         
-        self::$asyncMode ? self::$imagingApi->postSearchContextExtractImageFeaturesAsync($request)->wait() :
-            self::$imagingApi->postSearchContextExtractImageFeatures($request);
+        self::$imagingApi->postSearchContextExtractImageFeaturesAsync($request)->wait();
 
         $this->waitSearchContextIdle();
     }

@@ -68,7 +68,7 @@ class JpgApiTest extends ApiTester
             function($fileName, $outPath) use ($quality, $compressionType, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageJpgRequest($fileName, $quality, $compressionType, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageJpgAsync($request)->wait() : self::$imagingApi->getImageJpg($request);
+                return self::$imagingApi->getImageJpgAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)
             {
@@ -109,7 +109,7 @@ class JpgApiTest extends ApiTester
             function($inputStream, $outPath) use ($quality, $compressionType, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageJpgRequest($inputStream, $quality, $compressionType, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageJpgAsync($request)->wait() : self::$imagingApi->postImageJpg($request);
+                return self::$imagingApi->postImageJpgAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)
             {

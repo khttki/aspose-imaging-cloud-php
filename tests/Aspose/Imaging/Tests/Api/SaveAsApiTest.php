@@ -116,7 +116,7 @@ class SaveAsApiTest extends ApiTester
                     function($fileName, $outPath) use ($format, $folder, $storage)
                     {
                         $request = new Requests\GetImageSaveAsRequest($fileName, $format, $outPath, $folder, $storage);
-                        return self::$asyncMode ? self::$imagingApi->getImageSaveAsAsync($request)->wait() : self::$imagingApi->getImageSaveAs($request);
+                        return self::$imagingApi->getImageSaveAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,
@@ -177,7 +177,7 @@ class SaveAsApiTest extends ApiTester
                     function($inputStream, $outPath) use ($format, $storage)
                     {
                         $request = new Requests\PostImageSaveAsRequest($inputStream, $format, $outPath, $storage);
-                        return self::$asyncMode ? self::$imagingApi->postImageSaveAsAsync($request)->wait() : self::$imagingApi->postImageSaveAs($request);
+                        return self::$imagingApi->postImageSaveAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,

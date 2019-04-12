@@ -77,7 +77,7 @@ class FramesGetApiTest extends ApiTester
             {
                 $request = new Requests\GetImageFrameRequest($fileName, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageFrameAsync($request)->wait() : self::$imagingApi->getImageFrame($request);
+                return self::$imagingApi->getImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)
@@ -97,9 +97,8 @@ class FramesGetApiTest extends ApiTester
                 if (!$saveResultToStorage) return;
 
                 $framePropertiesRequest = new Requests\GetImageFramePropertiesRequest($outName, 0, $folder, $storage);
-                $framePropertiesResponse = self::$asyncMode ? 
-                    self::$imagingApi->getImageFramePropertiesAsync($framePropertiesRequest)->wait() :
-                    self::$imagingApi->getImageFrameProperties($framePropertiesRequest);
+                $framePropertiesResponse = 
+                    self::$imagingApi->getImageFramePropertiesAsync($framePropertiesRequest)->wait();
 
                 $this->assertNotNull($framePropertiesResponse);
                 $this->assertNotNull($framePropertiesResponse->getTiffProperties());
@@ -152,7 +151,7 @@ class FramesGetApiTest extends ApiTester
             {
                 $request = new Requests\GetImageFrameRequest($fileName, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageFrameAsync($request)->wait() : self::$imagingApi->getImageFrame($request);
+                return self::$imagingApi->getImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)

@@ -120,7 +120,7 @@ class CropApiTest extends ApiTester
                     function($fileName, $outPath) use ($format, $x, $y, $width, $height, $folder, $storage)
                     {
                         $request = new Requests\GetImageCropRequest($fileName, $format, $x, $y, $width, $height, $outPath, $folder, $storage);
-                        return self::$asyncMode ? self::$imagingApi->getImageCropAsync($request)->wait() : self::$imagingApi->getImageCrop($request);
+                        return self::$imagingApi->getImageCropAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)
                     {
@@ -189,7 +189,7 @@ class CropApiTest extends ApiTester
                     function($inputStream, $outPath) use ($format, $x, $y, $width, $height, $storage)
                     {
                         $request = new Requests\PostImageCropRequest($inputStream, $format, $x, $y, $width, $height, $outPath, $storage);
-                        return self::$asyncMode ? self::$imagingApi->postImageCropAsync($request)->wait() : self::$imagingApi->postImageCrop($request);
+                        return self::$imagingApi->postImageCropAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)
                     {

@@ -7,6 +7,6 @@
     verbose="true"
     processIsolation="false">
     <logging>
-      <log type="junit" target="test-reports\junit.xml" logIncompleteSkipped="true"/>
+      <log type="junit" target="test-reports\junit.xml" logIncompleteSkipped="false"/>
     </logging>
 </phpunit>

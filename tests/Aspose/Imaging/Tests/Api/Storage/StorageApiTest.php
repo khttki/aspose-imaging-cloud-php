@@ -45,7 +45,7 @@ class StorageApiTests extends StorageApiTester {
      */
     public function getDiscUsageTest()  {
         try {
-            $discUsage = self::$imagingApi->getDiscUsage(new Requests\GetDiscUsageRequest(self::$testStorage));
+            $discUsage = self::$imagingApi->getDiscUsageAsync(new Requests\GetDiscUsageRequest(self::$testStorage))->wait();
             $this->assertTrue($discUsage->getUsedSize() < $discUsage->getTotalSize());
             $this->assertTrue($discUsage->getTotalSize() > 0);
             $this->assertTrue($discUsage->getUsedSize() > 0);
@@ -60,7 +60,7 @@ class StorageApiTests extends StorageApiTester {
      * @return void
     */
     public function storageExistsTest()  {
-        $storageExists = self::$imagingApi->storageExists(new Requests\StorageExistsRequest(self::$testStorage));
+        $storageExists = self::$imagingApi->storageExistsAsync(new Requests\StorageExistsRequest(self::$testStorage))->wait();
         $this->assertTrue($storageExists->getExists());
     }
 
@@ -70,7 +70,7 @@ class StorageApiTests extends StorageApiTester {
      * @return void
     */
     public function storageDoesNotExistTest()  {
-        $storageExists = self::$imagingApi->storageExists(new Requests\StorageExistsRequest("NotExistingStorage"));
+        $storageExists = self::$imagingApi->storageExistsAsync(new Requests\StorageExistsRequest("NotExistingStorage"))->wait();
         $this->assertFalse($storageExists->getExists());
     }
 }

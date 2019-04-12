@@ -67,11 +67,9 @@ class FindImagesTest extends TestImagingAiBase
 
             $findImageId = self::$originalDataFolder . "/FindSimilar/" . $this->imageToFind;
 
-            $response = self::$asyncMode ?
+            $response = 
                 self::$imagingApi->getSearchContextFindSimilarAsync(
-                    new Requests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage))->wait() :
-                self::$imagingApi->getSearchContextFindSimilar(
-                    new Requests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage));       
+                    new Requests\GetSearchContextFindSimilarRequest($this->searchContextId, 3, 3, null, $findImageId, null, self::$testStorage))->wait();      
 
             $this->assertGreaterThanOrEqual(1, count($response->getResults()));
         });
@@ -98,18 +96,14 @@ class FindImagesTest extends TestImagingAiBase
             $this->assertNotNull($tagImageStream);
             $imageContents = $tagImageStream->getContents();
 
-            self::$asyncMode ? self::$imagingApi->postSearchContextAddTagAsync(new Requests\PostSearchContextAddTagRequest(
-                             $imageContents, $this->searchContextId, $tag, null, self::$testStorage))->wait() :
-                             self::$imagingApi->postSearchContextAddTag(new Requests\PostSearchContextAddTagRequest(
-                                $imageContents, $this->searchContextId, $tag, null, self::$testStorage));
+            self::$imagingApi->postSearchContextAddTagAsync(new Requests\PostSearchContextAddTagRequest(
+                $imageContents, $this->searchContextId, $tag, null, self::$testStorage))->wait();
 
             $tags = json_encode([$tag]);
             
-            $response = self::$asyncMode ? 
+            $response = 
                 self::$imagingApi->postSearchContextFindByTagsAsync(
-                    new Requests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage))->wait() :
-                self::$imagingApi->postSearchContextFindByTags(
-                    new Requests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage));
+                    new Requests\PostSearchContextFindByTagsRequest($tags, $this->searchContextId, 60, 5, null, self::$testStorage))->wait();
 
             $this->assertEquals(1, count($response->getResults()));
             $this->assertRegExp('/\b2\\.jpg\b/', $response->getResults()[0]->getImageId());

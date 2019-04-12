@@ -68,6 +68,7 @@ class CompareImagesTest extends TestImagingAiBase
      */
     public function compareTwoImagesInSearchContextTest()
     {
+        $this->markTestSkipped("IMAGINGCLOUD-291");
         $this->runTestWithLogging("compareTwoImagesInSearchContextTest", function()
         {
             $image1 = $this->getStoragePath($this->comparableImage);
@@ -76,11 +77,9 @@ class CompareImagesTest extends TestImagingAiBase
             $image2 = $this->getStoragePath($this->comparingImageSimilarMore75);
             $this->addImageFeaturesToSearchContext($image2);
 
-            $response = self::$asyncMode ?
+            $response = 
                 self::$imagingApi->postSearchContextCompareImagesAsync(
-                    new Requests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage))->wait() :
-                self::$imagingApi->postSearchContextCompareImages(
-                    new Requests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage));    
+                    new Requests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage))->wait();  
             
             $this->assertEquals(1, count($response->getResults()));
             $this->assertGreaterThanOrEqual(70, $response->getResults()[0]->getSimilarity());
@@ -97,6 +96,7 @@ class CompareImagesTest extends TestImagingAiBase
      */
     public function compareLoadedImageToImageInSearchContextTest()
     {
+        $this->markTestSkipped("IMAGINGCLOUD-291");
         $this->runTestWithLogging("compareLoadedImageToImageInSearchContextTest", function()
         {
             $image = $this->getStoragePath($this->comparableImage);
@@ -107,11 +107,9 @@ class CompareImagesTest extends TestImagingAiBase
             $this->assertNotNull($imageStream);
             $imageContents = $imageStream->getContents();
 
-            $response = self::$asyncMode ? 
+            $response = 
                 self::$imagingApi->postSearchContextCompareImagesAsync(new Requests\PostSearchContextCompareImagesRequest(
-                    $this->searchContextId, $image, $imageContents, null, null, self::$testStorage))->wait() :
-                self::$imagingApi->postSearchContextCompareImages(new Requests\PostSearchContextCompareImagesRequest(
-                    $this->searchContextId, $image, $imageContents, null, null, self::$testStorage));  
+                    $this->searchContextId, $image, $imageContents, null, null, self::$testStorage))->wait();
 
             $this->assertEquals(1, count($response->getResults()));
             $this->assertLessThanOrEqual(15, $response->getResults()[0]->getSimilarity());
