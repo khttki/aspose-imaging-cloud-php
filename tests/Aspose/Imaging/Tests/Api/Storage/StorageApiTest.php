@@ -47,8 +47,6 @@ class StorageApiTests extends StorageApiTester {
         try {
             $discUsage = self::$imagingApi->getDiscUsageAsync(new Requests\GetDiscUsageRequest(self::$testStorage))->wait();
             $this->assertTrue($discUsage->getUsedSize() < $discUsage->getTotalSize());
-            $this->assertTrue($discUsage->getTotalSize() > 0);
-            $this->assertTrue($discUsage->getUsedSize() > 0);
         } catch (\Aspose\Imaging\ApiException $ex) {
             $this->assertTrue($ex->getCode() === 501);
         }
