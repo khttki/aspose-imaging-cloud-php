@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="StorageApiTester.php">
+ * <copyright company="Aspose" file="StorageTester.php">
  *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -33,9 +33,8 @@ use \Aspose\Imaging\Tests\Base\ApiTester;
 /**
  * Storage API tester.
  */
-class StorageApiTester extends ApiTester
+abstract class StorageTester extends ApiTester
 {
-
     /**
      * The original data folder
      * 

@@ -69,7 +69,7 @@ class ImagingApi
         {
             set_time_limit(500);
         }
-        
+
         $this->requestToken();
     }
 

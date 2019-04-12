@@ -37,7 +37,7 @@ use \Aspose\Imaging\Model\Requests;
  * @group File
  * @group v3.0
  */
-class FileApiTests extends StorageApiTester {
+class FileApiTests extends StorageTester {
     
     /**
      * @test
