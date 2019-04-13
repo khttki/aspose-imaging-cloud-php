@@ -86,7 +86,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const DefaultStorage = "Imaging-QA";
+    const DefaultStorage = "Imaging-CI";
 
     /**
      * The basic export formats
