@@ -38,7 +38,7 @@ use \Aspose\Imaging\Model\Requests;
  */
 class CompareImagesTest extends TestImagingAiBase
 {
-        /**
+    /**
      * Comparable image
      *
      * @var string
@@ -68,7 +68,6 @@ class CompareImagesTest extends TestImagingAiBase
      */
     public function compareTwoImagesInSearchContextTest()
     {
-        $this->markTestSkipped("IMAGINGCLOUD-291");
         $this->runTestWithLogging("compareTwoImagesInSearchContextTest", function()
         {
             $image1 = $this->getStoragePath($this->comparableImage);
@@ -90,13 +89,11 @@ class CompareImagesTest extends TestImagingAiBase
      * Tests loaded image comparison
      *
      * @test
-     * @group AiTest
      * 
      * @return void
      */
     public function compareLoadedImageToImageInSearchContextTest()
     {
-        $this->markTestSkipped("IMAGINGCLOUD-291");
         $this->runTestWithLogging("compareLoadedImageToImageInSearchContextTest", function()
         {
             $image = $this->getStoragePath($this->comparableImage);
