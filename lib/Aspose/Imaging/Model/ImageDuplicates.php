@@ -30,12 +30,11 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * ImageDuplicates
  *
- * @description Duplicate images.
+ * @description Image duplicates.
  */
 class ImageDuplicates implements ArrayAccess
 {
@@ -215,7 +214,7 @@ class ImageDuplicates implements ArrayAccess
     /**
      * Sets duplicate_images
      *
-     * @param \Aspose\Imaging\Model\SearchResult[] $duplicate_images Gets the array of duplicate images.
+     * @param \Aspose\Imaging\Model\SearchResult[] $duplicate_images Gets or sets the duplicate images.
      *
      * @return $this
      */

@@ -27,15 +27,16 @@
  */
 
 namespace Aspose\Imaging\Model;
+
+use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * ImageFeatures
  *
  * @description Image features.
  */
-class ImageFeatures extends SaaSposeResponse 
+class ImageFeatures implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -77,7 +78,7 @@ class ImageFeatures extends SaaSposeResponse
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /**
@@ -87,7 +88,7 @@ class ImageFeatures extends SaaSposeResponse
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /**
@@ -135,7 +136,7 @@ class ImageFeatures extends SaaSposeResponse
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -145,7 +146,7 @@ class ImageFeatures extends SaaSposeResponse
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -155,7 +156,7 @@ class ImageFeatures extends SaaSposeResponse
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -172,6 +173,12 @@ class ImageFeatures extends SaaSposeResponse
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -181,8 +188,6 @@ class ImageFeatures extends SaaSposeResponse
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
         $this->container['image_id'] = isset($data['image_id']) ? $data['image_id'] : null;
         $this->container['features_count'] = isset($data['features_count']) ? $data['features_count'] : null;
         $this->container['feature_length_in_bits'] = isset($data['feature_length_in_bits']) ? $data['feature_length_in_bits'] : null;
@@ -196,8 +201,14 @@ class ImageFeatures extends SaaSposeResponse
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
+        if ($this->container['features_count'] === null) {
+            $invalidProperties[] = "'features_count' can't be null";
+        }
+        if ($this->container['feature_length_in_bits'] === null) {
+            $invalidProperties[] = "'feature_length_in_bits' can't be null";
+        }
         if (!is_null($this->container['features']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['features'])) {
             $invalidProperties[] = "invalid value for 'features', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
         }
@@ -213,11 +224,11 @@ class ImageFeatures extends SaaSposeResponse
      */
     public function valid()
     {
-        if (!parent::valid()) {
+
+        if ($this->container['features_count'] === null) {
             return false;
         }
-
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['features'])) {
+        if ($this->container['feature_length_in_bits'] === null) {
             return false;
         }
         return true;
@@ -315,11 +326,6 @@ class ImageFeatures extends SaaSposeResponse
      */
     public function setFeatures($features)
     {
-
-        if (!is_null($features) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $features))) {
-            throw new \InvalidArgumentException("invalid value for $features when calling ImageFeatures., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
         $this->container['features'] = $features;
 
         return $this;

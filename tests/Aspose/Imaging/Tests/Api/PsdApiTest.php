@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing PsdApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Psd
  */
 class PsdApiTest extends ApiTester
@@ -73,7 +68,7 @@ class PsdApiTest extends ApiTester
             function($fileName, $outPath) use ($channelsCount, $compressionMethod, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImagePsdRequest($fileName, $channelsCount, $compressionMethod, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImagePsdAsync($request)->wait() : self::$imagingApi->getImagePsd($request);
+                return self::$imagingApi->getImagePsdAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($channelsCount, $compressionMethod)
             {
@@ -118,7 +113,7 @@ class PsdApiTest extends ApiTester
             function($inputStream, $outPath) use ($channelsCount, $compressionMethod, $fromScratch, $storage)
             {
                 $request = new Requests\PostImagePsdRequest($inputStream, $channelsCount, $compressionMethod, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImagePsdAsync($request)->wait() : self::$imagingApi->postImagePsd($request);
+                return self::$imagingApi->postImagePsdAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($channelsCount, $compressionMethod)
             {

@@ -27,15 +27,16 @@
  */
 
 namespace Aspose\Imaging\Model;
+
+use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * ImageDuplicatesSet
  *
  * @description Duplicate images set.
  */
-class ImageDuplicatesSet extends SaaSposeResponse 
+class ImageDuplicatesSet implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -71,7 +72,7 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /**
@@ -81,7 +82,7 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /**
@@ -120,7 +121,7 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -130,7 +131,7 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -140,7 +141,7 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -157,6 +158,12 @@ class ImageDuplicatesSet extends SaaSposeResponse
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -166,8 +173,6 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
         $this->container['duplicates'] = isset($data['duplicates']) ? $data['duplicates'] : null;
     }
 
@@ -178,7 +183,7 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         return $invalidProperties;
     }
@@ -191,9 +196,6 @@ class ImageDuplicatesSet extends SaaSposeResponse
      */
     public function valid()
     {
-        if (!parent::valid()) {
-            return false;
-        }
 
         return true;
     }

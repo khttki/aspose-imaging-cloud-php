@@ -5,8 +5,10 @@
     stopOnError="false"
     stopOnFailure="false"
     verbose="true"
-    processIsolation="false">
+    processIsolation="false"
+    convertNoticesToExceptions="false"
+    convertWarningsToExceptions="false">
     <logging>
-      <log type="junit" target="test-reports\junit.xml" logIncompleteSkipped="true"/>
+      <log type="junit" target="test-reports\junit.xml" logIncompleteSkipped="false"/>
     </logging>
 </phpunit>

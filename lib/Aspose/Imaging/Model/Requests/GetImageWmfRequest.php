@@ -109,6 +109,13 @@ class GetImageWmfRequest extends ImagingRequest
     public $storage;
     
     /**
+     * Export format (PNG is the default one).
+     *
+     * @var string
+     */
+    public $format;
+    
+    /**
      * Initializes a new instance of the GetImageWmfRequest class.
      *  
      * @param string $name Filename of image.
@@ -121,8 +128,9 @@ class GetImageWmfRequest extends ImagingRequest
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
+     * @param string $format Export format (PNG is the default one).
      */
-    public function __construct($name, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $out_path = null, $folder = null, $storage = null)             
+    public function __construct($name, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $out_path = null, $folder = null, $storage = null, $format = null)             
     {
         $this->name = $name;
         $this->bk_color = $bk_color;
@@ -134,6 +142,7 @@ class GetImageWmfRequest extends ImagingRequest
         $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
+        $this->format = $format;
     }
 
     /**
@@ -345,6 +354,27 @@ class GetImageWmfRequest extends ImagingRequest
         $this->storage = $value;
         return $this;
     }
+    
+    /**
+     * Export format (PNG is the default one).
+     *
+     * @return string
+     */
+    public function get_format()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Export format (PNG is the default one).
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_format($value)
+    {
+        $this->format = $value;
+        return $this;
+    }
 
     /**
      * Prepares initial info for HTTP request
@@ -474,6 +504,16 @@ class GetImageWmfRequest extends ImagingRequest
         if ($this->storage !== null) {
             $localName = lcfirst('storage');
             $localValue = is_bool($this->storage) ? ($this->storage ? 'true' : 'false') : $this->storage;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->format !== null) {
+            $localName = lcfirst('format');
+            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

@@ -314,15 +314,17 @@ class ObjectSerializer
             foreach ($instance::swaggerTypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];
 
-                if (!isset($propertySetter) || !isset($data->{$instance::attributeMap()[$property]})) {
+                if (!isset($propertySetter) || !isset($data->{lcfirst($instance::attributeMap()[$property])})) {
                     continue;
                 }
 
-                $propertyValue = $data->{$instance::attributeMap()[$property]};
+                $propertyValue = $data->{lcfirst($instance::attributeMap()[$property])};
                 if (isset($propertyValue)) {
+
                     $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
                 }
             }
+
             return $instance;
         }
     }

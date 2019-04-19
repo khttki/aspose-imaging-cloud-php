@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing WmfApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Wmf
  */
 class WmfApiTest extends ApiTester
@@ -77,7 +72,7 @@ class WmfApiTest extends ApiTester
             function($fileName, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageWmfRequest($fileName, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageWmfAsync($request)->wait() : self::$imagingApi->getImageWmf($request);
+                return self::$imagingApi->getImageWmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
@@ -121,7 +116,7 @@ class WmfApiTest extends ApiTester
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageWmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageWmfAsync($request)->wait() : self::$imagingApi->postImageWmf($request);
+                return self::$imagingApi->postImageWmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {

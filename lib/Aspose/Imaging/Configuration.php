@@ -59,7 +59,7 @@ class Configuration
      *
      * @var string
      */
-    public $apiVersion = "v2";
+    public $apiVersion = "v3.0";
 
     /**
      * User agent of the HTTP request
@@ -82,18 +82,11 @@ class Configuration
      */
     public $debugFile = 'php://output';
     
-    /**
-     * Refresh token for OAuth
-     *
-     * @var string
-     */
-    public $refreshToken = '';
-    
     /*
      * Version of Aspose.Imaging Cloud API
      *
      */
-    private $clientVersion = '19.1';
+    private $clientVersion = '19.4';
 
     /**
      * Constructor
@@ -157,9 +150,9 @@ class Configuration
     }
 
     /**
-     * Sets the access token for OAuth
+     * Sets the JWT access token
      *
-     * @param string $accessToken Token for OAuth
+     * @param string $accessToken JWT token
      *
      * @return $this
      */
@@ -170,38 +163,15 @@ class Configuration
     }
 
     /**
-     * Gets the access token for OAuth
+     * Gets the JWT access token
      *
-     * @return string Access token for OAuth
+     * @return string JWT token
      */
     public function getAccessToken()
     {
         return $this->accessToken;
     }
-    
-    /**
-     * Sets the refresh token for OAuth
-     *
-     * @param string $refreshToken Token for OAuth
-     *
-     * @return $this
-     */
-    public function setRefreshToken($refreshToken)
-    {
-        $this->refreshToken = $refreshToken;
-        return $this;
-    }
 
-    /**
-     * Gets the refresh token for OAuth
-     *
-     * @return string refresh token for OAuth
-     */
-    public function getRefreshToken()
-    {
-        return $this->refreshToken;
-    }
-    
     /**
      * Sets the baseUrl
      *
@@ -329,7 +299,6 @@ class Configuration
      */
     public function getApiBaseUrl()
     {
-        $length = strlen($this->baseUrl);
         if (substr($this->baseUrl, -1, 1) === "/") {
             return $this->baseUrl . $this->apiVersion;
         } else {

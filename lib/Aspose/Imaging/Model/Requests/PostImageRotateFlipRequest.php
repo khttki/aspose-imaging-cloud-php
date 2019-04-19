@@ -46,7 +46,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -77,7 +77,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
      * Initializes a new instance of the PostImageRotateFlipRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param string $method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
@@ -113,7 +113,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class PostImageRotateFlipRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

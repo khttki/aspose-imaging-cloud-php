@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing JpgApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Jpg
  */
 class JpgApiTest extends ApiTester
@@ -73,7 +68,7 @@ class JpgApiTest extends ApiTester
             function($fileName, $outPath) use ($quality, $compressionType, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageJpgRequest($fileName, $quality, $compressionType, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageJpgAsync($request)->wait() : self::$imagingApi->getImageJpg($request);
+                return self::$imagingApi->getImageJpgAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)
             {
@@ -114,7 +109,7 @@ class JpgApiTest extends ApiTester
             function($inputStream, $outPath) use ($quality, $compressionType, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageJpgRequest($inputStream, $quality, $compressionType, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageJpgAsync($request)->wait() : self::$imagingApi->postImageJpg($request);
+                return self::$imagingApi->postImageJpgAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)
             {

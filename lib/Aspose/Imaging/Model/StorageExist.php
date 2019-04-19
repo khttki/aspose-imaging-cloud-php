@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="SaaSposeResponse.php">
+ * <copyright company="Aspose" file="StorageExist.php">
  *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -11,10 +11,10 @@
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- *
+ * 
  *  The above copyright notice and this permission notice shall be included in all
  *  copies or substantial portions of the Software.
- *
+ * 
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
 
 /**
- * SaaSposeResponse
+ * StorageExist
  *
- * @description The basic response class kept from the old Aspose for Cloud Platform. We keep this base class and use it because most probably users are already using it to get API responses. The plan in future is to get rid of it.
+ * @description Storage exists
  */
-class SaaSposeResponse implements ArrayAccess
+class StorageExist implements ArrayAccess
 {
-    const DISCRIMINATOR = 'Type';
+    const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "SaaSposeResponse";
+    protected static $swaggerModelName = "StorageExist";
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class SaaSposeResponse implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'code' => 'int',
-        'status' => 'string'
+        'exists' => 'bool'
     ];
 
     /**
@@ -63,8 +62,7 @@ class SaaSposeResponse implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'code' => 'int32',
-        'status' => null
+        'exists' => null
     ];
 
     /**
@@ -94,8 +92,7 @@ class SaaSposeResponse implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'Code',
-        'status' => 'Status'
+        'exists' => 'Exists'
     ];
 
     /**
@@ -104,8 +101,7 @@ class SaaSposeResponse implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'status' => 'setStatus'
+        'exists' => 'setExists'
     ];
 
     /**
@@ -114,8 +110,7 @@ class SaaSposeResponse implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'status' => 'getStatus'
+        'exists' => 'getExists'
     ];
 
     /**
@@ -159,6 +154,10 @@ class SaaSposeResponse implements ArrayAccess
         return self::$swaggerModelName;
     }
 
+    
+
+    
+
     /**
      * Associative array for storing property values
      *
@@ -174,12 +173,7 @@ class SaaSposeResponse implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discriminator = array_search('Type', self::$attributeMap);
-        $this->container[$discriminator] = static::$swaggerModelName;
+        $this->container['exists'] = isset($data['exists']) ? $data['exists'] : null;
     }
 
     /**
@@ -191,8 +185,8 @@ class SaaSposeResponse implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['exists'] === null) {
+            $invalidProperties[] = "'exists' can't be null";
         }
         return $invalidProperties;
     }
@@ -205,7 +199,8 @@ class SaaSposeResponse implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['code'] === null) {
+
+        if ($this->container['exists'] === null) {
             return false;
         }
         return true;
@@ -213,49 +208,25 @@ class SaaSposeResponse implements ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets exists
      *
-     * @return int
+     * @return bool
      */
-    public function getCode()
+    public function getExists()
     {
-        return $this->container['code'];
+        return $this->container['exists'];
     }
 
     /**
-     * Sets code
+     * Sets exists
      *
-     * @param int $code HTTP status code.
+     * @param bool $exists Shows that the storage exists.
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setExists($exists)
     {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status Status description.
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
+        $this->container['exists'] = $exists;
 
         return $this;
     }
@@ -329,3 +300,5 @@ class SaaSposeResponse implements ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
+
+

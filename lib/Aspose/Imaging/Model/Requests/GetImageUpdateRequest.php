@@ -46,7 +46,7 @@ class GetImageUpdateRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -126,7 +126,7 @@ class GetImageUpdateRequest extends ImagingRequest
      * Initializes a new instance of the GetImageUpdateRequest class.
      *  
      * @param string $name Filename of an image.
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param int $new_width New width of the scaled image.
      * @param int $new_height New height of the scaled image.
      * @param int $x X position of start point for cropping rectangle.
@@ -176,7 +176,7 @@ class GetImageUpdateRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -186,7 +186,7 @@ class GetImageUpdateRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

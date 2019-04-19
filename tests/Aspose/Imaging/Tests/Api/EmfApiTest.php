@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing EmfApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Emf
  */
 class EmfApiTest extends ApiTester
@@ -77,21 +72,13 @@ class EmfApiTest extends ApiTester
             function($fileName, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageEmfRequest($fileName, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageEmfAsync($request)->wait() : self::$imagingApi->getImageEmf($request);
+                return self::$imagingApi->getImageEmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
                 $this->assertNotNull($resultProperties->getPngProperties());
-                if (preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()))
-                {
-                    $this->assertEquals((int)(($pageWidth + $borderX * 2) * ($resultProperties->getHorizontalResolution() / 72)), $resultProperties->getWidth());
-                    $this->assertEquals((int)(($pageHeight + $borderY * 2) * ($resultProperties->getVerticalResolution() / 72)), $resultProperties->getHeight());
-                }
-                else 
-                {
-                    $this->assertEquals($pageWidth + $borderX * 2, $resultProperties->getWidth());
-                    $this->assertEquals($pageHeight + $borderY * 2, $resultProperties->getHeight());
-                }
+                $this->assertEquals($pageWidth + $borderX * 2, $resultProperties->getWidth());
+                $this->assertEquals($pageHeight + $borderY * 2, $resultProperties->getHeight());
             },
             $folder,
             $storage);
@@ -129,21 +116,13 @@ class EmfApiTest extends ApiTester
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageEmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageEmfAsync($request)->wait() : self::$imagingApi->postImageEmf($request);
+                return self::$imagingApi->postImageEmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
                 $this->assertNotNull($resultProperties->getPngProperties());
-                if (preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()))
-                {
-                    $this->assertEquals((int)(($pageWidth + $borderX * 2) * ($resultProperties->getHorizontalResolution() / 72)), $resultProperties->getWidth());
-                    $this->assertEquals((int)(($pageHeight + $borderY * 2) * ($resultProperties->getVerticalResolution() / 72)), $resultProperties->getHeight());
-                }
-                else 
-                {
-                    $this->assertEquals($pageWidth + $borderX * 2, $resultProperties->getWidth());
-                    $this->assertEquals($pageHeight + $borderY * 2, $resultProperties->getHeight());
-                }
+                $this->assertEquals($pageWidth + $borderX * 2, $resultProperties->getWidth());
+                $this->assertEquals($pageHeight + $borderY * 2, $resultProperties->getHeight());
             },
             $folder,
             $storage);

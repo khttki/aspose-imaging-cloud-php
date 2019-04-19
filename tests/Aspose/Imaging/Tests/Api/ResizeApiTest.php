@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing ResizeApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Resize
  */
 class ResizeApiTest extends ApiTester
@@ -123,7 +118,7 @@ class ResizeApiTest extends ApiTester
                     function($fileName, $outPath) use ($format, $newWidth, $newHeight, $folder, $storage)
                     {
                         $request = new Requests\GetImageResizeRequest($fileName, $format, $newWidth, $newHeight, $outPath, $folder, $storage);
-                        return self::$asyncMode ? self::$imagingApi->getImageResizeAsync($request)->wait() : self::$imagingApi->getImageResize($request);
+                        return self::$imagingApi->getImageResizeAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
                     {
@@ -190,7 +185,7 @@ class ResizeApiTest extends ApiTester
                     function($inputStream, $outPath) use ($format, $newWidth, $newHeight, $storage)
                     {
                         $request = new Requests\PostImageResizeRequest($inputStream, $format, $newWidth, $newHeight, $outPath, $storage);
-                        return self::$asyncMode ? self::$imagingApi->postImageResizeAsync($request)->wait() : self::$imagingApi->postImageResize($request);
+                        return self::$imagingApi->postImageResizeAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
                     {

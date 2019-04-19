@@ -46,7 +46,7 @@ class GetImageCropRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -105,7 +105,7 @@ class GetImageCropRequest extends ImagingRequest
      * Initializes a new instance of the GetImageCropRequest class.
      *  
      * @param string $name Filename of an image.
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param int $x X position of start point for cropping rectangle.
      * @param int $y Y position of start point for cropping rectangle.
      * @param int $width Width of cropping rectangle
@@ -149,7 +149,7 @@ class GetImageCropRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -159,7 +159,7 @@ class GetImageCropRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
