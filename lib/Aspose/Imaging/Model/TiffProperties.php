@@ -30,7 +30,6 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * TiffProperties
@@ -54,9 +53,9 @@ class TiffProperties implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
+        'frames' => '\Aspose\Imaging\Model\TiffFrame[]',
         'byte_order' => 'string',
-        'exif_data' => '\Aspose\Imaging\Model\ExifData',
-        'frames' => '\Aspose\Imaging\Model\TiffFrame[]'
+        'exif_data' => '\Aspose\Imaging\Model\ExifData'
     ];
 
     /**
@@ -65,9 +64,9 @@ class TiffProperties implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
+        'frames' => null,
         'byte_order' => null,
-        'exif_data' => null,
-        'frames' => null
+        'exif_data' => null
     ];
 
     /**
@@ -97,9 +96,9 @@ class TiffProperties implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'frames' => 'Frames',
         'byte_order' => 'ByteOrder',
-        'exif_data' => 'ExifData',
-        'frames' => 'Frames'
+        'exif_data' => 'ExifData'
     ];
 
     /**
@@ -108,9 +107,9 @@ class TiffProperties implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'frames' => 'setFrames',
         'byte_order' => 'setByteOrder',
-        'exif_data' => 'setExifData',
-        'frames' => 'setFrames'
+        'exif_data' => 'setExifData'
     ];
 
     /**
@@ -119,9 +118,9 @@ class TiffProperties implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'frames' => 'getFrames',
         'byte_order' => 'getByteOrder',
-        'exif_data' => 'getExifData',
-        'frames' => 'getFrames'
+        'exif_data' => 'getExifData'
     ];
 
     /**
@@ -184,9 +183,9 @@ class TiffProperties implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['frames'] = isset($data['frames']) ? $data['frames'] : null;
         $this->container['byte_order'] = isset($data['byte_order']) ? $data['byte_order'] : null;
         $this->container['exif_data'] = isset($data['exif_data']) ? $data['exif_data'] : null;
-        $this->container['frames'] = isset($data['frames']) ? $data['frames'] : null;
     }
 
     /**
@@ -213,6 +212,30 @@ class TiffProperties implements ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets frames
+     *
+     * @return \Aspose\Imaging\Model\TiffFrame[]
+     */
+    public function getFrames()
+    {
+        return $this->container['frames'];
+    }
+
+    /**
+     * Sets frames
+     *
+     * @param \Aspose\Imaging\Model\TiffFrame[] $frames Frames information.
+     *
+     * @return $this
+     */
+    public function setFrames($frames)
+    {
+        $this->container['frames'] = $frames;
+
+        return $this;
+    }
 
     /**
      * Gets byte_order
@@ -258,30 +281,6 @@ class TiffProperties implements ArrayAccess
     public function setExifData($exif_data)
     {
         $this->container['exif_data'] = $exif_data;
-
-        return $this;
-    }
-
-    /**
-     * Gets frames
-     *
-     * @return \Aspose\Imaging\Model\TiffFrame[]
-     */
-    public function getFrames()
-    {
-        return $this->container['frames'];
-    }
-
-    /**
-     * Sets frames
-     *
-     * @param \Aspose\Imaging\Model\TiffFrame[] $frames Frames information.
-     *
-     * @return $this
-     */
-    public function setFrames($frames)
-    {
-        $this->container['frames'] = $frames;
 
         return $this;
     }

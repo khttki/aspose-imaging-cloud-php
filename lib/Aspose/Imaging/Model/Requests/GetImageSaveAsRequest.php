@@ -46,7 +46,7 @@ class GetImageSaveAsRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -77,7 +77,7 @@ class GetImageSaveAsRequest extends ImagingRequest
      * Initializes a new instance of the GetImageSaveAsRequest class.
      *  
      * @param string $name Filename of image.
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
@@ -113,7 +113,7 @@ class GetImageSaveAsRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class GetImageSaveAsRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

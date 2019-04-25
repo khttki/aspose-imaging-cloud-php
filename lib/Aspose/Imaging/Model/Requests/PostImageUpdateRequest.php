@@ -46,7 +46,7 @@ class PostImageUpdateRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -119,7 +119,7 @@ class PostImageUpdateRequest extends ImagingRequest
      * Initializes a new instance of the PostImageUpdateRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param int $new_width New width of the scaled image.
      * @param int $new_height New height of the scaled image.
      * @param int $x X position of start point for cropping rectangle.
@@ -167,7 +167,7 @@ class PostImageUpdateRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -177,7 +177,7 @@ class PostImageUpdateRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

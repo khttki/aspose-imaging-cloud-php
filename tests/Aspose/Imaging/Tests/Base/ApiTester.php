@@ -29,13 +29,9 @@
 namespace Aspose\Imaging\Tests\Base;
 
 use \Aspose\Imaging;
-use \Aspose\Imaging\Model as ImagingModel;
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
-use \Aspose\Storage\Api\StorageApi;
-use \Aspose\Storage\Model as StorageModel;
-use \Aspose\Storage\Model\Requests as StorageRequests;
+use \Aspose\Imaging\Model;
+use \Aspose\Imaging\Model\Requests;
 use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 use \InvalidArgumentException;
 
 /**
@@ -55,7 +51,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const ApiVersion = "v2.0";
+    const ApiVersion = "v3.0";
 
     /**
      * The application key
@@ -90,7 +86,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const DefaultStorage = "Imaging-QA";
+    const DefaultStorage = "Imaging-CI";
 
     /**
      * The basic export formats
@@ -103,7 +99,9 @@ abstract class ApiTester extends TestCase
         "jpg",
         "png",
         "psd",
-        "tiff"
+        "tiff",
+        "webp",
+        "pdf"
     ];
 
     /**
@@ -112,13 +110,6 @@ abstract class ApiTester extends TestCase
      * @var bool 
      */
     public static $failedAnyTest = false;
-
-    /**
-     * If async tests should be run
-     * 
-     * @var bool 
-     */
-    protected static $asyncMode;
 
     /**
      * If extended tests should be run
@@ -130,16 +121,9 @@ abstract class ApiTester extends TestCase
     /**
      * Aspose.Imaging API
      * 
-     * @var \Aspose\Imaging\ImagingApi 
+     * @var \Aspose\Imaging\ImagingApi
      */
     protected static $imagingApi;
-
-    /**
-     * Aspose.Imaging API
-     * 
-     * @var \Aspose\Storage\Api\StorageApi 
-     */
-    protected static $storageApi;
 
     /**
      * If tests were initialized
@@ -158,7 +142,7 @@ abstract class ApiTester extends TestCase
     /**
      * The input test files
      * 
-     * @var \Aspose\Imaging\Storage\Model\FileResponse[] 
+     * @var \Aspose\Imaging\Model\StorageFile[] 
      */
     protected static $inputTestFiles;
 
@@ -188,7 +172,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    protected static $originalDataFolder = "ImagingCloudSdkInputTestData";
+    protected static $originalDataFolder = "ImagingIntegrationTestData";
 
     /**
      * @beforeClass
@@ -196,9 +180,7 @@ abstract class ApiTester extends TestCase
     public static function initFixture()
     {
         echo "\r\n";
-        self::$asyncMode = getenv("AsyncMode") === "true" ? true : false;
         self::$extendedTests = getenv("ExtendedTests") === "true" ? true : false;
-        echo "Async mode: " . (self::$asyncMode ? "true" : "false") . "\r\n";
         echo "Extended tests: " . (self::$extendedTests ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
@@ -219,11 +201,11 @@ abstract class ApiTester extends TestCase
         }
 
         self::createApiInstances(ApiTester::AppKey, ApiTester::AppSid, ApiTester::BaseUrl, ApiTester::ApiVersion, false);
-        if (!self::$failedAnyTest && self::$removeResult && self::$storageApi->getIsExist(
-            new StorageRequests\GetIsExistRequest(self::$tempFolder, null, self::$testStorage))->getFileExist()->getIsExist())
+        if (!self::$failedAnyTest && self::$removeResult && self::$imagingApi->objectExists(
+            new Requests\ObjectExistsRequest(self::$tempFolder, self::$testStorage))->getExists())
         {
-            self::$storageApi->deleteFolder(new StorageRequests\DeleteFolderRequest(self::$tempFolder, self::$testStorage, true));
-            self::$storageApi->putCreateFolder(new StorageRequests\PutCreateFolderRequest(self::$tempFolder, self::$testStorage, self::$testStorage));
+            self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest(self::$tempFolder, self::$testStorage, true));
+            self::$imagingApi->createFolder(new Requests\CreateFolderRequest(self::$tempFolder, self::$testStorage, self::$testStorage));
         }
 
         self::$initialized = true;
@@ -234,10 +216,10 @@ abstract class ApiTester extends TestCase
      */
     public static function finalizeFixture()
     {
-        if (!self::$failedAnyTest && self::$removeResult && self::$storageApi->getIsExist(
-            new StorageRequests\GetIsExistRequest(self::$tempFolder, null, self::$testStorage))->getFileExist()->getIsExist())
+        if (!self::$failedAnyTest && self::$removeResult && self::$imagingApi->objectExists(
+            new Requests\ObjectExistsRequest(self::$tempFolder, self::$testStorage))->getExists())
         {
-            self::$storageApi->deleteFolder(new StorageRequests\DeleteFolderRequest(self::$tempFolder, self::$testStorage, true));
+            self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest(self::$tempFolder, self::$testStorage, true));
         }
     }
 
@@ -257,8 +239,8 @@ abstract class ApiTester extends TestCase
         {
             echo "Access data isn't set explicitly. Trying to obtain it from environment variables.\r\n";
 
-            $appKey = getenv("AppKEY");
-            $appSid = getenv("AppSID");
+            $appKey = getenv("AppKey");
+            $appSid = getenv("AppSid");
             $baseUrl = getenv("ApiEndpoint");
             $apiVersion = getenv("ApiVersion");
         }
@@ -319,25 +301,18 @@ abstract class ApiTester extends TestCase
         $imagingConfig->setAppSid($appSid);
         $imagingConfig->setApiVersion($apiVersion);
         self::$imagingApi = new Imaging\ImagingApi($imagingConfig);
-
-        $storageConfig = new \Aspose\Storage\Configuration();
-        $storageConfig->setHost($baseUrl);
-        $storageConfig->setAppKey($appKey);
-        $storageConfig->setAppSid($appSid);
-        self::$storageApi = new StorageApi($storageConfig);
-
         self::$inputTestFiles = self::fetchInputTestFilesInfo();
     }
     
     /**
      * Fetches the input test files info.
      *
-     * @return StorageModel\FileResponse[]
+     * @return Model\StorageFile[]
      */
     private static function fetchInputTestFilesInfo()
     {
-        $filesResponse = self::$storageApi->getListFiles(new StorageRequests\GetListFilesRequest(self::$originalDataFolder, self::$testStorage));
-        return $filesResponse->getFiles();
+        $filesResponse = self::$imagingApi->getFilesList(new Requests\GetFilesListRequest(self::$originalDataFolder, self::$testStorage));
+        return $filesResponse->getValue();
     }
 
     /**
@@ -428,12 +403,12 @@ abstract class ApiTester extends TestCase
      * @param string $folder The folder which contains a file.
      * @param string $fileName Name of the file.
      * @param string $storage The storage.
-     * @return \Aspose\Storage\Model\FileResponse
+     * @return Model\StorageFile
      */
     protected function getStorageFileInfo($folder, $fileName, $storage)
     {
-        $fileListResponse = self::$storageApi->getListFiles(new StorageRequests\GetListFilesRequest($folder, $storage));
-        foreach ($fileListResponse->getFiles() as $storageFileInfo)
+        $fileListResponse = self::$imagingApi->getFilesList(new Requests\GetFilesListRequest($folder, $storage));
+        foreach ($fileListResponse->getValue() as $storageFileInfo)
         {
             if ($storageFileInfo->getName() === $fileName)
             {
@@ -477,8 +452,8 @@ abstract class ApiTester extends TestCase
      */
     private function obtainPostResponse($inputPath, $outPath, $storage, callable $requestInvoker)
     {
-        $downContents = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($inputPath, null, $storage));
-        $response = $requestInvoker($downContents->fread($downContents->getSize()), $outPath);
+        $downContents = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($inputPath, $storage));
+        $response = $requestInvoker($downContents->getContents(), $outPath);
         if (!isset($outPath))
         {
             $this->assertNotNull($response);
@@ -514,12 +489,10 @@ abstract class ApiTester extends TestCase
                 "Input file " . $inputFileName . " doesn't exist in the specified storage folder: " . $folder . ". Please, upload it first.");
         }
 
-        if (!self::$storageApi->getIsExist(new StorageRequests\GetIsExistRequest($folder . "/" . $inputFileName, null, $storage))->getFileExist()->getIsExist())
+        if (!self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder . "/" . $inputFileName, $storage))->getExists())
         {
-            $downFile = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest(self::$originalDataFolder . "/" . $inputFileName, null, $storage));
-            $this->assertNotNull($downFile);
-            $putResponse = self::$storageApi->putCreate(new StorageRequests\PutCreateRequest($folder . "/" . $inputFileName, $downFile, null, $storage));
-            $this->assertEquals(200, $putResponse->getCode());
+            self::$imagingApi->copyFile(
+                new Requests\CopyFileRequest(self::$originalDataFolder . "/" . $inputFileName, $folder . "/" . $inputFileName, $storage, $storage));
         }
 
         $passed = false;
@@ -534,9 +507,9 @@ abstract class ApiTester extends TestCase
                 $outPath = $folder . "/" . $resultFileName;
 
                 // remove output file from the storage (if exists)
-                if (self::$storageApi->getIsExist(new StorageRequests\GetIsExistRequest($outPath, null, $storage))->getFileExist()->getIsExist())
+                if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
                 {
-                    self::$storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
+                    self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
                 }
             }
 
@@ -553,23 +526,25 @@ abstract class ApiTester extends TestCase
                         . $folder . "Result isn't present in the storage by an unknown reason.");
                 }
 
-                $resultProperties = self::$asyncMode ?
-                        self::$imagingApi->getImagePropertiesAsync(new ImagingRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait() :
-                        self::$imagingApi->getImageProperties(new ImagingRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage));
-                
-                $this->assertNotNull($resultProperties);
+                if (!preg_match('/.pdf$/', $resultFileName))
+                {
+                    $resultProperties = 
+                        self::$imagingApi->getImagePropertiesAsync(
+                            new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
+                    $this->assertNotNull($resultProperties);
+                }
             }
-            else if (!preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()))
+            else if (!preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()) && !preg_match('/.pdf$/', $resultFileName))
             {
-                $resultProperties = self::$asyncMode ?
-                    self::$imagingApi->postImagePropertiesAsync(new ImagingRequests\PostImagePropertiesRequest($response->getContents()))->wait() :
-                    self::$imagingApi->postImageProperties(new ImagingRequests\PostImagePropertiesRequest($response->getContents()));
+                $resultProperties = 
+                    self::$imagingApi->postImagePropertiesAsync(
+                        new Requests\PostImagePropertiesRequest($response->getContents()))->wait();
                 $this->assertNotNull($resultProperties);
             }
 
-            $originalProperties = self::$asyncMode ?
-                self::$imagingApi->getImagePropertiesAsync(new ImagingRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait() :
-                self::$imagingApi->getImageProperties(new ImagingRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage));
+            $originalProperties = 
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait();
             $this->assertNotNull($originalProperties);
 
             if (isset($resultProperties) && isset($propertiesTester))
@@ -587,10 +562,10 @@ abstract class ApiTester extends TestCase
         }
         finally
         {
-            if ($passed && $saveResultToStorage && self::$removeResult && self::$storageApi->getIsExist(
-                new StorageRequests\GetIsExistRequest($outPath, null, $storage))->getFileExist()->getIsExist())
+            if ($passed && $saveResultToStorage && self::$removeResult && self::$imagingApi->objectExists(
+                new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
             {
-                self::$storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
+                self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
             }
 
             echo "Test passed: " . var_export($passed, true) . "\r\n";

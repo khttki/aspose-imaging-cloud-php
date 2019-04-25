@@ -30,12 +30,11 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * SearchResult
  *
- * @description Search result.
+ * @description Image search result.
  */
 class SearchResult implements ArrayAccess
 {
@@ -227,7 +226,7 @@ class SearchResult implements ArrayAccess
     /**
      * Sets image_id
      *
-     * @param string $image_id Gets the image identifier.
+     * @param string $image_id Gets or sets the image identifier.
      *
      * @return $this
      */
@@ -251,7 +250,7 @@ class SearchResult implements ArrayAccess
     /**
      * Sets similarity
      *
-     * @param double $similarity Gets the similarity.
+     * @param double $similarity Gets or sets the similarity.
      *
      * @return $this
      */

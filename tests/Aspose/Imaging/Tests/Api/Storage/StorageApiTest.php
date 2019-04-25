@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="Jpeg2000Codec.php">
+ * <copyright company="Aspose" file="StorageApiTests.php">
  *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -26,36 +26,51 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-namespace Aspose\Imaging\Model;
-use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
+namespace Aspose\Imaging\Tests\Api\Storage;
+
+use \Aspose\Imaging\Model\Requests;
 
 /**
- * Jpeg2000Codec
- *
- * @description Represents JPEG2000 image type
+ * Specific Storage API tests.
+ * 
+ * @group Storage
+ * @group v3.0
  */
-class Jpeg2000Codec
-{
+class StorageApiTests extends StorageTester {
+
     /**
-     * Possible values of this enum
+     * @test
+     * 
+     * @return void
      */
-    const J2_K = 'J2K';
-    const JP2 = 'Jp2';
-    const JPT = 'Jpt';
-    
-    /*
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public static function getAllowableEnumValues()
-    {
-        return [
-            self::J2_K,
-            self::JP2,
-            self::JPT,
-        ];
+    public function getDiscUsageTest()  {
+        $this->markTestSkipped("IMAGINGCLOUD-292");
+        
+        try {
+            $discUsage = self::$imagingApi->getDiscUsageAsync(new Requests\GetDiscUsageRequest(self::$testStorage))->wait();
+            $this->assertTrue($discUsage->getUsedSize() < $discUsage->getTotalSize());
+        } catch (\Aspose\Imaging\ApiException $ex) {
+            $this->assertTrue($ex->getCode() === 501);
+        }
+    }
+
+    /**
+     * @test
+     * 
+     * @return void
+    */
+    public function storageExistsTest()  {
+        $storageExists = self::$imagingApi->storageExistsAsync(new Requests\StorageExistsRequest(self::$testStorage))->wait();
+        $this->assertTrue($storageExists->getExists());
+    }
+
+    /**
+     * @test
+     * 
+     * @return void
+    */
+    public function storageDoesNotExistTest()  {
+        $storageExists = self::$imagingApi->storageExistsAsync(new Requests\StorageExistsRequest("NotExistingStorage"))->wait();
+        $this->assertFalse($storageExists->getExists());
     }
 }
-
-

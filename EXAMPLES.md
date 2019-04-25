@@ -1,53 +1,96 @@
-### Imaging - Convert to another format (other operations are similar to use)
+### Imaging - Save as: convert image from storage to another format
 ```php
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
-
+// optional parameters are base URL, API version and debug mode
 $imagingConfig = new Configuration();
 $imagingConfig->setAppKey("yourAppKey");
 $imagingConfig->setAppSid("yourAppSID");
 $imagingApi = new ImagingApi($imagingConfig);
 
-// this GET request converts image files
-// optional parameters are output file path, input file folder and Aspose storage name (if you have more than one storage and want to use non-default one) 
-// if output file path is not set, resulting image is returned as \Psr\Http\Message\StreamInterface; otherwise, it's saved at the specified path in the storage and null is returned
-$getSaveRequest = new Requests\GetImageSaveAsRequest("inputImage.jpg", "png", "ResultFolder/resultImage.png", "InputFolder");
+try {
+    // get local image
+    $localInputImage = file_get_contents("test.png");
 
-// returns null, saves result to storage
-$imagingApi->getImageSaveAs($getSaveRequest);
+    // upload local image to storage
+    $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/inputImage.png",
+        $localInputImage);
+    $result = $imagingApi->uploadFile($uploadFileRequest);
+    // inspect $result->getErrors() list if there were any
+    // inspect $result->getUploaded() list for uploaded file names
 
-$getStreamRequest = new Requests\GetImageSaveAsRequest("inputImage.jpg", "png", null, "InputFolder");
+    // convert image from request stream to JPEG and save it to storage
+    // please, use outPath parameter for saving the result to storage
+    $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
+        "ExampleFolderNet/resultImage.png");
 
-// returns resulting stream
-$resultGetImageStream = $imagingApi->getImageSaveAs($getStreamRequest)
-// process resulting stream
+    $imagingApi->postImageSaveAs($postSaveToStorageRequest);
 
-// another option is to use POST request and send image as raw data, if it's not present in your storage
-$inputImageData = file_get_contents("D:\\test\\localInputImage.jpg");
-$postSaveRequest = new Requests\PostImageSaveAsRequest($inputImageData, "png", "ResultFolder/resultImage.png");
-	
-// returns null, saves result to storage
-$imagingApi->postImageSaveAs($postSaveRequest);
+    // download saved image from storage and process it
+    $savedFile = $imagingApi->downloadFile(
+        new Requests\DownloadFileRequest("ExampleFolderNet/resultImage.jpg"))->getContents();
 
-$postStreamRequest = new Requests\PostImageSaveAsRequest($inputImageData, "png");
-	
-// returns resulting \Psr\Http\Message\StreamInterface
-$resultPostImageData = $imagingApi->postImageSaveAs($postStreamRequest);
-// process resulting stream
+    // convert image from request stream to JPEG and read it from resulting stream
+    // please, set outPath parameter as null to return result in request stream
+    // instead of saving to storage
+    $postSaveToStreamRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg");
 
-// another Imaging requests typically follow the same principles
+    // process resulting image from response stream
+    $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
+} finally {
+    // remove file from storage
+    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+}
+
+// other Imaging requests typically follow the same principles regarding stream/storage relations
+```
+
+### Imaging - Save as: convert image from request stream to another format
+```php
+// optional parameters are base URL, API version and debug mode
+$imagingConfig = new Configuration();
+$imagingConfig->setAppKey("yourAppKey");
+$imagingConfig->setAppSid("yourAppSID");
+$imagingApi = new ImagingApi($imagingConfig);
+
+try {
+    // get local image
+    $localInputImage = file_get_contents(ApiTester::LocalTestFolder . "\\test.png");
+
+    // upload local image to storage
+    $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/inputImage.png",
+        $localInputImage);
+    $result = $imagingApi->uploadFile($uploadFileRequest);
+    // inspect $result->getErrors() list if there were any
+    // inspect $result->getUploaded() list for uploaded file names
+
+    // convert image from request stream to JPEG and save it to storage
+    // please, use outPath parameter for saving the result to storage
+    $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
+        "ExampleFolderNet/resultImage.png");
+
+    $imagingApi->postImageSaveAs($postSaveToStorageRequest);
+
+    // download saved image from storage and process it
+    $savedFile = $imagingApi->downloadFile(
+        new Requests\DownloadFileRequest("ExampleFolderNet/resultImage.jpg"))->getContents();
+
+    // convert image from request stream to JPEG and read it from resulting stream
+    // please, set outPath parameter as null to return result in request stream
+    // instead of saving to storage
+    $postSaveToStreamRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg");
+
+    // process resulting image from response stream
+    $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
+} finally {
+    // remove file from storage
+    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+}
+
+// other Imaging requests typically follow the same principles regarding stream/storage relations
 ```
 
 ### Imaging.AI - Compare two images
 ```php
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
+// optional parameters are base URL, API version and debug mode
 $imagingConfig = new Configuration();
 $imagingConfig->setAppKey("yourAppKey");
 $imagingConfig->setAppSid("yourAppSID");
@@ -63,7 +106,8 @@ $imageInStorage2 = "WorkFolder/Image2.jpg";
   
 // compare images
 $response = $imagingApi->PostSearchContextCompareImages(
-    new Requests\PostSearchContextCompareImagesRequest($searchContextId, $imageInStorage1, null, $imageInStorage2));
+    new Requests\PostSearchContextCompareImagesRequest($searchContextId, 
+    $imageInStorage1, null, $imageInStorage2));
 $similarity = $response->getResults()[0]->getSimilarity();
 ```
 
@@ -85,10 +129,13 @@ $searchContextId = $apiResponse->getId();
  
 // extract images features if it was not done before
 $imagingApi->postSearchContextExtractImageFeatures(
-    new Requests\PostSearchContextExtractImageFeaturesRequest($searchContextId, null, null, "WorkFolder"))
+    new Requests\PostSearchContextExtractImageFeaturesRequest(
+    $searchContextId, null, null, "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while ($imagingApi->getSearchContextStatus(new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
+while ($imagingApi->getSearchContextStatus(
+    new Requests\GetSearchContextStatusRequest($searchContextId))
+    ->getSearchStatus() !== "Idle")
 {
     sleep(10);
 }    
@@ -101,7 +148,8 @@ if ($imageFromStorage)
     // use search image from storage
     $storageImageId = "searchImage.jpg";
     $results = $imagingApi->getSearchContextFindSimilar(
-        new Requests\GetSearchContextFindSimilarRequest($searchContextId, 90, 5, null, $storageImageId));
+        new Requests\GetSearchContextFindSimilarRequest(
+        $searchContextId, 90, 5, null, $storageImageId));
 }
 else
 {
@@ -114,7 +162,8 @@ else
 // process search results
 foreach ($results->getResults() as $searchResult)
 {
-   echo "ImageName: " . $searchResult->getImageId() . "; Similarity: " . $searchResult->getSimilarity() . "\r\n";
+   echo "ImageName: " . $searchResult->getImageId() . "; Similarity: " 
+       . $searchResult->getSimilarity() . "\r\n";
 }
 ```
 
@@ -136,10 +185,12 @@ $searchContextId = $apiResponse->getId();
  
 // extract images features if it was not done before
 $imagingApi->postSearchContextExtractImageFeatures(
-    new Requests\PostSearchContextExtractImageFeaturesRequest($searchContextId, null, null, "WorkFolder"))
+    new Requests\PostSearchContextExtractImageFeaturesRequest(
+    $searchContextId, null, null, "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while ($imagingApi->getSearchContextStatus(new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
+while ($imagingApi->getSearchContextStatus(
+    new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
 {
     sleep(10);
 }
@@ -154,7 +205,8 @@ foreach ($response->getDuplicates() as $duplicates)
     echo "Duplicates: \r\n";
     foreach ($duplicates->getDuplicateImages() as $duplicate)
     { 
-        echo "ImageName: " . $duplicate->getImageId() . "; Similarity: " . $duplicate->getSimilarity() . "\r\n";
+        echo "ImageName: " . $duplicate->getImageId() . "; Similarity: " 
+        . $duplicate->getSimilarity() . "\r\n";
     }
 }
 ```
@@ -177,10 +229,12 @@ $searchContextId = $apiResponse->getId();
  
 // extract images features if it was not done before
 $imagingApi->postSearchContextExtractImageFeatures(
-    new Requests\PostSearchContextExtractImageFeaturesRequest($searchContextId, null, null, "WorkFolder"))
+    new Requests\PostSearchContextExtractImageFeaturesRequest(
+    $searchContextId, null, null, "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while ($imagingApi->getSearchContextStatus(new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
+while ($imagingApi->getSearchContextStatus(
+    new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
 {
     sleep(10);
 } 
@@ -201,24 +255,27 @@ $response = $imagingApi->postSearchContextFindByTags(
 // process search results
 foreach ($response->getResults() as $searchResult)
 {
-    echo "ImageName: " . $searchResult->getImageId() . "; Similarity: " . $searchResult->getSimilarity() . "\r\n";
+    echo "ImageName: " . $searchResult->getImageId() .
+    "; Similarity: " . $searchResult->getSimilarity() . "\r\n";
 }
 ```
 
 ### Imaging.AI - Delete search context
 ```php
 // search context is stored in the storage, and in case if search context is not needed anymore it should be removed
-$imagingApi->deleteSearchContext(new Requests\DeleteSearchContextRequest($searchContextId));
+$imagingApi->deleteSearchContext(
+    new Requests\DeleteSearchContextRequest($searchContextId));
 ```
 
 ### Exception handling and error codes
 ```php
 try
 {
-    $imagingApi->deleteSearchContext(new Requests\DeleteSearchContextRequest($searchContextId));
+    $imagingApi->deleteSearchContext(
+        new Requests\DeleteSearchContextRequest($searchContextId));
 }
 catch (\Aspose\Imaging\ApiException $ex)
 {
-    echo "Code: " . ex->getCode() . "; Message: " $ex->getMessage() . "r\n";
+    echo var_dump($ex) . "r\n";
 }
 ```

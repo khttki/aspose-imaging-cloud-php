@@ -46,7 +46,7 @@ class PostImageCropRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @var string
      */
@@ -98,7 +98,7 @@ class PostImageCropRequest extends ImagingRequest
      * Initializes a new instance of the PostImageCropRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * @param string $format Resulting image format.
      * @param int $x X position of start point for cropping rectangle.
      * @param int $y Y position of start point for cropping rectangle.
      * @param int $width Width of cropping rectangle.
@@ -140,7 +140,7 @@ class PostImageCropRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return string
      */
@@ -150,7 +150,7 @@ class PostImageCropRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+     * Resulting image format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

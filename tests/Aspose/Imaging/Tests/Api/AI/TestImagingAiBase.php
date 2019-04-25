@@ -29,11 +29,7 @@
 namespace Aspose\Imaging\Tests\Api\AI;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging\Model as ImagingModel;
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
-use \Aspose\Storage\Api\StorageApi;
-use \Aspose\Storage\Model as StorageModel;
-use \Aspose\Storage\Model\Requests as StorageRequests;
+use \Aspose\Imaging\Model\Requests;
 use \DateTime;
 use \Exception;
 
@@ -54,7 +50,7 @@ abstract class TestImagingAiBase extends ApiTester
      * 
      * @var string 
      */
-    protected static $originalDataFolder = "ImagingAiSdk";
+    protected static $originalDataFolder = "ImagingIntegrationTestData/AI";
 
     /**
      * Search context ID
@@ -90,10 +86,11 @@ abstract class TestImagingAiBase extends ApiTester
         {
             $this->deleteSearchContext($this->searchContextId);
         }
-        if (self::$storageApi->getIsExist(
-            new StorageRequests\GetIsExistRequest(self::$tempFolder, null, self::$testStorage))->getFileExist()->getIsExist())
+
+        if (self::$imagingApi->objectExists(
+            new Requests\ObjectExistsRequest(self::$tempFolder, self::$testStorage))->getExists())
         {
-            self::$storageApi->deleteFolder(new StorageRequests\DeleteFolderRequest(self::$tempFolder, self::$testStorage, true));
+            self::$imagingApi->deleteFolder(new Requests\DeleteFolderRequest(self::$tempFolder, self::$testStorage, true));
         }
     }
 
@@ -123,13 +120,10 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function createSearchContext()
     {
-        $response = self::$asyncMode ?
+        $response = 
             self::$imagingApi->postCreateSearchContextAsync(
-                new ImagingRequests\PostCreateSearchContextRequest(null, null, null, self::$testStorage))->wait() :
-            self::$imagingApi->postCreateSearchContext(
-                new ImagingRequests\PostCreateSearchContextRequest(null, null, null, self::$testStorage));
+                new Requests\PostCreateSearchContextRequest(null, null, null, self::$testStorage))->wait();
         
-        $this->assertEquals(200, $response->getCode());
         return $response->getId();
     }
 
@@ -141,9 +135,7 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function deleteSearchContext($searchContextId)
     {
-        self::$asyncMode ?
-            self::$imagingApi->deleteSearchContextAsync(new ImagingRequests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage))->wait() :
-            self::$imagingApi->deleteSearchContext(new ImagingRequests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage));
+        self::$imagingApi->deleteSearchContextAsync(new Requests\DeleteSearchContextRequest($searchContextId, null, self::$testStorage))->wait();
     }
 
     /**
@@ -154,10 +146,8 @@ abstract class TestImagingAiBase extends ApiTester
      */
     protected function getSearchContextStatus($searchContextId)
     {
-        $response = self::$asyncMode ?
-            self::$imagingApi->getSearchContextStatusAsync(new ImagingRequests\GetSearchContextStatusRequest($searchContextId, null, self::$testStorage))->wait() :
-            self::$imagingApi->getSearchContextStatus(new ImagingRequests\GetSearchContextStatusRequest($searchContextId, null, self::$testStorage));
-        $this->assertEquals(200, $response->getCode());
+        $response = 
+            self::$imagingApi->getSearchContextStatusAsync(new Requests\GetSearchContextStatusRequest($searchContextId, null, self::$testStorage))->wait();
         return $response->getSearchStatus();
     }
 
@@ -171,13 +161,12 @@ abstract class TestImagingAiBase extends ApiTester
     protected function addImageFeaturesToSearchContext($storageSourcePath, $isFolder = false)
     {
         $request = $isFolder ?
-            new ImagingRequests\PostSearchContextExtractImageFeaturesRequest(
+            new Requests\PostSearchContextExtractImageFeaturesRequest(
                 $this->searchContextId, null, null, $storageSourcePath, null, self::$testStorage) :
-            new ImagingRequests\PostSearchContextExtractImageFeaturesRequest(
+            new Requests\PostSearchContextExtractImageFeaturesRequest(
                 $this->searchContextId, null, $storageSourcePath, null, null, self::$testStorage);
         
-        self::$asyncMode ? self::$imagingApi->postSearchContextExtractImageFeaturesAsync($request)->wait() :
-            self::$imagingApi->postSearchContextExtractImageFeatures($request);
+        self::$imagingApi->postSearchContextExtractImageFeaturesAsync($request)->wait();
 
         $this->waitSearchContextIdle();
     }
@@ -193,20 +182,12 @@ abstract class TestImagingAiBase extends ApiTester
         $sleepTime = 10;
         $startTime = new DateTime();
 
-        $status = self::$asyncMode ? 
-            self::$imagingApi->getSearchContextStatusAsync(
-                new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->wait()->getSearchStatus() :
-            self::$imagingApi->getSearchContextStatus(
-                new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->getSearchStatus();
+        $status = $this->getSearchContextStatus($this->searchContextId);
 
-        while ($status !== "Idle" && date_diff(new DateTime(), $startTime)->format("%i") < $timeout)
+        while ($status !== "Idle" && date_diff(new DateTime(), $startTime, false)->format("%i") < $timeout)
         {
             sleep($sleepTime);
-            $status = self::$asyncMode ? 
-                self::$imagingApi->getSearchContextStatusAsync(
-                    new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->wait()->getSearchStatus() :
-                self::$imagingApi->getSearchContextStatus(
-                    new ImagingRequests\GetSearchContextStatusRequest($this->searchContextId, null, self::$testStorage))->getSearchStatus();  
+            $status = $this->getSearchContextStatus($this->searchContextId);
         }
     }
 

@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing GifApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Gif
  */
 class GifApiTest extends ApiTester
@@ -81,7 +76,7 @@ class GifApiTest extends ApiTester
             {
                 $request = new Requests\GetImageGifRequest($fileName, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                     $isPaletteSorted, $pixelAspectRatio, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageGifAsync($request)->wait() : self::$imagingApi->getImageGif($request);
+                return self::$imagingApi->getImageGifAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                 $isPaletteSorted, $pixelAspectRatio)
@@ -135,7 +130,7 @@ class GifApiTest extends ApiTester
             {
                 $request = new Requests\PostImageGifRequest($inputStream, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                     $isPaletteSorted, $pixelAspectRatio, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageGifAsync($request)->wait() : self::$imagingApi->postImageGif($request);
+                return self::$imagingApi->postImageGifAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                 $isPaletteSorted, $pixelAspectRatio)

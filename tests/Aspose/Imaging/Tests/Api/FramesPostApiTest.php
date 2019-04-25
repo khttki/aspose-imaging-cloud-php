@@ -29,17 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing FramesApi
  * 
  * @group Imaging
- * @group v2.0
+ * @group v3.0
  * @group Tiff
  */
 class FramesPostApiTest extends ApiTester
@@ -81,7 +77,7 @@ class FramesPostApiTest extends ApiTester
             {
                 $request = new Requests\PostImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageFrameAsync($request)->wait() : self::$imagingApi->postImageFrame($request);
+                return self::$imagingApi->postImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)
@@ -101,9 +97,8 @@ class FramesPostApiTest extends ApiTester
                 if (!$saveResultToStorage) return;
 
                 $framePropertiesRequest = new Requests\GetImageFramePropertiesRequest($outName, 0, $folder, $storage);
-                $framePropertiesResponse = self::$asyncMode ? 
-                    self::$imagingApi->getImageFramePropertiesAsync($framePropertiesRequest)->wait() :
-                    self::$imagingApi->getImageFrameProperties($framePropertiesRequest);
+                $framePropertiesResponse = 
+                    self::$imagingApi->getImageFramePropertiesAsync($framePropertiesRequest)->wait();
 
                 $this->assertNotNull($framePropertiesResponse);
                 $this->assertNotNull($framePropertiesResponse->getTiffProperties());
@@ -156,7 +151,7 @@ class FramesPostApiTest extends ApiTester
             {
                 $request = new Requests\PostImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageFrameAsync($request)->wait() : self::$imagingApi->postImageFrame($request);
+                return self::$imagingApi->postImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)

@@ -30,10 +30,8 @@ namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging;
-use \Aspose\Imaging\Model as ImagingModel;
-use \Aspose\Imaging\Model\Requests as ImagingRequests;
-use \Aspose\Storage\Model as StorageModel;
-use \Aspose\Storage\Model\Requests as StorageRequests;
+use \Aspose\Imaging\Model;
+use \Aspose\Imaging\Model\Requests ;
 use \PHPUnit\Framework\TestCase;
 use \GuzzleHttp\Stream;
 
@@ -41,8 +39,7 @@ use \GuzzleHttp\Stream;
  * Class for testing TiffApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Tiff
  */
 class TiffApiTest extends ApiTester
@@ -70,8 +67,8 @@ class TiffApiTest extends ApiTester
             $outName,
             function($fileName, $outPath) use ($folder, $storage)
             {
-                $request = new ImagingRequests\GetTiffToFaxRequest($fileName, $storage, $folder, $outPath);
-                return self::$asyncMode ? self::$imagingApi->getTiffToFaxAsync($request)->wait() : self::$imagingApi->getTiffToFax($request);
+                $request = new Requests\GetTiffToFaxRequest($fileName, $storage, $folder, $outPath);
+                return self::$imagingApi->getTiffToFaxAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -117,9 +114,9 @@ class TiffApiTest extends ApiTester
             $outName,
             function($fileName, $outPath) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
-                $request = new ImagingRequests\GetImageTiffRequest($fileName, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, $verticalResolution,
+                $request = new Requests\GetImageTiffRequest($fileName, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, $verticalResolution,
                     $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageTiffAsync($request)->wait() : self::$imagingApi->getImageTiff($request);
+                return self::$imagingApi->getImageTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
             {
@@ -169,9 +166,9 @@ class TiffApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($compression, $resolutionUnit, $fromScratch, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
-                $request = new ImagingRequests\PostImageTiffRequest($inputStream, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, 
+                $request = new Requests\PostImageTiffRequest($inputStream, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, 
                     $verticalResolution, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageTiffAsync($request)->wait() : self::$imagingApi->postImageTiff($request);
+                return self::$imagingApi->postImageTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
             {
@@ -223,26 +220,22 @@ class TiffApiTest extends ApiTester
 
             $outPath = self::$tempFolder . "/" . $resultFileName;
 
-            if (self::$storageApi->getIsExist(new StorageRequests\GetIsExistRequest($outPath, null, $storage))->getFileExist()->getIsExist())
+            if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
             {
-                self::$storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
+                self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
             }
 
-            if (!self::$storageApi->getIsExist(new StorageRequests\GetIsExistRequest($inputPath, null, $storage))->getFileExist()->getIsExist())
+            if (!self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($inputPath, $storage))->getExists())
             {
-                $downFile = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest(self::$originalDataFolder . "/" . $inputFileName, null, $storage));
-                $this->assertNotNull($downFile);
-                $putResponse = self::$storageApi->putCreate(new StorageRequests\PutCreateRequest($inputPath, $downFile, null, $storage));
-                $this->assertEquals(200, $putResponse->getCode());
+                self::$imagingApi->copyFile(
+                    new Requests\CopyFileRequest(self::$originalDataFolder . "/" . $inputFileName, $inputPath, $storage, $storage));
             }
 
-            $downFile = self::$storageApi->getDownload(new StorageRequests\GetDownloadRequest($inputPath, null, $storage));
-            $this->assertNotNull($downFile);
-            $putResponse = self::$storageApi->putCreate(new StorageRequests\PutCreateRequest($outPath, $downFile, null, $storage));
-            $this->assertEquals(200, $putResponse->getCode());
-            $request = new ImagingRequests\PostTiffAppendRequest($resultFileName, $inputFileName, $storage, $folder);
+            self::$imagingApi->copyFile(
+                new Requests\CopyFileRequest($inputPath, $outPath, $storage, $storage));
+
+            $request = new Requests\PostTiffAppendRequest($resultFileName, $inputFileName, $storage, $folder);
             $response = self::$imagingApi->postTiffAppend($request);
-            $this->assertEquals(200, $response->getCode());
 
             $resultInfo = $this->getStorageFileInfo($folder, $resultFileName, $storage);
             if (!isset($resultInfo))
@@ -252,19 +245,20 @@ class TiffApiTest extends ApiTester
                     . $folder . "Result isn't present in the storage by an unknown reason.");
             }
 
-            $resultProperties = self::$asyncMode ?
-                self::$imagingApi->getImagePropertiesAsync(new ImagingRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait() :
-                self::$imagingApi->getImageProperties(new ImagingRequests\GetImagePropertiesRequest($resultFileName, $folder, $storage));
+            $resultProperties = 
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
             $this->assertNotNull($resultProperties);
 
-            $originalProperties = self::$asyncMode ?
-                self::$imagingApi->getImagePropertiesAsync(new ImagingRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait() :
-                self::$imagingApi->getImageProperties(new ImagingRequests\GetImagePropertiesRequest($inputFileName, $folder, $storage));
+            $originalProperties =
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($inputFileName, $folder, $storage))->wait();
             $this->assertNotNull($originalProperties);
 
             $this->assertNotNull($resultProperties->getTiffProperties());
             $this->assertNotNull($originalProperties->getTiffProperties());
-            $this->assertEquals(count($originalProperties->getTiffProperties()->getFrames()) * 2, count($resultProperties->getTiffProperties()->getFrames()));
+            $this->assertEquals(count($originalProperties->getTiffProperties()->getFrames()) * 2, 
+                count($resultProperties->getTiffProperties()->getFrames()));
             $this->assertEquals($originalProperties->getWidth(), $resultProperties->getWidth());
             $this->assertEquals($originalProperties->getHeight(), $resultProperties->getHeight());
 
@@ -278,10 +272,10 @@ class TiffApiTest extends ApiTester
         }
         finally
         {
-            if ($passed && self::$removeResult && self::$storageApi->getIsExist(
-                new StorageRequests\GetIsExistRequest($outPath, null, $storage))->getFileExist()->getIsExist())
+            if ($passed && self::$removeResult && self::$imagingApi->objectExists(
+                new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
             {
-                self::$storageApi->deleteFile(new StorageRequests\DeleteFileRequest($outPath, null, $storage));
+                self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
             }
 
             echo "Test passed: ";

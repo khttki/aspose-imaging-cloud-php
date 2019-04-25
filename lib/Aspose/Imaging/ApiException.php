@@ -36,13 +36,22 @@ use \Exception;
 class ApiException extends Exception
 {
     /**
+     * Requets error
+     *
+     * @var \Aspose\Imaging\Model\Error
+     */
+    public $Error = null;
+
+    /**
      * Constructor
      *
      * @param string        $message         Error message
      * @param int           $code            HTTP status code
+     * @param \Aspose\Imaging\Model\Error           $error            Request error
      */
-    public function __construct($message = "", $code = 0)
+    public function __construct($message = "", $code = 0, $error = null)
     {
         parent::__construct($message, $code);
+        $this->Error = $error;
     }
 }

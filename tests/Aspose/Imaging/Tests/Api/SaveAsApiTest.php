@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing SaveAsApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group SaveAs
  */
 class SaveAsApiTest extends ApiTester
@@ -121,7 +116,7 @@ class SaveAsApiTest extends ApiTester
                     function($fileName, $outPath) use ($format, $folder, $storage)
                     {
                         $request = new Requests\GetImageSaveAsRequest($fileName, $format, $outPath, $folder, $storage);
-                        return self::$asyncMode ? self::$imagingApi->getImageSaveAsAsync($request)->wait() : self::$imagingApi->getImageSaveAs($request);
+                        return self::$imagingApi->getImageSaveAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,
@@ -182,7 +177,7 @@ class SaveAsApiTest extends ApiTester
                     function($inputStream, $outPath) use ($format, $storage)
                     {
                         $request = new Requests\PostImageSaveAsRequest($inputStream, $format, $outPath, $storage);
-                        return self::$asyncMode ? self::$imagingApi->postImageSaveAsAsync($request)->wait() : self::$imagingApi->postImageSaveAs($request);
+                        return self::$imagingApi->postImageSaveAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,

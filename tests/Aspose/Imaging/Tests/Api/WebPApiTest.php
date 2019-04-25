@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing WebpApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Webp
  */
 class WebpApiTest extends ApiTester
@@ -76,7 +71,7 @@ class WebpApiTest extends ApiTester
             function($fileName, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageWebpRequest($fileName, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageWebpAsync($request)->wait() : self::$imagingApi->getImageWebp($request);
+                return self::$imagingApi->getImageWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {
@@ -120,7 +115,7 @@ class WebpApiTest extends ApiTester
             function($inputStream, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageWebpRequest($inputStream, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageWebpAsync($request)->wait() : self::$imagingApi->postImageWebp($request);
+                return self::$imagingApi->postImageWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {

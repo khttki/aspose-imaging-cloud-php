@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing BmpApi
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Bmp
  */
 class BmpApiTest extends ApiTester
@@ -75,7 +70,7 @@ class BmpApiTest extends ApiTester
             function($fileName, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageBmpRequest($fileName, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageBmpAsync($request)->wait() : self::$imagingApi->getImageBmp($request);
+                return self::$imagingApi->getImageBmpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {
@@ -123,7 +118,7 @@ class BmpApiTest extends ApiTester
             function($inputStream, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageBmpRequest($inputStream, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageBmpAsync($request)->wait() : self::$imagingApi->postImageBmp($request);
+                return self::$imagingApi->postImageBmpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {

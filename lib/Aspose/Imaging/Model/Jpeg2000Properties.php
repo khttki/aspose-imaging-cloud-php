@@ -30,7 +30,6 @@ namespace Aspose\Imaging\Model;
 
 use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
-use \Aspose\Imaging\Model\SaaSposeResponse;
 
 /**
  * Jpeg2000Properties
@@ -55,7 +54,7 @@ class Jpeg2000Properties implements ArrayAccess
      */
     protected static $swaggerTypes = [
         'comments' => 'string[]',
-        'codec' => '\Aspose\Imaging\Model\Jpeg2000Codec'
+        'codec' => 'string'
     ];
 
     /**
@@ -192,9 +191,6 @@ class Jpeg2000Properties implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['codec'] === null) {
-            $invalidProperties[] = "'codec' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -207,9 +203,6 @@ class Jpeg2000Properties implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['codec'] === null) {
-            return false;
-        }
         return true;
     }
 
@@ -241,7 +234,7 @@ class Jpeg2000Properties implements ArrayAccess
     /**
      * Gets codec
      *
-     * @return \Aspose\Imaging\Model\Jpeg2000Codec
+     * @return string
      */
     public function getCodec()
     {
@@ -251,7 +244,7 @@ class Jpeg2000Properties implements ArrayAccess
     /**
      * Sets codec
      *
-     * @param \Aspose\Imaging\Model\Jpeg2000Codec $codec Gets or sets the JPEG2000 codec
+     * @param string $codec Gets or sets the JPEG2000 codec
      *
      * @return $this
      */

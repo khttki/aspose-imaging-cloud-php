@@ -102,6 +102,13 @@ class PostImageWmfRequest extends ImagingRequest
     public $storage;
     
     /**
+     * Export format (PNG is the default one).
+     *
+     * @var string
+     */
+    public $format;
+    
+    /**
      * Initializes a new instance of the PostImageWmfRequest class.
      *  
      * @param string $image_data Input image
@@ -113,8 +120,9 @@ class PostImageWmfRequest extends ImagingRequest
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
+     * @param string $format Export format (PNG is the default one).
      */
-    public function __construct($image_data, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $out_path = null, $storage = null)             
+    public function __construct($image_data, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $out_path = null, $storage = null, $format = null)             
     {
         $this->image_data = $image_data;
         $this->bk_color = $bk_color;
@@ -125,6 +133,7 @@ class PostImageWmfRequest extends ImagingRequest
         $this->from_scratch = $from_scratch;
         $this->out_path = $out_path;
         $this->storage = $storage;
+        $this->format = $format;
     }
 
     /**
@@ -315,6 +324,27 @@ class PostImageWmfRequest extends ImagingRequest
         $this->storage = $value;
         return $this;
     }
+    
+    /**
+     * Export format (PNG is the default one).
+     *
+     * @return string
+     */
+    public function get_format()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Export format (PNG is the default one).
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_format($value)
+    {
+        $this->format = $value;
+        return $this;
+    }
 
     /**
      * Prepares initial info for HTTP request
@@ -429,6 +459,16 @@ class PostImageWmfRequest extends ImagingRequest
         if ($this->storage !== null) {
             $localName = lcfirst('storage');
             $localValue = is_bool($this->storage) ? ($this->storage ? 'true' : 'false') : $this->storage;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->format !== null) {
+            $localName = lcfirst('format');
+            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

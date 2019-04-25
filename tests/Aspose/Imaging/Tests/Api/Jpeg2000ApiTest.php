@@ -29,18 +29,13 @@
 namespace Aspose\Imaging\Tests\Api;
 
 use \Aspose\Imaging\Tests\Base\ApiTester;
-use \Aspose\Imaging;
-use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
-use \PHPUnit\Framework\TestCase;
-use \GuzzleHttp\Stream;
 
 /**
  * Class for testing Jpeg2000Api
  * 
  * @group Imaging
- * @group v1.0
- * @group v2.0
+ * @group v3.0
  * @group Jpeg2000
  */
 class Jpeg2000ApiTest extends ApiTester
@@ -73,7 +68,7 @@ class Jpeg2000ApiTest extends ApiTester
             function($fileName, $outPath) use ($comment, $codec, $fromScratch, $folder, $storage)
             {
                 $request = new Requests\GetImageJpeg2000Request($fileName, $comment, $codec, $fromScratch, $outPath, $folder, $storage);
-                return self::$asyncMode ? self::$imagingApi->getImageJpeg2000Async($request)->wait() : self::$imagingApi->getImageJpeg2000($request);
+                return self::$imagingApi->getImageJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)
             {
@@ -122,7 +117,7 @@ class Jpeg2000ApiTest extends ApiTester
             function($inputStream, $outPath) use ($comment, $codec, $fromScratch, $storage)
             {
                 $request = new Requests\PostImageJpeg2000Request($inputStream, $comment, $codec, $fromScratch, $outPath, $storage);
-                return self::$asyncMode ? self::$imagingApi->postImageJpeg2000Async($request)->wait() : self::$imagingApi->postImageJpeg2000($request);
+                return self::$imagingApi->postImageJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)
             {
