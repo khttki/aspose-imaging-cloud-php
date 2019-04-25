@@ -181,6 +181,11 @@ class Configuration
      */
     public function setBaseUrl($baseUrl)
     {
+        if (!substr($this->baseUrl, -1, 1) === "/")
+        {
+            $baseUrl = $baseUrl . "/";
+        }
+
         $this->baseUrl = $baseUrl;
         return $this;
     }
@@ -299,11 +304,7 @@ class Configuration
      */
     public function getApiBaseUrl()
     {
-        if (substr($this->baseUrl, -1, 1) === "/") {
-            return $this->baseUrl . $this->apiVersion;
-        } else {
-            return $this->baseUrl . "/" . $this->apiVersion;
-        }
+        return $this->baseUrl . $this->apiVersion;
     }
 
     /**
