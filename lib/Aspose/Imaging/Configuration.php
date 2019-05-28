@@ -86,7 +86,7 @@ class Configuration
      * Version of Aspose.Imaging Cloud API
      *
      */
-    private $clientVersion = '19.4';
+    private $clientVersion = '19.6';
 
     /**
      * Constructor
