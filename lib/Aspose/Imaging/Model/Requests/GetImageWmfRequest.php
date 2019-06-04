@@ -88,13 +88,6 @@ class GetImageWmfRequest extends ImagingRequest
     public $from_scratch;
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
-    
-    /**
      * Folder with image to process.
      *
      * @var string
@@ -109,7 +102,7 @@ class GetImageWmfRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Export format (PNG is the default one).
+     * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @var string
      */
@@ -125,12 +118,11 @@ class GetImageWmfRequest extends ImagingRequest
      * @param int $border_x Border width.
      * @param int $border_y Border height.
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
-     * @param string $format Export format (PNG is the default one).
+     * @param string $format Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      */
-    public function __construct($name, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $out_path = null, $folder = null, $storage = null, $format = null)             
+    public function __construct($name, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $folder = null, $storage = null, $format = null)             
     {
         $this->name = $name;
         $this->bk_color = $bk_color;
@@ -139,7 +131,6 @@ class GetImageWmfRequest extends ImagingRequest
         $this->border_x = $border_x;
         $this->border_y = $border_y;
         $this->from_scratch = $from_scratch;
-        $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
         $this->format = $format;
@@ -293,27 +284,6 @@ class GetImageWmfRequest extends ImagingRequest
     }
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
-        return $this;
-    }
-    
-    /**
      * Folder with image to process.
      *
      * @return string
@@ -356,7 +326,7 @@ class GetImageWmfRequest extends ImagingRequest
     }
     
     /**
-     * Export format (PNG is the default one).
+     * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return string
      */
@@ -366,7 +336,7 @@ class GetImageWmfRequest extends ImagingRequest
     }
 
     /**
-     * Export format (PNG is the default one).
+     * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -474,16 +444,6 @@ class GetImageWmfRequest extends ImagingRequest
         if ($this->from_scratch !== null) {
             $localName = lcfirst('fromScratch');
             $localValue = is_bool($this->from_scratch) ? ($this->from_scratch ? 'true' : 'false') : $this->from_scratch;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

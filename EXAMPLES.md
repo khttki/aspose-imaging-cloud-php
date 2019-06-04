@@ -17,27 +17,20 @@ try {
     // inspect $result->getErrors() list if there were any
     // inspect $result->getUploaded() list for uploaded file names
 
-    // convert image from request stream to JPEG and save it to storage
-    // please, use outPath parameter for saving the result to storage
-    $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
-        "ExampleFolderNet/resultImage.png");
+    // convert image from storage to JPEG
+    $getSaveAsRequest = new Requests\GetImageSaveAsRequest("inputImage.png", "jpg",
+        "ExampleFolderNet");
 
-    $imagingApi->postImageSaveAs($postSaveToStorageRequest);
+    $convertedImage = $imagingApi->getImageSaveAs($getSaveAsRequest)->getContents();
 
-    // download saved image from storage and process it
-    $savedFile = $imagingApi->downloadFile(
-        new Requests\DownloadFileRequest("ExampleFolderNet/resultImage.jpg"))->getContents();
-
-    // convert image from request stream to JPEG and read it from resulting stream
-    // please, set outPath parameter as null to return result in request stream
-    // instead of saving to storage
-    $postSaveToStreamRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg");
-
-    // process resulting image from response stream
-    $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
+    // process resulting image
+    // for example, save it to storage
+    $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/resultImage.jpg",
+        $convertedImage);
+    $result = $imagingApi->uploadFile($uploadFileRequest);
 } finally {
     // remove file from storage
-    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations
@@ -65,7 +58,7 @@ try {
     // convert image from request stream to JPEG and save it to storage
     // please, use outPath parameter for saving the result to storage
     $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
-        "ExampleFolderNet/resultImage.png");
+        "ExampleFolderNet/resultImage.jpg");
 
     $imagingApi->postImageSaveAs($postSaveToStorageRequest);
 
@@ -82,7 +75,7 @@ try {
     $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
 } finally {
     // remove file from storage
-    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations

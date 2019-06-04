@@ -44,12 +44,10 @@ class WmfApiTest extends ApiTester
      * Test GetImageWmf
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageWmfTest($saveResultToStorage)
+    public function getImageWmfTest()
     {
         $name = "test.wmf";
         $bkColor = "gray";
@@ -58,20 +56,17 @@ class WmfApiTest extends ApiTester
         $borderX = 50;
         $borderY = 50;
         $fromScratch = null;
-        $outName = $name . "_specific.png";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageWmfTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
+            function() use ($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageWmfRequest($fileName, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\GetImageWmfRequest($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImageWmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)

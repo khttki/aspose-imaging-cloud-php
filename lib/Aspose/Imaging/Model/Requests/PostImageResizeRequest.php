@@ -46,7 +46,7 @@ class PostImageResizeRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @var string
      */
@@ -84,7 +84,7 @@ class PostImageResizeRequest extends ImagingRequest
      * Initializes a new instance of the PostImageResizeRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format.
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param int $new_width New width.
      * @param int $new_height New height.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
@@ -122,7 +122,7 @@ class PostImageResizeRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return string
      */
@@ -132,7 +132,7 @@ class PostImageResizeRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

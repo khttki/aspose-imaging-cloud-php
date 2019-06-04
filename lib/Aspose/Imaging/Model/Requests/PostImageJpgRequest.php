@@ -53,7 +53,7 @@ class PostImageJpgRequest extends ImagingRequest
     public $quality;
     
     /**
-     * Compression type.
+     * Compression type: baseline (default), progressive, lossless or jpegls.
      *
      * @var string
      */
@@ -85,7 +85,7 @@ class PostImageJpgRequest extends ImagingRequest
      *  
      * @param string $image_data Input image
      * @param int $quality Quality of an image from 0 to 100. Default is 75.
-     * @param string $compression_type Compression type.
+     * @param string $compression_type Compression type: baseline (default), progressive, lossless or jpegls.
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
@@ -143,7 +143,7 @@ class PostImageJpgRequest extends ImagingRequest
     }
     
     /**
-     * Compression type.
+     * Compression type: baseline (default), progressive, lossless or jpegls.
      *
      * @return string
      */
@@ -153,7 +153,7 @@ class PostImageJpgRequest extends ImagingRequest
     }
 
     /**
-     * Compression type.
+     * Compression type: baseline (default), progressive, lossless or jpegls.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

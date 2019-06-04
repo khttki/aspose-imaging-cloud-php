@@ -77,12 +77,15 @@ class ResizeApiTest extends ApiTester
     */
     public function getImageResizeTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $newWidth = 100;
         $newHeight = 150;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -107,17 +110,13 @@ class ResizeApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "_resize." . $format;
-
                 $this->getRequestTestInternal(
                     "getImageResizeTest", 
-                    $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; New width: " . $newWidth . "; New height: " . $newHeight,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $newWidth, $newHeight, $folder, $storage)
+                    function() use ($name, $format, $newWidth, $newHeight, $folder, $storage)
                     {
-                        $request = new Requests\GetImageResizeRequest($fileName, $format, $newWidth, $newHeight, $outPath, $folder, $storage);
+                        $request = new Requests\GetImageResizeRequest($name, $format, $newWidth, $newHeight, $folder, $storage);
                         return self::$imagingApi->getImageResizeAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)

@@ -102,7 +102,7 @@ class PostImageWmfRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Export format (PNG is the default one).
+     * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @var string
      */
@@ -120,7 +120,7 @@ class PostImageWmfRequest extends ImagingRequest
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
-     * @param string $format Export format (PNG is the default one).
+     * @param string $format Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      */
     public function __construct($image_data, $bk_color, $page_width, $page_height, $border_x, $border_y, $from_scratch = null, $out_path = null, $storage = null, $format = null)             
     {
@@ -326,7 +326,7 @@ class PostImageWmfRequest extends ImagingRequest
     }
     
     /**
-     * Export format (PNG is the default one).
+     * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return string
      */
@@ -336,7 +336,7 @@ class PostImageWmfRequest extends ImagingRequest
     }
 
     /**
-     * Export format (PNG is the default one).
+     * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

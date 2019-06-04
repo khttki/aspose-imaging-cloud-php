@@ -60,26 +60,17 @@ class GetTiffToFaxRequest extends ImagingRequest
     public $folder;
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
-    
-    /**
      * Initializes a new instance of the GetTiffToFaxRequest class.
      *  
      * @param string $name Filename of image.
      * @param string $storage Your Aspose Cloud Storage name.
      * @param string $folder Folder with image to process.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      */
-    public function __construct($name, $storage = null, $folder = null, $out_path = null)             
+    public function __construct($name, $storage = null, $folder = null)             
     {
         $this->name = $name;
         $this->storage = $storage;
         $this->folder = $folder;
-        $this->out_path = $out_path;
     }
 
     /**
@@ -144,27 +135,6 @@ class GetTiffToFaxRequest extends ImagingRequest
         $this->folder = $value;
         return $this;
     }
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
-        return $this;
-    }
 
     /**
      * Prepares initial info for HTTP request
@@ -204,16 +174,6 @@ class GetTiffToFaxRequest extends ImagingRequest
         if ($this->folder !== null) {
             $localName = lcfirst('folder');
             $localValue = is_bool($this->folder) ? ($this->folder ? 'true' : 'false') : $this->folder;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

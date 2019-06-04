@@ -53,7 +53,7 @@ class GetImagePsdRequest extends ImagingRequest
     public $channels_count;
     
     /**
-     * Compression method.
+     * Compression method (for now, raw and RLE are supported).
      *
      * @var string
      */
@@ -65,13 +65,6 @@ class GetImagePsdRequest extends ImagingRequest
      * @var bool
      */
     public $from_scratch;
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
     
     /**
      * Folder with image to process.
@@ -92,19 +85,17 @@ class GetImagePsdRequest extends ImagingRequest
      *  
      * @param string $name Filename of image.
      * @param int $channels_count Count of color channels.
-     * @param string $compression_method Compression method.
+     * @param string $compression_method Compression method (for now, raw and RLE are supported).
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $channels_count = null, $compression_method = null, $from_scratch = null, $out_path = null, $folder = null, $storage = null)             
+    public function __construct($name, $channels_count = null, $compression_method = null, $from_scratch = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->channels_count = $channels_count;
         $this->compression_method = $compression_method;
         $this->from_scratch = $from_scratch;
-        $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -152,7 +143,7 @@ class GetImagePsdRequest extends ImagingRequest
     }
     
     /**
-     * Compression method.
+     * Compression method (for now, raw and RLE are supported).
      *
      * @return string
      */
@@ -162,7 +153,7 @@ class GetImagePsdRequest extends ImagingRequest
     }
 
     /**
-     * Compression method.
+     * Compression method (for now, raw and RLE are supported).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -190,27 +181,6 @@ class GetImagePsdRequest extends ImagingRequest
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
-        return $this;
-    }
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
         return $this;
     }
     
@@ -304,16 +274,6 @@ class GetImagePsdRequest extends ImagingRequest
         if ($this->from_scratch !== null) {
             $localName = lcfirst('fromScratch');
             $localValue = is_bool($this->from_scratch) ? ($this->from_scratch ? 'true' : 'false') : $this->from_scratch;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

@@ -77,6 +77,10 @@ class CropApiTest extends ApiTester
     */
     public function getImageCropTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $x = 10;
         $y = 10;
@@ -84,7 +88,6 @@ class CropApiTest extends ApiTester
         $height = 150;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -109,17 +112,13 @@ class CropApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "_crop." . $format;
-
                 $this->getRequestTestInternal(
                     "getImageCropTest", 
-                    $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; Width: " . $width . "; Height: " . $height . "; X: ". $x . "; Y: " . $y,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $x, $y, $width, $height, $folder, $storage)
+                    function() use ($name, $format, $x, $y, $width, $height, $folder, $storage)
                     {
-                        $request = new Requests\GetImageCropRequest($fileName, $format, $x, $y, $width, $height, $outPath, $folder, $storage);
+                        $request = new Requests\GetImageCropRequest($name, $format, $x, $y, $width, $height, $folder, $storage);
                         return self::$imagingApi->getImageCropAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)

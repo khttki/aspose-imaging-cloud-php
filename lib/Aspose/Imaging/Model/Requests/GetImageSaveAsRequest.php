@@ -46,18 +46,11 @@ class GetImageSaveAsRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @var string
      */
     public $format;
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
     
     /**
      * Folder with image to process.
@@ -77,16 +70,14 @@ class GetImageSaveAsRequest extends ImagingRequest
      * Initializes a new instance of the GetImageSaveAsRequest class.
      *  
      * @param string $name Filename of image.
-     * @param string $format Resulting image format.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $format, $out_path = null, $folder = null, $storage = null)             
+    public function __construct($name, $format, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->format = $format;
-        $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -113,7 +104,7 @@ class GetImageSaveAsRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return string
      */
@@ -123,34 +114,13 @@ class GetImageSaveAsRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_format($value)
     {
         $this->format = $value;
-        return $this;
-    }
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
         return $this;
     }
     
@@ -228,16 +198,6 @@ class GetImageSaveAsRequest extends ImagingRequest
         if ($this->format !== null) {
             $localName = lcfirst('format');
             $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

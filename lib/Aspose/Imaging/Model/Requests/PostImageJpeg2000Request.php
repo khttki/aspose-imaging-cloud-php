@@ -46,14 +46,14 @@ class PostImageJpeg2000Request extends ImagingRequest
     public $image_data;
     
     /**
-     * The comment.
+     * The comment (can be either single or comma-separated).
      *
      * @var string
      */
     public $comment;
     
     /**
-     * The codec.
+     * The codec (j2k or jp2).
      *
      * @var string
      */
@@ -84,8 +84,8 @@ class PostImageJpeg2000Request extends ImagingRequest
      * Initializes a new instance of the PostImageJpeg2000Request class.
      *  
      * @param string $image_data Input image
-     * @param string $comment The comment.
-     * @param string $codec The codec.
+     * @param string $comment The comment (can be either single or comma-separated).
+     * @param string $codec The codec (j2k or jp2).
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
@@ -122,7 +122,7 @@ class PostImageJpeg2000Request extends ImagingRequest
     }
     
     /**
-     * The comment.
+     * The comment (can be either single or comma-separated).
      *
      * @return string
      */
@@ -132,7 +132,7 @@ class PostImageJpeg2000Request extends ImagingRequest
     }
 
     /**
-     * The comment.
+     * The comment (can be either single or comma-separated).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -143,7 +143,7 @@ class PostImageJpeg2000Request extends ImagingRequest
     }
     
     /**
-     * The codec.
+     * The codec (j2k or jp2).
      *
      * @return string
      */
@@ -153,7 +153,7 @@ class PostImageJpeg2000Request extends ImagingRequest
     }
 
     /**
-     * The codec.
+     * The codec (j2k or jp2).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

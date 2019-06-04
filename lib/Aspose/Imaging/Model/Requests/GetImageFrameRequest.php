@@ -109,13 +109,6 @@ class GetImageFrameRequest extends ImagingRequest
     public $save_other_frames;
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
-    
-    /**
      * Folder with image to process.
      *
      * @var string
@@ -142,11 +135,10 @@ class GetImageFrameRequest extends ImagingRequest
      * @param int $rect_height Height of cropping rectangle.
      * @param string $rotate_flip_method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
      * @param bool $save_other_frames If result will include all other frames or just a specified frame.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $frame_id, $new_width = null, $new_height = null, $x = null, $y = null, $rect_width = null, $rect_height = null, $rotate_flip_method = null, $save_other_frames = null, $out_path = null, $folder = null, $storage = null)             
+    public function __construct($name, $frame_id, $new_width = null, $new_height = null, $x = null, $y = null, $rect_width = null, $rect_height = null, $rotate_flip_method = null, $save_other_frames = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->frame_id = $frame_id;
@@ -158,7 +150,6 @@ class GetImageFrameRequest extends ImagingRequest
         $this->rect_height = $rect_height;
         $this->rotate_flip_method = $rotate_flip_method;
         $this->save_other_frames = $save_other_frames;
-        $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -374,27 +365,6 @@ class GetImageFrameRequest extends ImagingRequest
     }
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
-        return $this;
-    }
-    
-    /**
      * Folder with image to process.
      *
      * @return string
@@ -543,16 +513,6 @@ class GetImageFrameRequest extends ImagingRequest
         if ($this->save_other_frames !== null) {
             $localName = lcfirst('saveOtherFrames');
             $localValue = is_bool($this->save_other_frames) ? ($this->save_other_frames ? 'true' : 'false') : $this->save_other_frames;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

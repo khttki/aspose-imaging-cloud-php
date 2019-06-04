@@ -44,30 +44,25 @@ class JpgApiTest extends ApiTester
      * Test GetImageJpg
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageJpgTest($saveResultToStorage)
+    public function getImageJpgTest()
     {
         $name = "test.jpg";
         $quality = 65;
         $compressionType = "progressive";
         $fromScratch = null;
-        $outName = $name . "_specific.jpg";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageJpgTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Quality: " . $quality . "; Compression type: " . $compressionType,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($quality, $compressionType, $fromScratch, $folder, $storage)
+            function() use ($name, $quality, $compressionType, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageJpgRequest($fileName, $quality, $compressionType, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\GetImageJpgRequest($name, $quality, $compressionType, $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImageJpgAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)

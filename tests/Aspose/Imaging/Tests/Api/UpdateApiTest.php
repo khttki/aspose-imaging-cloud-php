@@ -77,6 +77,10 @@ class UpdateApiTest extends ApiTester
     */
     public function getImageUpdateTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $newWidth = 300;
         $newHeight = 450;
@@ -87,7 +91,6 @@ class UpdateApiTest extends ApiTester
         $rotateFlipMethod = "Rotate90FlipX";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -112,19 +115,15 @@ class UpdateApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "_update." . $format;
-
                 $this->getRequestTestInternal(
                     "getImageUpdateTest", 
-                    $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; New width: " . $newWidth . "; New height: " . $newHeight . "; X: ". $x . "; Y: " . $y .
                         "; Rect width: " . $rectWidth . "; Rect height: " . $rectHeight . "; Rotate/flip method: " . $rotateFlipMethod,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage)
+                    function() use ($name, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage)
                     {
-                        $request = new Requests\GetImageUpdateRequest($fileName, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
-                            $outPath, $folder, $storage);
+                        $request = new Requests\GetImageUpdateRequest($name, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
+                            $folder, $storage);
                         return self::$imagingApi->getImageUpdateAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod)

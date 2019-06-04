@@ -46,20 +46,6 @@ class PostImageTiffRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Compression.
-     *
-     * @var string
-     */
-    public $compression;
-    
-    /**
-     * New resolution unit.
-     *
-     * @var string
-     */
-    public $resolution_unit;
-    
-    /**
      * Bit depth.
      *
      * @var int
@@ -67,11 +53,18 @@ class PostImageTiffRequest extends ImagingRequest
     public $bit_depth;
     
     /**
-     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     * Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
      *
-     * @var bool
+     * @var string
      */
-    public $from_scratch;
+    public $compression;
+    
+    /**
+     * New resolution unit (none - the default one, inch or centimeter).
+     *
+     * @var string
+     */
+    public $resolution_unit;
     
     /**
      * New horizontal resolution.
@@ -81,11 +74,18 @@ class PostImageTiffRequest extends ImagingRequest
     public $horizontal_resolution;
     
     /**
-     * New verstical resolution.
+     * New vertical resolution.
      *
      * @var double
      */
     public $vertical_resolution;
+    
+    /**
+     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @var bool
+     */
+    public $from_scratch;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
@@ -105,24 +105,24 @@ class PostImageTiffRequest extends ImagingRequest
      * Initializes a new instance of the PostImageTiffRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $compression Compression.
-     * @param string $resolution_unit New resolution unit.
      * @param int $bit_depth Bit depth.
-     * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     * @param string $compression Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
+     * @param string $resolution_unit New resolution unit (none - the default one, inch or centimeter).
      * @param double $horizontal_resolution New horizontal resolution.
-     * @param double $vertical_resolution New verstical resolution.
+     * @param double $vertical_resolution New vertical resolution.
+     * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($image_data, $compression, $resolution_unit, $bit_depth, $from_scratch = null, $horizontal_resolution = null, $vertical_resolution = null, $out_path = null, $storage = null)             
+    public function __construct($image_data, $bit_depth, $compression = null, $resolution_unit = null, $horizontal_resolution = null, $vertical_resolution = null, $from_scratch = null, $out_path = null, $storage = null)             
     {
         $this->image_data = $image_data;
+        $this->bit_depth = $bit_depth;
         $this->compression = $compression;
         $this->resolution_unit = $resolution_unit;
-        $this->bit_depth = $bit_depth;
-        $this->from_scratch = $from_scratch;
         $this->horizontal_resolution = $horizontal_resolution;
         $this->vertical_resolution = $vertical_resolution;
+        $this->from_scratch = $from_scratch;
         $this->out_path = $out_path;
         $this->storage = $storage;
     }
@@ -149,48 +149,6 @@ class PostImageTiffRequest extends ImagingRequest
     }
     
     /**
-     * Compression.
-     *
-     * @return string
-     */
-    public function get_compression()
-    {
-        return $this->compression;
-    }
-
-    /**
-     * Compression.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_compression($value)
-    {
-        $this->compression = $value;
-        return $this;
-    }
-    
-    /**
-     * New resolution unit.
-     *
-     * @return string
-     */
-    public function get_resolution_unit()
-    {
-        return $this->resolution_unit;
-    }
-
-    /**
-     * New resolution unit.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_resolution_unit($value)
-    {
-        $this->resolution_unit = $value;
-        return $this;
-    }
-    
-    /**
      * Bit depth.
      *
      * @return int
@@ -212,23 +170,44 @@ class PostImageTiffRequest extends ImagingRequest
     }
     
     /**
-     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     * Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
      *
-     * @return bool
+     * @return string
      */
-    public function get_from_scratch()
+    public function get_compression()
     {
-        return $this->from_scratch;
+        return $this->compression;
     }
 
     /**
-     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     * Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_from_scratch($value)
+    public function set_compression($value)
     {
-        $this->from_scratch = $value;
+        $this->compression = $value;
+        return $this;
+    }
+    
+    /**
+     * New resolution unit (none - the default one, inch or centimeter).
+     *
+     * @return string
+     */
+    public function get_resolution_unit()
+    {
+        return $this->resolution_unit;
+    }
+
+    /**
+     * New resolution unit (none - the default one, inch or centimeter).
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_resolution_unit($value)
+    {
+        $this->resolution_unit = $value;
         return $this;
     }
     
@@ -254,7 +233,7 @@ class PostImageTiffRequest extends ImagingRequest
     }
     
     /**
-     * New verstical resolution.
+     * New vertical resolution.
      *
      * @return double
      */
@@ -264,13 +243,34 @@ class PostImageTiffRequest extends ImagingRequest
     }
 
     /**
-     * New verstical resolution.
+     * New vertical resolution.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
     public function set_vertical_resolution($value)
     {
         $this->vertical_resolution = $value;
+        return $this;
+    }
+    
+    /**
+     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return bool
+     */
+    public function get_from_scratch()
+    {
+        return $this->from_scratch;
+    }
+
+    /**
+     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_from_scratch($value)
+    {
+        $this->from_scratch = $value;
         return $this;
     }
     
@@ -327,14 +327,6 @@ class PostImageTiffRequest extends ImagingRequest
         if ($this->image_data === null) {
             throw new \InvalidArgumentException('Missing the required parameter $image_data when calling postImageTiff');
         }
-        // verify the required parameter 'compression' is set
-        if ($this->compression === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $compression when calling postImageTiff');
-        }
-        // verify the required parameter 'resolution_unit' is set
-        if ($this->resolution_unit === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resolution_unit when calling postImageTiff');
-        }
         // verify the required parameter 'bit_depth' is set
         if ($this->bit_depth === null) {
             throw new \InvalidArgumentException('Missing the required parameter $bit_depth when calling postImageTiff');
@@ -347,6 +339,16 @@ class PostImageTiffRequest extends ImagingRequest
         $headers = [];
     
 
+        // query params
+        if ($this->bit_depth !== null) {
+            $localName = lcfirst('bitDepth');
+            $localValue = is_bool($this->bit_depth) ? ($this->bit_depth ? 'true' : 'false') : $this->bit_depth;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
         // query params
         if ($this->compression !== null) {
             $localName = lcfirst('compression');
@@ -368,26 +370,6 @@ class PostImageTiffRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->bit_depth !== null) {
-            $localName = lcfirst('bitDepth');
-            $localValue = is_bool($this->bit_depth) ? ($this->bit_depth ? 'true' : 'false') : $this->bit_depth;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->from_scratch !== null) {
-            $localName = lcfirst('fromScratch');
-            $localValue = is_bool($this->from_scratch) ? ($this->from_scratch ? 'true' : 'false') : $this->from_scratch;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
         if ($this->horizontal_resolution !== null) {
             $localName = lcfirst('horizontalResolution');
             $localValue = is_bool($this->horizontal_resolution) ? ($this->horizontal_resolution ? 'true' : 'false') : $this->horizontal_resolution;
@@ -401,6 +383,16 @@ class PostImageTiffRequest extends ImagingRequest
         if ($this->vertical_resolution !== null) {
             $localName = lcfirst('verticalResolution');
             $localValue = is_bool($this->vertical_resolution) ? ($this->vertical_resolution ? 'true' : 'false') : $this->vertical_resolution;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->from_scratch !== null) {
+            $localName = lcfirst('fromScratch');
+            $localValue = is_bool($this->from_scratch) ? ($this->from_scratch ? 'true' : 'false') : $this->from_scratch;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

@@ -44,30 +44,25 @@ class PsdApiTest extends ApiTester
      * Test GetImagePsd
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImagePsdTest($saveResultToStorage)
+    public function getImagePsdTest()
     {
         $name = "test.psd";
         $channelsCount = 3;
         $compressionMethod = "raw";
         $fromScratch = null;
-        $outName = $name . "_specific.psd";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImagePsdTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Channels count: " . $channelsCount . "; Compression method: " . $compressionMethod,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($channelsCount, $compressionMethod, $fromScratch, $folder, $storage)
+            function() use ($name, $channelsCount, $compressionMethod, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImagePsdRequest($fileName, $channelsCount, $compressionMethod, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\GetImagePsdRequest($name, $channelsCount, $compressionMethod, $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImagePsdAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($channelsCount, $compressionMethod)

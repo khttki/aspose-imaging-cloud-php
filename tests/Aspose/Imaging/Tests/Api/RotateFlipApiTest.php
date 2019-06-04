@@ -77,11 +77,14 @@ class RotateFlipApiTest extends ApiTester
     */
     public function getImageRotateFlipTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $method = "Rotate90FlipX";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -110,13 +113,11 @@ class RotateFlipApiTest extends ApiTester
 
                 $this->getRequestTestInternal(
                     "getImageRotateFlipTest", 
-                    $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; Method: " . $method,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $method, $folder, $storage)
+                    function() use ($name, $format, $method, $folder, $storage)
                     {
-                        $request = new Requests\GetImageRotateFlipRequest($fileName, $format, $method, $outPath, $folder, $storage);
+                        $request = new Requests\GetImageRotateFlipRequest($name, $format, $method, $folder, $storage);
                         return self::$imagingApi->getImageRotateFlipAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream)

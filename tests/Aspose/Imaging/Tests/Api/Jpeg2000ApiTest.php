@@ -44,30 +44,25 @@ class Jpeg2000ApiTest extends ApiTester
      * Test GetImageJpeg2000
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageJpeg2000Test($saveResultToStorage)
+    public function getImageJpeg2000Test()
     {
         $name = "test.j2k";
         $comment = "Aspose";
         $codec = "jp2";
         $fromScratch = null;
-        $outName = $name . "_specific.jp2";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageJpeg2000Test", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Comment: " . $comment . "; Codec: " . $codec,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($comment, $codec, $fromScratch, $folder, $storage)
+            function() use ($name, $comment, $codec, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageJpeg2000Request($fileName, $comment, $codec, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\GetImageJpeg2000Request($name, $comment, $codec, $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImageJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)

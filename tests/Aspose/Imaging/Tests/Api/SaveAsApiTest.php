@@ -77,10 +77,13 @@ class SaveAsApiTest extends ApiTester
     */
     public function getImageSaveAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -105,17 +108,13 @@ class SaveAsApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "." . $format;
-
                 $this->getRequestTestInternal(
                     "getImageSaveAsTest", 
-                    $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $folder, $storage)
+                    function() use ($name, $format, $folder, $storage)
                     {
-                        $request = new Requests\GetImageSaveAsRequest($fileName, $format, $outPath, $folder, $storage);
+                        $request = new Requests\GetImageSaveAsRequest($name, $format, $folder, $storage);
                         return self::$imagingApi->getImageSaveAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},

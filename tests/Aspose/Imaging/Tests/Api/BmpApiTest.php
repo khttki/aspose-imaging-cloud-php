@@ -44,32 +44,27 @@ class BmpApiTest extends ApiTester
      * Test GetImageBmp
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageBmpTest($saveResultToStorage)
+    public function getImageBmpTest()
     {
         $name = "test.bmp";
         $bitsPerPixel = 32;
         $horizontalResolution = 300;
         $verticalResolution = 300;
         $fromScratch = null;
-        $outName = $name . "_specific.bmp";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageBmpTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Bits per pixel: " . $bitsPerPixel . "; Horizontal resolution: " . $horizontalResolution . ";
                 Vertical resolution: " . $verticalResolution,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
+            function() use ($name, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageBmpRequest($fileName, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\GetImageBmpRequest($name, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImageBmpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)

@@ -46,7 +46,7 @@ class PostImageSaveAsRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @var string
      */
@@ -70,7 +70,7 @@ class PostImageSaveAsRequest extends ImagingRequest
      * Initializes a new instance of the PostImageSaveAsRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format.
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
      */
@@ -104,7 +104,7 @@ class PostImageSaveAsRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return string
      */
@@ -114,7 +114,7 @@ class PostImageSaveAsRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

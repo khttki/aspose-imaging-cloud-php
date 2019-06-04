@@ -46,7 +46,7 @@ class GetImageResizeRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @var string
      */
@@ -67,13 +67,6 @@ class GetImageResizeRequest extends ImagingRequest
     public $new_height;
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
-    
-    /**
      * Folder with image to process.
      *
      * @var string
@@ -91,20 +84,18 @@ class GetImageResizeRequest extends ImagingRequest
      * Initializes a new instance of the GetImageResizeRequest class.
      *  
      * @param string $name Filename of an image.
-     * @param string $format Resulting image format.
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param int $new_width New width.
      * @param int $new_height New height.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $format, $new_width, $new_height, $out_path = null, $folder = null, $storage = null)             
+    public function __construct($name, $format, $new_width, $new_height, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->format = $format;
         $this->new_width = $new_width;
         $this->new_height = $new_height;
-        $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -131,7 +122,7 @@ class GetImageResizeRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return string
      */
@@ -141,7 +132,7 @@ class GetImageResizeRequest extends ImagingRequest
     }
 
     /**
-     * Resulting image format.
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -190,27 +181,6 @@ class GetImageResizeRequest extends ImagingRequest
     public function set_new_height($value)
     {
         $this->new_height = $value;
-        return $this;
-    }
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
         return $this;
     }
     
@@ -316,16 +286,6 @@ class GetImageResizeRequest extends ImagingRequest
         if ($this->new_height !== null) {
             $localName = lcfirst('newHeight');
             $localValue = is_bool($this->new_height) ? ($this->new_height ? 'true' : 'false') : $this->new_height;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

@@ -46,14 +46,14 @@ class PostImageWebPRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * If WEBP is lossless.
+     * If WEBP should be in lossless format.
      *
      * @var bool
      */
     public $loss_less;
     
     /**
-     * Quality.
+     * Quality (0-100).
      *
      * @var int
      */
@@ -98,8 +98,8 @@ class PostImageWebPRequest extends ImagingRequest
      * Initializes a new instance of the PostImageWebPRequest class.
      *  
      * @param string $image_data Input image
-     * @param bool $loss_less If WEBP is lossless.
-     * @param int $quality Quality.
+     * @param bool $loss_less If WEBP should be in lossless format.
+     * @param int $quality Quality (0-100).
      * @param int $anim_loop_count The animation loop count.
      * @param string $anim_background_color Color of the animation background.
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
@@ -140,7 +140,7 @@ class PostImageWebPRequest extends ImagingRequest
     }
     
     /**
-     * If WEBP is lossless.
+     * If WEBP should be in lossless format.
      *
      * @return bool
      */
@@ -150,7 +150,7 @@ class PostImageWebPRequest extends ImagingRequest
     }
 
     /**
-     * If WEBP is lossless.
+     * If WEBP should be in lossless format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -161,7 +161,7 @@ class PostImageWebPRequest extends ImagingRequest
     }
     
     /**
-     * Quality.
+     * Quality (0-100).
      *
      * @return int
      */
@@ -171,7 +171,7 @@ class PostImageWebPRequest extends ImagingRequest
     }
 
     /**
-     * Quality.
+     * Quality (0-100).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

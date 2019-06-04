@@ -44,12 +44,10 @@ class GifApiTest extends ApiTester
      * Test GetImageGif
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageGifTest($saveResultToStorage)
+    public function getImageGifTest()
     {
         $name = "test.gif";
         $backgroundColorIndex = 5;
@@ -59,23 +57,20 @@ class GifApiTest extends ApiTester
         $isPaletteSorted = true;
         $pixelAspectRatio = 4;
         $fromScratch = null;
-        $outName = $name . "_specific.gif";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageGifTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Back color index: " . $backgroundColorIndex . "; Color resolution width: " . $colorResolution . ";
                 Has trailer: " . $hasTrailer . "; Interlaced: " . $interlaced . "; Is palette sorted: " . $isPaletteSorted . "; 
                 Pixel aspect ratio" . $pixelAspectRatio,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, $isPaletteSorted, 
+            function() use ($name, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, $isPaletteSorted, 
                 $pixelAspectRatio, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageGifRequest($fileName, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
-                    $isPaletteSorted, $pixelAspectRatio, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\GetImageGifRequest($name, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
+                    $isPaletteSorted, $pixelAspectRatio, $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImageGifAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 

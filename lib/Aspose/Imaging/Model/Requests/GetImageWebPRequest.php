@@ -46,14 +46,14 @@ class GetImageWebPRequest extends ImagingRequest
     public $name;
     
     /**
-     * If WEBP is lossless.
+     * If WEBP should be in lossless format.
      *
      * @var bool
      */
     public $loss_less;
     
     /**
-     * Quality.
+     * Quality (0-100).
      *
      * @var int
      */
@@ -81,13 +81,6 @@ class GetImageWebPRequest extends ImagingRequest
     public $from_scratch;
     
     /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @var string
-     */
-    public $out_path;
-    
-    /**
      * Folder with image to process.
      *
      * @var string
@@ -105,16 +98,15 @@ class GetImageWebPRequest extends ImagingRequest
      * Initializes a new instance of the GetImageWebPRequest class.
      *  
      * @param string $name Filename of image.
-     * @param bool $loss_less If WEBP is lossless.
-     * @param int $quality Quality.
+     * @param bool $loss_less If WEBP should be in lossless format.
+     * @param int $quality Quality (0-100).
      * @param int $anim_loop_count The animation loop count.
      * @param string $anim_background_color Color of the animation background.
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $loss_less, $quality, $anim_loop_count, $anim_background_color, $from_scratch = null, $out_path = null, $folder = null, $storage = null)             
+    public function __construct($name, $loss_less, $quality, $anim_loop_count, $anim_background_color, $from_scratch = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->loss_less = $loss_less;
@@ -122,7 +114,6 @@ class GetImageWebPRequest extends ImagingRequest
         $this->anim_loop_count = $anim_loop_count;
         $this->anim_background_color = $anim_background_color;
         $this->from_scratch = $from_scratch;
-        $this->out_path = $out_path;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -149,7 +140,7 @@ class GetImageWebPRequest extends ImagingRequest
     }
     
     /**
-     * If WEBP is lossless.
+     * If WEBP should be in lossless format.
      *
      * @return bool
      */
@@ -159,7 +150,7 @@ class GetImageWebPRequest extends ImagingRequest
     }
 
     /**
-     * If WEBP is lossless.
+     * If WEBP should be in lossless format.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -170,7 +161,7 @@ class GetImageWebPRequest extends ImagingRequest
     }
     
     /**
-     * Quality.
+     * Quality (0-100).
      *
      * @return int
      */
@@ -180,7 +171,7 @@ class GetImageWebPRequest extends ImagingRequest
     }
 
     /**
-     * Quality.
+     * Quality (0-100).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -250,27 +241,6 @@ class GetImageWebPRequest extends ImagingRequest
     public function set_from_scratch($value)
     {
         $this->from_scratch = $value;
-        return $this;
-    }
-    
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return string
-     */
-    public function get_out_path()
-    {
-        return $this->out_path;
-    }
-
-    /**
-     * Path to updated file (if this is empty, response contains streamed image).
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_out_path($value)
-    {
-        $this->out_path = $value;
         return $this;
     }
     
@@ -400,16 +370,6 @@ class GetImageWebPRequest extends ImagingRequest
         if ($this->from_scratch !== null) {
             $localName = lcfirst('fromScratch');
             $localValue = is_bool($this->from_scratch) ? ($this->from_scratch ? 'true' : 'false') : $this->from_scratch;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->out_path !== null) {
-            $localName = lcfirst('outPath');
-            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

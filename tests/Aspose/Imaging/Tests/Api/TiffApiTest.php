@@ -48,26 +48,22 @@ class TiffApiTest extends ApiTester
      * Test GetTiffToFax
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
      * @return void
     */
-    public function getTiffToFaxTest($saveResultToStorage)
+    public function getTiffToFaxTest()
     {
         $name = "test.tiff";
-        $outName = $name . "_fax.tiff";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getTiffToFaxTest", 
-            $saveResultToStorage,
             "Input image: " . $name,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($folder, $storage)
+            function() use ($name, $folder, $storage)
             {
-                $request = new Requests\GetTiffToFaxRequest($fileName, $storage, $folder, $outPath);
+                $request = new Requests\GetTiffToFaxRequest($name, $storage, $folder);
                 return self::$imagingApi->getTiffToFaxAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream)
@@ -87,12 +83,10 @@ class TiffApiTest extends ApiTester
      * Test GetImageTiff
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageTiffTest($saveResultToStorage)
+    public function getImageTiffTest()
     {
         $name = "test.tiff";
         $compression = "adobedeflate";
@@ -101,21 +95,18 @@ class TiffApiTest extends ApiTester
         $horizontalResolution = 150;
         $verticalResolution = 150;
         $fromScratch = null;
-        $outName = $name . "_specific.tiff";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageTiffTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Compression: " . $compression . "; Resolution unit: " . $resolutionUnit . "; Bit depth: " . $bitDepth . ";
                 Horizontal resolution: " . $horizontalResolution . "; Vertical resolution: " . $verticalResolution,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
+            function() use ($name, $compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageTiffRequest($fileName, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, $verticalResolution,
-                    $outPath, $folder, $storage);
+                $request = new Requests\GetImageTiffRequest($name, $bitDepth, $compression, $resolutionUnit, $horizontalResolution, $verticalResolution,
+                    $fromScratch, $folder, $storage);
                 return self::$imagingApi->getImageTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
@@ -166,8 +157,8 @@ class TiffApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($compression, $resolutionUnit, $fromScratch, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageTiffRequest($inputStream, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, 
-                    $verticalResolution, $outPath, $storage);
+                $request = new Requests\PostImageTiffRequest($inputStream, $bitDepth, $compression, $resolutionUnit, $horizontalResolution, 
+                    $verticalResolution, $fromScratch, $outPath, $storage);
                 return self::$imagingApi->postImageTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)

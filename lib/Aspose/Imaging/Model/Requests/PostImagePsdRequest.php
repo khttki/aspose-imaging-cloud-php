@@ -53,7 +53,7 @@ class PostImagePsdRequest extends ImagingRequest
     public $channels_count;
     
     /**
-     * Compression method.
+     * Compression method (for now, raw and RLE are supported).
      *
      * @var string
      */
@@ -85,7 +85,7 @@ class PostImagePsdRequest extends ImagingRequest
      *  
      * @param string $image_data Input image
      * @param int $channels_count Count of color channels.
-     * @param string $compression_method Compression method.
+     * @param string $compression_method Compression method (for now, raw and RLE are supported).
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
@@ -143,7 +143,7 @@ class PostImagePsdRequest extends ImagingRequest
     }
     
     /**
-     * Compression method.
+     * Compression method (for now, raw and RLE are supported).
      *
      * @return string
      */
@@ -153,7 +153,7 @@ class PostImagePsdRequest extends ImagingRequest
     }
 
     /**
-     * Compression method.
+     * Compression method (for now, raw and RLE are supported).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

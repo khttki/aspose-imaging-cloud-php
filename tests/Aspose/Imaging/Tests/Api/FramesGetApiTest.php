@@ -44,12 +44,10 @@ class FramesGetApiTest extends ApiTester
      * Test GetImageFrame
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageSingleFrameTest($saveResultToStorage)
+    public function getImageSingleFrameTest()
     {
         $name = "test.tiff";
         $frameId = 2;
@@ -61,26 +59,23 @@ class FramesGetApiTest extends ApiTester
         $rectHeight = 300;
         $rotateFlipMethod = "Rotate90FlipX";
         $saveOtherFrames = false;
-        $outName = $name . "_singleFrame.tiff";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageSingleFrameTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Frame ID: " . $frameId . "; New width: " . $newWidth . "; New height: " . $newHeight . "; X: " . $x. "; Y: " . $y . 
                 "; Rect width: " . $rectWidth . "; Rect height: " . $rectHeight . "; Rotate/flip method: " . $rotateFlipMethod . 
                 "; Save other frames: " . var_export($saveOtherFrames, true),
             $name,
-            $outName,
-            function($fileName, $outPath) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight , $rotateFlipMethod, $saveOtherFrames, $folder, $storage)
+            function() use ($name, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight , $rotateFlipMethod, $saveOtherFrames, $folder, $storage)
             {
-                $request = new Requests\GetImageFrameRequest($fileName, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
-                    $rotateFlipMethod, $saveOtherFrames, $outPath, $folder, $storage);
+                $request = new Requests\GetImageFrameRequest($name, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
+                    $rotateFlipMethod, $saveOtherFrames, $folder, $storage);
                 return self::$imagingApi->getImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
-                $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)
+                $rotateFlipMethod, $saveOtherFrames, $folder, $storage)
             {
                 $this->assertNotNull($resultProperties->getTiffProperties());
                 $this->assertNotNull($resultProperties->getTiffProperties()->getFrames());
@@ -93,22 +88,6 @@ class FramesGetApiTest extends ApiTester
                 $this->assertEquals($rectWidth, $resultProperties->getTiffProperties()->getFrames()[0]->getFrameOptions()->getImageLength());
                 $this->assertEquals($rectHeight, $resultProperties->getWidth());
                 $this->assertEquals($rectWidth, $resultProperties->getHeight());
-
-                if (!$saveResultToStorage) return;
-
-                $framePropertiesRequest = new Requests\GetImageFramePropertiesRequest($outName, 0, $folder, $storage);
-                $framePropertiesResponse = 
-                    self::$imagingApi->getImageFramePropertiesAsync($framePropertiesRequest)->wait();
-
-                $this->assertNotNull($framePropertiesResponse);
-                $this->assertNotNull($framePropertiesResponse->getTiffProperties());
-                $this->assertNotNull($framePropertiesResponse->getTiffProperties()->getFrames());
-                $this->assertEquals($rectHeight, $framePropertiesResponse->getWidth());
-                $this->assertEquals($rectWidth, $framePropertiesResponse->getHeight());
-                $this->assertEquals($framePropertiesResponse->getTiffProperties()->getFrames()[0]->getWidth(), $framePropertiesResponse->getWidth());
-                $this->assertEquals($framePropertiesResponse->getTiffProperties()->getFrames()[0]->getHeight(), $framePropertiesResponse->getHeight());
-                $this->assertEquals($framePropertiesResponse->getTiffProperties()->getFrames()[0]->getFrameOptions()->getImageWidth(), $framePropertiesResponse->getWidth());
-                $this->assertEquals($framePropertiesResponse->getTiffProperties()->getFrames()[0]->getFrameOptions()->getImageLength(), $framePropertiesResponse->getHeight());
             },
             $folder,
             $storage);
@@ -118,12 +97,10 @@ class FramesGetApiTest extends ApiTester
      * Test GetImageFrame
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageAllFramesTest($saveResultToStorage)
+    public function getImageAllFramesTest()
     {
         $name = "test.tiff";
         $frameId = 2;
@@ -135,26 +112,23 @@ class FramesGetApiTest extends ApiTester
         $rectHeight = 300;
         $rotateFlipMethod = "Rotate90FlipX";
         $saveOtherFrames = true;
-        $outName = $name . "_allFrames.tiff";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
             "getImageAllFramesTest", 
-            $saveResultToStorage,
             "Input image: " . $name . "; Frame ID: " . $frameId . "; New width: " . $newWidth . "; New height: " . $newHeight . "; X: " . $x. "; Y: " . $y . 
                 "; Rect width: " . $rectWidth . "; Rect height: " . $rectHeight . "; Rotate/flip method: " . $rotateFlipMethod . 
                 "; Save other frames: " . var_export($saveOtherFrames, true),
             $name,
-            $outName,
-            function($fileName, $outPath) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight , $rotateFlipMethod, $saveOtherFrames, $folder, $storage)
+            function() use ($name, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight , $rotateFlipMethod, $saveOtherFrames, $folder, $storage)
             {
-                $request = new Requests\GetImageFrameRequest($fileName, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
-                    $rotateFlipMethod, $saveOtherFrames, $outPath, $folder, $storage);
+                $request = new Requests\GetImageFrameRequest($name, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
+                    $rotateFlipMethod, $saveOtherFrames, $folder, $storage);
                 return self::$imagingApi->getImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
-                $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)
+                $rotateFlipMethod, $saveOtherFrames, $folder, $storage)
             {
                 $this->assertNotNull($originalProperties->getTiffProperties());
                 $this->assertNotNull($originalProperties->getTiffProperties()->getFrames());
