@@ -41,13 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class WmfApiTest extends ApiTester
 {
     /**
-     * Test GetImageWmf
+     * Test ModifyWmf
      * 
      * @test
      *
      * @return void
     */
-    public function getImageWmfTest()
+    public function modifyWmfTest()
     {
         $name = "test.wmf";
         $bkColor = "gray";
@@ -60,14 +60,14 @@ class WmfApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageWmfTest", 
+            "modifyWmfTest", 
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
             $name,
             function() use ($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageWmfRequest($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage);
-                return self::$imagingApi->getImageWmfAsync($request)->wait();
+                $request = new Requests\ModifyWmfRequest($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyWmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
@@ -80,7 +80,7 @@ class WmfApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageWmf
+     * Test CreateModifiedWmf
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -88,7 +88,7 @@ class WmfApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageWmfTest($saveResultToStorage)
+    public function createModifiedWmfTest($saveResultToStorage)
     {
         $name = "test.wmf";
         $bkColor = "gray";
@@ -102,7 +102,7 @@ class WmfApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageWmfTest", 
+            "createModifiedWmfTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
@@ -110,8 +110,8 @@ class WmfApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageWmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageWmfAsync($request)->wait();
+                $request = new Requests\CreateModifiedWmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedWmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {

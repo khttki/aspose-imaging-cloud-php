@@ -61,10 +61,10 @@ class ExamplesTests extends ApiTester {
             // inspect $result->getUploaded() list for uploaded file names
 
             // convert image from storage to JPEG
-            $getSaveAsRequest = new Requests\GetImageSaveAsRequest("inputImage.png", "jpg",
+            $getSaveAsRequest = new Requests\SaveImageAsRequest("inputImage.png", "jpg",
                     "ExampleFolderNet");
 
-            $convertedImage = $imagingApi->getImageSaveAs($getSaveAsRequest)->getContents();
+            $convertedImage = $imagingApi->saveImageAs($getSaveAsRequest)->getContents();
 
             // process resulting image
             // for example, save it to storage
@@ -100,10 +100,10 @@ class ExamplesTests extends ApiTester {
 
             // convert image from request stream to JPEG and save it to storage
             // please, use outPath parameter for saving the result to storage
-            $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
+            $postSaveToStorageRequest = new Requests\CreateSavedImageAsRequest($localInputImage, "jpg",
                     "ExampleFolderNet/resultImage.jpg");
 
-            $imagingApi->postImageSaveAs($postSaveToStorageRequest);
+            $imagingApi->createSavedImageAs($postSaveToStorageRequest);
 
             // download saved image from storage and process it
             $savedFile = $imagingApi
@@ -112,10 +112,10 @@ class ExamplesTests extends ApiTester {
             // convert image from request stream to JPEG and read it from resulting stream
             // please, set outPath parameter as null to return result in request stream
             // instead of saving to storage
-            $postSaveToStreamRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg");
+            $postSaveToStreamRequest = new Requests\CreateSavedImageAsRequest($localInputImage, "jpg");
 
             // process resulting image from response stream
-            $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
+            $resultPostImageStream = $imagingApi->createSavedImageAs($postSaveToStreamRequest)->getContents();
         } finally {
             // remove file from storage
             $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));

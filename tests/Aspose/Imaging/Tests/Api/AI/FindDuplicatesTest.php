@@ -82,8 +82,8 @@ class FindDuplicatesTest extends TestImagingAiBase
             $this->addImageFeaturesToSearchContext($image);
 
             $response = 
-                self::$imagingApi->getSearchContextFindDuplicatesAsync(
-                    new Requests\GetSearchContextFindDuplicatesRequest($this->searchContextId, 80, null, self::$testStorage))->wait();
+                self::$imagingApi->findImageDuplicatesAsync(
+                    new Requests\FindImageDuplicatesRequest($this->searchContextId, 80, null, self::$testStorage))->wait();
             $this->assertEquals(1, count($response->getDuplicates()));
         });
     }

@@ -41,13 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class GifApiTest extends ApiTester
 {
     /**
-     * Test GetImageGif
+     * Test ModifyGif
      * 
      * @test
      *
      * @return void
     */
-    public function getImageGifTest()
+    public function modifyGifTest()
     {
         $name = "test.gif";
         $backgroundColorIndex = 5;
@@ -61,7 +61,7 @@ class GifApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageGifTest", 
+            "modifyGifTest", 
             "Input image: " . $name . "; Back color index: " . $backgroundColorIndex . "; Color resolution width: " . $colorResolution . ";
                 Has trailer: " . $hasTrailer . "; Interlaced: " . $interlaced . "; Is palette sorted: " . $isPaletteSorted . "; 
                 Pixel aspect ratio" . $pixelAspectRatio,
@@ -69,9 +69,9 @@ class GifApiTest extends ApiTester
             function() use ($name, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, $isPaletteSorted, 
                 $pixelAspectRatio, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageGifRequest($name, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
+                $request = new Requests\ModifyGifRequest($name, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                     $isPaletteSorted, $pixelAspectRatio, $fromScratch, $folder, $storage);
-                return self::$imagingApi->getImageGifAsync($request)->wait();
+                return self::$imagingApi->modifyGifAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                 $isPaletteSorted, $pixelAspectRatio)
@@ -90,7 +90,7 @@ class GifApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageGif
+     * Test CreateModifiedGif
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -98,7 +98,7 @@ class GifApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageGifTest($saveResultToStorage)
+    public function createModifiedGifTest($saveResultToStorage)
     {
         $name = "test.gif";
         $backgroundColorIndex = 5;
@@ -113,7 +113,7 @@ class GifApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageGifTest", 
+            "createModifiedGifTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Back color index: " . $backgroundColorIndex . "; Color resolution width: " . $colorResolution . ";
                 Has trailer: " . $hasTrailer . "; Interlaced: " . $interlaced . "; Is palette sorted: " . $isPaletteSorted . "; 
@@ -123,9 +123,9 @@ class GifApiTest extends ApiTester
             function($inputStream, $outPath) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, $isPaletteSorted, 
                 $pixelAspectRatio, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageGifRequest($inputStream, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
+                $request = new Requests\CreateModifiedGifRequest($inputStream, $backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                     $isPaletteSorted, $pixelAspectRatio, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageGifAsync($request)->wait();
+                return self::$imagingApi->createModifiedGifAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($backgroundColorIndex, $colorResolution, $hasTrailer, $interlaced, 
                 $isPaletteSorted, $pixelAspectRatio)

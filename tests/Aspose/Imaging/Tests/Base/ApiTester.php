@@ -523,8 +523,8 @@ abstract class ApiTester extends TestCase
             else
             {
                 $resultProperties = 
-                    self::$imagingApi->postImagePropertiesAsync(
-                        new Requests\PostImagePropertiesRequest($response->getContents()))->wait();
+                    self::$imagingApi->extractImagePropertiesAsync(
+                        new Requests\ExtractImagePropertiesRequest($response->getContents()))->wait();
                 $this->assertNotNull($resultProperties);
             }
 

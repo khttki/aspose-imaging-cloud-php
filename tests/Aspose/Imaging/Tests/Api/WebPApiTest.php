@@ -41,13 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class WebpApiTest extends ApiTester
 {
     /**
-     * Test GetImageWebp
+     * Test ModifyWebp
      * 
      * @test
      *
      * @return void
     */
-    public function getImageWebpTest()
+    public function modifyWebpTest()
     {
         $name = "Animation.webp";
         $lossless = true;
@@ -59,14 +59,14 @@ class WebpApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageWebpTest", 
+            "modifyWebpTest", 
             "Input image: " . $name . "; Lossless: " . $lossless . "; Quality: " . $quality . "; Anum loop count: " . $animLoopCount . ";
                 Anim background color: " . $animBackgroundColor,
             $name,
             function($fileName, $outPath) use ($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageWebpRequest($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $folder, $storage);
-                return self::$imagingApi->getImageWebpAsync($request)->wait();
+                $request = new Requests\ModifyWebpRequest($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $folder, $storage);
+                return self::$imagingApi->modifyWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {
@@ -80,7 +80,7 @@ class WebpApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageWebp
+     * Test CreateModifiedWebp
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -88,7 +88,7 @@ class WebpApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageWebpTest($saveResultToStorage)
+    public function createModifiedWebpTest($saveResultToStorage)
     {
         $name = "Animation.webp";
         $lossless = true;
@@ -101,7 +101,7 @@ class WebpApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageWebpTest", 
+            "createModifiedWebpTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Lossless: " . $lossless . "; Quality: " . $quality . "; Anum loop count: " . $animLoopCount . ";
                 Anim background color: " . $animBackgroundColor,
@@ -109,8 +109,8 @@ class WebpApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageWebpRequest($inputStream, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageWebpAsync($request)->wait();
+                $request = new Requests\CreateModifiedWebpRequest($inputStream, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {

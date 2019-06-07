@@ -65,7 +65,7 @@ class UpdateApiTest extends ApiTester
     }
 
     /**
-     * Test GetImageUpdate
+     * Test UpdateImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -75,7 +75,7 @@ class UpdateApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function getImageUpdateTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function updateImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         if ($saveResultToStorage) {
             return;
@@ -116,15 +116,15 @@ class UpdateApiTest extends ApiTester
             foreach ($formatsToExport as $format)
             {
                 $this->getRequestTestInternal(
-                    "getImageUpdateTest", 
+                    "updateImageTest", 
                     "Input image: " . $name . "; Output format: " . $format . "; New width: " . $newWidth . "; New height: " . $newHeight . "; X: ". $x . "; Y: " . $y .
                         "; Rect width: " . $rectWidth . "; Rect height: " . $rectHeight . "; Rotate/flip method: " . $rotateFlipMethod,
                     $name,
                     function() use ($name, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage)
                     {
-                        $request = new Requests\GetImageUpdateRequest($name, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
+                        $request = new Requests\UpdateImageRequest($name, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
                             $folder, $storage);
-                        return self::$imagingApi->getImageUpdateAsync($request)->wait();
+                        return self::$imagingApi->updateImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod)
                     {
@@ -138,7 +138,7 @@ class UpdateApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageUpdate
+     * Test CreateUpdatedImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -148,7 +148,7 @@ class UpdateApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function postImageUpdateTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function createUpdatedImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         $name = null;
         $newWidth = 300;
@@ -188,7 +188,7 @@ class UpdateApiTest extends ApiTester
                 $outName = $name . "_update." . $format;
 
                 $this->postRequestTestInternal(
-                    "postImageUpdateTest", 
+                    "createUpdatedImageTest", 
                     $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; New width: " . $newWidth . "; New height: " . $newHeight . "; X: ". $x . "; Y: " . $y .
                         "; Rect width: " . $rectWidth . "; Rect height: " . $rectHeight . "; Rotate/flip method: " . $rotateFlipMethod,
@@ -196,9 +196,9 @@ class UpdateApiTest extends ApiTester
                     $outName,
                     function($inputStream, $outPath) use ($format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $storage)
                     {
-                        $request = new Requests\PostImageUpdateRequest($inputStream, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
+                        $request = new Requests\CreateUpdatedImageRequest($inputStream, $format, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod,
                             $outPath, $storage);
-                        return self::$imagingApi->postImageUpdateAsync($request)->wait();
+                        return self::$imagingApi->createUpdatedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod)
                     {

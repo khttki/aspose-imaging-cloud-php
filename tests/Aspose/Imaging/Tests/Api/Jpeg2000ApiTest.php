@@ -41,13 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class Jpeg2000ApiTest extends ApiTester
 {
     /**
-     * Test GetImageJpeg2000
+     * Test ModifyJpeg2000
      * 
      * @test
      *
      * @return void
     */
-    public function getImageJpeg2000Test()
+    public function modifyJpeg2000Test()
     {
         $name = "test.j2k";
         $comment = "Aspose";
@@ -57,13 +57,13 @@ class Jpeg2000ApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageJpeg2000Test", 
+            "modifyJpeg2000Test", 
             "Input image: " . $name . "; Comment: " . $comment . "; Codec: " . $codec,
             $name,
             function() use ($name, $comment, $codec, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageJpeg2000Request($name, $comment, $codec, $fromScratch, $folder, $storage);
-                return self::$imagingApi->getImageJpeg2000Async($request)->wait();
+                $request = new Requests\ModifyJpeg2000Request($name, $comment, $codec, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)
             {
@@ -85,7 +85,7 @@ class Jpeg2000ApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageJpeg2000
+     * Test CreateModifiedJpeg2000
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -93,7 +93,7 @@ class Jpeg2000ApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageJpeg2000Test($saveResultToStorage)
+    public function createModifiedJpeg2000Test($saveResultToStorage)
     {
         $name = "test.j2k";
         $comment = "Aspose";
@@ -104,15 +104,15 @@ class Jpeg2000ApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageJpeg2000Test", 
+            "createModifiedJpeg2000Test", 
             $saveResultToStorage,
             "Input image: " . $name . "; Comment: " . $comment . "; Codec: " . $codec,
             $name,
             $outName,
             function($inputStream, $outPath) use ($comment, $codec, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageJpeg2000Request($inputStream, $comment, $codec, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageJpeg2000Async($request)->wait();
+                $request = new Requests\CreateModifiedJpeg2000Request($inputStream, $comment, $codec, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedJpeg2000Async($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($comment, $codec)
             {

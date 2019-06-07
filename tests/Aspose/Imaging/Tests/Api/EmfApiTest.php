@@ -41,13 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class EmfApiTest extends ApiTester
 {
     /**
-     * Test GetImageEmf
+     * Test ModifyEmf
      * 
      * @test
      * 
      * @return void
     */
-    public function getImageEmfTest()
+    public function modifyEmfTest()
     {
         $name = "test.emf";
         $bkColor = "gray";
@@ -60,14 +60,14 @@ class EmfApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageEmfTest", 
+            "modifyEmfTest", 
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
             $name,
             function() use ($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageEmfRequest($name , $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage);
-                return self::$imagingApi->getImageEmfAsync($request)->wait();
+                $request = new Requests\ModifyEmfRequest($name , $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyEmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
@@ -80,7 +80,7 @@ class EmfApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageEmf
+     * Test CreateModifiedEmf
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -88,7 +88,7 @@ class EmfApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageEmfTest($saveResultToStorage)
+    public function createModifiedEmfTest($saveResultToStorage)
     {
         $name = "test.emf";
         $bkColor = "gray";
@@ -102,7 +102,7 @@ class EmfApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageEmfTest", 
+            "createModifiedEmfTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
@@ -110,8 +110,8 @@ class EmfApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageEmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageEmfAsync($request)->wait();
+                $request = new Requests\CreateModifiedEmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedEmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
