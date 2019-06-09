@@ -63,9 +63,9 @@ class WebpApiTest extends ApiTester
             "Input image: " . $name . "; Lossless: " . $lossless . "; Quality: " . $quality . "; Anum loop count: " . $animLoopCount . ";
                 Anim background color: " . $animBackgroundColor,
             $name,
-            function($fileName, $outPath) use ($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
+            function() use ($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\ModifyWebpRequest($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $folder, $storage);
+                $request = new Requests\ModifyWebpRequest($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage);
                 return self::$imagingApi->modifyWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
