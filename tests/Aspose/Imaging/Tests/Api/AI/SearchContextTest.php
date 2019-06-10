@@ -242,8 +242,7 @@ class SearchContextTest extends TestImagingAiBase
      * @return void
      */
     public function extractAndAddImageFeaturesFromFolderTest()
-    {
-        $this->markTestSkipped("IMAGINGAINET-107");
+    {    
         $this->runTestWithLogging("extractAndAddImageFeaturesFromFolderTest", function()
         {
             self::$imagingApi->postSearchContextExtractImageFeaturesAsync(new Requests\PostSearchContextExtractImageFeaturesRequest(
