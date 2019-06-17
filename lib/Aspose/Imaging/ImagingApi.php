@@ -3866,6 +3866,8 @@ class ImagingApi
         }
         
         $options[RequestOptions::TIMEOUT] = 1200;
+        $options[RequestOptions::READ_TIMEOUT] = 1200;
+        $options[RequestOptions::CONNECT_TIMEOUT] = 1200;
         return $options;
     }
     
