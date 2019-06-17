@@ -474,7 +474,7 @@ class ImagingApi
         $returnType = '';
         $isBinary = false;
         $hasReturnType = false;
-        $request = $this->getHttpRequest($request, 'POST');
+        $request = $this->getHttpRequest($request, 'PUT');
         $options = $this->createHttpClientOptions();
             
         try {
@@ -499,7 +499,7 @@ class ImagingApi
         $returnType = '';
         $isBinary = false;
         $hasReturnType = false;
-        $request = $this->getHttpRequest($request, 'POST');
+        $request = $this->getHttpRequest($request, 'PUT');
         $options = $this->createHttpClientOptions();
 
         return $this->client
@@ -3660,7 +3660,7 @@ class ImagingApi
         $returnType = '\Aspose\Imaging\Model\FilesUploadResult';
         $isBinary = false;
         $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
+        $request = $this->getHttpRequest($request, 'PUT');
         $options = $this->createHttpClientOptions();
             
         try {
@@ -3685,7 +3685,7 @@ class ImagingApi
         $returnType = '\Aspose\Imaging\Model\FilesUploadResult';
         $isBinary = false;
         $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
+        $request = $this->getHttpRequest($request, 'PUT');
         $options = $this->createHttpClientOptions();
 
         return $this->client
