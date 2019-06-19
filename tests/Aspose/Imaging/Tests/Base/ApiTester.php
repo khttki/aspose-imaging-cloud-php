@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="ApiTester.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -100,8 +100,7 @@ abstract class ApiTester extends TestCase
         "png",
         "psd",
         "tiff",
-        "webp",
-        "pdf"
+        "webp"
     ];
 
     /**
@@ -332,23 +331,21 @@ abstract class ApiTester extends TestCase
      * Tests the typical GET request.
      *
      * @param string $testMethodName Name of the test method.
-     * @param bool $saveResultToStorage If save result to storage.
      * @param string $parametersLine The parameters line.
      * @param string $inputFileName Name of the input file.
-     * @param string $resultFileName Name of the result file.
      * @param callable $requestInvoker The request invoker.
      * @param callable $propertiesTester The properties tester.
      * @param string $folder The folder.
      * @param string $storage The storage.
      * @return void
      */
-    protected function getRequestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName,
+    protected function getRequestTestInternal($testMethodName, $parametersLine, $inputFileName, 
         callable $requestInvoker, callable $propertiesTester, $folder, $storage)
     {
-        $this->requestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName, 
-            function() use ($inputFileName, $saveResultToStorage, $folder, $resultFileName, $requestInvoker) 
+        $this->requestTestInternal($testMethodName, false, $parametersLine, $inputFileName, null, 
+            function() use ($requestInvoker) 
             {
-                return $this->obtainGetResponse($inputFileName, $saveResultToStorage ? $folder . "/" . $resultFileName : null, $requestInvoker);
+                return $this->obtainGetResponse($requestInvoker);
             },
             $propertiesTester, $folder, $storage);
     }
@@ -422,23 +419,15 @@ abstract class ApiTester extends TestCase
     /**
      * Obtains the typical GET request response.
      *
-     * @param string $inputFileName Name of the input file.
-     * @param string $outPath The output path to save the result.
      * @param mixed $requestInvoker Request invoker.
      * @return \Psr\Http\Message\StreamInterface
      */
-    private function obtainGetResponse($inputFileName, $outPath, $requestInvoker)
+    private function obtainGetResponse($requestInvoker)
     {
-        $response = $requestInvoker($inputFileName, $outPath);
-
-        if (empty($outPath))
-        {
-            $this->assertNotNull($response);
-            $this->assertGreaterThan(0, $response->getSize());
-            return $response;
-        }
-
-        return null;
+        $response = $requestInvoker();
+        $this->assertNotNull($response);
+        $this->assertGreaterThan(0, $response->getSize());
+        return $response;
     }
         
     /**
@@ -526,19 +515,16 @@ abstract class ApiTester extends TestCase
                         . $folder . "Result isn't present in the storage by an unknown reason.");
                 }
 
-                if (!preg_match('/.pdf$/', $resultFileName))
-                {
-                    $resultProperties = 
-                        self::$imagingApi->getImagePropertiesAsync(
-                            new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
-                    $this->assertNotNull($resultProperties);
-                }
+                $resultProperties = 
+                self::$imagingApi->getImagePropertiesAsync(
+                    new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
+                $this->assertNotNull($resultProperties);
             }
-            else if (!preg_match('/\bv1\\.\b/', self::$imagingApi->getConfig()->getApiVersion()) && !preg_match('/.pdf$/', $resultFileName))
+            else
             {
                 $resultProperties = 
-                    self::$imagingApi->postImagePropertiesAsync(
-                        new Requests\PostImagePropertiesRequest($response->getContents()))->wait();
+                    self::$imagingApi->extractImagePropertiesAsync(
+                        new Requests\ExtractImagePropertiesRequest($response->getContents()))->wait();
                 $this->assertNotNull($resultProperties);
             }
 

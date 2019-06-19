@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="BmpApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,36 +41,31 @@ use \Aspose\Imaging\Model\Requests;
 class BmpApiTest extends ApiTester
 {
     /**
-     * Test GetImageBmp
+     * Test ModifyBmp
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageBmpTest($saveResultToStorage)
+    public function modifyBmpTest()
     {
         $name = "test.bmp";
         $bitsPerPixel = 32;
         $horizontalResolution = 300;
         $verticalResolution = 300;
         $fromScratch = null;
-        $outName = $name . "_specific.bmp";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageBmpTest", 
-            $saveResultToStorage,
+            "modifyBmpTest", 
             "Input image: " . $name . "; Bits per pixel: " . $bitsPerPixel . "; Horizontal resolution: " . $horizontalResolution . ";
                 Vertical resolution: " . $verticalResolution,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
+            function() use ($name, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageBmpRequest($fileName, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $folder, $storage);
-                return self::$imagingApi->getImageBmpAsync($request)->wait();
+                $request = new Requests\ModifyBmpRequest($name, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyBmpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {
@@ -89,7 +84,7 @@ class BmpApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageBmp
+     * Test CreateModifiedBmp
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -97,7 +92,7 @@ class BmpApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageBmpTest($saveResultToStorage)
+    public function createModifiedBmpTest($saveResultToStorage)
     {
         $name = "test.bmp";
         $bitsPerPixel = 32;
@@ -109,7 +104,7 @@ class BmpApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageBmpTest", 
+            "createModifiedBmpTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Bits per pixel: " . $bitsPerPixel . "; Horizontal resolution: " . $horizontalResolution . ";
                 Vertical resolution: " . $verticalResolution,
@@ -117,8 +112,8 @@ class BmpApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageBmpRequest($inputStream, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageBmpAsync($request)->wait();
+                $request = new Requests\CreateModifiedBmpRequest($inputStream, $bitsPerPixel, $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedBmpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bitsPerPixel, $horizontalResolution, $verticalResolution)
             {

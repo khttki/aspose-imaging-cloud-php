@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="PsdApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,34 +41,29 @@ use \Aspose\Imaging\Model\Requests;
 class PsdApiTest extends ApiTester
 {
     /**
-     * Test GetImagePsd
+     * Test ModifyPsd
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImagePsdTest($saveResultToStorage)
+    public function modifyPsdTest()
     {
         $name = "test.psd";
         $channelsCount = 3;
         $compressionMethod = "raw";
         $fromScratch = null;
-        $outName = $name . "_specific.psd";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImagePsdTest", 
-            $saveResultToStorage,
+            "modifyPsdTest", 
             "Input image: " . $name . "; Channels count: " . $channelsCount . "; Compression method: " . $compressionMethod,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($channelsCount, $compressionMethod, $fromScratch, $folder, $storage)
+            function() use ($name, $channelsCount, $compressionMethod, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImagePsdRequest($fileName, $channelsCount, $compressionMethod, $fromScratch, $outPath, $folder, $storage);
-                return self::$imagingApi->getImagePsdAsync($request)->wait();
+                $request = new Requests\ModifyPsdRequest($name, $channelsCount, $compressionMethod, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyPsdAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($channelsCount, $compressionMethod)
             {
@@ -86,7 +81,7 @@ class PsdApiTest extends ApiTester
     }
 
     /**
-     * Test PostImagePsd
+     * Test CreateModifiedPsd
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -94,7 +89,7 @@ class PsdApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImagePsdTest($saveResultToStorage)
+    public function createModifiedPsdTest($saveResultToStorage)
     {
         $name = "test.psd";
         $channelsCount = 3;
@@ -105,15 +100,15 @@ class PsdApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImagePsdTest", 
+            "createModifiedPsdTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Channels count: " . $channelsCount . "; Compression method: " . $compressionMethod,
             $name,
             $outName,
             function($inputStream, $outPath) use ($channelsCount, $compressionMethod, $fromScratch, $storage)
             {
-                $request = new Requests\PostImagePsdRequest($inputStream, $channelsCount, $compressionMethod, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImagePsdAsync($request)->wait();
+                $request = new Requests\CreateModifiedPsdRequest($inputStream, $channelsCount, $compressionMethod, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedPsdAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($channelsCount, $compressionMethod)
             {

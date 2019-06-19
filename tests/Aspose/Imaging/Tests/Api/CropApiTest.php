@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="CropApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +65,7 @@ class CropApiTest extends ApiTester
     }
 
     /**
-     * Test GetImageCrop
+     * Test CropImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -75,8 +75,12 @@ class CropApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function getImageCropTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function cropImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $x = 10;
         $y = 10;
@@ -84,7 +88,6 @@ class CropApiTest extends ApiTester
         $height = 150;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -109,18 +112,14 @@ class CropApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "_crop." . $format;
-
                 $this->getRequestTestInternal(
-                    "getImageCropTest", 
-                    $saveResultToStorage,
+                    "cropImageTest", 
                     "Input image: " . $name . "; Output format: " . $format . "; Width: " . $width . "; Height: " . $height . "; X: ". $x . "; Y: " . $y,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $x, $y, $width, $height, $folder, $storage)
+                    function() use ($name, $format, $x, $y, $width, $height, $folder, $storage)
                     {
-                        $request = new Requests\GetImageCropRequest($fileName, $format, $x, $y, $width, $height, $outPath, $folder, $storage);
-                        return self::$imagingApi->getImageCropAsync($request)->wait();
+                        $request = new Requests\CropImageRequest($name, $format, $x, $y, $width, $height, $folder, $storage);
+                        return self::$imagingApi->cropImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)
                     {
@@ -134,7 +133,7 @@ class CropApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageCrop
+     * Test CreateCroppedImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -144,7 +143,7 @@ class CropApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function postImageCropTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function createCroppedImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         $name = null;
         $x = 10;
@@ -181,15 +180,15 @@ class CropApiTest extends ApiTester
                 $outName = $name . "_crop." . $format;
 
                 $this->postRequestTestInternal(
-                    "postImageCropTest", 
+                    "createCroppedImageTest", 
                     $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; Width: " . $width . "; Height: " . $height . "; X: ". $x . "; Y: " . $y,
                     $name,
                     $outName,
                     function($inputStream, $outPath) use ($format, $x, $y, $width, $height, $storage)
                     {
-                        $request = new Requests\PostImageCropRequest($inputStream, $format, $x, $y, $width, $height, $outPath, $storage);
-                        return self::$imagingApi->postImageCropAsync($request)->wait();
+                        $request = new Requests\CreateCroppedImageRequest($inputStream, $format, $x, $y, $width, $height, $outPath, $storage);
+                        return self::$imagingApi->createCroppedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)
                     {

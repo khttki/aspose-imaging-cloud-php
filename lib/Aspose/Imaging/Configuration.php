@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="Configuration.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -86,7 +86,7 @@ class Configuration
      * Version of Aspose.Imaging Cloud API
      *
      */
-    private $clientVersion = '19.4';
+    private $clientVersion = '19.6';
 
     /**
      * Constructor
