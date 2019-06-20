@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="WebPApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,15 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class WebpApiTest extends ApiTester
 {
     /**
-     * Test GetImageWebp
+     * Test ModifyWebp
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageWebpTest($saveResultToStorage)
+    public function modifyWebpTest()
     {
         $name = "Animation.webp";
         $lossless = true;
@@ -57,21 +55,18 @@ class WebpApiTest extends ApiTester
         $animLoopCount = 5;
         $animBackgroundColor = "gray";
         $fromScratch = null;
-        $outName = $name . "_specific.webp";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageWebpTest", 
-            $saveResultToStorage,
+            "modifyWebpTest", 
             "Input image: " . $name . "; Lossless: " . $lossless . "; Quality: " . $quality . "; Anum loop count: " . $animLoopCount . ";
                 Anim background color: " . $animBackgroundColor,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
+            function() use ($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageWebpRequest($fileName, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $folder, $storage);
-                return self::$imagingApi->getImageWebpAsync($request)->wait();
+                $request = new Requests\ModifyWebpRequest($name, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {
@@ -85,7 +80,7 @@ class WebpApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageWebp
+     * Test CreateModifiedWebp
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -93,7 +88,7 @@ class WebpApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageWebpTest($saveResultToStorage)
+    public function createModifiedWebpTest($saveResultToStorage)
     {
         $name = "Animation.webp";
         $lossless = true;
@@ -106,7 +101,7 @@ class WebpApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageWebpTest", 
+            "createModifiedWebpTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Lossless: " . $lossless . "; Quality: " . $quality . "; Anum loop count: " . $animLoopCount . ";
                 Anim background color: " . $animBackgroundColor,
@@ -114,8 +109,8 @@ class WebpApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageWebpRequest($inputStream, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageWebpAsync($request)->wait();
+                $request = new Requests\CreateModifiedWebpRequest($inputStream, $lossless, $quality, $animLoopCount, $animBackgroundColor, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedWebpAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($lossless, $quality, $animLoopCount, $animBackgroundColor)
             {

@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="CompareImagesTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -77,8 +77,8 @@ class CompareImagesTest extends TestImagingAiBase
             $this->addImageFeaturesToSearchContext($image2);
 
             $response = 
-                self::$imagingApi->postSearchContextCompareImagesAsync(
-                    new Requests\PostSearchContextCompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage))->wait();  
+                self::$imagingApi->compareImagesAsync(
+                    new Requests\CompareImagesRequest($this->searchContextId, $image1, null, $image2, null, self::$testStorage))->wait();  
             
             $this->assertEquals(1, count($response->getResults()));
             $this->assertGreaterThanOrEqual(70, $response->getResults()[0]->getSimilarity());
@@ -105,7 +105,7 @@ class CompareImagesTest extends TestImagingAiBase
             $imageContents = $imageStream->getContents();
 
             $response = 
-                self::$imagingApi->postSearchContextCompareImagesAsync(new Requests\PostSearchContextCompareImagesRequest(
+                self::$imagingApi->compareImagesAsync(new Requests\CompareImagesRequest(
                     $this->searchContextId, $image, $imageContents, null, null, self::$testStorage))->wait();
 
             $this->assertEquals(1, count($response->getResults()));

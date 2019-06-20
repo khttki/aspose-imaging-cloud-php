@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="FramesPostApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,7 +41,7 @@ use \Aspose\Imaging\Model\Requests;
 class FramesPostApiTest extends ApiTester
 {
     /**
-     * Test PostImageFrame
+     * Test CreateImageFrame
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -75,9 +75,9 @@ class FramesPostApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight , $rotateFlipMethod, $saveOtherFrames, $storage)
             {
-                $request = new Requests\PostImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
+                $request = new Requests\CreateImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $storage);
-                return self::$imagingApi->postImageFrameAsync($request)->wait();
+                return self::$imagingApi->createImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)
@@ -115,7 +115,7 @@ class FramesPostApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageFrame
+     * Test CreateImageFrame
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -149,9 +149,9 @@ class FramesPostApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight , $rotateFlipMethod, $saveOtherFrames, $storage)
             {
-                $request = new Requests\PostImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
+                $request = new Requests\CreateImageFrameRequest($inputStream, $frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                     $rotateFlipMethod, $saveOtherFrames, $outPath, $storage);
-                return self::$imagingApi->postImageFrameAsync($request)->wait();
+                return self::$imagingApi->createImageFrameAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($frameId, $newWidth, $newHeight, $x, $y, $rectWidth, $rectHeight, 
                 $rotateFlipMethod, $saveOtherFrames, $saveResultToStorage, $outName, $folder, $storage)

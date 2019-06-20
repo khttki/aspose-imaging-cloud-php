@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="TiffApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,30 +45,26 @@ use \GuzzleHttp\Stream;
 class TiffApiTest extends ApiTester
 {
     /**
-     * Test GetTiffToFax
+     * Test ConvertTiffToFax
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
      * @return void
     */
-    public function getTiffToFaxTest($saveResultToStorage)
+    public function convertTiffToFaxTest()
     {
         $name = "test.tiff";
-        $outName = $name . "_fax.tiff";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getTiffToFaxTest", 
-            $saveResultToStorage,
+            "convertTiffToFaxTest", 
             "Input image: " . $name,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($folder, $storage)
+            function() use ($name, $folder, $storage)
             {
-                $request = new Requests\GetTiffToFaxRequest($fileName, $storage, $folder, $outPath);
-                return self::$imagingApi->getTiffToFaxAsync($request)->wait();
+                $request = new Requests\ConvertTiffToFaxRequest($name, $storage, $folder);
+                return self::$imagingApi->convertTiffToFaxAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream)
             {
@@ -84,15 +80,13 @@ class TiffApiTest extends ApiTester
     }
 
     /**
-     * Test GetImageTiff
+     * Test ModifyTiff
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageTiffTest($saveResultToStorage)
+    public function modifyTiffTest()
     {
         $name = "test.tiff";
         $compression = "adobedeflate";
@@ -101,22 +95,19 @@ class TiffApiTest extends ApiTester
         $horizontalResolution = 150;
         $verticalResolution = 150;
         $fromScratch = null;
-        $outName = $name . "_specific.tiff";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageTiffTest", 
-            $saveResultToStorage,
+            "modifyTiffTest", 
             "Input image: " . $name . "; Compression: " . $compression . "; Resolution unit: " . $resolutionUnit . "; Bit depth: " . $bitDepth . ";
                 Horizontal resolution: " . $horizontalResolution . "; Vertical resolution: " . $verticalResolution,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
+            function() use ($name, $compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageTiffRequest($fileName, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, $verticalResolution,
-                    $outPath, $folder, $storage);
-                return self::$imagingApi->getImageTiffAsync($request)->wait();
+                $request = new Requests\ModifyTiffRequest($name, $bitDepth, $compression, $resolutionUnit, $horizontalResolution, $verticalResolution,
+                    $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
             {
@@ -136,7 +127,7 @@ class TiffApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageTiff
+     * Test CreateModifiedTiff
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -144,7 +135,7 @@ class TiffApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageTiffTest($saveResultToStorage)
+    public function createModifiedTiffTest($saveResultToStorage)
     {
         $name = "test.tiff";
         $compression = "adobedeflate";
@@ -158,7 +149,7 @@ class TiffApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageTiffTest", 
+            "createModifiedTiffTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Compression: " . $compression . "; Resolution unit: " . $resolutionUnit . "; Bit depth: " . $bitDepth . ";
                 Horizontal resolution: " . $horizontalResolution . "; Vertical resolution: " . $verticalResolution,
@@ -166,9 +157,9 @@ class TiffApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($compression, $resolutionUnit, $fromScratch, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageTiffRequest($inputStream, $compression, $resolutionUnit, $bitDepth, $fromScratch, $horizontalResolution, 
-                    $verticalResolution, $outPath, $storage);
-                return self::$imagingApi->postImageTiffAsync($request)->wait();
+                $request = new Requests\CreateModifiedTiffRequest($inputStream, $bitDepth, $compression, $resolutionUnit, $horizontalResolution, 
+                    $verticalResolution, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedTiffAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($compression, $resolutionUnit, $bitDepth, $horizontalResolution, $verticalResolution)
             {
@@ -188,17 +179,17 @@ class TiffApiTest extends ApiTester
     }
 
     /**
-     * Tests PostTiffAppend
+     * Tests AppendTiff
      *
      * @test
      * 
      * @return void
      */
-    public function postTiffAppendTest()
+    public function appendTiffTest()
     {
         $passed = false;
 
-        echo "\r\npostTiffAppendTest\r\n";
+        echo "\r\nappendTiffTest\r\n";
 
         $inputFileName = "test.tiff";
         $folder = self::$tempFolder;
@@ -234,8 +225,8 @@ class TiffApiTest extends ApiTester
             self::$imagingApi->copyFile(
                 new Requests\CopyFileRequest($inputPath, $outPath, $storage, $storage));
 
-            $request = new Requests\PostTiffAppendRequest($resultFileName, $inputFileName, $storage, $folder);
-            $response = self::$imagingApi->postTiffAppend($request);
+            $request = new Requests\AppendTiffRequest($resultFileName, $inputFileName, $storage, $folder);
+            $response = self::$imagingApi->appendTiff($request);
 
             $resultInfo = $this->getStorageFileInfo($folder, $resultFileName, $storage);
             if (!isset($resultInfo))

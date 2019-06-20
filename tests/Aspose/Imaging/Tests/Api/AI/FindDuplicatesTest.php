@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="FindDuplicatesTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -82,8 +82,8 @@ class FindDuplicatesTest extends TestImagingAiBase
             $this->addImageFeaturesToSearchContext($image);
 
             $response = 
-                self::$imagingApi->getSearchContextFindDuplicatesAsync(
-                    new Requests\GetSearchContextFindDuplicatesRequest($this->searchContextId, 80, null, self::$testStorage))->wait();
+                self::$imagingApi->findImageDuplicatesAsync(
+                    new Requests\FindImageDuplicatesRequest($this->searchContextId, 80, null, self::$testStorage))->wait();
             $this->assertEquals(1, count($response->getDuplicates()));
         });
     }

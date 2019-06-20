@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="EmfApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,15 +41,13 @@ use \Aspose\Imaging\Model\Requests;
 class EmfApiTest extends ApiTester
 {
     /**
-     * Test GetImageEmf
+     * Test ModifyEmf
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      * 
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageEmfTest($saveResultToStorage)
+    public function modifyEmfTest()
     {
         $name = "test.emf";
         $bkColor = "gray";
@@ -58,21 +56,18 @@ class EmfApiTest extends ApiTester
         $borderX = 50;
         $borderY = 50;
         $fromScratch = null;
-        $outName = $name . "_specific.png";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageEmfTest", 
-            $saveResultToStorage,
+            "modifyEmfTest", 
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
+            function() use ($name, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageEmfRequest($fileName, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $folder, $storage);
-                return self::$imagingApi->getImageEmfAsync($request)->wait();
+                $request = new Requests\ModifyEmfRequest($name , $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyEmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {
@@ -85,7 +80,7 @@ class EmfApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageEmf
+     * Test CreateModifiedEmf
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -93,7 +88,7 @@ class EmfApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageEmfTest($saveResultToStorage)
+    public function createModifiedEmfTest($saveResultToStorage)
     {
         $name = "test.emf";
         $bkColor = "gray";
@@ -107,7 +102,7 @@ class EmfApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageEmfTest", 
+            "createModifiedEmfTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Back color: " . $bkColor . "; Page width: " . $pageWidth . "; Page height: " . $pageHeight . ";
                 Border X: " . $borderX . "; Border Y: " . $borderY,
@@ -115,8 +110,8 @@ class EmfApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageEmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageEmfAsync($request)->wait();
+                $request = new Requests\CreateModifiedEmfRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedEmfAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
             {

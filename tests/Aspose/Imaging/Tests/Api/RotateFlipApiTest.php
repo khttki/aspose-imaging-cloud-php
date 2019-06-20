@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="RotateFlipApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +65,7 @@ class RotateFlipApiTest extends ApiTester
     }
 
     /**
-     * Test GetImageRotateFlip
+     * Test RotateFlipImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -75,13 +75,16 @@ class RotateFlipApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function getImageRotateFlipTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function rotateFlipImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $method = "Rotate90FlipX";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -109,15 +112,13 @@ class RotateFlipApiTest extends ApiTester
                 $outName = $name . "_rotateFlip." . $format;
 
                 $this->getRequestTestInternal(
-                    "getImageRotateFlipTest", 
-                    $saveResultToStorage,
+                    "rotateFlipImageTest", 
                     "Input image: " . $name . "; Output format: " . $format . "; Method: " . $method,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $method, $folder, $storage)
+                    function() use ($name, $format, $method, $folder, $storage)
                     {
-                        $request = new Requests\GetImageRotateFlipRequest($fileName, $format, $method, $outPath, $folder, $storage);
-                        return self::$imagingApi->getImageRotateFlipAsync($request)->wait();
+                        $request = new Requests\RotateFlipImageRequest($name, $format, $method, $folder, $storage);
+                        return self::$imagingApi->rotateFlipImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream)
                     {
@@ -146,7 +147,7 @@ class RotateFlipApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageRotateFlip
+     * Test CreateRotateFlippedImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -156,7 +157,7 @@ class RotateFlipApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function postImageRotateFlipTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function createRotateFlippedImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         $name = null;
         $method = "Rotate90FlipX";
@@ -190,15 +191,15 @@ class RotateFlipApiTest extends ApiTester
                 $outName = $name . "_rotateFlip." . $format;
 
                 $this->postRequestTestInternal(
-                    "postImageRotateFlipTest", 
+                    "createRotateFlippedImageTest", 
                     $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; Method: " . $method,
                     $name,
                     $outName,
                     function($inputStream, $outPath) use ($format, $method, $storage)
                     {
-                        $request = new Requests\PostImageRotateFlipRequest($inputStream, $format,$method, $outPath, $storage);
-                        return self::$imagingApi->postImageRotateFlipAsync($request)->wait();
+                        $request = new Requests\CreateRotateFlippedImageRequest($inputStream, $format,$method, $outPath, $storage);
+                        return self::$imagingApi->createRotateFlippedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream)
                     {

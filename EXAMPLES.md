@@ -17,27 +17,20 @@ try {
     // inspect $result->getErrors() list if there were any
     // inspect $result->getUploaded() list for uploaded file names
 
-    // convert image from request stream to JPEG and save it to storage
-    // please, use outPath parameter for saving the result to storage
-    $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
-        "ExampleFolderNet/resultImage.png");
+    // convert image from storage to JPEG
+    $saveAsRequest = new Requests\SaveImageAsRequest("inputImage.png", "jpg",
+        "ExampleFolderNet");
 
-    $imagingApi->postImageSaveAs($postSaveToStorageRequest);
+    $convertedImage = $imagingApi->saveImageAs($saveAsRequest)->getContents();
 
-    // download saved image from storage and process it
-    $savedFile = $imagingApi->downloadFile(
-        new Requests\DownloadFileRequest("ExampleFolderNet/resultImage.jpg"))->getContents();
-
-    // convert image from request stream to JPEG and read it from resulting stream
-    // please, set outPath parameter as null to return result in request stream
-    // instead of saving to storage
-    $postSaveToStreamRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg");
-
-    // process resulting image from response stream
-    $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
+    // process resulting image
+    // for example, save it to storage
+    $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/resultImage.jpg",
+        $convertedImage);
+    $result = $imagingApi->uploadFile($uploadFileRequest);
 } finally {
     // remove file from storage
-    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations
@@ -53,7 +46,7 @@ $imagingApi = new ImagingApi($imagingConfig);
 
 try {
     // get local image
-    $localInputImage = file_get_contents(ApiTester::LocalTestFolder . "\\test.png");
+    $localInputImage = file_get_contents("test.png");
 
     // upload local image to storage
     $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/inputImage.png",
@@ -64,10 +57,10 @@ try {
 
     // convert image from request stream to JPEG and save it to storage
     // please, use outPath parameter for saving the result to storage
-    $postSaveToStorageRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg",
-        "ExampleFolderNet/resultImage.png");
+    $saveAsToStorageRequest = new Requests\CreateSavedImageAsRequest($localInputImage, "jpg",
+        "ExampleFolderNet/resultImage.jpg");
 
-    $imagingApi->postImageSaveAs($postSaveToStorageRequest);
+    $imagingApi->createSavedImageAs($saveAsToStorageRequest);
 
     // download saved image from storage and process it
     $savedFile = $imagingApi->downloadFile(
@@ -76,13 +69,13 @@ try {
     // convert image from request stream to JPEG and read it from resulting stream
     // please, set outPath parameter as null to return result in request stream
     // instead of saving to storage
-    $postSaveToStreamRequest = new Requests\PostImageSaveAsRequest($localInputImage, "jpg");
+    $saveAsToStreamRequest = new Requests\CreateSavedImageAsRequest($localInputImage, "jpg");
 
     // process resulting image from response stream
-    $resultPostImageStream = $imagingApi->postImageSaveAs($postSaveToStreamRequest)->getContents();
+    $convertedImage = $imagingApi->createSavedImageAs($saveAsToStreamRequest)->getContents();
 } finally {
     // remove file from storage
-    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+    $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations
@@ -97,7 +90,7 @@ $imagingConfig->setAppSid("yourAppSID");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
-$apiResponse = $imagingApi->postCreateSearchContext(new Requests\PostCreateSearchContextRequest());
+$apiResponse = $imagingApi->createImageSearch(new Requests\CreateImageSearchRequest());
 $searchContextId = $apiResponse->getId();
  
 // specify images for comparing (image ID is a path to image in storage)
@@ -105,8 +98,8 @@ $imageInStorage1 = "WorkFolder/Image1.jpg";
 $imageInStorage2 = "WorkFolder/Image2.jpg";
   
 // compare images
-$response = $imagingApi->PostSearchContextCompareImages(
-    new Requests\PostSearchContextCompareImagesRequest($searchContextId, 
+$response = $imagingApi->CompareImages(
+    new Requests\CompareImagesRequest($searchContextId, 
     $imageInStorage1, null, $imageInStorage2));
 $similarity = $response->getResults()[0]->getSimilarity();
 ```
@@ -124,17 +117,17 @@ $imagingConfig->setAppSid("yourAppSID");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
-$apiResponse = $imagingApi->postCreateSearchContext(new Requests\PostCreateSearchContextRequest());
+$apiResponse = $imagingApi->createImageSearch(new Requests\CreateImageSearchRequest());
 $searchContextId = $apiResponse->getId();
  
 // extract images features if it was not done before
-$imagingApi->postSearchContextExtractImageFeatures(
-    new Requests\PostSearchContextExtractImageFeaturesRequest(
+$imagingApi->createImageFeatures(
+    new Requests\CreateImageFeaturesRequest(
     $searchContextId, null, null, "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while ($imagingApi->getSearchContextStatus(
-    new Requests\GetSearchContextStatusRequest($searchContextId))
+while ($imagingApi->getImageSearchStatus(
+    new Requests\GetImageSearchStatusRequest($searchContextId))
     ->getSearchStatus() !== "Idle")
 {
     sleep(10);
@@ -147,16 +140,16 @@ if ($imageFromStorage)
 {
     // use search image from storage
     $storageImageId = "searchImage.jpg";
-    $results = $imagingApi->getSearchContextFindSimilar(
-        new Requests\GetSearchContextFindSimilarRequest(
+    $results = $imagingApi->findSimilarImages(
+        new Requests\FindSimilarImagesRequest(
         $searchContextId, 90, 5, null, $storageImageId));
 }
 else
 {
     // load search image data
     $imageData = file_get_contents("D:\\test\\localInputImage.jpg");     
-    $results = $imagingApi->getSearchContextFindSimilar(
-            new Requests\GetSearchContextFindSimilarRequest($searchContextId, 90, 5, $imageData));
+    $results = $imagingApi->findSimilarImages(
+            new Requests\FindSimilarImagesRequest($searchContextId, 90, 5, $imageData));
 }
              
 // process search results
@@ -180,24 +173,24 @@ $imagingConfig->setAppSid("yourAppSID");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
-$apiResponse = $imagingApi->postCreateSearchContext(new Requests\PostCreateSearchContextRequest());
+$apiResponse = $imagingApi->createImageSearch(new Requests\CreateImageSearchRequest());
 $searchContextId = $apiResponse->getId();
  
 // extract images features if it was not done before
-$imagingApi->postSearchContextExtractImageFeatures(
-    new Requests\PostSearchContextExtractImageFeaturesRequest(
+$imagingApi->createImageFeatures(
+    new Requests\CreateImageFeaturesRequest(
     $searchContextId, null, null, "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while ($imagingApi->getSearchContextStatus(
-    new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
+while ($imagingApi->getImageSearchStatus(
+    new Requests\GetImageSearchStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
 {
     sleep(10);
 }
 
 // request finding duplicates
-$response = $imagingApi->getSearchContextFindDuplicates(
-    new Requests\GetSearchContextFindDuplicatesRequest($searchContextId, 90));
+$response = $imagingApi->findImageDuplicates(
+    new Requests\FindImageDuplicatesRequest($searchContextId, 90));
  
 // process duplicates search results
 foreach ($response->getDuplicates() as $duplicates)
@@ -224,17 +217,17 @@ $imagingConfig->setAppSid("yourAppSID");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
-$apiResponse = $imagingApi->postCreateSearchContext(new Requests\PostCreateSearchContextRequest());
+$apiResponse = $imagingApi->createImageSearch(new Requests\CreateImageSearchRequest());
 $searchContextId = $apiResponse->getId();
  
 // extract images features if it was not done before
-$imagingApi->postSearchContextExtractImageFeatures(
-    new Requests\PostSearchContextExtractImageFeaturesRequest(
+$imagingApi->createImageFeatures(
+    new Requests\CreateImageFeaturesRequest(
     $searchContextId, null, null, "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while ($imagingApi->getSearchContextStatus(
-    new Requests\GetSearchContextStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
+while ($imagingApi->getImageSearchStatus(
+    new Requests\GetImageSearchStatusRequest($searchContextId))->getSearchStatus() !== "Idle")
 {
     sleep(10);
 } 
@@ -242,15 +235,15 @@ while ($imagingApi->getSearchContextStatus(
 $tag = "MyTag";
 // load tag image data
 $tagImageData = file_get_contents("D:\\test\\tagImage.jpg");  
-$imagingApi->postSearchContextAddTag(
-        new Requests\PostSearchContextAddTagRequest($tagImageData, $searchContextId, $tag));
+$imagingApi->createImageTag(
+        new Requests\CreateImageTagRequest($tagImageData, $searchContextId, $tag));
  
 // serialize search tags collection to JSON
 $searchTags = json_encode([$tag]);
  
 // search images by tags
-$response = $imagingApi->postSearchContextFindByTags(
-    new Requests\PostSearchContextFindByTagsRequest($searchTags, $searchContextId, 90, 10));
+$response = $imagingApi->findImagesByTags(
+    new Requests\FindImagesByTagsRequest($searchTags, $searchContextId, 90, 10));
  
 // process search results
 foreach ($response->getResults() as $searchResult)
@@ -263,16 +256,16 @@ foreach ($response->getResults() as $searchResult)
 ### Imaging.AI - Delete search context
 ```php
 // search context is stored in the storage, and in case if search context is not needed anymore it should be removed
-$imagingApi->deleteSearchContext(
-    new Requests\DeleteSearchContextRequest($searchContextId));
+$imagingApi->deleteImageSearch(
+    new Requests\DeleteImageSearchRequest($searchContextId));
 ```
 
 ### Exception handling and error codes
 ```php
 try
 {
-    $imagingApi->deleteSearchContext(
-        new Requests\DeleteSearchContextRequest($searchContextId));
+    $imagingApi->deleteImageSearch(
+        new Requests\DeleteImageSearchRequest($searchContextId));
 }
 catch (\Aspose\Imaging\ApiException $ex)
 {

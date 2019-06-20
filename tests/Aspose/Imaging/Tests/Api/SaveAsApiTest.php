@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="SaveAsApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +65,7 @@ class SaveAsApiTest extends ApiTester
     }
 
     /**
-     * Test GetImageSaveAs
+     * Test SaveImageAs
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -75,12 +75,15 @@ class SaveAsApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function getImageSaveAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function saveImageAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -105,18 +108,14 @@ class SaveAsApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "." . $format;
-
                 $this->getRequestTestInternal(
-                    "getImageSaveAsTest", 
-                    $saveResultToStorage,
+                    "saveImageAsTest", 
                     "Input image: " . $name . "; Output format: " . $format,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $folder, $storage)
+                    function() use ($name, $format, $folder, $storage)
                     {
-                        $request = new Requests\GetImageSaveAsRequest($fileName, $format, $outPath, $folder, $storage);
-                        return self::$imagingApi->getImageSaveAsAsync($request)->wait();
+                        $request = new Requests\SaveImageAsRequest($name, $format, $folder, $storage);
+                        return self::$imagingApi->saveImageAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,
@@ -126,7 +125,7 @@ class SaveAsApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageSaveAs
+     * Test CreateSavedImageAs
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -136,7 +135,7 @@ class SaveAsApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function postImageSaveAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function createSavedImageAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         $name = null;
         $folder = self::$tempFolder;
@@ -169,15 +168,15 @@ class SaveAsApiTest extends ApiTester
                 $outName = $name . "." . $format;
 
                 $this->postRequestTestInternal(
-                    "postImageSaveAsTest", 
+                    "createSavedImageAsTest", 
                     $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format,
                     $name,
                     $outName,
                     function($inputStream, $outPath) use ($format, $storage)
                     {
-                        $request = new Requests\PostImageSaveAsRequest($inputStream, $format, $outPath, $storage);
-                        return self::$imagingApi->postImageSaveAsAsync($request)->wait();
+                        $request = new Requests\CreateSavedImageAsRequest($inputStream, $format, $outPath, $storage);
+                        return self::$imagingApi->createSavedImageAsAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,

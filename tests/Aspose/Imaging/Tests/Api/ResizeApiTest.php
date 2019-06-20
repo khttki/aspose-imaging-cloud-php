@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="ResizeApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +65,7 @@ class ResizeApiTest extends ApiTester
     }
 
     /**
-     * Test GetImageResize
+     * Test ResizeImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -75,14 +75,17 @@ class ResizeApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function getImageResizeTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function resizeImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
+        if ($saveResultToStorage) {
+            return;
+        }
+
         $name = null;
         $newWidth = 100;
         $newHeight = 150;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $outName = null;
 
         $formatsToExport = ApiTester::BasicExportFormats;
         foreach($additionalExportFormats as $additionalExportFormat)
@@ -107,18 +110,14 @@ class ResizeApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "_resize." . $format;
-
                 $this->getRequestTestInternal(
-                    "getImageResizeTest", 
-                    $saveResultToStorage,
+                    "resizeImageTest", 
                     "Input image: " . $name . "; Output format: " . $format . "; New width: " . $newWidth . "; New height: " . $newHeight,
                     $name,
-                    $outName,
-                    function($fileName, $outPath) use ($format, $newWidth, $newHeight, $folder, $storage)
+                    function() use ($name, $format, $newWidth, $newHeight, $folder, $storage)
                     {
-                        $request = new Requests\GetImageResizeRequest($fileName, $format, $newWidth, $newHeight, $outPath, $folder, $storage);
-                        return self::$imagingApi->getImageResizeAsync($request)->wait();
+                        $request = new Requests\ResizeImageRequest($name, $format, $newWidth, $newHeight, $folder, $storage);
+                        return self::$imagingApi->resizeImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
                     {
@@ -132,7 +131,7 @@ class ResizeApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageResize
+     * Test CreateResizedImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -142,7 +141,7 @@ class ResizeApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function postImageResizeTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function createResizedImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         $name = null;
         $newWidth = 100;
@@ -177,15 +176,15 @@ class ResizeApiTest extends ApiTester
                 $outName = $name . "_resize." . $format;
 
                 $this->postRequestTestInternal(
-                    "postImageResizeTest", 
+                    "createResizedImageTest", 
                     $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format . "; New width: " . $newWidth . "; New height: " . $newHeight,
                     $name,
                     $outName,
                     function($inputStream, $outPath) use ($format, $newWidth, $newHeight, $storage)
                     {
-                        $request = new Requests\PostImageResizeRequest($inputStream, $format, $newWidth, $newHeight, $outPath, $storage);
-                        return self::$imagingApi->postImageResizeAsync($request)->wait();
+                        $request = new Requests\CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight, $outPath, $storage);
+                        return self::$imagingApi->createResizedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
                     {

@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="JpgApiTest.php">
- *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,34 +41,29 @@ use \Aspose\Imaging\Model\Requests;
 class JpgApiTest extends ApiTester
 {
     /**
-     * Test GetImageJpg
+     * Test ModifyJpeg
      * 
      * @test
-     * @dataProvider storageOptionsProvider
      *
-     * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function getImageJpgTest($saveResultToStorage)
+    public function modifyJpegTest()
     {
         $name = "test.jpg";
         $quality = 65;
         $compressionType = "progressive";
         $fromScratch = null;
-        $outName = $name . "_specific.jpg";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
         $this->getRequestTestInternal(
-            "getImageJpgTest", 
-            $saveResultToStorage,
+            "modifyJpegTest", 
             "Input image: " . $name . "; Quality: " . $quality . "; Compression type: " . $compressionType,
             $name,
-            $outName,
-            function($fileName, $outPath) use ($quality, $compressionType, $fromScratch, $folder, $storage)
+            function() use ($name, $quality, $compressionType, $fromScratch, $folder, $storage)
             {
-                $request = new Requests\GetImageJpgRequest($fileName, $quality, $compressionType, $fromScratch, $outPath, $folder, $storage);
-                return self::$imagingApi->getImageJpgAsync($request)->wait();
+                $request = new Requests\ModifyJpegRequest($name, $quality, $compressionType, $fromScratch, $folder, $storage);
+                return self::$imagingApi->modifyJpegAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)
             {
@@ -82,7 +77,7 @@ class JpgApiTest extends ApiTester
     }
 
     /**
-     * Test PostImageJpg
+     * Test CreateModifiedJpeg
      * 
      * @test
      * @dataProvider storageOptionsProvider
@@ -90,7 +85,7 @@ class JpgApiTest extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
     */
-    public function postImageJpgTest($saveResultToStorage)
+    public function createModifiedJpegTest($saveResultToStorage)
     {
         $name = "test.jpg";
         $quality = 65;
@@ -101,15 +96,15 @@ class JpgApiTest extends ApiTester
         $storage = self::$testStorage;
 
         $this->postRequestTestInternal(
-            "postImageJpgTest", 
+            "createModifiedJpegTest", 
             $saveResultToStorage,
             "Input image: " . $name . "; Quality: " . $quality . "; Compression type: " . $compressionType,
             $name,
             $outName,
             function($inputStream, $outPath) use ($quality, $compressionType, $fromScratch, $storage)
             {
-                $request = new Requests\PostImageJpgRequest($inputStream, $quality, $compressionType, $fromScratch, $outPath, $storage);
-                return self::$imagingApi->postImageJpgAsync($request)->wait();
+                $request = new Requests\CreateModifiedJpegRequest($inputStream, $quality, $compressionType, $fromScratch, $outPath, $storage);
+                return self::$imagingApi->createModifiedJpegAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($quality, $compressionType)
             {
