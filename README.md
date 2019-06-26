@@ -76,7 +76,7 @@ It gives you an ability to:
 ```json
 {
     "require": {
-        "aspose/imaging-sdk-php": ">=19.6"
+        "aspose/imaging-sdk-php": ">=19.7"
     }
 }
 ```
@@ -90,6 +90,20 @@ use \Aspose\Imaging\Model\Requests;
 
 # Examples
 Please, look at [Examples](EXAMPLES.md) document.
+
+### Aspose Cloud-hosted service VS on-premise deployment
+Starting from v19.7, you can choose to use either Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests.
+The details about key differences and deployment process is described on the dedicated Docker Hub page.
+
+To succeed with your on-premise service usage by the SDK, you need to:
+1. Set the *baseUrl* parameter according to your on-premise deployment, *isMetered* parameter to *true* and use optional API version and debug mode parameters if needed.
+```php
+$imagingConfig = new Imaging\Configuration();
+$imagingConfig->setBaseUrl("yourServiceUrl");
+$imagingConfig->setIsMetered(true);
+$imagingApi = new Imaging\ImagingApi($imagingConfig);
+```
+2. Set *storage* or *storageName* parameters for each request where they're present (mandatory!).
 
 # Asynchronous API
 Each API method has its' async version with *Async* postfix, using *\GuzzleHttp\Promise\PromiseInterface*.

@@ -199,7 +199,7 @@ abstract class ApiTester extends TestCase
             self::$testStorage = ApiTester::DefaultStorage;
         }
 
-        self::createApiInstances(ApiTester::AppKey, ApiTester::AppSid, ApiTester::BaseUrl, ApiTester::ApiVersion, false);
+        self::createApiInstances();
         if (!self::$failedAnyTest && self::$removeResult && self::$imagingApi->objectExists(
             new Requests\ObjectExistsRequest(self::$tempFolder, self::$testStorage))->getExists())
         {
@@ -225,26 +225,18 @@ abstract class ApiTester extends TestCase
     /**
      * Creates the API instances using given access parameters.
      *
-     * @param string $appKey The application key.
-     * @param string $appSid The application SID.
-     * @param string $baseUrl The base URL.
-     * @param string $apiVersion The API version.
-     * @param bool $debug Debug mode.
      * @return void
      */
-    protected static function createApiInstances($appKey, $appSid, $baseUrl, $apiVersion, $debug)
+    protected static function createApiInstances()
     {
-        if ($appKey === ApiTester::AppKey || $appSid === ApiTester::AppSid)
-        {
-            echo "Access data isn't set explicitly. Trying to obtain it from environment variables.\r\n";
+        echo "Trying to obtain access creds environment variables.\r\n";
+        $isMetered = getenv("IsMetered") === "true";
+        $appKey = $isMetered ? '' : getenv("AppKey");
+        $appSid = $isMetered ? '' : getenv("AppSid");
+        $baseUrl = getenv("ApiEndpoint");
+        $apiVersion = getenv("ApiVersion");
 
-            $appKey = getenv("AppKey");
-            $appSid = getenv("AppSid");
-            $baseUrl = getenv("ApiEndpoint");
-            $apiVersion = getenv("ApiVersion");
-        }
-
-        if (empty($appKey) || empty($appSid) || empty($baseUrl) || empty($apiVersion))
+        if ((!$isMetered && (empty($appKey) || empty($appSid))) || empty($baseUrl) || empty($apiVersion))
         {
             echo "Access data isn't set completely by environment variables. Filling unset data with default values.\r\n";
         }
@@ -265,13 +257,13 @@ abstract class ApiTester extends TestCase
         if (!empty($serverAccessString))
         {
             $accessData = json_decode($serverAccessString);
-            if (empty($appKey))
+            if (empty($appKey) && !$isMetered)
             {
                 $appKey = $accessData->{'AppKey'};
                 echo "Set default App key\r\n";
             }
 
-            if (empty($appSid))
+            if (empty($appSid) && !$isMetered)
             {
                 $appSid = $accessData->{'AppSid'};
                 echo "Set default App SID\r\n";
@@ -283,11 +275,12 @@ abstract class ApiTester extends TestCase
                 echo "Set default base URL\r\n";
             }
         }
-        else
+        else if (!$isMetered)
         {
             throw new InvalidArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
         }
 
+        echo "Is metered: " . var_export($isMetered, true) . "\r\n";
         echo "App key: " . $appKey . "\r\n";
         echo "App SID: " . $appSid . "\r\n";
         echo "Storage: " . self::$testStorage . "\r\n";
@@ -299,6 +292,7 @@ abstract class ApiTester extends TestCase
         $imagingConfig->setAppKey($appKey);
         $imagingConfig->setAppSid($appSid);
         $imagingConfig->setApiVersion($apiVersion);
+        $imagingConfig->setIsMetered($isMetered);
         self::$imagingApi = new Imaging\ImagingApi($imagingConfig);
         self::$inputTestFiles = self::fetchInputTestFilesInfo();
     }
