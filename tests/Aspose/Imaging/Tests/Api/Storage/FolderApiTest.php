@@ -92,9 +92,7 @@ class FolderApiTests extends StorageTester {
             $this->assertEquals(sizeof($originalFiles), sizeof($copiedFiles));
             $count = sizeof($originalFiles);
             for ($x = 0; $x < $count; $x++) {
-                $this->assertEquals($originalFiles[$x]->getIsFolder(), $copiedFiles[$x]->getIsFolder());
-                $this->assertEquals($originalFiles[$x]->getName(), $copiedFiles[$x]->getName());
-                $this->assertEquals($originalFiles[$x]->getSize(), $copiedFiles[$x]->getSize());
+                $this->assertTrue($this->equalFileIsInList($originalFiles[$x], $copiedFiles));
             }
         } finally {
             if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
@@ -144,9 +142,7 @@ class FolderApiTests extends StorageTester {
             $this->assertEquals(sizeof($originalFiles), sizeof($copiedFiles));
             $count = sizeof($originalFiles);
             for ($x = 0; $x < $count; $x++) {
-                $this->assertEquals($originalFiles[$x]->getIsFolder(), $copiedFiles[$x]->getIsFolder());
-                $this->assertEquals($originalFiles[$x]->getName(), $copiedFiles[$x]->getName());
-                $this->assertEquals($originalFiles[$x]->getSize(), $copiedFiles[$x]->getSize());
+                $this->assertTrue($this->equalFileIsInList($originalFiles[$x], $copiedFiles));
             }
         } finally {
             if (self::$imagingApi->objectExistsAsync(new Requests\ObjectExistsRequest($folder, self::$testStorage, null))->wait()->getExists()) {
@@ -219,5 +215,27 @@ class FolderApiTests extends StorageTester {
         $this->assertTrue($this->endsWith(trim($folder3File->getPath(), "/"), $folder3File->getName()));
         $this->assertEquals($folder3File->getSize(),
                 strlen(trim($folder3File->getPath(), "/")));
+    }
+
+    /**
+     * Checks if list contains equal file.
+     *
+     * @param \Aspose\Imaging\Model\StorageFile $file Reference file.
+     * @param \Aspose\Imaging\Model\FilesList $list List to check.
+     * @return boolean
+     */
+    private function equalFileIsInList($file, $list)
+    {
+        $size = sizeof($list);
+        for ($x = 0; $x < $size; $x++) {
+            $curFile = $list[$x];
+            if ($curFile->getIsFolder() === $file->getIsFolder() && $curFile->getName() === $file->getName() 
+                && $curFile->getSize() === $file->getSize())
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
