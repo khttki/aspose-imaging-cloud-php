@@ -70,7 +70,10 @@ class ImagingApi
             set_time_limit(500);
         }
 
-        $this->requestToken();
+        if (!$config->getIsMetered())
+        {
+            $this->requestToken();
+        }
     }
 
     /**
@@ -3746,7 +3749,7 @@ class ImagingApi
             $httpBody = new MultipartStream($multipartContents, $boundary);
         }
         
-        if ($this->configuration->getAccessToken() !== null) {
+        if (!$this->configuration->getIsMetered() && $this->configuration->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->configuration->getAccessToken();
         }
 

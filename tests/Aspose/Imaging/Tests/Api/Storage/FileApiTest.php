@@ -212,6 +212,11 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsCreateTest() {
+        if (self::$imagingApi->getConfig()->getIsMetered())
+        {
+            return;
+        }
+
         $folder = self::$tempFolder . "/Storage";
         $file1 = "Storage.txt";
         $file2 = "Folder1/Folder1.txt";
@@ -257,6 +262,11 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsDownloadTest() {
+        if (self::$imagingApi->getConfig()->getIsMetered())
+        {
+            return;
+        }
+
         $folder = self::$tempFolder . "/Storage";
         $file1 = "Storage.txt";
         $file2 = "Folder1/Folder1.txt";
@@ -299,6 +309,11 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsCopyTest() {
+        if (self::$imagingApi->getConfig()->getIsMetered())
+        {
+            return;
+        }
+
         $folder = self::$tempFolder . "/Storage";
         $file1 = "Storage.txt";
         $file2 = "Folder1/Folder1.txt";
@@ -348,6 +363,11 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsMoveTest() {
+        if (self::$imagingApi->getConfig()->getIsMetered())
+        {
+            return;
+        }
+
         $folder = self::$tempFolder . "/Storage";
         $file1 = "Storage.txt";
         $file2 = "Folder1/Folder1.txt";
@@ -403,6 +423,11 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsDeleteTest() {
+        if (self::$imagingApi->getConfig()->getIsMetered())
+        {
+            return;
+        }
+        
         $folder = self::$tempFolder . "/Storage";
         $file1 = "Storage.txt";
         $file2 = "Folder1/Folder1.txt";
