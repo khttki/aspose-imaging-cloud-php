@@ -55,28 +55,28 @@ class ExamplesTests extends ApiTester {
 
             // upload local image to storage
             $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/inputImage.png",
-                $localInputImage, $imagingConfig->getIsMetered() ? self::$testStorage : null);
+                $localInputImage, $imagingConfig->getOnPremise() ? self::$testStorage : null);
             $result = $imagingApi->uploadFile($uploadFileRequest);
             // inspect $result->getErrors() list if there were any
             // inspect $result->getUploaded() list for uploaded file names
 
             // convert image from storage to JPEG
             $getSaveAsRequest = new Requests\SaveImageAsRequest("inputImage.png", "jpg",
-                    "ExampleFolderNet", $imagingConfig->getIsMetered() ? self::$testStorage : null);
+                    "ExampleFolderNet", $imagingConfig->getOnPremise() ? self::$testStorage : null);
 
             $convertedImage = $imagingApi->saveImageAs($getSaveAsRequest)->getContents();
 
             // process resulting image
             // for example, save it to storage
             $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/resultImage.jpg",
-                $convertedImage, $imagingConfig->getIsMetered() ? self::$testStorage : null);
+                $convertedImage, $imagingConfig->getOnPremise() ? self::$testStorage : null);
             $result = $imagingApi->uploadFile($uploadFileRequest);
         } finally {
             // remove files from storage
             $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/inputImage.png", 
-                $imagingConfig->getIsMetered() ? self::$testStorage : null));
+                $imagingConfig->getOnPremise() ? self::$testStorage : null));
             $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg", 
-                $imagingConfig->getIsMetered() ? self::$testStorage : null));
+                $imagingConfig->getOnPremise() ? self::$testStorage : null));
         }
     }
 
@@ -95,7 +95,7 @@ class ExamplesTests extends ApiTester {
 
             // upload local image to storage
             $uploadFileRequest = new Requests\UploadFileRequest("ExampleFolderNet/inputImage.png",
-                $localInputImage, $imagingConfig->getIsMetered() ? self::$testStorage : null);
+                $localInputImage, $imagingConfig->getOnPremise() ? self::$testStorage : null);
             $result = $imagingApi->uploadFile($uploadFileRequest);
             // inspect $result->getErrors() list if there were any
             // inspect $result->getUploaded() list for uploaded file names
@@ -103,26 +103,26 @@ class ExamplesTests extends ApiTester {
             // convert image from request stream to JPEG and save it to storage
             // please, use outPath parameter for saving the result to storage
             $postSaveToStorageRequest = new Requests\CreateSavedImageAsRequest($localInputImage, "jpg",
-                    "ExampleFolderNet/resultImage.jpg", $imagingConfig->getIsMetered() ? self::$testStorage : null);
+                    "ExampleFolderNet/resultImage.jpg", $imagingConfig->getOnPremise() ? self::$testStorage : null);
 
             $imagingApi->createSavedImageAs($postSaveToStorageRequest);
 
             // download saved image from storage and process it
             $savedFile = $imagingApi->downloadFile(new Requests\DownloadFileRequest("ExampleFolderNet/resultImage.jpg", 
-                $imagingConfig->getIsMetered() ? self::$testStorage : null))->getContents();
+                $imagingConfig->getOnPremise() ? self::$testStorage : null))->getContents();
 
             // convert image from request stream to JPEG and read it from resulting stream
             // please, set outPath parameter as null to return result in request stream
             // instead of saving to storage
             $postSaveToStreamRequest = new Requests\CreateSavedImageAsRequest($localInputImage, "jpg", null, 
-                $imagingConfig->getIsMetered() ? self::$testStorage : null);
+                $imagingConfig->getOnPremise() ? self::$testStorage : null);
 
             // process resulting image from response stream
             $resultPostImageStream = $imagingApi->createSavedImageAs($postSaveToStreamRequest)->getContents();
         } finally {
             // remove file from storage
             $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg", 
-                $imagingConfig->getIsMetered() ? self::$testStorage : null));
+                $imagingConfig->getOnPremise() ? self::$testStorage : null));
         }
     }
 }
