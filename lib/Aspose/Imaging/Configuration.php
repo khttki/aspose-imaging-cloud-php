@@ -80,7 +80,7 @@ class Configuration
      *
      * @var bool
      */
-    public $isMetered = false;
+    public $onPremise = false;
 
     /**
      * Debug file location (log to STDOUT by default)
@@ -284,13 +284,13 @@ class Configuration
     /**
      * Sets the metered usage with on-premise deployment
      *
-     * @param bool $isMetered If on-premise deployment with metered license is used
+     * @param bool $onPremise If on-premise deployment with metered license is used
      *
      * @return $this
      */
-    public function setIsMetered($isMetered)
+    public function setOnPremise($onPremise)
     {
-        $this->isMetered = $isMetered;
+        $this->onPremise = $onPremise;
         return $this;
     }
 
@@ -299,9 +299,9 @@ class Configuration
      *
      * @return bool
      */
-    public function getIsMetered()
+    public function getOnPremise()
     {
-        return $this->isMetered;
+        return $this->onPremise;
     }
 
     /**

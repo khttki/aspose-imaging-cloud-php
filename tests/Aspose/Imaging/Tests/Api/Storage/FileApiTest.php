@@ -212,7 +212,7 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsCreateTest() {
-        if (self::$imagingApi->getConfig()->getIsMetered())
+        if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
         }
@@ -262,7 +262,7 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsDownloadTest() {
-        if (self::$imagingApi->getConfig()->getIsMetered())
+        if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
         }
@@ -309,7 +309,7 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsCopyTest() {
-        if (self::$imagingApi->getConfig()->getIsMetered())
+        if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
         }
@@ -363,7 +363,7 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsMoveTest() {
-        if (self::$imagingApi->getConfig()->getIsMetered())
+        if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
         }
@@ -423,7 +423,7 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsDeleteTest() {
-        if (self::$imagingApi->getConfig()->getIsMetered())
+        if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
         }

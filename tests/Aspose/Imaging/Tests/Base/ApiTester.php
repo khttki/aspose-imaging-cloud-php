@@ -230,13 +230,13 @@ abstract class ApiTester extends TestCase
     protected static function createApiInstances()
     {
         echo "Trying to obtain access creds environment variables.\r\n";
-        $isMetered = getenv("IsMetered") === "true";
-        $appKey = $isMetered ? '' : getenv("AppKey");
-        $appSid = $isMetered ? '' : getenv("AppSid");
+        $onPremise = getenv("OnPremise") === "true";
+        $appKey = $onPremise ? '' : getenv("AppKey");
+        $appSid = $onPremise ? '' : getenv("AppSid");
         $baseUrl = getenv("ApiEndpoint");
         $apiVersion = getenv("ApiVersion");
 
-        if ((!$isMetered && (empty($appKey) || empty($appSid))) || empty($baseUrl) || empty($apiVersion))
+        if ((!$onPremise && (empty($appKey) || empty($appSid))) || empty($baseUrl) || empty($apiVersion))
         {
             echo "Access data isn't set completely by environment variables. Filling unset data with default values.\r\n";
         }
@@ -257,13 +257,13 @@ abstract class ApiTester extends TestCase
         if (!empty($serverAccessString))
         {
             $accessData = json_decode($serverAccessString);
-            if (empty($appKey) && !$isMetered)
+            if (empty($appKey) && !$onPremise)
             {
                 $appKey = $accessData->{'AppKey'};
                 echo "Set default App key\r\n";
             }
 
-            if (empty($appSid) && !$isMetered)
+            if (empty($appSid) && !$onPremise)
             {
                 $appSid = $accessData->{'AppSid'};
                 echo "Set default App SID\r\n";
@@ -275,12 +275,12 @@ abstract class ApiTester extends TestCase
                 echo "Set default base URL\r\n";
             }
         }
-        else if (!$isMetered)
+        else if (!$onPremise)
         {
             throw new InvalidArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
         }
 
-        echo "Is metered: " . var_export($isMetered, true) . "\r\n";
+        echo "On-premise: " . var_export($onPremise, true) . "\r\n";
         echo "App key: " . $appKey . "\r\n";
         echo "App SID: " . $appSid . "\r\n";
         echo "Storage: " . self::$testStorage . "\r\n";
@@ -292,7 +292,7 @@ abstract class ApiTester extends TestCase
         $imagingConfig->setAppKey($appKey);
         $imagingConfig->setAppSid($appSid);
         $imagingConfig->setApiVersion($apiVersion);
-        $imagingConfig->setIsMetered($isMetered);
+        $imagingConfig->setOnPremise($onPremise);
         self::$imagingApi = new Imaging\ImagingApi($imagingConfig);
         self::$inputTestFiles = self::fetchInputTestFilesInfo();
     }
