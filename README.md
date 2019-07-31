@@ -1,5 +1,5 @@
 # Aspose.Imaging Cloud PHP SDK
-[Aspose.Imaging Cloud](https://products.aspose.cloud/imaging/cloud) is a true REST API that enables you to perform a wide range of image processing operations including creation, manipulation and conversion in the cloud, with zero initial costs. Our Cloud SDKs are wrappers around REST API in various programming languages, allowing you to process images in language of your choice quickly and easily, gaining all benefits of strong types and IDE highlights. 
+[Aspose.Imaging Cloud](https://products.aspose.cloud/imaging) is a true REST API that enables you to perform a wide range of image processing operations including creation, manipulation and conversion in the cloud, with zero initial costs. Our Cloud SDKs are wrappers around REST API in various programming languages, allowing you to process images in language of your choice quickly and easily, gaining all benefits of strong types and IDE highlights. 
 
 This repository contains Aspose.Imaging Cloud PHP SDK source code. This SDK allows you to work with Aspose.Imaging Cloud REST APIs in your PHP applications quickly and easily, with zero initial cost.
 
@@ -24,6 +24,7 @@ Export the following images to various formats (generally supported ones are BMP
 * DICOM
 * CDR
 * ODG
+* OTG
 * DNG
 * SVG
 * CMX
@@ -76,7 +77,7 @@ It gives you an ability to:
 ```json
 {
     "require": {
-        "aspose/imaging-sdk-php": ">=19.6"
+        "aspose/imaging-sdk-php": ">=19.7"
     }
 }
 ```
@@ -90,6 +91,20 @@ use \Aspose\Imaging\Model\Requests;
 
 # Examples
 Please, look at [Examples](EXAMPLES.md) document.
+
+### Aspose Cloud-hosted service VS on-premise deployment (*experimental feature*)
+Starting from v19.7, you can choose either to use Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests.
+The details about key differences and deployment process will be described on the dedicated Docker Hub page as soon as it's released.
+
+To succeed with your on-premise service usage by the SDK, you need to:
+1. Set the *baseUrl* parameter according to your on-premise deployment, *isMetered* parameter to *true* and use optional API version and debug mode parameters if needed.
+```php
+$imagingConfig = new Imaging\Configuration();
+$imagingConfig->setBaseUrl("yourServiceUrl");
+$imagingConfig->setOnPremise(true);
+$imagingApi = new Imaging\ImagingApi($imagingConfig);
+```
+2. Set *storage* or *storageName* parameters for each request where they're present (mandatory!).
 
 # Asynchronous API
 Each API method has its' async version with *Async* postfix, using *\GuzzleHttp\Promise\PromiseInterface*.
@@ -108,6 +123,6 @@ Your feedback is very important to us. Please feel free to contact via
 # Resources
 + [**Web API reference**](https://apireference.aspose.cloud/imaging/)
 + [**Website**](https://www.aspose.cloud)
-+ [**Product Home**](https://products.aspose.cloud/imaging/cloud)
++ [**Product Home**](https://products.aspose.cloud/imaging)
 + [**Documentation**](https://docs.aspose.cloud/display/imagingcloud/Home)
 + [**Blog**](https://blog.aspose.cloud/category/aspose-products/aspose.imaging-cloud/)

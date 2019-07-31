@@ -69,11 +69,18 @@ class Configuration
     public $userAgent = "php sdk";
 
     /**
-     * Debug switch (default set to false)
+     * Debug mode switch (default set to false)
      *
      * @var bool
      */
     public $debug = false;
+
+    /**
+     * If you're using on-premise deployment with metered license
+     *
+     * @var bool
+     */
+    public $onPremise = false;
 
     /**
      * Debug file location (log to STDOUT by default)
@@ -86,7 +93,7 @@ class Configuration
      * Version of Aspose.Imaging Cloud API
      *
      */
-    private $clientVersion = '19.6';
+    private $clientVersion = '19.7';
 
     /**
      * Constructor
@@ -181,7 +188,7 @@ class Configuration
      */
     public function setBaseUrl($baseUrl)
     {
-        if (!substr($this->baseUrl, -1, 1) === "/")
+        if (!(substr($this->baseUrl, -1, 1) === "/"))
         {
             $baseUrl = $baseUrl . "/";
         }
@@ -272,6 +279,29 @@ class Configuration
     public function getDebug()
     {
         return $this->debug;
+    }
+
+    /**
+     * Sets the metered usage with on-premise deployment
+     *
+     * @param bool $onPremise If on-premise deployment with metered license is used
+     *
+     * @return $this
+     */
+    public function setOnPremise($onPremise)
+    {
+        $this->onPremise = $onPremise;
+        return $this;
+    }
+
+     /**
+     * Determines if on-premise deployment with metered license is used
+     *
+     * @return bool
+     */
+    public function getOnPremise()
+    {
+        return $this->onPremise;
     }
 
     /**
