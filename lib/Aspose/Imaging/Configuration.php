@@ -188,7 +188,7 @@ class Configuration
      */
     public function setBaseUrl($baseUrl)
     {
-        if (!(substr($this->baseUrl, -1, 1) === "/"))
+        if ($baseUrl[strlen($baseUrl) - 1] !== "/")
         {
             $baseUrl = $baseUrl . "/";
         }
