@@ -77,7 +77,7 @@ It gives you an ability to:
 ```json
 {
     "require": {
-        "aspose/imaging-sdk-php": ">=19.7"
+        "aspose/imaging-sdk-php": ">=19.8"
     }
 }
 ```
