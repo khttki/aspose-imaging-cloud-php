@@ -68,6 +68,7 @@ class ImagingResponse implements ArrayAccess
         'dicom_properties' => '\Aspose\Imaging\Model\DicomProperties',
         'dng_properties' => '\Aspose\Imaging\Model\DngProperties',
         'odg_properties' => '\Aspose\Imaging\Model\OdgProperties',
+        'svg_properties' => '\Aspose\Imaging\Model\SvgProperties',
         'horizontal_resolution' => 'double',
         'vertical_resolution' => 'double',
         'is_cached' => 'bool'
@@ -94,6 +95,7 @@ class ImagingResponse implements ArrayAccess
         'dicom_properties' => null,
         'dng_properties' => null,
         'odg_properties' => null,
+        'svg_properties' => null,
         'horizontal_resolution' => 'double',
         'vertical_resolution' => 'double',
         'is_cached' => null
@@ -141,6 +143,7 @@ class ImagingResponse implements ArrayAccess
         'dicom_properties' => 'DicomProperties',
         'dng_properties' => 'DngProperties',
         'odg_properties' => 'OdgProperties',
+        'svg_properties' => 'SvgProperties',
         'horizontal_resolution' => 'HorizontalResolution',
         'vertical_resolution' => 'VerticalResolution',
         'is_cached' => 'IsCached'
@@ -167,6 +170,7 @@ class ImagingResponse implements ArrayAccess
         'dicom_properties' => 'setDicomProperties',
         'dng_properties' => 'setDngProperties',
         'odg_properties' => 'setOdgProperties',
+        'svg_properties' => 'setSvgProperties',
         'horizontal_resolution' => 'setHorizontalResolution',
         'vertical_resolution' => 'setVerticalResolution',
         'is_cached' => 'setIsCached'
@@ -193,6 +197,7 @@ class ImagingResponse implements ArrayAccess
         'dicom_properties' => 'getDicomProperties',
         'dng_properties' => 'getDngProperties',
         'odg_properties' => 'getOdgProperties',
+        'svg_properties' => 'getSvgProperties',
         'horizontal_resolution' => 'getHorizontalResolution',
         'vertical_resolution' => 'getVerticalResolution',
         'is_cached' => 'getIsCached'
@@ -273,6 +278,7 @@ class ImagingResponse implements ArrayAccess
         $this->container['dicom_properties'] = isset($data['dicom_properties']) ? $data['dicom_properties'] : null;
         $this->container['dng_properties'] = isset($data['dng_properties']) ? $data['dng_properties'] : null;
         $this->container['odg_properties'] = isset($data['odg_properties']) ? $data['odg_properties'] : null;
+        $this->container['svg_properties'] = isset($data['svg_properties']) ? $data['svg_properties'] : null;
         $this->container['horizontal_resolution'] = isset($data['horizontal_resolution']) ? $data['horizontal_resolution'] : null;
         $this->container['vertical_resolution'] = isset($data['vertical_resolution']) ? $data['vertical_resolution'] : null;
         $this->container['is_cached'] = isset($data['is_cached']) ? $data['is_cached'] : null;
@@ -695,6 +701,30 @@ class ImagingResponse implements ArrayAccess
     public function setOdgProperties($odg_properties)
     {
         $this->container['odg_properties'] = $odg_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets svg_properties
+     *
+     * @return \Aspose\Imaging\Model\SvgProperties
+     */
+    public function getSvgProperties()
+    {
+        return $this->container['svg_properties'];
+    }
+
+    /**
+     * Sets svg_properties
+     *
+     * @param \Aspose\Imaging\Model\SvgProperties $svg_properties Gets or sets the SVG properties.
+     *
+     * @return $this
+     */
+    public function setSvgProperties($svg_properties)
+    {
+        $this->container['svg_properties'] = $svg_properties;
 
         return $this;
     }

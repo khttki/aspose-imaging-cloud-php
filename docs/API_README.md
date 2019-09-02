@@ -176,6 +176,7 @@ Class | Method | HTTP request | Description
  - [Aspose\Imaging\Model\SearchResultsSet](SearchResultsSet.md)
  - [Aspose\Imaging\Model\StorageExist](StorageExist.md)
  - [Aspose\Imaging\Model\StorageFile](StorageFile.md)
+ - [Aspose\Imaging\Model\SvgProperties](SvgProperties.md)
  - [Aspose\Imaging\Model\TiffFrame](TiffFrame.md)
  - [Aspose\Imaging\Model\TiffOptions](TiffOptions.md)
  - [Aspose\Imaging\Model\TiffProperties](TiffProperties.md)

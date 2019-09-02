@@ -46,7 +46,7 @@ class CreateModifiedSvgRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Color type for SVG image.
+     * Color type for SVG image. Only RGB is supported for now.
      *
      * @var string
      */
@@ -140,7 +140,7 @@ class CreateModifiedSvgRequest extends ImagingRequest
      * Initializes a new instance of the CreateModifiedSvgRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $color_type Color type for SVG image.
+     * @param string $color_type Color type for SVG image. Only RGB is supported for now.
      * @param bool $text_as_shapes Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false
      * @param double $scale_x Scale X.
      * @param double $scale_y Scale Y.
@@ -194,7 +194,7 @@ class CreateModifiedSvgRequest extends ImagingRequest
     }
     
     /**
-     * Color type for SVG image.
+     * Color type for SVG image. Only RGB is supported for now.
      *
      * @return string
      */
@@ -204,7 +204,7 @@ class CreateModifiedSvgRequest extends ImagingRequest
     }
 
     /**
-     * Color type for SVG image.
+     * Color type for SVG image. Only RGB is supported for now.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

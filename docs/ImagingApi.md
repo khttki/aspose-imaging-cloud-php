@@ -838,7 +838,7 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_data** | **string**| Input image |
- **color_type** | **string**| Color type for SVG image. | [optional] [default to Rgb]
+ **color_type** | **string**| Color type for SVG image. Only RGB is supported for now. | [optional] [default to Rgb]
  **text_as_shapes** | **bool**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
  **scale_x** | **double**| Scale X. | [optional] [default to 0.0]
  **scale_y** | **double**| Scale Y. | [optional] [default to 0.0]
@@ -2390,7 +2390,7 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of image. |
- **color_type** | **string**| Color type for SVG image. | [optional] [default to Rgb]
+ **color_type** | **string**| Color type for SVG image. Only RGB is supported for now. | [optional] [default to Rgb]
  **text_as_shapes** | **bool**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
  **scale_x** | **double**| Scale X. | [optional] [default to 0.0]
  **scale_y** | **double**| Scale Y. | [optional] [default to 0.0]
