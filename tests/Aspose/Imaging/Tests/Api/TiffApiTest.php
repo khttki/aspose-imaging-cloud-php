@@ -32,6 +32,7 @@ use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging;
 use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests ;
+use Exception;
 use \PHPUnit\Framework\TestCase;
 use \GuzzleHttp\Stream;
 
@@ -155,7 +156,7 @@ class TiffApiTest extends ApiTester
                 Horizontal resolution: " . $horizontalResolution . "; Vertical resolution: " . $verticalResolution,
             $name,
             $outName,
-            function($inputStream, $outPath) use ($compression, $resolutionUnit, $fromScratch, $bitDepth, $horizontalResolution, $verticalResolution, $fromScratch, $storage)
+            function($inputStream, $outPath) use ($compression, $resolutionUnit, $fromScratch, $bitDepth, $horizontalResolution, $verticalResolution, $storage)
             {
                 $request = new Requests\CreateModifiedTiffRequest($inputStream, $bitDepth, $compression, $resolutionUnit, $horizontalResolution, 
                     $verticalResolution, $fromScratch, $outPath, $storage);
@@ -196,7 +197,7 @@ class TiffApiTest extends ApiTester
 
         if (!$this->checkInputFileExists($inputFileName))
         {
-            throw new ArgumentException(
+            throw new \ArgumentException(
                 "Input file " . $inputFileName . " doesn't exist in the specified storage folder: " . $folder . ". Please, upload it first.");
         }
 
