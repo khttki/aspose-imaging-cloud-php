@@ -88,14 +88,14 @@ class ModifySvgRequest extends ImagingRequest
     public $page_height;
     
     /**
-     * Border width.
+     * Border width. Only 0 is supported for now.
      *
      * @var int
      */
     public $border_x;
     
     /**
-     * Border height.
+     * Border height. Only 0 is supported for now.
      *
      * @var int
      */
@@ -146,8 +146,8 @@ class ModifySvgRequest extends ImagingRequest
      * @param double $scale_y Scale Y.
      * @param int $page_width Width of the page.
      * @param int $page_height Height of the page.
-     * @param int $border_x Border width.
-     * @param int $border_y Border height.
+     * @param int $border_x Border width. Only 0 is supported for now.
+     * @param int $border_y Border height. Only 0 is supported for now.
      * @param string $bk_color Background color (Default is white).
      * @param bool $from_scratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
      * @param string $folder Folder with image to process.
@@ -320,7 +320,7 @@ class ModifySvgRequest extends ImagingRequest
     }
     
     /**
-     * Border width.
+     * Border width. Only 0 is supported for now.
      *
      * @return int
      */
@@ -330,7 +330,7 @@ class ModifySvgRequest extends ImagingRequest
     }
 
     /**
-     * Border width.
+     * Border width. Only 0 is supported for now.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -341,7 +341,7 @@ class ModifySvgRequest extends ImagingRequest
     }
     
     /**
-     * Border height.
+     * Border height. Only 0 is supported for now.
      *
      * @return int
      */
@@ -351,7 +351,7 @@ class ModifySvgRequest extends ImagingRequest
     }
 
     /**
-     * Border height.
+     * Border height. Only 0 is supported for now.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

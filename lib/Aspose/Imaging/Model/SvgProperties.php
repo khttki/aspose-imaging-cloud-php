@@ -53,8 +53,7 @@ class SvgProperties implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'color_type' => 'string',
-        'text_as_shapes' => 'bool'
+        'color_type' => 'string'
     ];
 
     /**
@@ -63,8 +62,7 @@ class SvgProperties implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'color_type' => null,
-        'text_as_shapes' => null
+        'color_type' => null
     ];
 
     /**
@@ -94,8 +92,7 @@ class SvgProperties implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'color_type' => 'ColorType',
-        'text_as_shapes' => 'TextAsShapes'
+        'color_type' => 'ColorType'
     ];
 
     /**
@@ -104,8 +101,7 @@ class SvgProperties implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'color_type' => 'setColorType',
-        'text_as_shapes' => 'setTextAsShapes'
+        'color_type' => 'setColorType'
     ];
 
     /**
@@ -114,8 +110,7 @@ class SvgProperties implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'color_type' => 'getColorType',
-        'text_as_shapes' => 'getTextAsShapes'
+        'color_type' => 'getColorType'
     ];
 
     /**
@@ -179,7 +174,6 @@ class SvgProperties implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['color_type'] = isset($data['color_type']) ? $data['color_type'] : null;
-        $this->container['text_as_shapes'] = isset($data['text_as_shapes']) ? $data['text_as_shapes'] : null;
     }
 
     /**
@@ -191,9 +185,6 @@ class SvgProperties implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['text_as_shapes'] === null) {
-            $invalidProperties[] = "'text_as_shapes' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -206,9 +197,6 @@ class SvgProperties implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['text_as_shapes'] === null) {
-            return false;
-        }
         return true;
     }
 
@@ -233,30 +221,6 @@ class SvgProperties implements ArrayAccess
     public function setColorType($color_type)
     {
         $this->container['color_type'] = $color_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets text_as_shapes
-     *
-     * @return bool
-     */
-    public function getTextAsShapes()
-    {
-        return $this->container['text_as_shapes'];
-    }
-
-    /**
-     * Sets text_as_shapes
-     *
-     * @param bool $text_as_shapes Gets or sets whether text must be converted as shapes.
-     *
-     * @return $this
-     */
-    public function setTextAsShapes($text_as_shapes)
-    {
-        $this->container['text_as_shapes'] = $text_as_shapes;
 
         return $this;
     }
