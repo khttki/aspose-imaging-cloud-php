@@ -188,7 +188,7 @@ class SvgApiTest extends ApiTester
             $outName,
             function($inputStream, $outPath) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $storage, $format)
             {
-                $request = new Requests\CreateModifiedSvgRequest($inputStream, $bkColor, $pageWidth, $pageHeight, $borderX, $borderY, $fromScratch, $outPath, $storage, $format);
+                $request = new Requests\CreateModifiedSvgRequest($inputStream, null, null, null, null, $pageWidth, $pageHeight, $borderX, $borderY, $bkColor, $fromScratch, $outPath, $storage, $format);
                 return self::$imagingApi->createModifiedSvgAsync($request)->wait();
             },
             function($originalProperties, $resultProperties, $resultStream) use ($bkColor, $pageWidth, $pageHeight, $borderX, $borderY)
