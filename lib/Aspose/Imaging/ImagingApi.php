@@ -1058,6 +1058,60 @@ class ImagingApi
     }
     
     /**
+     * Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateModifiedSvgRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function createModifiedSvg($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateModifiedSvgRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createModifiedSvgAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\CreateModifiedTiffRequest $request Request object for operation
@@ -2928,6 +2982,60 @@ class ImagingApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function modifyPsdAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Update parameters of existing SVG image.
+     *
+     * @param \Aspose\Imaging\Model\Requests\ModifySvgRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function modifySvg($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Update parameters of existing SVG image.
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\ModifySvgRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function modifySvgAsync($request) 
     {
         $returnType = '\SplFileObject';
         $isBinary = true;
