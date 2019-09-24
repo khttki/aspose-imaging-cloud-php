@@ -186,6 +186,11 @@ class DownloadFileRequest extends ImagingRequest
 
         // body params
         $httpBody = null;
+
+        $headers = $this->selectHeaders(
+            ['multipart/form-data'],
+            ['application/json']
+        );
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,
