@@ -50,13 +50,16 @@ class FilterEffectApiTest extends ApiTester
      */
     public function filterEffectFormatsProvider()
     {
-        return [
+        return self::$extendedTests ? [
             [".dicom"],
             [".djvu"],
             [".gif"],
             [".psd"],
             [".tiff"],
-            [".webp"]];
+            [".webp"]
+        ] : [
+            [".psd"],
+        ];
     }
 
     /**
@@ -95,12 +98,11 @@ class FilterEffectApiTest extends ApiTester
                         "FilterEffectTest",
                         "Input image: " . $name . "; Output format: " . $format . "; Filter type: " . $filter->filterType,
                         $name,
-                        function() use ($name, $format, $filter, $folder, $storage)
-                        {
+                        function () use ($name, $format, $filter, $folder, $storage) {
                             $request = new Requests\FilterEffectImageRequest($name, $format, $filter->filterType, $filter->filterProperties, $folder, $storage);
                             return self::$imagingApi->filterEffectImageAsync($request)->wait();
                         },
-                        function($originalProperties, $resultProperties, $resultStream){
+                        function ($originalProperties, $resultProperties, $resultStream) {
 
                         },
                         $folder,
