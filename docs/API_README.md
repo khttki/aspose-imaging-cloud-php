@@ -76,8 +76,8 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**extractImageFramePropertiesAsync**](ImagingApi.md#extractimageframepropertiesasync) | **POST** /imaging/frames/{frameId}/properties | Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**extractImageProperties**](ImagingApi.md#extractimageproperties) | **POST** /imaging/properties | Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**extractImagePropertiesAsync**](ImagingApi.md#extractimagepropertiesasync) | **POST** /imaging/properties | Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**filterEffectImage**](ImagingApi.md#filtereffectimage) | **PUT** /imaging/{name}/filterEffect | Performs filtering effects on an existing image.
-*ImagingApi* | [**filterEffectImageAsync**](ImagingApi.md#filtereffectimageasync) | **PUT** /imaging/{name}/filterEffect | Performs filtering effects on an existing image.
+*ImagingApi* | [**filterEffectImage**](ImagingApi.md#filtereffectimage) | **PUT** /imaging/{name}/filterEffect | Apply filtering effects to an existing image.
+*ImagingApi* | [**filterEffectImageAsync**](ImagingApi.md#filtereffectimageasync) | **PUT** /imaging/{name}/filterEffect | Apply filtering effects to an existing image.
 *ImagingApi* | [**findImageDuplicates**](ImagingApi.md#findimageduplicates) | **GET** /imaging/ai/imageSearch/{searchContextId}/findDuplicates | Find images duplicates.
 *ImagingApi* | [**findImageDuplicatesAsync**](ImagingApi.md#findimageduplicatesasync) | **GET** /imaging/ai/imageSearch/{searchContextId}/findDuplicates | Find images duplicates.
 *ImagingApi* | [**findImagesByTags**](ImagingApi.md#findimagesbytags) | **POST** /imaging/ai/imageSearch/{searchContextId}/findByTags | Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.

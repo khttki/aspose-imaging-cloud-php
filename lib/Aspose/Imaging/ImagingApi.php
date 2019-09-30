@@ -2030,7 +2030,7 @@ class ImagingApi
     }
     
     /**
-     * Performs filtering effects on an existing image.
+     * Apply filtering effects to an existing image.
      *
      * @param \Aspose\Imaging\Model\Requests\FilterEffectImageRequest $request Request object for operation
      *
@@ -2055,7 +2055,7 @@ class ImagingApi
     }
 
     /**
-     * Performs filtering effects on an existing image.
+     * Apply filtering effects to an existing image.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\FilterEffectImageRequest $request Request object for operation

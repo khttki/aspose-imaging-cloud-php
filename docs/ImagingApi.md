@@ -1580,7 +1580,7 @@ Name | Type | Description  | Notes
 # **filterEffectImage**
 > filterEffectImage($filterEffectImageRequest)
 
-Performs filtering effects on an existing image.
+Apply filtering effects to an existing image.
 
 ### Return type
 
@@ -1590,7 +1590,7 @@ Performs filtering effects on an existing image.
 # **filterEffectImageAsync**
 > filterEffectImageAsync($filterEffectImageRequest)
 
-Performs filtering effects on an existing image.
+Apply filtering effects to an existing image.
 
 Performs operation asynchronously.
 
