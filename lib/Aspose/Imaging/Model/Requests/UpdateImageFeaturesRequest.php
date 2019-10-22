@@ -264,6 +264,11 @@ class UpdateImageFeaturesRequest extends ImagingRequest
         }
         // body params
         $httpBody = null;
+
+        $headers = $this->selectHeaders(
+            ['application/json'],
+            ['multipart/form-data']
+        );
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,

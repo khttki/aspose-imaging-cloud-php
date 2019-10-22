@@ -230,6 +230,11 @@ class SaveImageAsRequest extends ImagingRequest
 
         // body params
         $httpBody = null;
+
+        $headers = $this->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
         
         $httpInfo = array(
             "resourcePath" => $resourcePath,

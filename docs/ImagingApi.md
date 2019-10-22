@@ -1576,6 +1576,50 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="filtereffectimage"></a>
+# **filterEffectImage**
+> filterEffectImage($filterEffectImageRequest)
+
+Apply filtering effects to an existing image.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="filtereffectimageasync"></a>
+# **filterEffectImageAsync**
+> filterEffectImageAsync($filterEffectImageRequest)
+
+Apply filtering effects to an existing image.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **FilterEffectImageRequest** Parameters
+```php
+__construct(
+    $name, 
+    $format, 
+    $filter_type, 
+    $filter_properties, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of an image. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **filter_type** | **string**| Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing). |
+ **filter_properties** | [**\Aspose\Imaging\Model\FilterPropertiesBase**](FilterPropertiesBase.md)| Filter properties. |
+ **folder** | **string**| Folder with image to process. | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="findimageduplicates"></a>
 # **findImageDuplicates**
 > findImageDuplicates($findImageDuplicatesRequest)
