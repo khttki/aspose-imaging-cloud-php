@@ -81,7 +81,7 @@ Please, add the following  to your composer.json as a dependency.
 ```json
 {
     "require": {
-        "aspose/imaging-sdk-php": ">=19.9"
+        "aspose/imaging-sdk-php": ">=19.10"
     }
 }
 ```
