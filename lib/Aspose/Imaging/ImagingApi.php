@@ -1490,6 +1490,60 @@ class ImagingApi
     }
     
     /**
+     * Extract images features from web page and add them to search context
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateWebSiteImageFeaturesRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function createWebSiteImageFeatures($request)
+    {
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Extract images features from web page and add them to search context
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateWebSiteImageFeaturesRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWebSiteImageFeaturesAsync($request) 
+    {
+        $returnType = '';
+        $isBinary = true;
+        $hasReturnType = false;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Crop an existing image.
      *
      * @param \Aspose\Imaging\Model\Requests\CropImageRequest $request Request object for operation
