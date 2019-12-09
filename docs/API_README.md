@@ -56,6 +56,8 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**createSavedImageAsAsync**](ImagingApi.md#createsavedimageasasync) | **POST** /imaging/saveAs | Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createUpdatedImage**](ImagingApi.md#createupdatedimage) | **POST** /imaging/updateImage | Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createUpdatedImageAsync**](ImagingApi.md#createupdatedimageasync) | **POST** /imaging/updateImage | Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**createWebSiteImageFeatures**](ImagingApi.md#createwebsiteimagefeatures) | **POST** /imaging/ai/imageSearch/{searchContextId}/features/web | Extract images features from web page and add them to search context
+*ImagingApi* | [**createWebSiteImageFeaturesAsync**](ImagingApi.md#createwebsiteimagefeaturesasync) | **POST** /imaging/ai/imageSearch/{searchContextId}/features/web | Extract images features from web page and add them to search context
 *ImagingApi* | [**cropImage**](ImagingApi.md#cropimage) | **GET** /imaging/{name}/crop | Crop an existing image.
 *ImagingApi* | [**cropImageAsync**](ImagingApi.md#cropimageasync) | **GET** /imaging/{name}/crop | Crop an existing image.
 *ImagingApi* | [**deleteFile**](ImagingApi.md#deletefile) | **DELETE** /imaging/storage/file/{path} | Delete file
