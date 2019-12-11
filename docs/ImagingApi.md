@@ -1211,6 +1211,7 @@ Performs operation asynchronously.
 __construct(
     $search_context_id, 
     $images_source, 
+    $image_data, 
     $folder, 
     $storage)
 ```
@@ -1219,6 +1220,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search_context_id** | **string**| The search context identifier. |
  **images_source** | **string**| Images source - a web page |
+ **image_data** | **string**| Input image | [optional]
  **folder** | **string**| The folder. | [optional]
  **storage** | **string**| The storage. | [optional]
 
