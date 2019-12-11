@@ -53,13 +53,6 @@ class CreateWebSiteImageFeaturesRequest extends ImagingRequest
     public $images_source;
     
     /**
-     * Input image
-     *
-     * @var string
-     */
-    public $image_data;
-    
-    /**
      * The folder.
      *
      * @var string
@@ -78,15 +71,13 @@ class CreateWebSiteImageFeaturesRequest extends ImagingRequest
      *  
      * @param string $search_context_id The search context identifier.
      * @param string $images_source Images source - a web page
-     * @param string $image_data Input image
      * @param string $folder The folder.
      * @param string $storage The storage.
      */
-    public function __construct($search_context_id, $images_source, $image_data = null, $folder = null, $storage = null)             
+    public function __construct($search_context_id, $images_source, $folder = null, $storage = null)             
     {
         $this->search_context_id = $search_context_id;
         $this->images_source = $images_source;
-        $this->image_data = $image_data;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -130,27 +121,6 @@ class CreateWebSiteImageFeaturesRequest extends ImagingRequest
     public function set_images_source($value)
     {
         $this->images_source = $value;
-        return $this;
-    }
-    
-    /**
-     * Input image
-     *
-     * @return string
-     */
-    public function get_image_data()
-    {
-        return $this->image_data;
-    }
-
-    /**
-     * Input image
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_image_data($value)
-    {
-        $this->image_data = $value;
         return $this;
     }
     
@@ -258,16 +228,12 @@ class CreateWebSiteImageFeaturesRequest extends ImagingRequest
     
         $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
-        // form params
-        if ($this->image_data !== null) {
-            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
-        }
         // body params
         $httpBody = null;
 
         $headers = $this->selectHeaders(
             ['application/json'],
-            ['multipart/form-data']
+            ['application/json']
         );
         
         $httpInfo = array(
