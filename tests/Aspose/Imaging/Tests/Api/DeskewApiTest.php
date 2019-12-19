@@ -58,7 +58,9 @@ class DeskewApiTest extends ApiTester
             [".psd", true, true, null], [".psd", false, true, null],
             [".jpg", true, true, null], [".jpg", false, true, null],
             [".tiff", true, true, null], [".tiff", false, true, null],
-            [".webp", true, true, null], [".webp", false, true, null]
+            [".webp", true, true, null], [".webp", false, true, null],
+            [".dng", true, true, null], [".dng", false, true, null],
+            [".djvu", true, true, null], [".djvu", false, true, null]
         ] : [
             [".jpg", true, true, null], [".jpg", false, true, null],
         ];
