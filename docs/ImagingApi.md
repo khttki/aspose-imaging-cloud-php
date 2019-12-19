@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
  **search_context_id** | **string**| The search context identifier. |
  **image_data** | **string**| Input image | [optional]
  **image_id** | **string**| The image identifier. | [optional]
- **images_folder** | **string**| Images folder. | [optional]
+ **images_folder** | **string**| Images source - a folder | [optional]
  **folder** | **string**| The folder. | [optional]
  **storage** | **string**| The storage. | [optional]
 
@@ -1181,6 +1181,46 @@ Name | Type | Description  | Notes
  **rotate_flip_method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createwebsiteimagefeatures"></a>
+# **createWebSiteImageFeatures**
+> createWebSiteImageFeatures($createWebSiteImageFeaturesRequest)
+
+Extract images features from web page and add them to search context
+
+### Return type
+
+void (empty response body)
+
+<a name="createwebsiteimagefeaturesasync"></a>
+# **createWebSiteImageFeaturesAsync**
+> createWebSiteImageFeaturesAsync($createWebSiteImageFeaturesRequest)
+
+Extract images features from web page and add them to search context
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateWebSiteImageFeaturesRequest** Parameters
+```php
+__construct(
+    $search_context_id, 
+    $images_source, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search_context_id** | **string**| The search context identifier. |
+ **images_source** | **string**| Images source - a web page |
+ **folder** | **string**| The folder. | [optional]
+ **storage** | **string**| The storage. | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="CreateImageFeaturesRequest.php">
+ * <copyright company="Aspose" file="CreateWebSiteImageFeaturesRequest.php">
  *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,9 +34,9 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for createImageFeatures operation.
+ * Request model for createWebSiteImageFeatures operation.
  */
-class CreateImageFeaturesRequest extends ImagingRequest
+class CreateWebSiteImageFeaturesRequest extends ImagingRequest
 {
     /**
      * The search context identifier.
@@ -46,25 +46,11 @@ class CreateImageFeaturesRequest extends ImagingRequest
     public $search_context_id;
     
     /**
-     * Input image
+     * Images source - a web page
      *
      * @var string
      */
-    public $image_data;
-    
-    /**
-     * The image identifier.
-     *
-     * @var string
-     */
-    public $image_id;
-    
-    /**
-     * Images source - a folder
-     *
-     * @var string
-     */
-    public $images_folder;
+    public $images_source;
     
     /**
      * The folder.
@@ -81,21 +67,17 @@ class CreateImageFeaturesRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Initializes a new instance of the CreateImageFeaturesRequest class.
+     * Initializes a new instance of the CreateWebSiteImageFeaturesRequest class.
      *  
      * @param string $search_context_id The search context identifier.
-     * @param string $image_data Input image
-     * @param string $image_id The image identifier.
-     * @param string $images_folder Images source - a folder
+     * @param string $images_source Images source - a web page
      * @param string $folder The folder.
      * @param string $storage The storage.
      */
-    public function __construct($search_context_id, $image_data = null, $image_id = null, $images_folder = null, $folder = null, $storage = null)             
+    public function __construct($search_context_id, $images_source, $folder = null, $storage = null)             
     {
         $this->search_context_id = $search_context_id;
-        $this->image_data = $image_data;
-        $this->image_id = $image_id;
-        $this->images_folder = $images_folder;
+        $this->images_source = $images_source;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -122,65 +104,23 @@ class CreateImageFeaturesRequest extends ImagingRequest
     }
     
     /**
-     * Input image
+     * Images source - a web page
      *
      * @return string
      */
-    public function get_image_data()
+    public function get_images_source()
     {
-        return $this->image_data;
+        return $this->images_source;
     }
 
     /**
-     * Input image
+     * Images source - a web page
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_image_data($value)
+    public function set_images_source($value)
     {
-        $this->image_data = $value;
-        return $this;
-    }
-    
-    /**
-     * The image identifier.
-     *
-     * @return string
-     */
-    public function get_image_id()
-    {
-        return $this->image_id;
-    }
-
-    /**
-     * The image identifier.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_image_id($value)
-    {
-        $this->image_id = $value;
-        return $this;
-    }
-    
-    /**
-     * Images source - a folder
-     *
-     * @return string
-     */
-    public function get_images_folder()
-    {
-        return $this->images_folder;
-    }
-
-    /**
-     * Images source - a folder
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_images_folder($value)
-    {
-        $this->images_folder = $value;
+        $this->images_source = $value;
         return $this;
     }
     
@@ -235,10 +175,14 @@ class CreateImageFeaturesRequest extends ImagingRequest
     {
         // verify the required parameter 'search_context_id' is set
         if ($this->search_context_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $search_context_id when calling createImageFeatures');
+            throw new \InvalidArgumentException('Missing the required parameter $search_context_id when calling createWebSiteImageFeatures');
+        }
+        // verify the required parameter 'images_source' is set
+        if ($this->images_source === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $images_source when calling createWebSiteImageFeatures');
         }
 
-        $resourcePath = '/imaging/ai/imageSearch/{searchContextId}/features';
+        $resourcePath = '/imaging/ai/imageSearch/{searchContextId}/features/web';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -251,19 +195,9 @@ class CreateImageFeaturesRequest extends ImagingRequest
         }
 
         // query params
-        if ($this->image_id !== null) {
-            $localName = lcfirst('imageId');
-            $localValue = is_bool($this->image_id) ? ($this->image_id ? 'true' : 'false') : $this->image_id;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
-        if ($this->images_folder !== null) {
-            $localName = lcfirst('imagesFolder');
-            $localValue = is_bool($this->images_folder) ? ($this->images_folder ? 'true' : 'false') : $this->images_folder;
+        if ($this->images_source !== null) {
+            $localName = lcfirst('imagesSource');
+            $localValue = is_bool($this->images_source) ? ($this->images_source ? 'true' : 'false') : $this->images_source;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -294,16 +228,12 @@ class CreateImageFeaturesRequest extends ImagingRequest
     
         $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
-        // form params
-        if ($this->image_data !== null) {
-            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
-        }
         // body params
         $httpBody = null;
 
         $headers = $this->selectHeaders(
             ['application/json'],
-            ['multipart/form-data']
+            ['application/json']
         );
         
         $httpInfo = array(
