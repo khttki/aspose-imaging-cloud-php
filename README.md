@@ -75,13 +75,13 @@ Detalied official documentation can be found at the [following link](https://doc
 ## Getting Started
 1. **Sign Up**. Before you begin, you need to sign up for an account on our [Dashboard](https://dashboard.aspose.cloud/) and retrieve your [credentials](https://dashboard.aspose.cloud/#/apps).
 2. **Minimum requirements**. This SDK requires [PHP 5.6 or later](https://www.php.net/releases/).
-3. **Install Aspose.Imaging Cloud PHP SDK**. Please, add the following [Packagist package](https://packagist.org/packages/aspose/imaging-sdk-php) to your project.
+3. **Install Aspose.Imaging Cloud PHP SDK**. Please, add the following [Packagist package](https://packagist.org/packages/aspose/aspose-imaging-cloud) to your project.
 
 Please, add the following  to your composer.json as a dependency.
 ```json
 {
     "require": {
-        "aspose/imaging-sdk-php": ">=19.12"
+        "aspose/aspose-imaging-cloud": ">=19.12"
     }
 }
 ```
