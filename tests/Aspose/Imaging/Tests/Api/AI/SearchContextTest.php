@@ -90,6 +90,8 @@ class SearchContextTest extends TestImagingAiBase
             {
                 $exceptionThrown = true;
             }
+			
+			$this->searchContextId = null;
 
             $this->assertTrue($exceptionThrown);
         });
@@ -255,6 +257,29 @@ class SearchContextTest extends TestImagingAiBase
                     $this->searchContextId, self::$originalDataFolder . "/FindSimilar/3.jpg", null, self::$testStorage))->wait();
 
             $this->assertRegExp('/\b3\\.jpg\b/', $response->getImageId());
+            $this->assertGreaterThan(0, count($response->getFeatures()));
+        });
+    }
+
+    /**
+     * Tests image features extraction and addition from website
+     *
+     * @test
+     *
+     * @return void
+     */
+    public function extractAndAddImageFeaturesFromWebsiteTest()
+    {
+        $this->runTestWithLogging("ExtractAndAddImageFeaturesFromWebsiteTest", function ()
+        {
+            $image_source_url = urlencode("https://www.f1news.ru/interview/hamilton/140909.shtml");
+            self::$imagingApi->createWebSiteImageFeatures(new Requests\CreateWebSiteImageFeaturesRequest($this->searchContextId, $image_source_url, null, self::$testStorage));
+
+            $this->waitSearchContextIdle();
+
+            $image_url = urlencode("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg");
+            $response = self::$imagingApi->getImageFeaturesAsync(new Requests\GetImageFeaturesRequest($this->searchContextId, $image_url, null, self::$testStorage))->wait();
+
             $this->assertGreaterThan(0, count($response->getFeatures()));
         });
     }
