@@ -53,7 +53,7 @@ class CreateDeskewedImageRequest extends ImagingRequest
     public $resize_proportionally;
     
     /**
-     * background color
+     * Background color
      *
      * @var string
      */
@@ -78,7 +78,7 @@ class CreateDeskewedImageRequest extends ImagingRequest
      *  
      * @param string $image_data Input image
      * @param bool $resize_proportionally Resize proportionally
-     * @param string $bk_color background color
+     * @param string $bk_color Background color
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image)
      * @param string $storage Your Aspose Cloud Storage name.
      */
@@ -134,7 +134,7 @@ class CreateDeskewedImageRequest extends ImagingRequest
     }
     
     /**
-     * background color
+     * Background color
      *
      * @return string
      */
@@ -144,7 +144,7 @@ class CreateDeskewedImageRequest extends ImagingRequest
     }
 
     /**
-     * background color
+     * Background color
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */

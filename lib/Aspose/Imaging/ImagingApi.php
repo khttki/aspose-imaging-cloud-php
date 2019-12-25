@@ -464,7 +464,7 @@ class ImagingApi
     }
     
     /**
-     * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\CreateDeskewedImageRequest $request Request object for operation
      *
@@ -489,7 +489,7 @@ class ImagingApi
     }
 
     /**
-     * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\CreateDeskewedImageRequest $request Request object for operation
