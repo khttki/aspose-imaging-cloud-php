@@ -101,7 +101,7 @@ class DeskewApiTest extends ApiTester
                 "Input image: " . $name . "; Output format: " . $formatExtension . "; ResizeProportionally: " . $resizeProportionally . "; BkColor: " . $bkColor,
                 $name,
                 function () use ($name, $formatExtension, $resizeProportionally, $bkColor, $folder, $storage) {
-                    $request = new Requests\DeskewImageRequest($name, $formatExtension, $resizeProportionally, $bkColor, $folder, $storage);
+                    $request = new Requests\DeskewImageRequest($name, $resizeProportionally, $bkColor, $folder, $storage);
                     return self::$imagingApi->deskewImageAsync($request)->wait();
                 },
                 function ($originalProperties, $resultProperties, $resultStream) {
@@ -148,7 +148,7 @@ class DeskewApiTest extends ApiTester
                 $name,
                 $outName,
                 function ($inputStream, $outPath) use ($formatExtension, $resizeProportionally, $bkColor, $storage) {
-                    $request = new Requests\CreateDeskewedImageRequest($inputStream, $formatExtension, $resizeProportionally, $bkColor, $outPath, $storage);
+                    $request = new Requests\CreateDeskewedImageRequest($inputStream, $resizeProportionally, $bkColor, $outPath, $storage);
                     return self::$imagingApi->createDeskewedImageAsync($request)->wait();
                 },
                 function ($originalProperties, $resultProperties, $resultStream) {
