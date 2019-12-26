@@ -90,6 +90,8 @@ class SearchContextTest extends TestImagingAiBase
             {
                 $exceptionThrown = true;
             }
+			
+			$this->searchContextId = null;
 
             $this->assertTrue($exceptionThrown);
         });
