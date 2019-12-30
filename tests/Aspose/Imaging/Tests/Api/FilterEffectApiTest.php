@@ -96,10 +96,10 @@ class FilterEffectApiTest extends ApiTester
                 foreach ($formatsToExport as $format) {
                     $this->getRequestTestInternal(
                         "FilterEffectTest",
-                        "Input image: " . $name . "; Output format: " . $format . "; Filter type: " . $filter->filterType,
+                        "Input image: " . $name . "; Output format: " . isset($format)? $format : "null" . "; Filter type: " . $filter->filterType,
                         $name,
                         function () use ($name, $format, $filter, $folder, $storage) {
-                            $request = new Requests\FilterEffectImageRequest($name, $format, $filter->filterType, $filter->filterProperties, $folder, $storage);
+                            $request = new Requests\FilterEffectImageRequest($name, $filter->filterType, $filter->filterProperties, $format, $folder, $storage);
                             return self::$imagingApi->filterEffectImageAsync($request)->wait();
                         },
                         function ($originalProperties, $resultProperties, $resultStream) {

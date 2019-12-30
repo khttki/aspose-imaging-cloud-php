@@ -48,19 +48,19 @@ class CropApiTest extends ApiTester
     public function exportOptionsProvider()
     {
         return self::$extendedTests ? [
-            [".bmp", true],  [".bmp", false], 
-            [".dicom", true], [".dicom", false], 
+            [".bmp", true, [null]],  [".bmp", false, [null]],
+            [".dicom", true, [null]], [".dicom", false, [null]],
             /* TODO: enable after IMAGINGCLOUD-51 is resolved
-            [".gif", true], [".gif", false], 
+            [".gif", true, [null]], [".gif", false, [null]],
             */
-            [".j2k", true], [".j2k", false],
-            [".png", true], [".png", false],
-            [".psd", true], [".psd", false],
-            [".jpg", true], [".jpg", false],
-            [".tiff", true], [".tiff", false],
-            [".webp", true], [".webp", false]
+            [".j2k", true, [null]], [".j2k", false, [null]],
+            [".png", true, [null]], [".png", false, [null]],
+            [".psd", true, [null]], [".psd", false, [null]],
+            [".jpg", true, [null]], [".jpg", false, [null]],
+            [".tiff", true, [null]], [".tiff", false, [null]],
+            [".webp", true, [null]], [".webp", false, [null]]
         ] : [
-            [".jpg", true], [".jpg", false],
+            [".jpg", true, [null]], [".jpg", false, [null]],
         ];
     }
 
@@ -118,7 +118,7 @@ class CropApiTest extends ApiTester
                     $name,
                     function() use ($name, $format, $x, $y, $width, $height, $folder, $storage)
                     {
-                        $request = new Requests\CropImageRequest($name, $format, $x, $y, $width, $height, $folder, $storage);
+                        $request = new Requests\CropImageRequest($name, $x, $y, $width, $height, $format, $folder, $storage);
                         return self::$imagingApi->cropImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)
@@ -177,17 +177,17 @@ class CropApiTest extends ApiTester
 
             foreach ($formatsToExport as $format)
             {
-                $outName = $name . "_crop." . $format;
+                $outName = $name . "_crop." . isset($format) ? $format : $formatExtension;
 
                 $this->postRequestTestInternal(
                     "createCroppedImageTest", 
                     $saveResultToStorage,
-                    "Input image: " . $name . "; Output format: " . $format . "; Width: " . $width . "; Height: " . $height . "; X: ". $x . "; Y: " . $y,
+                    "Input image: " . $name . "; Output format: " . isset($format) ? $format : "null" . "; Width: " . $width . "; Height: " . $height . "; X: ". $x . "; Y: " . $y,
                     $name,
                     $outName,
                     function($inputStream, $outPath) use ($format, $x, $y, $width, $height, $storage)
                     {
-                        $request = new Requests\CreateCroppedImageRequest($inputStream, $format, $x, $y, $width, $height, $outPath, $storage);
+                        $request = new Requests\CreateCroppedImageRequest($inputStream, $x, $y, $width, $height, $format, $outPath, $storage);
                         return self::$imagingApi->createCroppedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($width, $height)

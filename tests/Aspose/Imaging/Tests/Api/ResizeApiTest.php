@@ -116,7 +116,7 @@ class ResizeApiTest extends ApiTester
                     $name,
                     function() use ($name, $format, $newWidth, $newHeight, $folder, $storage)
                     {
-                        $request = new Requests\ResizeImageRequest($name, $format, $newWidth, $newHeight, $folder, $storage);
+                        $request = new Requests\ResizeImageRequest($name, $newWidth, $newHeight, $format, $folder, $storage);
                         return self::$imagingApi->resizeImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
@@ -183,7 +183,7 @@ class ResizeApiTest extends ApiTester
                     $outName,
                     function($inputStream, $outPath) use ($format, $newWidth, $newHeight, $storage)
                     {
-                        $request = new Requests\CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight, $outPath, $storage);
+                        $request = new Requests\CreateResizedImageRequest($inputStream, $newWidth, $newHeight,$format, $outPath, $storage);
                         return self::$imagingApi->createResizedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
