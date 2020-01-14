@@ -49,7 +49,6 @@ class DeskewApiTest extends ApiTester
     {
         return self::$extendedTests ? [
             [".bmp", true, true, null], [".bmp", false, false, "green"],
-            [".dicom", true, true, null], [".dicom", false, true, null],
             /* TODO: enable after IMAGINGCLOUD-51 is resolved
             [".gif", true, true, null], [".gif", false, true, null],
             */
@@ -58,9 +57,12 @@ class DeskewApiTest extends ApiTester
             [".psd", true, true, null], [".psd", false, true, null],
             [".jpg", true, true, null], [".jpg", false, true, null],
             [".tiff", true, true, null], [".tiff", false, true, null],
-            [".webp", true, true, null], [".webp", false, true, null],
+            [".webp", true, true, null], [".webp", false, true, null]
+            /*todo: enable after those formats save is implemented
+            [".dicom", true, true, null], [".dicom", false, true, null],
             [".dng", true, true, null], [".dng", false, true, null],
             [".djvu", true, true, null], [".djvu", false, true, null]
+            */
         ] : [
             [".jpg", true, true, null], [".jpg", false, true, null],
         ];
