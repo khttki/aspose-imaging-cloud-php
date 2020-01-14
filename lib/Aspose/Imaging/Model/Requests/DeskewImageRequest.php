@@ -39,7 +39,7 @@ use \Aspose\Imaging\Model\Requests\ImagingRequest;
 class DeskewImageRequest extends ImagingRequest
 {
     /**
-     * Filename of an image.
+     * Image file name.
      *
      * @var string
      */
@@ -76,7 +76,7 @@ class DeskewImageRequest extends ImagingRequest
     /**
      * Initializes a new instance of the DeskewImageRequest class.
      *  
-     * @param string $name Filename of an image.
+     * @param string $name Image file name.
      * @param bool $resize_proportionally Resize proportionally
      * @param string $bk_color Background color
      * @param string $folder Folder
@@ -92,7 +92,7 @@ class DeskewImageRequest extends ImagingRequest
     }
 
     /**
-     * Filename of an image.
+     * Image file name.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class DeskewImageRequest extends ImagingRequest
     }
 
     /**
-     * Filename of an image.
+     * Image file name.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
