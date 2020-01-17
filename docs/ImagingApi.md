@@ -1542,7 +1542,7 @@ __construct(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. |
+ **name** | **string**| Image file name. |
  **resize_proportionally** | **bool**| Resize proportionally |
  **bk_color** | **string**| Background color | [optional]
  **folder** | **string**| Folder | [optional]
