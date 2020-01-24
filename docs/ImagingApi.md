@@ -294,6 +294,48 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createdeskewedimage"></a>
+# **createDeskewedImage**
+> createDeskewedImage($createDeskewedImageRequest)
+
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="createdeskewedimageasync"></a>
+# **createDeskewedImageAsync**
+> createDeskewedImageAsync($createDeskewedImageRequest)
+
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateDeskewedImageRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $resize_proportionally, 
+    $bk_color, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **resize_proportionally** | **bool**| Resize proportionally |
+ **bk_color** | **string**| Background color | [optional]
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createfolder"></a>
 # **createFolder**
 > createFolder($createFolderRequest)
@@ -1462,6 +1504,48 @@ Name | Type | Description  | Notes
  **search_context_id** | **string**| Search context identifier. |
  **image_id** | **string**| Image identifier. |
  **folder** | **string**| Folder. | [optional]
+ **storage** | **string**| Storage | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="deskewimage"></a>
+# **deskewImage**
+> deskewImage($deskewImageRequest)
+
+Deskew an existing image.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="deskewimageasync"></a>
+# **deskewImageAsync**
+> deskewImageAsync($deskewImageRequest)
+
+Deskew an existing image.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **DeskewImageRequest** Parameters
+```php
+__construct(
+    $name, 
+    $resize_proportionally, 
+    $bk_color, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. |
+ **resize_proportionally** | **bool**| Resize proportionally |
+ **bk_color** | **string**| Background color | [optional]
+ **folder** | **string**| Folder | [optional]
  **storage** | **string**| Storage | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
