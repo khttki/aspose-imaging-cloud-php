@@ -1,0 +1,20 @@
+{
+  "name": "aspose/aspose-imaging-cloud-examples",
+  "require": {
+    "aspose/aspose-imaging-cloud": "19.12",
+    "ext-json": "*"
+  },
+  "config": {
+    "platform": {
+      "php": "5.6.39"
+    }
+  },
+  "require-dev": {
+    "aspose/aspose-imaging-cloud": "19.12"
+  },
+  "autoload": {
+    "psr-0": {
+      "Aspose": ["lib/"]
+    }
+  }
+}
