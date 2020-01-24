@@ -122,8 +122,8 @@ class DeskewApiTest extends ApiTester
      *
      * @param string $formatExtension Format extension to search for input images in the test folder.
      * @param bool $saveResultToStorage If result should be saved to storage.
-     * @param $resizeProportionally Resize proportionally
-     * @param $bkColor Background color
+     * @param bool $resizeProportionally Resize proportionally
+     * @param string $bkColor Background color
      * @return void
      */
     public function createDeskewedImageTest($formatExtension, $saveResultToStorage, $resizeProportionally, $bkColor)
