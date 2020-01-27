@@ -2,7 +2,7 @@
     "description":     "Aspose.Imaging Cloud PHP SDK",
     "name":         "aspose/aspose-imaging-cloud",
     "type":         "library",
-    "version":         "19.12",
+    "version":         "20.1",
     "keywords" :     ["aspose", "imaging", "cloud", "rest", "api", "sdk", "image", "bmp", "dicom", "dng", "djvu", "djv", "emf", "gif", "jpg", "jpe", "jpeg", "jpeg2000", "jp2", "jpx", "jpm", "j2k", "odg", "otg", "png", "tiff", "tif", "webp", "wmf", "cdr", "cmx", "pdf", "svg", "reverse", "search"],
     "license":         "MIT",
     "homepage": "https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-php",
