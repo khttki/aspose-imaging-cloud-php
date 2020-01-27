@@ -46,18 +46,18 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
     public $image_data;
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @var string
-     */
-    public $format;
-    
-    /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
      *
      * @var string
      */
     public $method;
+    
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @var string
+     */
+    public $format;
     
     /**
      * Path to updated file (if this is empty, response contains streamed image).
@@ -77,16 +77,16 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
      * Initializes a new instance of the CreateRotateFlippedImageRequest class.
      *  
      * @param string $image_data Input image
-     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($image_data, $format, $method, $out_path = null, $storage = null)             
+    public function __construct($image_data, $method, $format = null, $out_path = null, $storage = null)             
     {
         $this->image_data = $image_data;
-        $this->format = $format;
         $this->method = $method;
+        $this->format = $format;
         $this->out_path = $out_path;
         $this->storage = $storage;
     }
@@ -113,27 +113,6 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
     }
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return string
-     */
-    public function get_format()
-    {
-        return $this->format;
-    }
-
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_format($value)
-    {
-        $this->format = $value;
-        return $this;
-    }
-    
-    /**
      * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
      *
      * @return string
@@ -151,6 +130,27 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
     public function set_method($value)
     {
         $this->method = $value;
+        return $this;
+    }
+    
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return string
+     */
+    public function get_format()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_format($value)
+    {
+        $this->format = $value;
         return $this;
     }
     
@@ -207,10 +207,6 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
         if ($this->image_data === null) {
             throw new \InvalidArgumentException('Missing the required parameter $image_data when calling createRotateFlippedImage');
         }
-        // verify the required parameter 'format' is set
-        if ($this->format === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $format when calling createRotateFlippedImage');
-        }
         // verify the required parameter 'method' is set
         if ($this->method === null) {
             throw new \InvalidArgumentException('Missing the required parameter $method when calling createRotateFlippedImage');
@@ -224,9 +220,9 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
     
 
         // query params
-        if ($this->format !== null) {
-            $localName = lcfirst('format');
-            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
+        if ($this->method !== null) {
+            $localName = lcfirst('method');
+            $localValue = is_bool($this->method) ? ($this->method ? 'true' : 'false') : $this->method;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -234,9 +230,9 @@ class CreateRotateFlippedImageRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->method !== null) {
-            $localName = lcfirst('method');
-            $localValue = is_bool($this->method) ? ($this->method ? 'true' : 'false') : $this->method;
+        if ($this->format !== null) {
+            $localName = lcfirst('format');
+            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

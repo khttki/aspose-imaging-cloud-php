@@ -46,13 +46,6 @@ class FilterEffectImageRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @var string
-     */
-    public $format;
-    
-    /**
      * Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing).
      *
      * @var string
@@ -65,6 +58,13 @@ class FilterEffectImageRequest extends ImagingRequest
      * @var \Aspose\Imaging\Model\FilterPropertiesBase
      */
     public $filter_properties;
+    
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @var string
+     */
+    public $format;
     
     /**
      * Folder with image to process.
@@ -84,18 +84,18 @@ class FilterEffectImageRequest extends ImagingRequest
      * Initializes a new instance of the FilterEffectImageRequest class.
      *  
      * @param string $name Filename of an image.
-     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $filter_type Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing).
      * @param \Aspose\Imaging\Model\FilterPropertiesBase $filter_properties Filter properties.
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $format, $filter_type, $filter_properties, $folder = null, $storage = null)             
+    public function __construct($name, $filter_type, $filter_properties, $format = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
-        $this->format = $format;
         $this->filter_type = $filter_type;
         $this->filter_properties = $filter_properties;
+        $this->format = $format;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -118,27 +118,6 @@ class FilterEffectImageRequest extends ImagingRequest
     public function set_name($value)
     {
         $this->name = $value;
-        return $this;
-    }
-    
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return string
-     */
-    public function get_format()
-    {
-        return $this->format;
-    }
-
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_format($value)
-    {
-        $this->format = $value;
         return $this;
     }
     
@@ -181,6 +160,27 @@ class FilterEffectImageRequest extends ImagingRequest
     public function set_filter_properties($value)
     {
         $this->filter_properties = $value;
+        return $this;
+    }
+    
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return string
+     */
+    public function get_format()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_format($value)
+    {
+        $this->format = $value;
         return $this;
     }
     
@@ -237,10 +237,6 @@ class FilterEffectImageRequest extends ImagingRequest
         if ($this->name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $name when calling filterEffectImage');
         }
-        // verify the required parameter 'format' is set
-        if ($this->format === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $format when calling filterEffectImage');
-        }
         // verify the required parameter 'filter_type' is set
         if ($this->filter_type === null) {
             throw new \InvalidArgumentException('Missing the required parameter $filter_type when calling filterEffectImage');
@@ -263,9 +259,9 @@ class FilterEffectImageRequest extends ImagingRequest
         }
 
         // query params
-        if ($this->format !== null) {
-            $localName = lcfirst('format');
-            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
+        if ($this->filter_type !== null) {
+            $localName = lcfirst('filterType');
+            $localValue = is_bool($this->filter_type) ? ($this->filter_type ? 'true' : 'false') : $this->filter_type;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -273,9 +269,9 @@ class FilterEffectImageRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->filter_type !== null) {
-            $localName = lcfirst('filterType');
-            $localValue = is_bool($this->filter_type) ? ($this->filter_type ? 'true' : 'false') : $this->filter_type;
+        if ($this->format !== null) {
+            $localName = lcfirst('format');
+            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
