@@ -46,13 +46,6 @@ class ResizeImageRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @var string
-     */
-    public $format;
-    
-    /**
      * New width.
      *
      * @var int
@@ -65,6 +58,13 @@ class ResizeImageRequest extends ImagingRequest
      * @var int
      */
     public $new_height;
+    
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @var string
+     */
+    public $format;
     
     /**
      * Folder with image to process.
@@ -84,18 +84,18 @@ class ResizeImageRequest extends ImagingRequest
      * Initializes a new instance of the ResizeImageRequest class.
      *  
      * @param string $name Filename of an image.
-     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param int $new_width New width.
      * @param int $new_height New height.
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $format, $new_width, $new_height, $folder = null, $storage = null)             
+    public function __construct($name, $new_width, $new_height, $format = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
-        $this->format = $format;
         $this->new_width = $new_width;
         $this->new_height = $new_height;
+        $this->format = $format;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -118,27 +118,6 @@ class ResizeImageRequest extends ImagingRequest
     public function set_name($value)
     {
         $this->name = $value;
-        return $this;
-    }
-    
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return string
-     */
-    public function get_format()
-    {
-        return $this->format;
-    }
-
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_format($value)
-    {
-        $this->format = $value;
         return $this;
     }
     
@@ -181,6 +160,27 @@ class ResizeImageRequest extends ImagingRequest
     public function set_new_height($value)
     {
         $this->new_height = $value;
+        return $this;
+    }
+    
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return string
+     */
+    public function get_format()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_format($value)
+    {
+        $this->format = $value;
         return $this;
     }
     
@@ -237,10 +237,6 @@ class ResizeImageRequest extends ImagingRequest
         if ($this->name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $name when calling resizeImage');
         }
-        // verify the required parameter 'format' is set
-        if ($this->format === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $format when calling resizeImage');
-        }
         // verify the required parameter 'new_width' is set
         if ($this->new_width === null) {
             throw new \InvalidArgumentException('Missing the required parameter $new_width when calling resizeImage');
@@ -263,16 +259,6 @@ class ResizeImageRequest extends ImagingRequest
         }
 
         // query params
-        if ($this->format !== null) {
-            $localName = lcfirst('format');
-            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
-        // query params
         if ($this->new_width !== null) {
             $localName = lcfirst('newWidth');
             $localValue = is_bool($this->new_width) ? ($this->new_width ? 'true' : 'false') : $this->new_width;
@@ -286,6 +272,16 @@ class ResizeImageRequest extends ImagingRequest
         if ($this->new_height !== null) {
             $localName = lcfirst('newHeight');
             $localValue = is_bool($this->new_height) ? ($this->new_height ? 'true' : 'false') : $this->new_height;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->format !== null) {
+            $localName = lcfirst('format');
+            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

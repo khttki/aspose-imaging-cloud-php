@@ -464,6 +464,60 @@ class ImagingApi
     }
     
     /**
+     * Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateDeskewedImageRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function createDeskewedImage($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateDeskewedImageRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDeskewedImageAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Create the folder
      *
      * @param \Aspose\Imaging\Model\Requests\CreateFolderRequest $request Request object for operation
@@ -1853,6 +1907,60 @@ class ImagingApi
         $isBinary = true;
         $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'DELETE');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Deskew an existing image.
+     *
+     * @param \Aspose\Imaging\Model\Requests\DeskewImageRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function deskewImage($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Deskew an existing image.
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\DeskewImageRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deskewImageAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
         $options = $this->createHttpClientOptions();
 
         return $this->client

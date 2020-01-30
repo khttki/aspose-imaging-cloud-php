@@ -48,19 +48,19 @@ class ResizeApiTest extends ApiTester
     public function exportOptionsProvider()
     {
         return self::$extendedTests ? [
-            [".bmp", true],  [".bmp", false], 
+            [".bmp", true, [null]],  [".bmp", false, [null]],
             [".dicom", true], [".dicom", false], 
             /* TODO: enable after IMAGINGCLOUD-51 is resolved
             [".gif", true], [".gif", false], 
             */
-            [".j2k", true], [".j2k", false],
-            [".png", true], [".png", false],
-            [".psd", true], [".psd", false],
-            [".jpg", true], [".jpg", false],
-            [".tiff", true], [".tiff", false],
-            [".webp", true], [".webp", false]
+            [".j2k", true, [null]], [".j2k", false, [null]],
+            [".png", true, [null]], [".png", false, [null]],
+            [".psd", true, [null]], [".psd", false, [null]],
+            [".jpg", true, [null]], [".jpg", false, [null]],
+            [".tiff", true, [null]], [".tiff", false, [null]],
+            [".webp", true, [null]], [".webp", false, [null]]
         ] : [
-            [".jpg", true], [".jpg", false],
+            [".jpg", true, [null]], [".jpg", false, [null]],
         ];
     }
 
@@ -116,7 +116,7 @@ class ResizeApiTest extends ApiTester
                     $name,
                     function() use ($name, $format, $newWidth, $newHeight, $folder, $storage)
                     {
-                        $request = new Requests\ResizeImageRequest($name, $format, $newWidth, $newHeight, $folder, $storage);
+                        $request = new Requests\ResizeImageRequest($name, $newWidth, $newHeight, $format, $folder, $storage);
                         return self::$imagingApi->resizeImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)
@@ -183,7 +183,7 @@ class ResizeApiTest extends ApiTester
                     $outName,
                     function($inputStream, $outPath) use ($format, $newWidth, $newHeight, $storage)
                     {
-                        $request = new Requests\CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight, $outPath, $storage);
+                        $request = new Requests\CreateResizedImageRequest($inputStream, $newWidth, $newHeight,$format, $outPath, $storage);
                         return self::$imagingApi->createResizedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream) use ($newWidth, $newHeight)

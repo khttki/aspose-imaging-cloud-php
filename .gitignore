@@ -2,6 +2,7 @@ vendor/
 test-reports/
 .vs/
 .vscode/
+.idea/
 composer.lock
 .swagger-codegen-ignore
 .php_cs.cache

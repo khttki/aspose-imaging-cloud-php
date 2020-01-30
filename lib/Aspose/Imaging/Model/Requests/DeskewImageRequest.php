@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="RotateFlipImageRequest.php">
+ * <copyright company="Aspose" file="DeskewImageRequest.php">
  *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,65 +34,65 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for rotateFlipImage operation.
+ * Request model for deskewImage operation.
  */
-class RotateFlipImageRequest extends ImagingRequest
+class DeskewImageRequest extends ImagingRequest
 {
     /**
-     * Filename of an image.
+     * Image file name.
      *
      * @var string
      */
     public $name;
     
     /**
-     * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     * Resize proportionally
+     *
+     * @var bool
+     */
+    public $resize_proportionally;
+    
+    /**
+     * Background color
      *
      * @var string
      */
-    public $method;
+    public $bk_color;
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @var string
-     */
-    public $format;
-    
-    /**
-     * Folder with image to process.
+     * Folder
      *
      * @var string
      */
     public $folder;
     
     /**
-     * Your Aspose Cloud Storage name.
+     * Storage
      *
      * @var string
      */
     public $storage;
     
     /**
-     * Initializes a new instance of the RotateFlipImageRequest class.
+     * Initializes a new instance of the DeskewImageRequest class.
      *  
-     * @param string $name Filename of an image.
-     * @param string $method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
-     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     * @param string $folder Folder with image to process.
-     * @param string $storage Your Aspose Cloud Storage name.
+     * @param string $name Image file name.
+     * @param bool $resize_proportionally Resize proportionally
+     * @param string $bk_color Background color
+     * @param string $folder Folder
+     * @param string $storage Storage
      */
-    public function __construct($name, $method, $format = null, $folder = null, $storage = null)             
+    public function __construct($name, $resize_proportionally, $bk_color = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
-        $this->method = $method;
-        $this->format = $format;
+        $this->resize_proportionally = $resize_proportionally;
+        $this->bk_color = $bk_color;
         $this->folder = $folder;
         $this->storage = $storage;
     }
 
     /**
-     * Filename of an image.
+     * Image file name.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class RotateFlipImageRequest extends ImagingRequest
     }
 
     /**
-     * Filename of an image.
+     * Image file name.
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -113,49 +113,49 @@ class RotateFlipImageRequest extends ImagingRequest
     }
     
     /**
-     * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     * Resize proportionally
      *
-     * @return string
+     * @return bool
      */
-    public function get_method()
+    public function get_resize_proportionally()
     {
-        return $this->method;
+        return $this->resize_proportionally;
     }
 
     /**
-     * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+     * Resize proportionally
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_method($value)
+    public function set_resize_proportionally($value)
     {
-        $this->method = $value;
+        $this->resize_proportionally = $value;
         return $this;
     }
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     * Background color
      *
      * @return string
      */
-    public function get_format()
+    public function get_bk_color()
     {
-        return $this->format;
+        return $this->bk_color;
     }
 
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     * Background color
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_format($value)
+    public function set_bk_color($value)
     {
-        $this->format = $value;
+        $this->bk_color = $value;
         return $this;
     }
     
     /**
-     * Folder with image to process.
+     * Folder
      *
      * @return string
      */
@@ -165,7 +165,7 @@ class RotateFlipImageRequest extends ImagingRequest
     }
 
     /**
-     * Folder with image to process.
+     * Folder
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -176,7 +176,7 @@ class RotateFlipImageRequest extends ImagingRequest
     }
     
     /**
-     * Your Aspose Cloud Storage name.
+     * Storage
      *
      * @return string
      */
@@ -186,7 +186,7 @@ class RotateFlipImageRequest extends ImagingRequest
     }
 
     /**
-     * Your Aspose Cloud Storage name.
+     * Storage
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
@@ -205,14 +205,14 @@ class RotateFlipImageRequest extends ImagingRequest
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $name when calling rotateFlipImage');
+            throw new \InvalidArgumentException('Missing the required parameter $name when calling deskewImage');
         }
-        // verify the required parameter 'method' is set
-        if ($this->method === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $method when calling rotateFlipImage');
+        // verify the required parameter 'resize_proportionally' is set
+        if ($this->resize_proportionally === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $resize_proportionally when calling deskewImage');
         }
 
-        $resourcePath = '/imaging/{name}/rotateflip';
+        $resourcePath = '/imaging/{name}/deskew';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -225,9 +225,9 @@ class RotateFlipImageRequest extends ImagingRequest
         }
 
         // query params
-        if ($this->method !== null) {
-            $localName = lcfirst('method');
-            $localValue = is_bool($this->method) ? ($this->method ? 'true' : 'false') : $this->method;
+        if ($this->resize_proportionally !== null) {
+            $localName = lcfirst('resizeProportionally');
+            $localValue = is_bool($this->resize_proportionally) ? ($this->resize_proportionally ? 'true' : 'false') : $this->resize_proportionally;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -235,9 +235,9 @@ class RotateFlipImageRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->format !== null) {
-            $localName = lcfirst('format');
-            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
+        if ($this->bk_color !== null) {
+            $localName = lcfirst('bkColor');
+            $localValue = is_bool($this->bk_color) ? ($this->bk_color ? 'true' : 'false') : $this->bk_color;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

@@ -272,11 +272,11 @@ Performs operation asynchronously.
 ```php
 __construct(
     $image_data, 
-    $format, 
     $x, 
     $y, 
     $width, 
     $height, 
+    $format, 
     $out_path, 
     $storage)
 ```
@@ -284,12 +284,54 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_data** | **string**| Input image |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **x** | **int**| X position of start point for cropping rectangle. |
  **y** | **int**| Y position of start point for cropping rectangle. |
  **width** | **int**| Width of cropping rectangle. |
  **height** | **int**| Height of cropping rectangle. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createdeskewedimage"></a>
+# **createDeskewedImage**
+> createDeskewedImage($createDeskewedImageRequest)
+
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="createdeskewedimageasync"></a>
+# **createDeskewedImageAsync**
+> createDeskewedImageAsync($createDeskewedImageRequest)
+
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateDeskewedImageRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $resize_proportionally, 
+    $bk_color, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **resize_proportionally** | **bool**| Resize proportionally |
+ **bk_color** | **string**| Background color | [optional]
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
@@ -1030,9 +1072,9 @@ Performs operation asynchronously.
 ```php
 __construct(
     $image_data, 
-    $format, 
     $new_width, 
     $new_height, 
+    $format, 
     $out_path, 
     $storage)
 ```
@@ -1040,9 +1082,9 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_data** | **string**| Input image |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **new_width** | **int**| New width. |
  **new_height** | **int**| New height. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1074,8 +1116,8 @@ Performs operation asynchronously.
 ```php
 __construct(
     $image_data, 
-    $format, 
     $method, 
+    $format, 
     $out_path, 
     $storage)
 ```
@@ -1083,8 +1125,8 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_data** | **string**| Input image |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1156,7 +1198,6 @@ Performs operation asynchronously.
 ```php
 __construct(
     $image_data, 
-    $format, 
     $new_width, 
     $new_height, 
     $x, 
@@ -1164,6 +1205,7 @@ __construct(
     $rect_width, 
     $rect_height, 
     $rotate_flip_method, 
+    $format, 
     $out_path, 
     $storage)
 ```
@@ -1171,7 +1213,6 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_data** | **string**| Input image |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **new_width** | **int**| New width of the scaled image. |
  **new_height** | **int**| New height of the scaled image. |
  **x** | **int**| X position of start point for cropping rectangle. |
@@ -1179,6 +1220,7 @@ Name | Type | Description  | Notes
  **rect_width** | **int**| Width of cropping rectangle. |
  **rect_height** | **int**| Height of cropping rectangle. |
  **rotate_flip_method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1250,11 +1292,11 @@ Performs operation asynchronously.
 ```php
 __construct(
     $name, 
-    $format, 
     $x, 
     $y, 
     $width, 
     $height, 
+    $format, 
     $folder, 
     $storage)
 ```
@@ -1262,11 +1304,11 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **x** | **int**| X position of start point for cropping rectangle. |
  **y** | **int**| Y position of start point for cropping rectangle. |
  **width** | **int**| Width of cropping rectangle |
  **height** | **int**| Height of cropping rectangle. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1466,6 +1508,48 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="deskewimage"></a>
+# **deskewImage**
+> deskewImage($deskewImageRequest)
+
+Deskew an existing image.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="deskewimageasync"></a>
+# **deskewImageAsync**
+> deskewImageAsync($deskewImageRequest)
+
+Deskew an existing image.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **DeskewImageRequest** Parameters
+```php
+__construct(
+    $name, 
+    $resize_proportionally, 
+    $bk_color, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. |
+ **resize_proportionally** | **bool**| Resize proportionally |
+ **bk_color** | **string**| Background color | [optional]
+ **folder** | **string**| Folder | [optional]
+ **storage** | **string**| Storage | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="downloadfile"></a>
 # **downloadFile**
 > downloadFile($downloadFileRequest)
@@ -1642,9 +1726,9 @@ Performs operation asynchronously.
 ```php
 __construct(
     $name, 
-    $format, 
     $filter_type, 
     $filter_properties, 
+    $format, 
     $folder, 
     $storage)
 ```
@@ -1652,9 +1736,9 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **filter_type** | **string**| Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing). |
  **filter_properties** | [**\Aspose\Imaging\Model\FilterPropertiesBase**](FilterPropertiesBase.md)| Filter properties. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -2786,9 +2870,9 @@ Performs operation asynchronously.
 ```php
 __construct(
     $name, 
-    $format, 
     $new_width, 
     $new_height, 
+    $format, 
     $folder, 
     $storage)
 ```
@@ -2796,9 +2880,9 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **new_width** | **int**| New width. |
  **new_height** | **int**| New height. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -2830,8 +2914,8 @@ Performs operation asynchronously.
 ```php
 __construct(
     $name, 
-    $format, 
     $method, 
+    $format, 
     $folder, 
     $storage)
 ```
@@ -2839,8 +2923,8 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -2946,7 +3030,6 @@ Performs operation asynchronously.
 ```php
 __construct(
     $name, 
-    $format, 
     $new_width, 
     $new_height, 
     $x, 
@@ -2954,6 +3037,7 @@ __construct(
     $rect_width, 
     $rect_height, 
     $rotate_flip_method, 
+    $format, 
     $folder, 
     $storage)
 ```
@@ -2961,7 +3045,6 @@ __construct(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **new_width** | **int**| New width of the scaled image. |
  **new_height** | **int**| New height of the scaled image. |
  **x** | **int**| X position of start point for cropping rectangle. |
@@ -2969,6 +3052,7 @@ Name | Type | Description  | Notes
  **rect_width** | **int**| Width of cropping rectangle. |
  **rect_height** | **int**| Height of cropping rectangle. |
  **rotate_flip_method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 

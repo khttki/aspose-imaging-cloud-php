@@ -46,13 +46,6 @@ class UpdateImageRequest extends ImagingRequest
     public $name;
     
     /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @var string
-     */
-    public $format;
-    
-    /**
      * New width of the scaled image.
      *
      * @var int
@@ -102,6 +95,13 @@ class UpdateImageRequest extends ImagingRequest
     public $rotate_flip_method;
     
     /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @var string
+     */
+    public $format;
+    
+    /**
      * Folder with image to process.
      *
      * @var string
@@ -119,7 +119,6 @@ class UpdateImageRequest extends ImagingRequest
      * Initializes a new instance of the UpdateImageRequest class.
      *  
      * @param string $name Filename of an image.
-     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param int $new_width New width of the scaled image.
      * @param int $new_height New height of the scaled image.
      * @param int $x X position of start point for cropping rectangle.
@@ -127,13 +126,13 @@ class UpdateImageRequest extends ImagingRequest
      * @param int $rect_width Width of cropping rectangle.
      * @param int $rect_height Height of cropping rectangle.
      * @param string $rotate_flip_method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+     * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $folder Folder with image to process.
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $format, $new_width, $new_height, $x, $y, $rect_width, $rect_height, $rotate_flip_method, $folder = null, $storage = null)             
+    public function __construct($name, $new_width, $new_height, $x, $y, $rect_width, $rect_height, $rotate_flip_method, $format = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
-        $this->format = $format;
         $this->new_width = $new_width;
         $this->new_height = $new_height;
         $this->x = $x;
@@ -141,6 +140,7 @@ class UpdateImageRequest extends ImagingRequest
         $this->rect_width = $rect_width;
         $this->rect_height = $rect_height;
         $this->rotate_flip_method = $rotate_flip_method;
+        $this->format = $format;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -163,27 +163,6 @@ class UpdateImageRequest extends ImagingRequest
     public function set_name($value)
     {
         $this->name = $value;
-        return $this;
-    }
-    
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return string
-     */
-    public function get_format()
-    {
-        return $this->format;
-    }
-
-    /**
-     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_format($value)
-    {
-        $this->format = $value;
         return $this;
     }
     
@@ -335,6 +314,27 @@ class UpdateImageRequest extends ImagingRequest
     }
     
     /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return string
+     */
+    public function get_format()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_format($value)
+    {
+        $this->format = $value;
+        return $this;
+    }
+    
+    /**
      * Folder with image to process.
      *
      * @return string
@@ -387,10 +387,6 @@ class UpdateImageRequest extends ImagingRequest
         if ($this->name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $name when calling updateImage');
         }
-        // verify the required parameter 'format' is set
-        if ($this->format === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $format when calling updateImage');
-        }
         // verify the required parameter 'new_width' is set
         if ($this->new_width === null) {
             throw new \InvalidArgumentException('Missing the required parameter $new_width when calling updateImage');
@@ -432,16 +428,6 @@ class UpdateImageRequest extends ImagingRequest
             $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($this->name), $resourcePath);
         }
 
-        // query params
-        if ($this->format !== null) {
-            $localName = lcfirst('format');
-            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
-        }
         // query params
         if ($this->new_width !== null) {
             $localName = lcfirst('newWidth');
@@ -506,6 +492,16 @@ class UpdateImageRequest extends ImagingRequest
         if ($this->rotate_flip_method !== null) {
             $localName = lcfirst('rotateFlipMethod');
             $localValue = is_bool($this->rotate_flip_method) ? ($this->rotate_flip_method ? 'true' : 'false') : $this->rotate_flip_method;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->format !== null) {
+            $localName = lcfirst('format');
+            $localValue = is_bool($this->format) ? ($this->format ? 'true' : 'false') : $this->format;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
