@@ -86,7 +86,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const DefaultStorage = "Imaging-CI";
+    const DefaultStorage = "Local-CI-Linux";
 
     /**
      * The basic export formats
@@ -231,6 +231,7 @@ abstract class ApiTester extends TestCase
     {
         echo "Trying to obtain access creds environment variables.\r\n";
         $onPremise = getenv("OnPremise") === "true";
+        $onPremise = true;
         $appKey = $onPremise ? '' : getenv("AppKey");
         $appSid = $onPremise ? '' : getenv("AppSid");
         $baseUrl = getenv("ApiEndpoint");
@@ -247,7 +248,7 @@ abstract class ApiTester extends TestCase
             echo "Set default API version\r\n";
         }
 
-        $serverAccessPath = ApiTester::LocalTestFolder . ApiTester::ServerAccessFile;
+        $serverAccessPath = "/home/szubov/projects/aspose/aspose-imaging-cloud-php/testdata/serverAccess.json";
         $serverAccessString = null;
         if (file_exists($serverAccessPath))
         {

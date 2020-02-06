@@ -30,8 +30,6 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\ExtractImagePropertiesRequest;
 use Aspose\Imaging\Model\Requests\GetImagePropertiesRequest;
 
@@ -41,16 +39,6 @@ use Aspose\Imaging\Model\Requests\GetImagePropertiesRequest;
  */
 class ImageProperties extends ImagingBase
 {
-
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "PropertiesOfSampleImage.tiff";
-    }
 
     function __construct($imagingApi)
     {
@@ -82,6 +70,16 @@ class ImageProperties extends ImagingBase
         $this->OutputPropertiesToFile("ImageProperties.txt", $imagingResponse);
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "PropertiesOfSampleImage.tiff";
     }
 
     /**

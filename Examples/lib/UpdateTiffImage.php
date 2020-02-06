@@ -30,13 +30,12 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\AppendTiffRequest;
 use Aspose\Imaging\Model\Requests\ConvertTiffToFaxRequest;
 use Aspose\Imaging\Model\Requests\CreateModifiedTiffRequest;
 use Aspose\Imaging\Model\Requests\DownloadFileRequest;
 use Aspose\Imaging\Model\Requests\ModifyTiffRequest;
+use Exception;
 
 
 /**
@@ -44,16 +43,6 @@ use Aspose\Imaging\Model\Requests\ModifyTiffRequest;
  */
 class UpdateTiffImage extends ImagingBase
 {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "TiffSampleImage.tiff";
-    }
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
@@ -96,6 +85,16 @@ class UpdateTiffImage extends ImagingBase
         }
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "TiffSampleImage.tiff";
     }
 
     /**
@@ -157,7 +156,7 @@ class UpdateTiffImage extends ImagingBase
         $postImageTiffRequest = new CreateModifiedTiffRequest($inputStream, $bitDepth, $compression, $resolutionUnit,
             $horizontalResolution, $verticalResolution, $fromScratch, $outPath, $storage);
 
-        echo "Call CreateModifiedTiff with params: compression: ${compression}, esolution unit: ${resolutionUnit}, bit depth: ${bitDepth}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution} " . PHP_EOL;
+        echo "Call CreateModifiedTiff with params: compression: ${compression}, resolution unit: ${resolutionUnit}, bit depth: ${bitDepth}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution} " . PHP_EOL;
 
         try {
             $updatedImage = self::$imagingApi->createModifiedTiff($postImageTiffRequest);

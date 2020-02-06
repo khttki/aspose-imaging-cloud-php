@@ -30,10 +30,9 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\CreateModifiedEmfRequest;
 use Aspose\Imaging\Model\Requests\ModifyEmfRequest;
+use Exception;
 
 
 /**
@@ -41,17 +40,6 @@ use Aspose\Imaging\Model\Requests\ModifyEmfRequest;
  */
 class UpdateEmfImage extends ImagingBase
 {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "UpdateEMFSampleImage.emf";
-    }
-
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
@@ -95,6 +83,16 @@ class UpdateEmfImage extends ImagingBase
         }
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "UpdateEMFSampleImage.emf";
     }
 
     /**

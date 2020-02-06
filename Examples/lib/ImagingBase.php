@@ -39,6 +39,17 @@ use Aspose\Imaging\Model\Requests\UploadFileRequest;
 abstract class ImagingBase
 {
     /**
+     * Aspose.Imaging API
+     *
+     * @var ImagingApi
+     */
+    protected static $imagingApi;
+    /**
+     * The cloud path.
+     */
+    protected $CloudPath = "Examples";
+
+    /**
      * ImagingBase constructor.
      * @param $imagingApi
      */
@@ -46,60 +57,6 @@ abstract class ImagingBase
     {
         self::$imagingApi = $imagingApi;
     }
-
-    /**
-     * Gets the example images folder path
-     * @return string
-     */
-    public static function GetExampleImagesFolder()
-    {
-        return dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Images";
-    }
-
-    /**
-     * Gets the output folder path
-     * @return string
-     */
-    public static function GetOutputFolder()
-    {
-        return dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Output";
-    }
-
-    /**
-     * The cloud path.
-     */
-    protected $CloudPath = "Examples";
-
-    /**
-     * Aspose.Imaging API
-     *
-     * @var ImagingApi
-     */
-    protected static $imagingApi;
-
-
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected abstract function GetSampleImageFileName();
-
-    /**
-     * Gets the name of the modified sample image file.
-     * @param bool $fromRequest If set to true - created from request.
-     * @param string $newFormatExtension The new format extension.
-     *
-     * @return string The name of the modified sample image file.
-     */
-    protected function GetModifiedSampleImageFileName($fromRequest = false, $newFormatExtension = null)
-    {
-        $nameWithNewExtension = $newFormatExtension != null ? substr($this->GetSampleImageFileName(), 0,
-                strrpos($this->GetSampleImageFileName(),
-                    ".") + 1) . $newFormatExtension : $this->GetSampleImageFileName();
-        return $fromRequest ? "ModifiedFromRequest" . $nameWithNewExtension : "Modified" . $nameWithNewExtension;
-    }
-
 
     /**
      * Uploads the example image to cloud.
@@ -112,6 +69,22 @@ abstract class ImagingBase
         $inputImage = file_get_contents(ImagingBase::GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
         $this->UploadImageToCloud($this->GetSampleImageFileName(), $inputImage);
     }
+
+    /**
+     * Gets the example images folder path
+     * @return string
+     */
+    public static function GetExampleImagesFolder()
+    {
+        return dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Images";
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected abstract function GetSampleImageFileName();
 
     /**
      * Uploads the image to cloud.
@@ -128,6 +101,7 @@ abstract class ImagingBase
         echo ($response->getErrors() == null || count($response->getErrors()) == 0) ?
             "Image " . $imageName . " is uploaded to cloud storage" :
             "Uploading errors count: " . count($response->getErrors());
+        echo PHP_EOL;
     }
 
     /**
@@ -143,6 +117,21 @@ abstract class ImagingBase
     }
 
     /**
+     * Gets the name of the modified sample image file.
+     * @param bool $fromRequest If set to true - created from request.
+     * @param string $newFormatExtension The new format extension.
+     *
+     * @return string The name of the modified sample image file.
+     */
+    protected function GetModifiedSampleImageFileName($fromRequest = false, $newFormatExtension = null)
+    {
+        $nameWithNewExtension = $newFormatExtension != null ? substr($this->GetSampleImageFileName(), 0,
+                strrpos($this->GetSampleImageFileName(),
+                    ".") + 1) . $newFormatExtension : $this->GetSampleImageFileName();
+        return $fromRequest ? "ModifiedFromRequest" . $nameWithNewExtension : "Modified" . $nameWithNewExtension;
+    }
+
+    /**
      * Saves the updated image to output folder.
      * @param $imageName string Name of the image.
      * @param $updatedImage string The updated image.
@@ -153,6 +142,15 @@ abstract class ImagingBase
         $path = ImagingBase::GetOutputFolder() . DIRECTORY_SEPARATOR . $imageName;
         file_put_contents($path, $updatedImage);
         echo "Image " . $imageName . " is saved to " . dirname($path);
+    }
+
+    /**
+     * Gets the output folder path
+     * @return string
+     */
+    public static function GetOutputFolder()
+    {
+        return dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Output";
     }
 
     /**
@@ -178,7 +176,7 @@ abstract class ImagingBase
             $properties .= "Byte order: " . $imagingResponse->getTiffProperties()->getByteOrder();
         }
 
-        file_put_contents($fileName, $properties);
+        file_put_contents($path, $properties);
     }
 
     /**

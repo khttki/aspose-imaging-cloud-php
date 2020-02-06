@@ -34,16 +34,10 @@ use Aspose\Imaging\Model\Requests\CreateResizedImageRequest;
 use Aspose\Imaging\Model\Requests\ResizeImageRequest;
 use Exception;
 
-class ResizeImage extends ImagingBase {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-{return "ResizeSampleImage.psd";}
-
-    function __construct($imagingApi) {
+class ResizeImage extends ImagingBase
+{
+    function __construct($imagingApi)
+    {
         parent::__construct($imagingApi);
         $this->PrintHeader("Resize an image example");
     }
@@ -53,8 +47,9 @@ class ResizeImage extends ImagingBase {
      * @constructor
      * @throws ApiException
      */
-    public function ResizeImageFromStorage() {
-echo "Resize an image from cloud storage" . PHP_EOL;
+    public function ResizeImageFromStorage()
+    {
+        echo "Resize an image from cloud storage" . PHP_EOL;
 
         // Upload local image to Cloud Storage
         $this->UploadSampleImageToCloud();
@@ -67,7 +62,9 @@ echo "Resize an image from cloud storage" . PHP_EOL;
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight, $folder, $storage);echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
+        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
+            $folder, $storage);
+        echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
         try {
             $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
@@ -80,12 +77,23 @@ echo "Resize an image from cloud storage" . PHP_EOL;
     }
 
     /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "ResizeSampleImage.psd";
+    }
+
+    /**
      * Resizes the sample image and upload to Cloud Storage
      * @constructor
      * @throws ApiException
      */
-    public function ResizeImageAndUploadToStorage() {
-echo "Resize an image and upload to cloud storage" . PHP_EOL;
+    public function ResizeImageAndUploadToStorage()
+    {
+        echo "Resize an image and upload to cloud storage" . PHP_EOL;
 
         // Upload local image to Cloud Storage
         $this->UploadSampleImageToCloud();
@@ -98,7 +106,9 @@ echo "Resize an image and upload to cloud storage" . PHP_EOL;
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight, $folder, $storage);echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
+        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
+            $folder, $storage);
+        echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
         try {
             $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
@@ -114,8 +124,9 @@ echo "Resize an image and upload to cloud storage" . PHP_EOL;
      * Resize an image. Image data is passed in a request stream.
      * @constructor
      */
-    public function CreateResizedImageFromRequestBody() {
-echo "Resize an image from request body" . PHP_EOL;
+    public function CreateResizedImageFromRequestBody()
+    {
+        echo "Resize an image from request body" . PHP_EOL;
 
         // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Resize
         // for possible output formats
@@ -126,7 +137,9 @@ echo "Resize an image from request body" . PHP_EOL;
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $createResizedImageRequest = new CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight, $outPath, $storage);echo "Call CreateResizedImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
+        $createResizedImageRequest = new CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight,
+            $outPath, $storage);
+        echo "Call CreateResizedImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
         try {
             $updatedImage = self::$imagingApi->createResizedImage($createResizedImageRequest);

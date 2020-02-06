@@ -30,10 +30,9 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\CreateModifiedGifRequest;
 use Aspose\Imaging\Model\Requests\ModifyGifRequest;
+use Exception;
 
 
 /**
@@ -41,16 +40,6 @@ use Aspose\Imaging\Model\Requests\ModifyGifRequest;
  */
 class UpdateGifImage extends ImagingBase
 {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "UpdateGIFSampleImage.gif";
-    }
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
@@ -92,6 +81,16 @@ class UpdateGifImage extends ImagingBase
         }
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "UpdateGIFSampleImage.gif";
     }
 
     /**

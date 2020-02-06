@@ -53,6 +53,7 @@ require_once __DIR__ . '/AI/FindSimilarImages.php';
 
 use Aspose\Imaging\Configuration;
 use Aspose\Imaging\ImagingApi;
+use Exception;
 
 error_reporting(1);
 
@@ -216,9 +217,11 @@ try {
     $findSimilarImages->FindImagesSimilar();
     $findSimilarImages->FindImagesByTag();
     $findSimilarImages->DeleteSearchContext();
-} catch (\Exception $exception) {
+} catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;
+    exit(1);
 }
+exit (0);
 
 function deleteDir($path)
 {
@@ -241,7 +244,7 @@ function processArguments($args, &$appKey, &$appSid, &$baseUrl)
     if (count($errors) == 0)
         return;
 
-    echo("Failed to launch examples: " . PHP_EOL . join(PHP_EOL, $errors));
+    echo("Failed to launch Examples: " . PHP_EOL . join(PHP_EOL, $errors));
     exit(1);
 }
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="UpdateJpeg2000Image.php">
+ * <copyright company="Aspose" file="UpdateBmpImage.php">
  *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -30,58 +30,48 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
+use Aspose\Imaging\Model\Requests\CreateModifiedBmpRequest;
+use Aspose\Imaging\Model\Requests\ModifyBmpRequest;
 use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
-use Aspose\Imaging\Model\Requests\CreateModifiedJpeg2000Request;
-use Aspose\Imaging\Model\Requests\ModifyJpeg2000Request;
 
 
 /**
- *  Update JPEG2000 image example.
+ *  Update BMP image example.
  */
-class UpdateJpeg2000Image extends ImagingBase
+class UpdateBmpImage extends ImagingBase
 {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "UpdateJPEG2000SampleImage.jp2";
-    }
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
-        $this->PrintHeader("Update JPEG2000 image example");
+        $this->PrintHeader("Update BMP image example");
     }
 
     /**
-     * Update parameters of existing JPEG2000 image. The image is saved in the cloud.
+     * Update parameters of a BMP image. image is saved in the cloud.
      * @constructor
      * @throws ApiException
      */
-    public function ModifyJpeg2000FromStorage()
+    public function ModifyBmpFromStorage()
     {
-        echo "Update parameters of a Jpeg2000 image from cloud storage" . PHP_EOL;
+        echo "Update parameters of a BMP image from cloud storage" . PHP_EOL;
 
+        // Upload local image to Cloud Storage
         $this->UploadSampleImageToCloud();
 
-        $codec = "jp2";
-        $comment = "Aspose";
+        $bitsPerPixel = 32;
+        $horizontalResolution = 300;
+        $verticalResolution = 300;
         $fromScratch = null;
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageJpeg2000Request =
-            new ModifyJpeg2000Request($this->GetSampleImageFileName(), $comment, $codec, $fromScratch, $folder,
-                $storage);
+        $request = new ModifyBmpRequest($this->GetSampleImageFileName(), $bitsPerPixel, $horizontalResolution,
+            $verticalResolution, $fromScratch, $folder, $storage);
 
-        echo "Call ModifyJpeg2000 with params: codec: ${codec}, comment: ${comment}" . PHP_EOL;
+        echo "Call ModifyBmp with params: bits per pixel: ${bitsPerPixel}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution}" . PHP_EOL;
 
         try {
-            $updatedImage = self::$imagingApi->modifyJpeg2000($getImageJpeg2000Request);
+            $updatedImage = self::$imagingApi->modifyBmp($request);
             $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
         } catch (Exception $ex) {
             echo $ex->getMessage() . PHP_EOL;
@@ -91,30 +81,40 @@ class UpdateJpeg2000Image extends ImagingBase
     }
 
     /**
-     * Update parameters of existing JPEG2000 image, and upload updated image to Cloud Storage
-     * @constructor
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "UpdateBmpSampleImage.bmp";
+    }
+
+    /**
+     * Update parameters of a BMP image, and upload updated image to Cloud Storage.
      * @throws ApiException
      */
-    public function ModifyJpeg2000AndUploadToStorage()
+    public function ModifyBmpAndUploadToStorage()
     {
-        echo "Update parameters of a Jpeg2000 image and upload to cloud storage" . PHP_EOL;
+        echo "Update parameters of a BMP image and upload to cloud storage" . PHP_EOL;
 
+        // Upload local image to Cloud Storage
         $this->UploadSampleImageToCloud();
 
-        $codec = "jp2";
-        $comment = "Aspose";
+        $bitsPerPixel = 32;
+        $horizontalResolution = 300;
+        $verticalResolution = 300;
         $fromScratch = null;
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageJpeg2000Request =
-            new ModifyJpeg2000Request($this->GetSampleImageFileName(), $comment, $codec, $fromScratch, $folder,
-                $storage);
+        $request = new ModifyBmpRequest($this->GetSampleImageFileName(), $bitsPerPixel, $horizontalResolution,
+            $verticalResolution, $fromScratch, $folder, $storage);
 
-        echo "Call ModifyJpeg2000 with params: codec: ${codec}, comment: ${comment}" . PHP_EOL;
+        echo "Call ModifyBmp with params: bits per pixel: ${bitsPerPixel}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution}" . PHP_EOL;
 
         try {
-            $updatedImage = self::$imagingApi->modifyJpeg2000($getImageJpeg2000Request);
+            $updatedImage = self::$imagingApi->modifyBmp($request);
             $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
         } catch (Exception $ex) {
             echo $ex->getMessage() . PHP_EOL;
@@ -124,28 +124,29 @@ class UpdateJpeg2000Image extends ImagingBase
     }
 
     /**
-     * Update parameters of existing JPEG2000 image. Image data is passed in a request stream
+     * Update parameters of a BMP image. Image data is passed in a request stream
      * @constructor
      */
-    public function CreateModifiedJpeg2000FromRequestBody()
+    public function CreateModifiedBmpFromRequestBody()
     {
-        echo "Update parameters of a Jpeg2000 image from request body" . PHP_EOL;
+        echo "Update parameters of a BMP image from request body" . PHP_EOL;
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
         {
-            $codec = "jp2";
-            $comment = "Aspose";
+            $bitsPerPixel = 32;
+            $horizontalResolution = 300;
+            $verticalResolution = 300;
             $fromScratch = null;
             $outPath = null; // Path to updated file (if this is empty, response contains streamed image)
             $storage = null; // We are using default Cloud Storage
 
-            $postImageJpeg2000Request = new CreateModifiedJpeg2000Request($inputStream, $comment, $codec, $fromScratch,
-                $outPath, $storage);
+            $request = new CreateModifiedBmpRequest($inputStream, $bitsPerPixel, $horizontalResolution,
+                $verticalResolution, $fromScratch, $outPath, $storage);
 
-            echo "Call CreateModifiedJpeg2000 with params: codec: ${codec}, comment: ${comment}" . PHP_EOL;
+            echo "Call CreateModifiedBmp with params: bits per pixel: ${bitsPerPixel}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution}" . PHP_EOL;
 
             try {
-                $updatedImage = self::$imagingApi->createModifiedJpeg2000($postImageJpeg2000Request);
+                $updatedImage = self::$imagingApi->createModifiedBmp($request);
                 $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
             } catch (Exception $ex) {
                 echo $ex->getMessage() . PHP_EOL;

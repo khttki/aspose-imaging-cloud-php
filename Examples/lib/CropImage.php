@@ -30,10 +30,9 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\CreateCroppedImageRequest;
 use Aspose\Imaging\Model\Requests\CropImageRequest;
+use Exception;
 
 
 /**
@@ -41,17 +40,6 @@ use Aspose\Imaging\Model\Requests\CropImageRequest;
  */
 class CropImage extends ImagingBase
 {
-
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "RotateFlipSampleImage.psd";
-    }
-
 
     public function __construct($imagingApi)
     {
@@ -94,6 +82,16 @@ class CropImage extends ImagingBase
 
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "RotateFlipSampleImage.psd";
     }
 
     /**

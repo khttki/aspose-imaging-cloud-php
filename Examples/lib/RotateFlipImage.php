@@ -41,16 +41,6 @@ use Exception;
 class RotateFlipImage extends ImagingBase
 {
 
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "RotateFlipSampleImage.psd";
-    }
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
@@ -90,6 +80,16 @@ class RotateFlipImage extends ImagingBase
         }
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "RotateFlipSampleImage.psd";
     }
 
     /**

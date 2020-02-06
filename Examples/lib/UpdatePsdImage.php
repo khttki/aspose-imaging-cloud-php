@@ -30,10 +30,9 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\CreateModifiedPsdRequest;
 use Aspose\Imaging\Model\Requests\ModifyPsdRequest;
+use Exception;
 
 
 /**
@@ -41,17 +40,6 @@ use Aspose\Imaging\Model\Requests\ModifyPsdRequest;
  */
 class UpdatePsdImage extends ImagingBase
 {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "UpdatePSDSampleImage.psd";
-    }
-
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
@@ -89,6 +77,16 @@ class UpdatePsdImage extends ImagingBase
         }
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "UpdatePSDSampleImage.psd";
     }
 
     /**

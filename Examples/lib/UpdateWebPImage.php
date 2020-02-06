@@ -30,10 +30,9 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
-use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 use Aspose\Imaging\Model\Requests\CreateModifiedWebPRequest;
 use Aspose\Imaging\Model\Requests\ModifyWebPRequest;
+use Exception;
 
 
 /**
@@ -41,17 +40,6 @@ use Aspose\Imaging\Model\Requests\ModifyWebPRequest;
  */
 class UpdateWebPImage extends ImagingBase
 {
-    /**
-     * Gets the name of the example image file.
-     *
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "WEBPSampleImage.webp";
-    }
-
-
     function __construct($imagingApi)
     {
         parent::__construct($imagingApi);
@@ -94,6 +82,16 @@ class UpdateWebPImage extends ImagingBase
         }
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     *
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "WEBPSampleImage.webp";
     }
 
     /**

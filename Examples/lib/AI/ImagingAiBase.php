@@ -43,6 +43,22 @@ use Aspose\Imaging\Model\Requests\UploadFileRequest;
 class ImagingAiBase
 {
     /**
+     * The cloud path.
+     * @var string
+     */
+    protected static $cloudPath = "Examples" . DIRECTORY_SEPARATOR . "AI";
+    /**
+     * Aspose.Imaging API
+     * @var ImagingApi
+     */
+    protected static $imagingApi;
+    /**
+     * The search context ID
+     * @var
+     */
+    protected $searchContextId;
+
+    /**
      * ImagingAiBase constructor.
      * @param $imagingApi
      */
@@ -50,33 +66,6 @@ class ImagingAiBase
     {
         self::$imagingApi = $imagingApi;
     }
-
-    /**
-     * The example images folder path
-     * @return string
-     */
-    protected static function GetExampleImagesFolder()
-    {
-        return dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . "Images" . DIRECTORY_SEPARATOR . "AI";
-    }
-
-    /**
-     * The cloud path.
-     * @var string
-     */
-    protected static $cloudPath = "Examples" . DIRECTORY_SEPARATOR . "AI";
-
-    /**
-     * Aspose.Imaging API
-     * @var ImagingApi
-     */
-    protected static $imagingApi;
-
-    /**
-     * The search context ID
-     * @var
-     */
-    protected $searchContextId;
 
     /**
      * Deletes the image search context
@@ -138,6 +127,21 @@ class ImagingAiBase
     }
 
     /**
+     * Waits the idle
+     * @param $searchContextId string The search context ID
+     * @throws ApiException
+     */
+    private function WaitIdle($searchContextId)
+    {
+        $folder = null; // File will be saved at the root of the storage
+        $storage = null; // We are using default Cloud Storage
+
+        while (self::$imagingApi->getImageSearchStatus(new GetImageSearchStatusRequest($searchContextId, $folder,
+                $storage))->getSearchStatus() != "Idle")
+            sleep(1);
+    }
+
+    /**
      * Update images features in search context
      * @param string $imageName Name of the image
      * @param string $subFolder Name of the subfolder (if a subfolder)
@@ -156,17 +160,11 @@ class ImagingAiBase
     }
 
     /**
-     * Waits the idle
-     * @param $searchContextId string The search context ID
-     * @throws ApiException
+     * The example images folder path
+     * @return string
      */
-    private function WaitIdle($searchContextId)
+    protected static function GetExampleImagesFolder()
     {
-        $folder = null; // File will be saved at the root of the storage
-        $storage = null; // We are using default Cloud Storage
-
-        while (self::$imagingApi->getImageSearchStatus(new GetImageSearchStatusRequest($searchContextId, $folder,
-                $storage))->getSearchStatus() != "Idle")
-            sleep(1);
+        return dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . "Images" . DIRECTORY_SEPARATOR . "AI";
     }
 }
