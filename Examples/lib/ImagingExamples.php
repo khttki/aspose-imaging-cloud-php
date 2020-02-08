@@ -31,6 +31,7 @@ namespace Aspose\Imaging\Examples;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/ImagingBase.php';
 require_once __DIR__ . '/CropImage.php';
+require_once __DIR__ . '/DeskewImage.php';
 require_once __DIR__ . '/ExportImage.php';
 require_once __DIR__ . '/FilterImage.php';
 require_once __DIR__ . '/ImageProperties.php';
@@ -83,6 +84,12 @@ try {
     $cropImage->CropImageFromStorage();
     $cropImage->CropImageAndUploadToStorage();
     $cropImage->CreateCroppedImageFromRequestBody();
+
+    // Deskew an existing image
+    $deskewImage = new DeskewImage($imagingApi);
+    $deskewImage->DeskewImageFromStorage();
+    $deskewImage->DeskewImageAndUploadToStorage();
+    $deskewImage->CreateDeskewedImageFromRequestBody();
 
     // Process existing EMF imaging using given parameters
     $updateEMFImage = new UpdateEmfImage($imagingApi);
