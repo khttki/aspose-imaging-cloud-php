@@ -50,6 +50,7 @@ require_once __DIR__ . '/AI/ImagingAiBase.php';
 require_once __DIR__ . '/AI/CompareImages.php';
 require_once __DIR__ . '/AI/FindDuplicateImages.php';
 require_once __DIR__ . '/AI/FindSimilarImages.php';
+require_once __DIR__ . '/AI/SearchImages.php';
 
 use Aspose\Imaging\Configuration;
 use Aspose\Imaging\ImagingApi;
@@ -217,6 +218,12 @@ try {
     $findSimilarImages->FindImagesSimilar();
     $findSimilarImages->FindImagesByTag();
     $findSimilarImages->DeleteSearchContext();
+
+    // Search images
+    $searchImages = new SearchImages($imagingApi);
+    $searchImages->PrepareSearchContext();
+    $searchImages->SearchImageFromWebSource();
+    $searchImages->DeleteSearchContext();
 } catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;
     exit(1);

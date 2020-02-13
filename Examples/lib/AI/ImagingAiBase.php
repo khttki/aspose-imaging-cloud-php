@@ -131,7 +131,7 @@ class ImagingAiBase
      * @param $searchContextId string The search context ID
      * @throws ApiException
      */
-    private function WaitIdle($searchContextId)
+    protected function WaitIdle($searchContextId)
     {
         $folder = null; // File will be saved at the root of the storage
         $storage = null; // We are using default Cloud Storage
