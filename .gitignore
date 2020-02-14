@@ -8,3 +8,8 @@ composer.lock
 .php_cs.cache
 php_errors.log
 .git
+
+Examples/.idea
+Examples/composer.lock
+Examples/vendor
+Examples/Output
