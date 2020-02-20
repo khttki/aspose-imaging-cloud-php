@@ -143,7 +143,6 @@ class TIFFFrames extends ImagingBase
         $imageFrame = self::$imagingApi->getImageFrame($getImageFrameRequest);
         $this->SaveUpdatedImageToOutput("ResizeFrame.tiff", $imageFrame);
 
-
         echo PHP_EOL;
     }
 
@@ -243,7 +242,6 @@ class TIFFFrames extends ImagingBase
     public function CreateImageFrameFromRequestBody()
     {
         echo "Get separate frame from existing TIFF image from request body" . PHP_EOL;
-
 
         $frameId = 1;
         $newWidth = 300;

@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\BigRectangularFilterProperties;
 use Aspose\Imaging\Model\Requests\FilterEffectImageRequest;
-use Exception;
 
 class FilterImage extends ImagingBase
 {
@@ -40,16 +39,6 @@ class FilterImage extends ImagingBase
         parent::__construct($imagingApi);
         $this->PrintHeader('Filter image example:');
     }
-
-    /**
-     * Gets the name of the example image file.
-     * @return string
-     */
-    protected function GetSampleImageFileName()
-    {
-        return "FilterEffectSampleImage.psd";
-    }
-
 
     /**
      * Applies filtering effect to an image from cloud storage
@@ -70,14 +59,20 @@ class FilterImage extends ImagingBase
             $format, $folder, $storage);
         echo "Call FilterEffectImage with params: filter type: ${filterType}, format: ${format}";
 
-        try {
-            $updatedImage = self::$imagingApi->filterEffectImage($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+
+        $updatedImage = self::$imagingApi->filterEffectImage($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
+    }
+
+    /**
+     * Gets the name of the example image file.
+     * @return string
+     */
+    protected function GetSampleImageFileName()
+    {
+        return "FilterEffectSampleImage.psd";
     }
 
     /**
@@ -99,12 +94,9 @@ class FilterImage extends ImagingBase
             $format, $folder, $storage);
         echo "Call FilterEffectImage with params: filter type: ${filterType}, format: ${format}";
 
-        try {
-            $updatedImage = self::$imagingApi->filterEffectImage($request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+
+        $updatedImage = self::$imagingApi->filterEffectImage($request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
 
         echo PHP_EOL;
     }

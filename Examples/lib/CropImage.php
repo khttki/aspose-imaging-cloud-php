@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateCroppedImageRequest;
 use Aspose\Imaging\Model\Requests\CropImageRequest;
-use Exception;
 
 
 /**
@@ -70,13 +69,8 @@ class CropImage extends ImagingBase
 
         echo "Call CropImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->cropImage($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
-
+        $updatedImage = self::$imagingApi->cropImage($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
     }
@@ -114,12 +108,8 @@ class CropImage extends ImagingBase
 
         echo "Call CropImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->cropImage($request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->cropImage($request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -146,12 +136,8 @@ class CropImage extends ImagingBase
 
         echo "Call CreateCroppedImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createCroppedImage($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createCroppedImage($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
     }

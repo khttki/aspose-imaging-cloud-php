@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateResizedImageRequest;
 use Aspose\Imaging\Model\Requests\ResizeImageRequest;
-use Exception;
 
 class ResizeImage extends ImagingBase
 {
@@ -63,12 +62,8 @@ class ResizeImage extends ImagingBase
             $folder, $storage);
         echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -104,12 +99,8 @@ class ResizeImage extends ImagingBase
             $folder, $storage);
         echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -134,12 +125,8 @@ class ResizeImage extends ImagingBase
             $outPath, $storage);
         echo "Call CreateResizedImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createResizedImage($createResizedImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createResizedImage($createResizedImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
     }

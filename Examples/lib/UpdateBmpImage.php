@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateModifiedBmpRequest;
 use Aspose\Imaging\Model\Requests\ModifyBmpRequest;
-use Exception;
 
 
 /**
@@ -67,12 +66,8 @@ class UpdateBmpImage extends ImagingBase
 
         echo "Call ModifyBmp with params: bits per pixel: ${bitsPerPixel}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyBmp($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyBmp($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -108,12 +103,8 @@ class UpdateBmpImage extends ImagingBase
 
         echo "Call ModifyBmp with params: bits per pixel: ${bitsPerPixel}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyBmp($request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyBmp($request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -139,12 +130,8 @@ class UpdateBmpImage extends ImagingBase
 
             echo "Call CreateModifiedBmp with params: bits per pixel: ${bitsPerPixel}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution}" . PHP_EOL;
 
-            try {
-                $updatedImage = self::$imagingApi->createModifiedBmp($request);
-                $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-            } catch (Exception $ex) {
-                echo $ex->getMessage() . PHP_EOL;
-            }
+            $updatedImage = self::$imagingApi->createModifiedBmp($request);
+            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
             echo PHP_EOL;
         }

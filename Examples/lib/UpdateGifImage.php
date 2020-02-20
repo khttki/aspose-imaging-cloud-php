@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateModifiedGifRequest;
 use Aspose\Imaging\Model\Requests\ModifyGifRequest;
-use Exception;
 
 
 /**
@@ -70,12 +69,8 @@ class UpdateGifImage extends ImagingBase
 
         echo "Call ModifyGif with params: background color index: ${backgroundColorIndex}, color resolution: ${colorResolution}, has trailer: ${hasTrailer}, interlaced: ${interlaced}, is palette sorted: ${isPaletteSorted}, pixel aspect ratio: ${pixelAspectRatio}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyGif($getImageGifRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyGif($getImageGifRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -114,12 +109,8 @@ class UpdateGifImage extends ImagingBase
 
         echo "Call ModifyGif with params: background color index: ${backgroundColorIndex}, color resolution: ${colorResolution}, has trailer: ${hasTrailer}, interlaced: ${interlaced}, is palette sorted: ${isPaletteSorted}, pixel aspect ratio: ${pixelAspectRatio}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyGif($getImageGifRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyGif($getImageGifRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -147,13 +138,8 @@ class UpdateGifImage extends ImagingBase
 
         echo "Call CreateModifiedGif with params: background color index: ${backgroundColorIndex}, color resolution: ${colorResolution}, has trailer: ${hasTrailer}, interlaced: ${interlaced}, is palette sorted: ${isPaletteSorted}, pixel aspect ratio: ${pixelAspectRatio}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedGif($postImageGifRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
-
+        $updatedImage = self::$imagingApi->createModifiedGif($postImageGifRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

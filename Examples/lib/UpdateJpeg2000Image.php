@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateModifiedJpeg2000Request;
 use Aspose\Imaging\Model\Requests\ModifyJpeg2000Request;
-use Exception;
 
 
 /**
@@ -66,12 +65,8 @@ class UpdateJpeg2000Image extends ImagingBase
 
         echo "Call ModifyJpeg2000 with params: codec: ${codec}, comment: ${comment}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyJpeg2000($getImageJpeg2000Request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyJpeg2000($getImageJpeg2000Request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -106,12 +101,8 @@ class UpdateJpeg2000Image extends ImagingBase
 
         echo "Call ModifyJpeg2000 with params: codec: ${codec}, comment: ${comment}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyJpeg2000($getImageJpeg2000Request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyJpeg2000($getImageJpeg2000Request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -136,12 +127,8 @@ class UpdateJpeg2000Image extends ImagingBase
 
             echo "Call CreateModifiedJpeg2000 with params: codec: ${codec}, comment: ${comment}" . PHP_EOL;
 
-            try {
-                $updatedImage = self::$imagingApi->createModifiedJpeg2000($postImageJpeg2000Request);
-                $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-            } catch (Exception $ex) {
-                echo $ex->getMessage() . PHP_EOL;
-            }
+            $updatedImage = self::$imagingApi->createModifiedJpeg2000($postImageJpeg2000Request);
+            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
             echo PHP_EOL;
         }

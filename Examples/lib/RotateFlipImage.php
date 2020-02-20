@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateRotateFlippedImageRequest;
 use Aspose\Imaging\Model\Requests\RotateFlipImageRequest;
-use Exception;
 
 
 /**
@@ -54,7 +53,6 @@ class RotateFlipImage extends ImagingBase
     {
         echo "Rotate and/or flip an image from cloud storage" . PHP_EOL;
 
-
         $this->UploadSampleImageToCloud();
 
         // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip
@@ -69,12 +67,8 @@ class RotateFlipImage extends ImagingBase
 
         echo "Call RotateFlipImage with params: method: ${method}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
     }
@@ -109,12 +103,8 @@ class RotateFlipImage extends ImagingBase
 
         echo "Call RotateFlipImage with params: method: ${method}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -140,12 +130,8 @@ class RotateFlipImage extends ImagingBase
 
         echo "Call CreateRotateFlippedImage with params: method: ${method}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createRotateFlippedImage($createRotateFlippedImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createRotateFlippedImage($createRotateFlippedImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
 

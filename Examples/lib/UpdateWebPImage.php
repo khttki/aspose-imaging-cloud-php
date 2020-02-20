@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateModifiedWebPRequest;
 use Aspose\Imaging\Model\Requests\ModifyWebPRequest;
-use Exception;
 
 
 /**
@@ -70,12 +69,8 @@ class UpdateWebPImage extends ImagingBase
 
         echo "Call ModifyWebP with params: lossless: ${lossless}, quality: ${quality}, anim loop count: ${animLoopCount}, anim background color: ${animBackgroundColor}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyWebP($getImageWebPRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyWebP($getImageWebPRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -114,12 +109,8 @@ class UpdateWebPImage extends ImagingBase
 
         echo "Call ModifyWebP with params: lossless: ${lossless}, quality: ${quality}, anim loop count: ${animLoopCount}, anim background color: ${animBackgroundColor}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyWebP($getImageWebPRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyWebP($getImageWebPRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -145,12 +136,8 @@ class UpdateWebPImage extends ImagingBase
 
         echo "Call CreateModifiedWebP with params: lossless: ${lossless}, quality: ${quality}, anim loop count: ${animLoopCount}, anim background color: ${animBackgroundColor}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedWebP($modifiedImageWebPRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createModifiedWebP($modifiedImageWebPRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

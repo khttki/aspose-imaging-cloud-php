@@ -34,7 +34,6 @@ use Aspose\Imaging\Model\Requests\ConvertTiffToFaxRequest;
 use Aspose\Imaging\Model\Requests\CreateModifiedTiffRequest;
 use Aspose\Imaging\Model\Requests\DownloadFileRequest;
 use Aspose\Imaging\Model\Requests\ModifyTiffRequest;
-use Exception;
 
 
 /**
@@ -73,12 +72,8 @@ class UpdateTiffImage extends ImagingBase
 
         echo "Call ModifyTiff with params: compression: ${compression}, resolution unit: ${resolutionUnit}, bit depth: ${bitDepth}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution} " . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyTiff($getImageTiffRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyTiff($getImageTiffRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -117,12 +112,8 @@ class UpdateTiffImage extends ImagingBase
 
         echo "Call ModifyTiff with params: compression: ${compression}, resolution unit: ${resolutionUnit}, bit depth: ${bitDepth}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution} " . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyTiff($getImageTiffRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyTiff($getImageTiffRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -149,13 +140,8 @@ class UpdateTiffImage extends ImagingBase
 
         echo "Call CreateModifiedTiff with params: compression: ${compression}, resolution unit: ${resolutionUnit}, bit depth: ${bitDepth}, horizontal resolution: ${horizontalResolution}, vertical resolution: ${verticalResolution} " . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedTiff($postImageTiffRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
-
+        $updatedImage = self::$imagingApi->createModifiedTiff($postImageTiffRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

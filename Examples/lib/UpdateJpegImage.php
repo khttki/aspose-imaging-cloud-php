@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateModifiedJpegRequest;
 use Aspose\Imaging\Model\Requests\ModifyJpegRequest;
-use Exception;
 
 
 /**
@@ -65,12 +64,8 @@ class UpdateJpegImage extends ImagingBase
 
         echo "Call ModifyJpeg with params: quality: ${quality}, compression type: ${compressionType}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyJpeg($modifyJpegRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyJpeg($modifyJpegRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
@@ -105,12 +100,8 @@ class UpdateJpegImage extends ImagingBase
 
         echo "Call ModifyJpeg with params: quality: ${quality}, compression type: ${compressionType}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyJpeg($modifyJpegRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyJpeg($modifyJpegRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -134,12 +125,8 @@ class UpdateJpegImage extends ImagingBase
 
         echo "Call CreateModifiedJpeg with params: quality: ${quality}, compression type: ${compressionType}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedJpeg($modifiedJpgRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createModifiedJpeg($modifiedJpgRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

@@ -31,7 +31,6 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\CreateModifiedEmfRequest;
 use Aspose\Imaging\Model\Requests\ModifyEmfRequest;
-use Exception;
 
 
 /**
@@ -72,12 +71,8 @@ class UpdateEmfImage extends ImagingBase
 
         echo "Call ModifyEmf with params: background color: ${bkColor}, width: ${pageWidth}, height: ${pageHeight}, border x: ${borderX}, border y: ${borderY}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyEmf($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyEmf($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
     }
@@ -118,12 +113,8 @@ class UpdateEmfImage extends ImagingBase
 
         echo "Call ModifyEmf with params: background color: ${bkColor}, width: ${pageWidth}, height: ${pageHeight}, border x: ${borderX}, border y: ${borderY}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyEmf($request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyEmf($request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -151,12 +142,8 @@ class UpdateEmfImage extends ImagingBase
 
         echo "Call CreateModifiedEmf with params: background color: ${bkColor}, width: ${pageWidth}, height: ${pageHeight}, border x: ${borderX}, border y: ${borderY}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedEmf($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createModifiedEmf($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
     }
