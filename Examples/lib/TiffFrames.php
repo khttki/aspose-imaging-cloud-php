@@ -193,7 +193,7 @@ class TIFFFrames extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $getImageFrameRequest = new GetImageFrameRequest($this->GetSampleImageFileName(), $frameId, null, null, null,
-            null, null, $rotateFlipMethod, $saveOtherFrames, $folder, $storage);
+            null, null, null, $rotateFlipMethod, $saveOtherFrames, $folder, $storage);
 
         echo "Call GetImageFrame with params: frame Id: ${frameId}, rotate/flip method: ${rotateFlipMethod}, save other frames: ${saveOtherFrames}" . PHP_EOL;
 
