@@ -32,6 +32,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/ImagingBase.php';
 require_once __DIR__ . '/CropImage.php';
 require_once __DIR__ . '/ExportImage.php';
+require_once __DIR__ . '/FilterImage.php';
 require_once __DIR__ . '/ImageProperties.php';
 require_once __DIR__ . '/ResizeImage.php';
 require_once __DIR__ . '/RotateFlipImage.php';
@@ -94,6 +95,11 @@ try {
     $exportImage->SaveImageAsFromStorage();
     $exportImage->SaveImageAsAndUploadToStorage();
     $exportImage->CreateSavedImageAsFromRequestBody();
+
+    // Apply a filtering effect to an image
+    $filterImage = new FilterImage($imagingApi);
+    $filterImage->FilterImageFromStorage();
+    $filterImage->FilterImageAndUploadToStorage();
 
     // Get properties of an image
     $imageProperties = new ImageProperties($imagingApi);
