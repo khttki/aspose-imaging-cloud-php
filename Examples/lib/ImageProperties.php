@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\ExtractImagePropertiesRequest;
 use Aspose\Imaging\Model\Requests\GetImagePropertiesRequest;
 
@@ -48,9 +47,6 @@ class ImageProperties extends ImagingBase
 
     /**
      * Get properties of an image, which is store in the cloud.
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function GetImagePropertiesFromStorage()
     {
@@ -74,7 +70,6 @@ class ImageProperties extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -84,8 +79,6 @@ class ImageProperties extends ImagingBase
 
     /**
      * Get properties of an image. Image data is passed in a request stream.
-     * @constructor
-     * @throws ApiException
      */
     public function ExtractImagePropertiesFromRequestBody()
     {

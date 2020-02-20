@@ -28,7 +28,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\ImagingApi;
 use Aspose\Imaging\Model\ImagingResponse;
 use Aspose\Imaging\Model\Requests\UploadFileRequest;
@@ -40,7 +39,6 @@ abstract class ImagingBase
 {
     /**
      * Aspose.Imaging API
-     *
      * @var ImagingApi
      */
     protected static $imagingApi;
@@ -61,8 +59,6 @@ abstract class ImagingBase
     /**
      * Uploads the example image to cloud.
      * @return void
-     * @throws ApiException
-     *
      */
     protected function UploadSampleImageToCloud()
     {
@@ -81,7 +77,6 @@ abstract class ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected abstract function GetSampleImageFileName();
@@ -91,7 +86,6 @@ abstract class ImagingBase
      * @param $imageName string Name of the image.
      * @param $image string The image.
      * @return void
-     * @throws ApiException
      */
     protected function UploadImageToCloud($imageName, $image)
     {
@@ -120,7 +114,6 @@ abstract class ImagingBase
      * Gets the name of the modified sample image file.
      * @param bool $fromRequest If set to true - created from request.
      * @param string $newFormatExtension The new format extension.
-     *
      * @return string The name of the modified sample image file.
      */
     protected function GetModifiedSampleImageFileName($fromRequest = false, $newFormatExtension = null)

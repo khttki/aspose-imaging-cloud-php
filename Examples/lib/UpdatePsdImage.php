@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedPsdRequest;
 use Aspose\Imaging\Model\Requests\ModifyPsdRequest;
 use Exception;
@@ -47,10 +46,7 @@ class UpdatePsdImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing PSD image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing PSD image. The image is saved in the cloud
      */
     public function ModifyPsdFromStorage()
     {
@@ -81,7 +77,6 @@ class UpdatePsdImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -90,10 +85,7 @@ class UpdatePsdImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing PSD image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing PSD image, and upload updated image to Cloud Storage
      */
     public function ModifyPsdAndUploadToStorage()
     {
@@ -123,9 +115,7 @@ class UpdatePsdImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing PSD image. Image data is passed in a request stream
-     * @constructor
+     * Update parameters of existing PSD image. Image data is passed in a request stream
      */
     public function CreateModifiedPsdFromRequestBody()
     {

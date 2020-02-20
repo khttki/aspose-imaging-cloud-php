@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedJpegRequest;
 use Aspose\Imaging\Model\Requests\ModifyJpegRequest;
 use Exception;
@@ -47,10 +46,7 @@ class UpdateJpegImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing JPEG image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing JPEG image. The image is saved in the cloud
      */
     public function ModifyJpegFromStorage()
     {
@@ -81,7 +77,6 @@ class UpdateJpegImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -90,10 +85,7 @@ class UpdateJpegImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing JPEG image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing JPEG image, and upload updated image to Cloud Storage
      */
     public function ModifyJpegAndUploadToStorage()
     {
@@ -124,9 +116,7 @@ class UpdateJpegImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing JPEG image. Image data is passed in a request stream
-     * @constructor
+     * Update parameters of existing JPEG image. Image data is passed in a request stream
      */
     public function CreateModifiedJpegFromRequestBody()
     {

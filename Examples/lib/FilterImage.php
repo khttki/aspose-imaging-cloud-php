@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\BigRectangularFilterProperties;
 use Aspose\Imaging\Model\Requests\FilterEffectImageRequest;
 use Exception;
@@ -44,7 +43,6 @@ class FilterImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -55,7 +53,6 @@ class FilterImage extends ImagingBase
 
     /**
      * Applies filtering effect to an image from cloud storage
-     * @throws ApiException
      */
     public function FilterImageFromStorage()
     {
@@ -85,7 +82,6 @@ class FilterImage extends ImagingBase
 
     /**
      * Applies filtering effect to an image and uploads updated image to Cloud Storage
-     * @throws ApiException
      */
     public function FilterImageAndUploadToStorage()
     {

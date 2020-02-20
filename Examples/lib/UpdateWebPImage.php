@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedWebPRequest;
 use Aspose\Imaging\Model\Requests\ModifyWebPRequest;
 use Exception;
@@ -47,10 +46,7 @@ class UpdateWebPImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing WEBP image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing WEBP image. The image is saved in the cloud
      */
     public function ModifyWebPFromStorage()
     {
@@ -86,7 +82,6 @@ class UpdateWebPImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -95,10 +90,7 @@ class UpdateWebPImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing WEBP image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing WEBP image, and upload updated image to Cloud Storage
      */
     public function ModifyWebPAndUploadToStorage()
     {
@@ -133,9 +125,7 @@ class UpdateWebPImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing Webp image. asposelogo.webpImage data is passed in a request stream
-     * @constructor
+     * Update parameters of existing Webp image. asposelogo.webpImage data is passed in a request stream
      */
     public function CreateModifiedWebPFromRequestBody()
     {

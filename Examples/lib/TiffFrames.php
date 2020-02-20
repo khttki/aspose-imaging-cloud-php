@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateImageFrameRequest;
 use Aspose\Imaging\Model\Requests\ExtractImageFramePropertiesRequest;
 use Aspose\Imaging\Model\Requests\GetImageFramePropertiesRequest;
@@ -49,9 +48,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Get separate frame from existing TIFF image
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function GetImageFrameFromStorage()
     {
@@ -84,7 +80,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -94,10 +89,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Get separate frame from existing TIFF image, and upload the frame to Cloud Storage
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
-     * @throws ApiException
      */
     public function GetImageFrameAndUploadToStorage()
     {
@@ -130,9 +121,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Resize a TIFF frame
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function ResizeImageFrameFromStorage()
     {
@@ -161,9 +149,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Crop a TIFF frame
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function CropImageFrameFromStorage()
     {
@@ -194,9 +179,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Rotate/Flip a TIFF frame
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function RotateFlipImageFrameFromStorage()
     {
@@ -224,9 +206,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Gets all image frames from storage
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function GetAllImageFramesFromStorage()
     {
@@ -260,8 +239,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Get separate frame from existing TIFF image. Image data is passed in a request stream
-     * @constructor
-     * @throws ApiException
      */
     public function CreateImageFrameFromRequestBody()
     {
@@ -294,9 +271,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Get separate frame properties of a TIFF image
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
      */
     public function GetImageFramePropertiesFromStorage()
     {
@@ -321,8 +295,6 @@ class TIFFFrames extends ImagingBase
 
     /**
      * Get separate frame properties of a TIFF image. Image data is passed in a request stream.
-     * @constructor
-     * @throws ApiException
      */
     public function ExtractImageFramePropertiesFromRequestBody()
     {

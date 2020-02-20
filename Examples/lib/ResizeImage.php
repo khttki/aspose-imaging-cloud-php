@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateResizedImageRequest;
 use Aspose\Imaging\Model\Requests\ResizeImageRequest;
 use Exception;
@@ -44,8 +43,6 @@ class ResizeImage extends ImagingBase
 
     /**
      * Resizes the image.
-     * @constructor
-     * @throws ApiException
      */
     public function ResizeImageFromStorage()
     {
@@ -78,7 +75,6 @@ class ResizeImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -88,8 +84,6 @@ class ResizeImage extends ImagingBase
 
     /**
      * Resizes the sample image and upload to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function ResizeImageAndUploadToStorage()
     {
@@ -122,7 +116,6 @@ class ResizeImage extends ImagingBase
 
     /**
      * Resize an image. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateResizedImageFromRequestBody()
     {

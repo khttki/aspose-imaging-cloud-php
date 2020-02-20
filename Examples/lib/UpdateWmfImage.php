@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedWmfRequest;
 use Aspose\Imaging\Model\Requests\ModifyWmfRequest;
 use Exception;
@@ -49,7 +48,6 @@ class UpdateWmfImage extends ImagingBase
     /**
      * Process existing WMF image using given parameters.
      * The image is saved in the cloud.
-     * @throws ApiException
      */
     public function ModifyWmfFromStorage()
     {
@@ -86,7 +84,6 @@ class UpdateWmfImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -95,10 +92,7 @@ class UpdateWmfImage extends ImagingBase
     }
 
     /**
-     *
-     *Process existing WMF image using given parameters, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Process existing WMF image using given parameters, and upload updated image to Cloud Storage
      */
     public function ModifyWmfAndUploadToStorage()
     {

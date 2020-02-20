@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateSavedImageAsRequest;
 use Aspose\Imaging\Model\Requests\SaveImageAsRequest;
 use Exception;
@@ -48,8 +47,6 @@ class ExportImage extends ImagingBase
 
     /**
      * Export an image to another format.
-     * @constructor
-     * @throws ApiException
      */
     public function SaveImageAsFromStorage()
     {
@@ -79,7 +76,6 @@ class ExportImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -89,8 +85,6 @@ class ExportImage extends ImagingBase
 
     /**
      * Export an image to another format.
-     * @constructor
-     * @throws ApiException
      */
     public function SaveImageAsAndUploadToStorage()
     {
@@ -120,7 +114,6 @@ class ExportImage extends ImagingBase
 
     /**
      * Export an image to another format. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateSavedImageAsFromRequestBody()
     {

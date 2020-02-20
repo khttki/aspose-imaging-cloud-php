@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\AppendTiffRequest;
 use Aspose\Imaging\Model\Requests\ConvertTiffToFaxRequest;
 use Aspose\Imaging\Model\Requests\CreateModifiedTiffRequest;
@@ -50,10 +49,7 @@ class UpdateTiffImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of TIFF image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
+     * Update parameters of TIFF image. The image is saved in the cloud
      */
     public function ModifyTiffFromStorage()
     {
@@ -89,7 +85,6 @@ class UpdateTiffImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -98,10 +93,7 @@ class UpdateTiffImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of TIFF image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Update parameters of TIFF image, and upload updated image to Cloud Storage
      */
     public function ModifyTiffAndUploadToStorage()
     {
@@ -135,10 +127,9 @@ class UpdateTiffImage extends ImagingBase
         echo PHP_EOL;
     }
 
-    /// <summary>
-    /// Update parameters of TIFF image.
-    /// Image data is passed in a request stream.
-    /// </summary>
+    /**
+     * Update parameters of TIFF image. Image data is passed in a request stream.
+     */
     public function CreateModifiedTiffFromRequestBody()
     {
         echo "Update parameters of a TIFF image from request body" . PHP_EOL;
@@ -170,11 +161,7 @@ class UpdateTiffImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of TIFF image according to fax parameters
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
+     * Update parameters of TIFF image according to fax parameters
      */
     public function ConvertTiffToFaxFromStorage()
     {
@@ -197,17 +184,11 @@ class UpdateTiffImage extends ImagingBase
     }
 
     /**
-     *
-     *Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images)
-     * @constructor
-     * @throws ApiException
-     * @throws ApiException
-     * @throws ApiException
-     * @throws ApiException
+     * Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images)
      */
     public function AppendTiffFromStorage()
     {
-        echo " Appends existing TIFF image to another existing TIFF image." . PHP_EOL;
+        echo "Appends existing TIFF image to another existing TIFF image." . PHP_EOL;
 
         $appendFileName = "Append.tiff"; // Image file name to be appended to original one
 

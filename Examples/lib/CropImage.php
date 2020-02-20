@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateCroppedImageRequest;
 use Aspose\Imaging\Model\Requests\CropImageRequest;
 use Exception;
@@ -49,8 +48,6 @@ class CropImage extends ImagingBase
 
     /**
      * Crops the image from cloud storage.
-     * @constructor
-     * @throws ApiException
      */
     public function CropImageFromStorage()
     {
@@ -86,7 +83,6 @@ class CropImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -96,8 +92,6 @@ class CropImage extends ImagingBase
 
     /**
      * Crop an existing image, and upload updated image to Cloud Storage.
-     * @constructor
-     * @throws ApiException
      */
     public function CropImageAndUploadToStorage()
     {
@@ -132,7 +126,6 @@ class CropImage extends ImagingBase
 
     /**
      * Crop an image. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateCroppedImageFromRequestBody()
     {

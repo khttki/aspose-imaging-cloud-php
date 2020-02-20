@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedGifRequest;
 use Aspose\Imaging\Model\Requests\ModifyGifRequest;
 use Exception;
@@ -48,8 +47,6 @@ class UpdateGifImage extends ImagingBase
 
     /**
      * Update parameters of existing GIF image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
      */
     public function ModifyGifFromStorage()
     {
@@ -85,7 +82,6 @@ class UpdateGifImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -95,8 +91,6 @@ class UpdateGifImage extends ImagingBase
 
     /**
      * Update parameters of existing GIF image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
      */
     public function ModifyGifAndUploadToStorage()
     {
@@ -132,7 +126,6 @@ class UpdateGifImage extends ImagingBase
 
     /**
      * Update parameters of GIF image. Image data is passed in a request stream
-     * @constructor
      */
     public function CreateModifiedGifFromRequestBody()
     {

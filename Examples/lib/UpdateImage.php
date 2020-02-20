@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateUpdatedImageRequest;
 use Aspose\Imaging\Model\Requests\UpdateImageRequest;
 use Exception;
@@ -49,8 +48,6 @@ class UpdateImage extends ImagingBase
 
     /**
      * Perform scaling, cropping and flipping of an existing image in a single request. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
      */
     public function UpdateImageFromStorage()
     {
@@ -88,7 +85,6 @@ class UpdateImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -98,8 +94,6 @@ class UpdateImage extends ImagingBase
 
     /**
      * Perform scaling, cropping and flipping of an existing image in a single request. And upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function UpdateImageAndUploadToStorage()
     {
@@ -137,7 +131,6 @@ class UpdateImage extends ImagingBase
 
     /**
      * Perform scaling, cropping and flipping of an image in a single request. Image data is passed in a request stream
-     * @constructor
      */
     public function CreateUpdatedImageFromRequestBody()
     {

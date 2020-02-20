@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedEmfRequest;
 use Aspose\Imaging\Model\Requests\ModifyEmfRequest;
 use Exception;
@@ -48,8 +47,6 @@ class UpdateEmfImage extends ImagingBase
 
     /**
      * Modifies the EMF from storage
-     * @constructor
-     * @throws ApiException
      */
     public function ModifyEmfFromStorage()
     {
@@ -87,7 +84,6 @@ class UpdateEmfImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -97,8 +93,6 @@ class UpdateEmfImage extends ImagingBase
 
     /**
      * Process existing EMF image using given parameters, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function ModifyEmfAndUploadToStorage()
     {
@@ -136,7 +130,6 @@ class UpdateEmfImage extends ImagingBase
 
     /**
      * Rasterize EMF image to PNG using given parameters. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateModifiedEmfFromRequestBody()
     {

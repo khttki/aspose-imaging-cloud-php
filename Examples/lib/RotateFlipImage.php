@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateRotateFlippedImageRequest;
 use Aspose\Imaging\Model\Requests\RotateFlipImageRequest;
 use Exception;
@@ -49,8 +48,6 @@ class RotateFlipImage extends ImagingBase
 
     /**
      * Rotate and/or flip an image
-     * @constructor
-     * @throws ApiException
      */
 
     public function RotateFlipImageFromStorage()
@@ -84,7 +81,6 @@ class RotateFlipImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -94,8 +90,6 @@ class RotateFlipImage extends ImagingBase
 
     /**
      * Rotate and/or flip an image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function RotateFlipImageAndUploadToStorage()
     {
@@ -127,7 +121,6 @@ class RotateFlipImage extends ImagingBase
 
     /**
      * Rotate and/or flip an image. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateRotateFlippedImageFromRequestBody()
     {

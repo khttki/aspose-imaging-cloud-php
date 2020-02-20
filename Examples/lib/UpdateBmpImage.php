@@ -29,7 +29,6 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedBmpRequest;
 use Aspose\Imaging\Model\Requests\ModifyBmpRequest;
 use Exception;
@@ -48,8 +47,6 @@ class UpdateBmpImage extends ImagingBase
 
     /**
      * Update parameters of a BMP image. image is saved in the cloud.
-     * @constructor
-     * @throws ApiException
      */
     public function ModifyBmpFromStorage()
     {
@@ -82,7 +79,6 @@ class UpdateBmpImage extends ImagingBase
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -92,7 +88,6 @@ class UpdateBmpImage extends ImagingBase
 
     /**
      * Update parameters of a BMP image, and upload updated image to Cloud Storage.
-     * @throws ApiException
      */
     public function ModifyBmpAndUploadToStorage()
     {
@@ -125,7 +120,6 @@ class UpdateBmpImage extends ImagingBase
 
     /**
      * Update parameters of a BMP image. Image data is passed in a request stream
-     * @constructor
      */
     public function CreateModifiedBmpFromRequestBody()
     {
