@@ -68,7 +68,7 @@ class CropImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new CropImageRequest($this->GetSampleImageFileName(), $format, $x, $y, $width, $height, $folder,
+        $request = new CropImageRequest($this->GetSampleImageFileName(),$x, $y, $width, $height, $format, $folder,
             $storage);
 
         echo "Call CropImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
@@ -115,7 +115,7 @@ class CropImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new CropImageRequest($this->GetSampleImageFileName(), $format, $x, $y, $width, $height, $folder,
+        $request = new CropImageRequest($this->GetSampleImageFileName(), $x, $y, $width, $height, $format, $folder,
             $storage);
 
         echo "Call CropImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
@@ -149,7 +149,7 @@ class CropImage extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $request = new CreateCroppedImageRequest($inputStream, $format, $x, $y, $width, $height, $outPath, $storage);
+        $request = new CreateCroppedImageRequest($inputStream, $x, $y, $width, $height, $format, $outPath, $storage);
 
         echo "Call CreateCroppedImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 

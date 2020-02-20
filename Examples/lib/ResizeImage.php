@@ -62,7 +62,7 @@ class ResizeImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
+        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight, $format,
             $folder, $storage);
         echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
@@ -106,7 +106,7 @@ class ResizeImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
+        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight, $format,
             $folder, $storage);
         echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
@@ -137,7 +137,7 @@ class ResizeImage extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $createResizedImageRequest = new CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight,
+        $createResizedImageRequest = new CreateResizedImageRequest($inputStream, $newWidth, $newHeight, $format,
             $outPath, $storage);
         echo "Call CreateResizedImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 

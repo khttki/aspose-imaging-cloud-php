@@ -71,8 +71,8 @@ class UpdateImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
-            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage);
+        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight,
+            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $format, $folder, $storage);
 
         echo "Call UpdateImage with params: new width: ${newWidth}, new height: ${newHeight}, x: ${x}, y: ${y}, rect width: ${rectWidth}, rectHeight: ${rectHeight}, rotate/flip method: ${rotateFlipMethod}, $format: ${format}" . PHP_EOL;
 
@@ -120,8 +120,8 @@ class UpdateImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
-            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage);
+        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight,
+            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $format, $folder, $storage);
 
         echo "Call UpdateImage with params: new width: ${newWidth}, new height: ${newHeight}, x: ${x}, y: ${y}, rect width: ${rectWidth}, rectHeight: ${rectHeight}, rotate/flip method: ${rotateFlipMethod}, $format: ${format}" . PHP_EOL;
 
@@ -157,8 +157,8 @@ class UpdateImage extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $postImageUpdateRequest = new CreateUpdatedImageRequest($inputStream, $format, $newWidth, $newHeight, $x, $y,
-            $rectWidth, $rectHeight, $rotateFlipMethod, $outPath, $storage);
+        $postImageUpdateRequest = new CreateUpdatedImageRequest($inputStream, $newWidth, $newHeight, $x, $y,
+            $rectWidth, $rectHeight, $rotateFlipMethod, $format, $outPath, $storage);
 
         echo "Call CreateUpdatedImage with params: new width: ${newWidth}, new height: ${newHeight}, x: ${x}, y: ${y}, rect width: ${rectWidth}, rectHeight: ${rectHeight}, rotate/flip method: ${rotateFlipMethod}, $format: ${format}" . PHP_EOL;
 
