@@ -46,11 +46,6 @@ require_once __DIR__ . '/UpdatePsdImage.php';
 require_once __DIR__ . '/UpdateTiffImage.php';
 require_once __DIR__ . '/UpdateWebPImage.php';
 require_once __DIR__ . '/UpdateWmfImage.php';
-require_once __DIR__ . '/AI/ImagingAiBase.php';
-require_once __DIR__ . '/AI/CompareImages.php';
-require_once __DIR__ . '/AI/FindDuplicateImages.php';
-require_once __DIR__ . '/AI/FindSimilarImages.php';
-require_once __DIR__ . '/AI/SearchImages.php';
 
 use Aspose\Imaging\Configuration;
 use Aspose\Imaging\ImagingApi;
@@ -195,35 +190,6 @@ try {
     $bmpImage->ModifyBmpFromStorage();
     $bmpImage->ModifyBmpAndUploadToStorage();
     $bmpImage->CreateModifiedBmpFromRequestBody();
-
-    // AI APIs
-    echo "Running AI examples:" . PHP_EOL;
-
-    // Compare two images
-    $compareImages = new CompareImages($imagingApi);
-    $compareImages->PrepareSearchContext();
-    $compareImages->CompareTwoImagesInCloud();
-    $compareImages->CompareLoadedImageToImageInCloud();
-    $compareImages->DeleteSearchContext();
-
-    // Find duplicate images
-    $findDuplicateImages = new FindDuplicateImages($imagingApi);
-    $findDuplicateImages->PrepareSearchContext();
-    $findDuplicateImages->FindImageDuplicates();
-    $findDuplicateImages->DeleteSearchContext();
-
-    // Find similar images
-    $findSimilarImages = new FindSimilarImages($imagingApi);
-    $findSimilarImages->PrepareSearchContext();
-    $findSimilarImages->FindImagesSimilar();
-    $findSimilarImages->FindImagesByTag();
-    $findSimilarImages->DeleteSearchContext();
-
-    // Search images
-    $searchImages = new SearchImages($imagingApi);
-    $searchImages->PrepareSearchContext();
-    $searchImages->SearchImageFromWebSource();
-    $searchImages->DeleteSearchContext();
 } catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;
     exit(1);
