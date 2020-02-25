@@ -13,3 +13,5 @@ Examples/.idea
 Examples/composer.lock
 Examples/vendor
 Examples/Output
+
+Output/
