@@ -29,7 +29,7 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\Model\BigRectangularFilterProperties;
+use Aspose\Imaging\Model\GaussianBlurFilterProperties;
 use Aspose\Imaging\Model\Requests\FilterEffectImageRequest;
 
 class FilterImage extends ImagingBase
@@ -49,15 +49,15 @@ class FilterImage extends ImagingBase
 
         $this->UploadSampleImageToCloud();
 
-        $filterType = "BigRectangular";
-        $filterProperties = new BigRectangularFilterProperties();
-        $format = "gif";
+        $filterType = "GaussianBlur";
+        $filterProperties = new GaussianBlurFilterProperties(array("radius" => 4, "sigma" => 2.1));
+        $format = "bmp";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
         $request = new FilterEffectImageRequest($this->GetSampleImageFileName(), $filterType, $filterProperties,
             $format, $folder, $storage);
-        echo "Call FilterEffectImage with params: filter type: ${filterType}, format: ${format}";
+        echo "Call FilterEffectImage with params: filter type: ${filterType}, radius:" . $filterProperties->getRadius() . ", sigma:" . $filterProperties->getSigma() . ", format: ${format}" . PHP_EOL;
 
 
         $updatedImage = self::$imagingApi->filterEffectImage($request);
@@ -84,15 +84,15 @@ class FilterImage extends ImagingBase
 
         $this->UploadSampleImageToCloud();
 
-        $filterType = "BigRectangular";
-        $filterProperties = new BigRectangularFilterProperties();
-        $format = "gif";
+        $filterType = "GaussianBlur";
+        $filterProperties = new GaussianBlurFilterProperties(array("radius" => 4, "sigma" => 2.1));
+        $format = "bmp";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
         $request = new FilterEffectImageRequest($this->GetSampleImageFileName(), $filterType, $filterProperties,
             $format, $folder, $storage);
-        echo "Call FilterEffectImage with params: filter type: ${filterType}, format: ${format}";
+        echo "Call FilterEffectImage with params: filter type: ${filterType}, radius:" . $filterProperties->getRadius() . ", sigma:" . $filterProperties->getSigma() . ", format: ${format}" .  PHP_EOL;
 
 
         $updatedImage = self::$imagingApi->filterEffectImage($request);
