@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateSavedImageAsRequest;
 use Aspose\Imaging\Model\Requests\SaveImageAsRequest;
-use Exception;
 
 
 /**
@@ -48,8 +46,6 @@ class ExportImage extends ImagingBase
 
     /**
      * Export an image to another format.
-     * @constructor
-     * @throws ApiException
      */
     public function SaveImageAsFromStorage()
     {
@@ -67,19 +63,14 @@ class ExportImage extends ImagingBase
 
         echo "Call SaveImageAs with params: format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->saveImageAs($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->saveImageAs($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -89,8 +80,6 @@ class ExportImage extends ImagingBase
 
     /**
      * Export an image to another format.
-     * @constructor
-     * @throws ApiException
      */
     public function SaveImageAsAndUploadToStorage()
     {
@@ -108,19 +97,14 @@ class ExportImage extends ImagingBase
 
         echo "Call SaveImageAs with params: format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->saveImageAs($request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->saveImageAs($request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
 
         echo PHP_EOL;
     }
 
     /**
      * Export an image to another format. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateSavedImageAsFromRequestBody()
     {
@@ -137,12 +121,8 @@ class ExportImage extends ImagingBase
 
         echo "Call CreateSavedImageAs with params: format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createSavedImageAs($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createSavedImageAs($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
     }

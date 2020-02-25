@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateUpdatedImageRequest;
 use Aspose\Imaging\Model\Requests\UpdateImageRequest;
-use Exception;
 
 
 /**
@@ -49,8 +47,6 @@ class UpdateImage extends ImagingBase
 
     /**
      * Perform scaling, cropping and flipping of an existing image in a single request. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
      */
     public function UpdateImageFromStorage()
     {
@@ -71,24 +67,19 @@ class UpdateImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
-            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage);
+        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight,
+            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $format, $folder, $storage);
 
         echo "Call UpdateImage with params: new width: ${newWidth}, new height: ${newHeight}, x: ${x}, y: ${y}, rect width: ${rectWidth}, rectHeight: ${rectHeight}, rotate/flip method: ${rotateFlipMethod}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->updateImage($getImageUpdateRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->updateImage($getImageUpdateRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -98,8 +89,6 @@ class UpdateImage extends ImagingBase
 
     /**
      * Perform scaling, cropping and flipping of an existing image in a single request. And upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function UpdateImageAndUploadToStorage()
     {
@@ -120,24 +109,19 @@ class UpdateImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
-            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $folder, $storage);
+        $getImageUpdateRequest = new UpdateImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight,
+            $x, $y, $rectWidth, $rectHeight, $rotateFlipMethod, $format, $folder, $storage);
 
         echo "Call UpdateImage with params: new width: ${newWidth}, new height: ${newHeight}, x: ${x}, y: ${y}, rect width: ${rectWidth}, rectHeight: ${rectHeight}, rotate/flip method: ${rotateFlipMethod}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->updateImage($getImageUpdateRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->updateImage($getImageUpdateRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
 
     /**
      * Perform scaling, cropping and flipping of an image in a single request. Image data is passed in a request stream
-     * @constructor
      */
     public function CreateUpdatedImageFromRequestBody()
     {
@@ -157,17 +141,13 @@ class UpdateImage extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $postImageUpdateRequest = new CreateUpdatedImageRequest($inputStream, $format, $newWidth, $newHeight, $x, $y,
-            $rectWidth, $rectHeight, $rotateFlipMethod, $outPath, $storage);
+        $postImageUpdateRequest = new CreateUpdatedImageRequest($inputStream, $newWidth, $newHeight, $x, $y,
+            $rectWidth, $rectHeight, $rotateFlipMethod, $format, $outPath, $storage);
 
         echo "Call CreateUpdatedImage with params: new width: ${newWidth}, new height: ${newHeight}, x: ${x}, y: ${y}, rect width: ${rectWidth}, rectHeight: ${rectHeight}, rotate/flip method: ${rotateFlipMethod}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createUpdatedImage($postImageUpdateRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createUpdatedImage($postImageUpdateRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

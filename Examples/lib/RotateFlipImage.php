@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateRotateFlippedImageRequest;
 use Aspose\Imaging\Model\Requests\RotateFlipImageRequest;
-use Exception;
 
 
 /**
@@ -49,14 +47,11 @@ class RotateFlipImage extends ImagingBase
 
     /**
      * Rotate and/or flip an image
-     * @constructor
-     * @throws ApiException
      */
 
     public function RotateFlipImageFromStorage()
     {
         echo "Rotate and/or flip an image from cloud storage" . PHP_EOL;
-
 
         $this->UploadSampleImageToCloud();
 
@@ -67,24 +62,19 @@ class RotateFlipImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageRotateFlipRequest = new RotateFlipImageRequest($this->GetSampleImageFileName(), $format, $method,
+        $getImageRotateFlipRequest = new RotateFlipImageRequest($this->GetSampleImageFileName(), $method, $format,
             $folder, $storage);
 
         echo "Call RotateFlipImage with params: method: ${method}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -94,8 +84,6 @@ class RotateFlipImage extends ImagingBase
 
     /**
      * Rotate and/or flip an image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function RotateFlipImageAndUploadToStorage()
     {
@@ -110,24 +98,19 @@ class RotateFlipImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $getImageRotateFlipRequest = new RotateFlipImageRequest($this->GetSampleImageFileName(), $format, $method,
+        $getImageRotateFlipRequest = new RotateFlipImageRequest($this->GetSampleImageFileName(), $method, $format,
             $folder, $storage);
 
         echo "Call RotateFlipImage with params: method: ${method}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->rotateFlipImage($getImageRotateFlipRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
 
         echo PHP_EOL;
     }
 
     /**
      * Rotate and/or flip an image. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateRotateFlippedImageFromRequestBody()
     {
@@ -142,17 +125,13 @@ class RotateFlipImage extends ImagingBase
         $outPath = null; // Path to updated file (if this is empty, response contains streamed image).
         $storage = null; // We are using default Cloud Storage
 
-        $createRotateFlippedImageRequest = new CreateRotateFlippedImageRequest($inputStream, $format, $method, $outPath,
+        $createRotateFlippedImageRequest = new CreateRotateFlippedImageRequest($inputStream, $method, $format, $outPath,
             $storage);
 
         echo "Call CreateRotateFlippedImage with params: method: ${method}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createRotateFlippedImage($createRotateFlippedImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createRotateFlippedImage($createRotateFlippedImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
 

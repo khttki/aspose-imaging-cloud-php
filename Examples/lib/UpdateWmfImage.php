@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedWmfRequest;
 use Aspose\Imaging\Model\Requests\ModifyWmfRequest;
-use Exception;
 
 
 /**
@@ -49,7 +47,6 @@ class UpdateWmfImage extends ImagingBase
     /**
      * Process existing WMF image using given parameters.
      * The image is saved in the cloud.
-     * @throws ApiException
      */
     public function ModifyWmfFromStorage()
     {
@@ -74,19 +71,14 @@ class UpdateWmfImage extends ImagingBase
 
         echo "Call ModifyWmf with params: background color: ${bkColor}, page width: ${pageWidth}, page height: ${pageHeight}, border X: ${borderX}, border Y: ${borderY}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyWmf($getImageWmfRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyWmf($getImageWmfRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -95,10 +87,7 @@ class UpdateWmfImage extends ImagingBase
     }
 
     /**
-     *
-     *Process existing WMF image using given parameters, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Process existing WMF image using given parameters, and upload updated image to Cloud Storage
      */
     public function ModifyWmfAndUploadToStorage()
     {
@@ -123,12 +112,8 @@ class UpdateWmfImage extends ImagingBase
 
         echo "Call ModifyWmf with params: background color: ${bkColor}, page width: ${pageWidth}, page height: ${pageHeight}, border X: ${borderX}, border Y: ${borderY}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyWmf($getImageWmfRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyWmf($getImageWmfRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
@@ -158,12 +143,8 @@ class UpdateWmfImage extends ImagingBase
 
         echo "Call CreateModifiedWmf with params: background color: ${bkColor}, page width: ${pageWidth}, page height: ${pageHeight}, border X: ${borderX}, border Y: ${borderY}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedWmf($postImageWmfRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createModifiedWmf($postImageWmfRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

@@ -72,7 +72,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const BaseUrl = "http://api.aspose.cloud/";
+    const BaseUrl = "http://api-qa.aspose.cloud/";
 
     /**
      * The local test folder

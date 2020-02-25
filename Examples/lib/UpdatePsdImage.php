@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateModifiedPsdRequest;
 use Aspose\Imaging\Model\Requests\ModifyPsdRequest;
-use Exception;
 
 
 /**
@@ -47,10 +45,7 @@ class UpdatePsdImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing PSD image. The image is saved in the cloud
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing PSD image. The image is saved in the cloud
      */
     public function ModifyPsdFromStorage()
     {
@@ -69,19 +64,14 @@ class UpdatePsdImage extends ImagingBase
 
         echo "Call ModifyPsd with params: channels count: ${channelsCount}, compression method: ${compressionMethod}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyPsd($modifyPsdRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyPsd($modifyPsdRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -90,10 +80,7 @@ class UpdatePsdImage extends ImagingBase
     }
 
     /**
-     *
-     *Update parameters of existing PSD image, and upload updated image to Cloud Storage
-     * @constructor
-     * @throws ApiException
+     * Update parameters of existing PSD image, and upload updated image to Cloud Storage
      */
     public function ModifyPsdAndUploadToStorage()
     {
@@ -112,25 +99,18 @@ class UpdatePsdImage extends ImagingBase
 
         echo "Call ModifyPsd with params: channels count: ${channelsCount}, compression method: ${compressionMethod}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->modifyPsd($modifyPsdRequest);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->modifyPsd($modifyPsdRequest);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
 
     /**
-     *
-     *Update parameters of existing PSD image. Image data is passed in a request stream
-     * @constructor
+     * Update parameters of existing PSD image. Image data is passed in a request stream
      */
     public function CreateModifiedPsdFromRequestBody()
     {
         echo "Update parameters of a PSD image from request body" . PHP_EOL;
-
 
         $channelsCount = 3;
         $compressionMethod = "raw";
@@ -145,12 +125,8 @@ class UpdatePsdImage extends ImagingBase
 
         echo "Call CreateModifiedPsd with params: channels count: ${channelsCount}, compression method: ${compressionMethod}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createModifiedPsd($modifiedPsdRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createModifiedPsd($modifiedPsdRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }

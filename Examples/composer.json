@@ -1,7 +1,7 @@
 {
   "name": "aspose/aspose-imaging-cloud-examples",
   "require": {
-    "aspose/aspose-imaging-cloud": "19.12",
+    "aspose/aspose-imaging-cloud": "20.1",
     "ext-json": "*"
   },
   "config": {
@@ -10,7 +10,7 @@
     }
   },
   "require-dev": {
-    "aspose/aspose-imaging-cloud": "19.12"
+    "aspose/aspose-imaging-cloud": "20.1"
   },
   "autoload": {
     "psr-0": {

@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateResizedImageRequest;
 use Aspose\Imaging\Model\Requests\ResizeImageRequest;
-use Exception;
 
 class ResizeImage extends ImagingBase
 {
@@ -44,8 +42,6 @@ class ResizeImage extends ImagingBase
 
     /**
      * Resizes the image.
-     * @constructor
-     * @throws ApiException
      */
     public function ResizeImageFromStorage()
     {
@@ -62,23 +58,18 @@ class ResizeImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
+        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight, $format,
             $folder, $storage);
         echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -88,8 +79,6 @@ class ResizeImage extends ImagingBase
 
     /**
      * Resizes the sample image and upload to Cloud Storage
-     * @constructor
-     * @throws ApiException
      */
     public function ResizeImageAndUploadToStorage()
     {
@@ -106,23 +95,18 @@ class ResizeImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $format, $newWidth, $newHeight,
+        $resizeImageRequest = new ResizeImageRequest($this->GetSampleImageFileName(), $newWidth, $newHeight, $format,
             $folder, $storage);
         echo "Call ResizeImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->resizeImage($resizeImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false);
 
         echo PHP_EOL;
     }
 
     /**
      * Resize an image. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateResizedImageFromRequestBody()
     {
@@ -137,16 +121,12 @@ class ResizeImage extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $createResizedImageRequest = new CreateResizedImageRequest($inputStream, $format, $newWidth, $newHeight,
+        $createResizedImageRequest = new CreateResizedImageRequest($inputStream, $newWidth, $newHeight, $format,
             $outPath, $storage);
         echo "Call CreateResizedImage with params: new width: ${newWidth}, new height: ${newHeight}, $format: ${format}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createResizedImage($createResizedImageRequest);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createResizedImage($createResizedImageRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
     }

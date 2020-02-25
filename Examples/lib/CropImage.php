@@ -29,10 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\CreateCroppedImageRequest;
 use Aspose\Imaging\Model\Requests\CropImageRequest;
-use Exception;
 
 
 /**
@@ -49,8 +47,6 @@ class CropImage extends ImagingBase
 
     /**
      * Crops the image from cloud storage.
-     * @constructor
-     * @throws ApiException
      */
     public function CropImageFromStorage()
     {
@@ -68,25 +64,19 @@ class CropImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new CropImageRequest($this->GetSampleImageFileName(), $format, $x, $y, $width, $height, $folder,
+        $request = new CropImageRequest($this->GetSampleImageFileName(),$x, $y, $width, $height, $format, $folder,
             $storage);
 
         echo "Call CropImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->cropImage($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
-
+        $updatedImage = self::$imagingApi->cropImage($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
     }
 
     /**
      * Gets the name of the example image file.
-     *
      * @return string
      */
     protected function GetSampleImageFileName()
@@ -96,8 +86,6 @@ class CropImage extends ImagingBase
 
     /**
      * Crop an existing image, and upload updated image to Cloud Storage.
-     * @constructor
-     * @throws ApiException
      */
     public function CropImageAndUploadToStorage()
     {
@@ -115,24 +103,19 @@ class CropImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new CropImageRequest($this->GetSampleImageFileName(), $format, $x, $y, $width, $height, $folder,
+        $request = new CropImageRequest($this->GetSampleImageFileName(), $x, $y, $width, $height, $format, $folder,
             $storage);
 
         echo "Call CropImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->cropImage($request);
-            $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->cropImage($request);
+        $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false), $updatedImage);
 
         echo PHP_EOL;
     }
 
     /**
      * Crop an image. Image data is passed in a request stream.
-     * @constructor
      */
     public function CreateCroppedImageFromRequestBody()
     {
@@ -149,16 +132,12 @@ class CropImage extends ImagingBase
         $storage = null; // We are using default Cloud Storage
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $request = new CreateCroppedImageRequest($inputStream, $format, $x, $y, $width, $height, $outPath, $storage);
+        $request = new CreateCroppedImageRequest($inputStream, $x, $y, $width, $height, $format, $outPath, $storage);
 
         echo "Call CreateCroppedImage with params: x: ${x},y: ${y}, width: ${width}, height: ${height}" . PHP_EOL;
 
-        try {
-            $updatedImage = self::$imagingApi->createCroppedImage($request);
-            $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
-        } catch (Exception $ex) {
-            echo $ex->getMessage() . PHP_EOL;
-        }
+        $updatedImage = self::$imagingApi->createCroppedImage($request);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
     }
