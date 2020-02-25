@@ -49,7 +49,7 @@ class DeskewImage extends ImagingBase
      */
     protected function GetSampleImageFileName()
     {
-        return "DeskewSampleImage.bmp";
+        return "DeskewSampleImage.tif";
     }
 
 
@@ -70,7 +70,7 @@ class DeskewImage extends ImagingBase
 
         $this->UploadSampleImageToCloud();
         $resizeProportionally = true;
-        $bkColor = "green";
+        $bkColor = "white";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
@@ -101,7 +101,7 @@ class DeskewImage extends ImagingBase
 
         $this->UploadSampleImageToCloud();
         $resizeProportionally = true;
-        $bkColor = "green";
+        $bkColor = "white";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
@@ -128,7 +128,7 @@ class DeskewImage extends ImagingBase
     {
         echo "Deskews the image from request body" . PHP_EOL;
         $resizeProportionally = true;
-        $bkColor = "green";
+        $bkColor = "white";
         $outPath = null; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
