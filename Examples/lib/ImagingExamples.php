@@ -32,6 +32,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/ImagingBase.php';
 require_once __DIR__ . '/CropImage.php';
 require_once __DIR__ . '/DeskewImage.php';
+require_once __DIR__ . '/GrayscaleImage.php';
 require_once __DIR__ . '/ExportImage.php';
 require_once __DIR__ . '/FilterImage.php';
 require_once __DIR__ . '/ImageProperties.php';
@@ -90,6 +91,12 @@ try {
     $deskewImage->DeskewImageFromStorage();
     $deskewImage->DeskewImageAndUploadToStorage();
     $deskewImage->CreateDeskewedImageFromRequestBody();
+
+    // Grayscale an existing image
+    $grayscaleImage = new GrayscaleImage($imagingApi);
+    $grayscaleImage->GrayscaleImageFromStorage();
+    $grayscaleImage->GrayscaleImageAndUploadToStorage();
+    $grayscaleImage->CreateGrayscaledImageFromRequestBody();
 
     // Process existing EMF imaging using given parameters
     $updateEMFImage = new UpdateEmfImage($imagingApi);
