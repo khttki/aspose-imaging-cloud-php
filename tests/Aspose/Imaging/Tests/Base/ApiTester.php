@@ -72,7 +72,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const BaseUrl = "http://api.aspose.cloud/";
+    const BaseUrl = "http://api-qa.aspose.cloud/";
 
     /**
      * The local test folder
@@ -246,7 +246,7 @@ abstract class ApiTester extends TestCase
             $apiVersion = ApiTester::ApiVersion;
             echo "Set default API version\r\n";
         }
-
+        
         $serverAccessPath = ApiTester::LocalTestFolder . ApiTester::ServerAccessFile;
         $serverAccessString = null;
         if (file_exists($serverAccessPath))

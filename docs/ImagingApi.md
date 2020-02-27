@@ -372,6 +372,44 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="creategrayscaledimage"></a>
+# **createGrayscaledImage**
+> createGrayscaledImage($createGrayscaledImageRequest)
+
+Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="creategrayscaledimageasync"></a>
+# **createGrayscaledImageAsync**
+> createGrayscaledImageAsync($createGrayscaledImageRequest)
+
+Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateGrayscaledImageRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createimagefeatures"></a>
 # **createImageFeatures**
 > createImageFeatures($createImageFeaturesRequest)
@@ -2228,6 +2266,44 @@ Name | Type | Description  | Notes
  **search_context_id** | **string**| Search context identifier. |
  **image_id** | **string**| Image identifier. |
  **folder** | **string**| Folder. | [optional]
+ **storage** | **string**| Storage | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="grayscaleimage"></a>
+# **grayscaleImage**
+> grayscaleImage($grayscaleImageRequest)
+
+Grayscale an existing image.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="grayscaleimageasync"></a>
+# **grayscaleImageAsync**
+> grayscaleImageAsync($grayscaleImageRequest)
+
+Grayscale an existing image.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **GrayscaleImageRequest** Parameters
+```php
+__construct(
+    $name, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. |
+ **folder** | **string**| Folder | [optional]
  **storage** | **string**| Storage | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
