@@ -80,7 +80,7 @@ class FindSimilarImages extends ImagingAiBase
     {
         echo "Finds the similar images";
 
-        $findImageId = self::$cloudPath . DIRECTORY_SEPARATOR . self::$ImageToFind;
+        $findImageId = self::$cloudPath . DIRECTORY_SEPARATOR . self::$ImagesPath . DIRECTORY_SEPARATOR . self::$ImageToFind;
         $similarityThreshold = 60;
         $maxCount = 3;
         $folder = null;
