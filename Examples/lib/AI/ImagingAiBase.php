@@ -134,12 +134,13 @@ class ImagingAiBase
      */
     protected function WaitIdle($searchContextId)
     {
-        $status = self::$imagingApi->getImageSearchStatusAsync(new GetImageSearchStatusRequest($searchContextId, null, null))->wait()->getSearchStatus();
+        $status = self::$imagingApi->getImageSearchStatusAsync(new GetImageSearchStatusRequest($searchContextId, null,
+            null))->wait()->getSearchStatus();
 
-        while ($status !== "Idle")
-        {
+        while ($status !== "Idle") {
             sleep(10);
-            self::$imagingApi->getImageSearchStatusAsync(new GetImageSearchStatusRequest($searchContextId, null, null))->wait()->getSearchStatus();
+            $status = self::$imagingApi->getImageSearchStatusAsync(new GetImageSearchStatusRequest($searchContextId, null, null))
+                ->wait()->getSearchStatus();
         }
     }
 
