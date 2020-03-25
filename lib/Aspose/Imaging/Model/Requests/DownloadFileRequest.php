@@ -188,7 +188,7 @@ class DownloadFileRequest extends ImagingRequest
         $httpBody = null;
 
         $headers = $this->selectHeaders(
-            ['application/json'],
+            ['multipart/form-data'],
             ['application/json']
         );
         
