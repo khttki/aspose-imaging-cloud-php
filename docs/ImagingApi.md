@@ -1596,7 +1596,7 @@ Download file
 
 ### Return type
 
-**\Psr\Http\Message\StreamInterface**
+[**\SplFileObject**](\SplFileObject.md)
 
 <a name="downloadfileasync"></a>
 # **downloadFileAsync**
@@ -3244,14 +3244,12 @@ Performs operation asynchronously.
 ```php
 __construct(
     $path, 
-    $file, 
     $storage_name)
 ```
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **string**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header. |
- **file** | **string**| File to upload |
  **storage_name** | **string**| Storage name | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)

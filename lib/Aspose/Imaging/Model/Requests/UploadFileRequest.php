@@ -46,13 +46,6 @@ class UploadFileRequest extends ImagingRequest
     public $path;
     
     /**
-     * File to upload
-     *
-     * @var string
-     */
-    public $file;
-    
-    /**
      * Storage name
      *
      * @var string
@@ -63,13 +56,11 @@ class UploadFileRequest extends ImagingRequest
      * Initializes a new instance of the UploadFileRequest class.
      *  
      * @param string $path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.
-     * @param string $file File to upload
      * @param string $storage_name Storage name
      */
-    public function __construct($path, $file, $storage_name = null)             
+    public function __construct($path, $storage_name = null)             
     {
         $this->path = $path;
-        $this->file = $file;
         $this->storage_name = $storage_name;
     }
 
@@ -91,27 +82,6 @@ class UploadFileRequest extends ImagingRequest
     public function set_path($value)
     {
         $this->path = $value;
-        return $this;
-    }
-    
-    /**
-     * File to upload
-     *
-     * @return string
-     */
-    public function get_file()
-    {
-        return $this->file;
-    }
-
-    /**
-     * File to upload
-     *
-     * @return \Aspose\Imaging\Model\Requests\Request
-     */
-    public function set_file($value)
-    {
-        $this->file = $value;
         return $this;
     }
     
@@ -147,10 +117,6 @@ class UploadFileRequest extends ImagingRequest
         if ($this->path === null) {
             throw new \InvalidArgumentException('Missing the required parameter $path when calling uploadFile');
         }
-        // verify the required parameter 'file' is set
-        if ($this->file === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $file when calling uploadFile');
-        }
 
         $resourcePath = '/imaging/storage/file/{path}';
         $formParams = [];
@@ -178,16 +144,12 @@ class UploadFileRequest extends ImagingRequest
     
         $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
-        // form params
-        if ($this->file !== null) {
-            $formParams[ObjectSerializer::toStandardName('file')] = ObjectSerializer::toFormValue($this->file);
-        }
         // body params
         $httpBody = null;
 
         $headers = $this->selectHeaders(
             ['application/json'],
-            ['multipart/form-data']
+            ['application/json']
         );
         
         $httpInfo = array(
