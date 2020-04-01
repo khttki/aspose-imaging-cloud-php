@@ -84,7 +84,7 @@ class FilterEffectApiTest extends ApiTester
             }
         }
 
-        foreach (self::$inputTestFiles as $inputFile) {
+        foreach (self::$basicInputTestFiles as $inputFile) {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
                 $name = $inputFileName;

@@ -95,7 +95,7 @@ class RotateFlipApiTest extends ApiTester
             }
         }
 
-        foreach (self::$inputTestFiles as $inputFile)
+        foreach (self::$basicInputTestFiles as $inputFile)
         {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension)
@@ -174,7 +174,7 @@ class RotateFlipApiTest extends ApiTester
             }
         }
 
-        foreach (self::$inputTestFiles as $inputFile)
+        foreach (self::$basicInputTestFiles as $inputFile)
         {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension)

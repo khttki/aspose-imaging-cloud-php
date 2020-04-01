@@ -90,7 +90,7 @@ class DeskewApiTest extends ApiTester
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
-        foreach (self::$inputTestFiles as $inputFile) {
+        foreach (self::$basicInputTestFiles as $inputFile) {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
                 $name = $inputFileName;
@@ -133,7 +133,7 @@ class DeskewApiTest extends ApiTester
         $storage = self::$testStorage;
         $outName = null;
 
-        foreach (self::$inputTestFiles as $inputFile) {
+        foreach (self::$basicInputTestFiles as $inputFile) {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
                 $name = $inputFileName;
