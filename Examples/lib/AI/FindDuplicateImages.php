@@ -78,7 +78,7 @@ class FindDuplicateImages extends ImagingAiBase
     {
         echo "Finds the image duplicates" . PHP_EOL;
 
-        $similarityThreshold = 70;
+        $similarityThreshold = 60;
         $folder = self::$cloudPath;
         $storage = null; // We are using default Cloud Storage
 
