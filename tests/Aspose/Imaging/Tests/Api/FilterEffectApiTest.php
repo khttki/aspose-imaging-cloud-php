@@ -50,7 +50,7 @@ class FilterEffectApiTest extends ApiTester
      */
     public function filterEffectFormatsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".dicom"],
             [".djvu"],
             [".gif"],

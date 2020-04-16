@@ -113,11 +113,12 @@ abstract class ApiTester extends TestCase
     public static $failedAnyTest = false;
 
     /**
-     * If extended tests should be run
-     * 
-     * @var bool
+     * Gets extended test switch
+     * @return bool true if extended tests should be executed
      */
-    protected static $extendedTests;
+    public static function getExtendedTests() {
+        return getenv("ExtendedTests") === "true" ? true : false;
+    }
 
     /**
      * Aspose.Imaging API
@@ -195,8 +196,7 @@ abstract class ApiTester extends TestCase
     public static function initFixture()
     {
         echo "\r\n";
-        self::$extendedTests = getenv("ExtendedTests") === "true" ? true : false;
-        echo "Extended tests: " . (self::$extendedTests ? "true" : "false") . "\r\n";
+        echo "Extended tests: " . (self::getExtendedTests() ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
         {

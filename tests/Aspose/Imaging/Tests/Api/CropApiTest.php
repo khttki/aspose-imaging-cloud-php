@@ -47,7 +47,7 @@ class CropApiTest extends ApiTester
      */
     public function exportOptionsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".bmp", true, [null]],  [".bmp", false, [null]],
             [".dicom", true], [".dicom", false],
             /* TODO: enable after IMAGINGCLOUD-51 is resolved

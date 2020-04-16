@@ -47,7 +47,7 @@ class SaveAsApiTest extends ApiTester
      */
     public function exportOptionsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".bmp", true],  [".bmp", false], 
             [".dicom", true], [".dicom", false], 
             /* TODO: enable after IMAGINGCLOUD-51 is resolved

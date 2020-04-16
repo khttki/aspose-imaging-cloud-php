@@ -49,7 +49,7 @@ class FramesApiTest extends ApiTester
      */
     public function exportOptionsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".cdr", true], [".cdr", false],
             [".cmx", true], [".cmx", false],
             [".dicom", true], [".dicom", false],

@@ -47,7 +47,7 @@ class DeskewApiTest extends ApiTester
      */
     public function exportOptionsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".bmp", true, true, null], [".bmp", false, false, "green"],
             /* TODO: enable after IMAGINGCLOUD-51 is resolved
             [".gif", true, true, null], [".gif", false, true, null],
