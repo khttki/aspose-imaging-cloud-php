@@ -549,7 +549,7 @@ abstract class ApiTester extends TestCase
                     $this->assertNotNull($resultProperties);
                 }
             }
-            elseif (substr((new \finfo(FILEINFO_MIME_TYPE))->buffer($response), -strlen("pdf")) !== "pdf")
+            elseif (!$this->fileIsPdf($response))
             {
                 $response->rewind();
                 $resultProperties = 
@@ -586,5 +586,18 @@ abstract class ApiTester extends TestCase
 
             echo "Test passed: " . var_export($passed, true) . "\r\n";
         }
+    }
+
+    /**
+     * Checks that stream represents PDF file
+     *
+     * @param $file \GuzzleHttp\Psr7\Stream The file stream
+     * @return bool true if file is a PSD
+     */
+    private function fileIsPdf($file) {
+        $buffer = unpack('C*', $file->read(5));
+        // This is the 1-indexed array, not a mistake
+        return $buffer[1] == 0x25 && $buffer[2] == 0x50 && $buffer[3] == 0x44 && $buffer[4] == 0x46 &&
+            $buffer[5] == 0x2d;
     }
 }

@@ -24,9 +24,7 @@
       "ext-json": "*"
     },
     "require-dev": {
-        "php": ">=7.0",
-        "phpunit/phpunit": "^4.8",
-      "ext-fileinfo": "*"
+        "phpunit/phpunit": "^4.8"
     },
     "autoload": {
         "psr-0": {
