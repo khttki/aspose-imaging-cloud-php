@@ -47,7 +47,7 @@ class SaveAsApiTest extends ApiTester
      */
     public function exportOptionsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".bmp", true],  [".bmp", false], 
             [".dicom", true], [".dicom", false], 
             /* TODO: enable after IMAGINGCLOUD-51 is resolved
@@ -94,7 +94,7 @@ class SaveAsApiTest extends ApiTester
             }
         }
 
-        foreach (self::$inputTestFiles as $inputFile)
+        foreach (self::$basicInputTestFiles as $inputFile)
         {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension)
@@ -151,7 +151,7 @@ class SaveAsApiTest extends ApiTester
             }
         }
 
-        foreach (self::$inputTestFiles as $inputFile)
+        foreach (self::$basicInputTestFiles as $inputFile)
         {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension)

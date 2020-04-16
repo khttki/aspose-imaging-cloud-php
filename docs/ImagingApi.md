@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 # **createImageFrame**
 > createImageFrame($createImageFrameRequest)
 
-Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### Return type
 
@@ -468,7 +468,7 @@ Get separate frame from existing TIFF image. Image data is passed as zero-indexe
 # **createImageFrameAsync**
 > createImageFrameAsync($createImageFrameRequest)
 
-Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 Performs operation asynchronously.
 
@@ -497,6 +497,64 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **image_data** | **string**| Input image |
  **frame_id** | **int**| Number of a frame. |
+ **new_width** | **int**| New width. | [optional]
+ **new_height** | **int**| New height. | [optional]
+ **x** | **int**| X position of start point for cropping rectangle. | [optional]
+ **y** | **int**| Y position of start point for cropping rectangle. | [optional]
+ **rect_width** | **int**| Width of cropping rectangle. | [optional]
+ **rect_height** | **int**| Height of cropping rectangle. | [optional]
+ **rotate_flip_method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional]
+ **save_other_frames** | **bool**| If result will include all other frames or just a specified frame. | [optional] [default to false]
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createimageframerange"></a>
+# **createImageFrameRange**
+> createImageFrameRange($createImageFrameRangeRequest)
+
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="createimageframerangeasync"></a>
+# **createImageFrameRangeAsync**
+> createImageFrameRangeAsync($createImageFrameRangeRequest)
+
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateImageFrameRangeRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $start_frame_id, 
+    $end_frame_id, 
+    $new_width, 
+    $new_height, 
+    $x, 
+    $y, 
+    $rect_width, 
+    $rect_height, 
+    $rotate_flip_method, 
+    $save_other_frames, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **start_frame_id** | **int**| Index of the first frame in range. |
+ **end_frame_id** | **int**| Index of the last frame in range. |
  **new_width** | **int**| New width. | [optional]
  **new_height** | **int**| New height. | [optional]
  **x** | **int**| X position of start point for cropping rectangle. | [optional]
@@ -1672,7 +1730,7 @@ Name | Type | Description  | Notes
 # **extractImageFrameProperties**
 > extractImageFrameProperties($extractImageFramePropertiesRequest)
 
-Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### Return type
 
@@ -1682,7 +1740,7 @@ Get separate frame properties of existing TIFF image. Image data is passed as ze
 # **extractImageFramePropertiesAsync**
 > extractImageFramePropertiesAsync($extractImageFramePropertiesRequest)
 
-Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 Performs operation asynchronously.
 
@@ -2062,7 +2120,7 @@ Name | Type | Description  | Notes
 # **getImageFrame**
 > getImageFrame($getImageFrameRequest)
 
-Get separate frame from existing TIFF image.
+Get separate frame from existing image.
 
 ### Return type
 
@@ -2072,7 +2130,7 @@ Get separate frame from existing TIFF image.
 # **getImageFrameAsync**
 > getImageFrameAsync($getImageFrameRequest)
 
-Get separate frame from existing TIFF image.
+Get separate frame from existing image.
 
 Performs operation asynchronously.
 
@@ -2118,7 +2176,7 @@ Name | Type | Description  | Notes
 # **getImageFrameProperties**
 > getImageFrameProperties($getImageFramePropertiesRequest)
 
-Get separate frame properties of existing TIFF image.
+Get separate frame properties of existing image.
 
 ### Return type
 
@@ -2128,7 +2186,7 @@ Get separate frame properties of existing TIFF image.
 # **getImageFramePropertiesAsync**
 > getImageFramePropertiesAsync($getImageFramePropertiesRequest)
 
-Get separate frame properties of existing TIFF image.
+Get separate frame properties of existing image.
 
 Performs operation asynchronously.
 
@@ -2149,6 +2207,64 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename with image. |
  **frame_id** | **int**| Number of a frame. |
+ **folder** | **string**| Folder with image to process. | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="getimageframerange"></a>
+# **getImageFrameRange**
+> getImageFrameRange($getImageFrameRangeRequest)
+
+Get frames range from existing image.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="getimageframerangeasync"></a>
+# **getImageFrameRangeAsync**
+> getImageFrameRangeAsync($getImageFrameRangeRequest)
+
+Get frames range from existing image.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **GetImageFrameRangeRequest** Parameters
+```php
+__construct(
+    $name, 
+    $start_frame_id, 
+    $end_frame_id, 
+    $new_width, 
+    $new_height, 
+    $x, 
+    $y, 
+    $rect_width, 
+    $rect_height, 
+    $rotate_flip_method, 
+    $save_other_frames, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of image. |
+ **start_frame_id** | **int**| Index of the first frame in range. |
+ **end_frame_id** | **int**| Index of the last frame in range. |
+ **new_width** | **int**| New width. | [optional]
+ **new_height** | **int**| New height. | [optional]
+ **x** | **int**| X position of start point for cropping rectangle. | [optional]
+ **y** | **int**| Y position of start point for cropping rectangle. | [optional]
+ **rect_width** | **int**| Width of cropping rectangle. | [optional]
+ **rect_height** | **int**| Height of cropping rectangle. | [optional]
+ **rotate_flip_method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional]
+ **save_other_frames** | **bool**| If result will include all other frames or just a specified frame. | [optional] [default to false]
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
