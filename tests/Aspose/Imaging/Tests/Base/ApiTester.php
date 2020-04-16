@@ -150,8 +150,8 @@ abstract class ApiTester extends TestCase
 
     /**
      * The basic input test files
-     * 
-     * @var \Aspose\Imaging\Model\StorageFile[] 
+     *
+     * @var \Aspose\Imaging\Model\StorageFile[]
      */
     protected static $basicInputTestFiles;
 
@@ -366,6 +366,17 @@ abstract class ApiTester extends TestCase
             $propertiesTester, $folder, $storage);
     }
 
+    protected function getObjectDetectionRequestTestInternal($testMethodName, $parametersLine, $inputFileName,
+                                              callable $requestInvoker, callable $propertiesTester, $folder, $storage)
+    {
+        $this->requestObjectDetectionTestInternal($testMethodName, false, $parametersLine, $inputFileName, null,
+            function() use ($requestInvoker)
+            {
+                return $this->obtainObjectDetectionGetResponse($requestInvoker);
+            },
+            $propertiesTester, $folder, $storage);
+    }
+
     /**
      * Tests the typical POST request.
 
@@ -466,7 +477,12 @@ abstract class ApiTester extends TestCase
         $this->assertGreaterThan(0, $response->getSize());
         return $response;
     }
-        
+
+    private function obtainObjectDetectionGetResponse($requestInvoker)
+    {
+        return $requestInvoker();
+    }
+
     /**
      * Obtains the typical POST request response.
      *
@@ -552,7 +568,7 @@ abstract class ApiTester extends TestCase
             elseif (!$this->fileIsPdf($response))
             {
                 $response->rewind();
-                $resultProperties = 
+                $resultProperties =
                     self::$imagingApi->extractImagePropertiesAsync(
                         new Requests\ExtractImagePropertiesRequest($response->getContents()))->wait();
                 $this->assertNotNull($resultProperties);
@@ -580,6 +596,87 @@ abstract class ApiTester extends TestCase
         {
             if ($passed && $saveResultToStorage && self::$removeResult && self::$imagingApi->objectExists(
                 new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
+            {
+                self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
+            }
+
+            echo "Test passed: " . var_export($passed, true) . "\r\n";
+        }
+    }
+
+    private function requestObjectDetectionTestInternal(
+        $testMethodName,
+        $saveResultToStorage,
+        $parametersLine,
+        $inputFileName,
+        $resultFileName,
+        callable $invokeRequestAction,
+        callable $propertiesTester,
+        $folder,
+        $storage)
+    {
+        echo "\r\n" . $testMethodName . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
+
+        if (!$this->checkInputFileExists($inputFileName))
+        {
+            throw new ArgumentException(
+                "Input file " . $inputFileName . " doesn't exist in the specified storage folder: " . $folder . ". Please, upload it first.");
+        }
+
+        if (!self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder . "/" . $inputFileName, $storage))->getExists())
+        {
+            self::$imagingApi->copyFile(
+                new Requests\CopyFileRequest(self::$originalDataFolder . "/" . $inputFileName, $folder . "/" . $inputFileName, $storage, $storage));
+        }
+
+        $passed = false;
+        $outPath = null;
+
+        try
+        {
+            echo $parametersLine . "\r\n";
+
+            if ($saveResultToStorage)
+            {
+                $outPath = $folder . "/" . $resultFileName;
+
+                // remove output file from the storage (if exists)
+                if (self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
+                {
+                    self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
+                }
+            }
+
+            $response = $invokeRequestAction();
+
+            if ($saveResultToStorage)
+            {
+                $resultInfo = $this->getStorageFileInfo($folder, $resultFileName, $storage);
+                if (!isset($resultInfo))
+                {
+                    throw new ArgumentException(
+                        "Result file " . $resultFileName . " doesn't exist in the specified storage folder: "
+                        . $folder . "Result isn't present in the storage by an unknown reason.");
+                }
+            }
+
+            if (isset($resultProperties) && isset($propertiesTester))
+            {
+                $propertiesTester($response);
+            }
+
+            $passed = true;
+        }
+        catch (Exception $ex)
+        {
+            self::$failedAnyTest = true;
+            echo $ex->getMessage() . "\r\n";
+            throw $ex;
+        }
+        finally
+        {
+            if ($passed && $saveResultToStorage && self::$removeResult && self::$imagingApi->objectExists(
+                    new Requests\ObjectExistsRequest($outPath, $storage))->getExists())
             {
                 self::$imagingApi->deleteFile(new Requests\DeleteFileRequest($outPath, $storage));
             }
