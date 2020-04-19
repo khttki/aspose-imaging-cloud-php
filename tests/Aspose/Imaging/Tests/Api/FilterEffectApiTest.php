@@ -94,7 +94,7 @@ class FilterEffectApiTest extends ApiTester
 
             foreach ($this->__getTestFilters() as $filter) {
                 foreach ($formatsToExport as $format) {
-					if ($formatExtension == ".psd" and $formatsToExport == "webp") {
+					if ($formatExtension === ".psd" and $formatsToExport === "webp") {
 						continue;
 					}
 					
