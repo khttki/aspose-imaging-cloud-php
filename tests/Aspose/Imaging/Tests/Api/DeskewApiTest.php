@@ -47,7 +47,7 @@ class DeskewApiTest extends ApiTester
      */
     public function exportOptionsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".bmp", true, true, null], [".bmp", false, false, "green"],
             /* TODO: enable after IMAGINGCLOUD-51 is resolved
             [".gif", true, true, null], [".gif", false, true, null],
@@ -90,7 +90,7 @@ class DeskewApiTest extends ApiTester
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
 
-        foreach (self::$inputTestFiles as $inputFile) {
+        foreach (self::$basicInputTestFiles as $inputFile) {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
                 $name = $inputFileName;
@@ -133,7 +133,7 @@ class DeskewApiTest extends ApiTester
         $storage = self::$testStorage;
         $outName = null;
 
-        foreach (self::$inputTestFiles as $inputFile) {
+        foreach (self::$basicInputTestFiles as $inputFile) {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
                 $name = $inputFileName;

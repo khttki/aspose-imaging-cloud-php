@@ -28,6 +28,8 @@
 
 namespace Aspose\Imaging\Tests\Base;
 
+ini_set('memory_limit', '512M');
+
 use \Aspose\Imaging;
 use \Aspose\Imaging\Model;
 use \Aspose\Imaging\Model\Requests;
@@ -111,11 +113,12 @@ abstract class ApiTester extends TestCase
     public static $failedAnyTest = false;
 
     /**
-     * If extended tests should be run
-     * 
-     * @var bool
+     * Gets extended test switch
+     * @return bool true if extended tests should be executed
      */
-    protected static $extendedTests;
+    public static function getExtendedTests() {
+        return getenv("ExtendedTests") === "true" ? true : false;
+    }
 
     /**
      * Aspose.Imaging API
@@ -140,10 +143,24 @@ abstract class ApiTester extends TestCase
 
     /**
      * The input test files
+     *
+     * @var \Aspose\Imaging\Model\StorageFile[]
+     */
+    protected static $inputTestFiles;
+
+    /**
+     * The basic input test files
      * 
      * @var \Aspose\Imaging\Model\StorageFile[] 
      */
-    protected static $inputTestFiles;
+    protected static $basicInputTestFiles;
+
+    /**
+     * The multipage input test files
+     *
+     * @var \Aspose\Imaging\Model\StorageFile[]
+     */
+    protected static $multipageInputTestFiles;
 
     /**
      * The test storage
@@ -179,8 +196,7 @@ abstract class ApiTester extends TestCase
     public static function initFixture()
     {
         echo "\r\n";
-        self::$extendedTests = getenv("ExtendedTests") === "true" ? true : false;
-        echo "Extended tests: " . (self::$extendedTests ? "true" : "false") . "\r\n";
+        echo "Extended tests: " . (self::getExtendedTests() ? "true" : "false") . "\r\n";
         $buildNumber = getenv("BUILD_NUMBER");
         if (!empty($buildNumber))
         {
@@ -295,6 +311,12 @@ abstract class ApiTester extends TestCase
         $imagingConfig->setOnPremise($onPremise);
         self::$imagingApi = new Imaging\ImagingApi($imagingConfig);
         self::$inputTestFiles = self::fetchInputTestFilesInfo();
+        self::$basicInputTestFiles = array_filter(self::$inputTestFiles, function ($file) {
+            return substr($file->getName(), 0, strlen("multipage_")) !== "multipage_";
+        });
+        self::$multipageInputTestFiles = array_filter(self::$inputTestFiles, function ($file) {
+            return substr($file->getName(), 0, strlen("multipage_")) === "multipage_";
+        });
     }
     
     /**
@@ -389,6 +411,27 @@ abstract class ApiTester extends TestCase
     }
 
     /**
+     * Copies original input file to test folder in cloud
+     * @param string $inputFileName The input file name
+     * @param string $folder The folder
+     * @param string $storage The storage
+     */
+    protected function copyInputFileToTestFolder($inputFileName, $folder, $storage)
+    {
+        if (!$this->checkInputFileExists($inputFileName))
+        {
+            throw new ArgumentException(
+                "Input file " . $inputFileName . " doesn't exist in the specified storage folder: " . $folder . ". Please, upload it first.");
+        }
+
+        if (!self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder . "/" . $inputFileName, $storage))->getExists())
+        {
+            self::$imagingApi->copyFile(
+                new Requests\CopyFileRequest(self::$originalDataFolder . "/" . $inputFileName, $folder . "/" . $inputFileName, $storage, $storage));
+        }
+    }
+
+    /**
      * Gets the storage file information.
      *
      * @param string $folder The folder which contains a file.
@@ -466,17 +509,7 @@ abstract class ApiTester extends TestCase
     {
         echo "\r\n" . $testMethodName . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
 
-        if (!$this->checkInputFileExists($inputFileName))
-        {
-            throw new ArgumentException(
-                "Input file " . $inputFileName . " doesn't exist in the specified storage folder: " . $folder . ". Please, upload it first.");
-        }
-
-        if (!self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder . "/" . $inputFileName, $storage))->getExists())
-        {
-            self::$imagingApi->copyFile(
-                new Requests\CopyFileRequest(self::$originalDataFolder . "/" . $inputFileName, $folder . "/" . $inputFileName, $storage, $storage));
-        }
+        self::copyInputFileToTestFolder($inputFileName, $folder, $storage);
 
         $passed = false;
         $outPath = null;
@@ -509,13 +542,16 @@ abstract class ApiTester extends TestCase
                         . $folder . "Result isn't present in the storage by an unknown reason.");
                 }
 
-                $resultProperties = 
-                self::$imagingApi->getImagePropertiesAsync(
-                    new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
-                $this->assertNotNull($resultProperties);
+                if (substr($resultFileName, -strlen(".pdf")) !== ".pdf") {
+                    $resultProperties =
+                        self::$imagingApi->getImagePropertiesAsync(
+                            new Requests\GetImagePropertiesRequest($resultFileName, $folder, $storage))->wait();
+                    $this->assertNotNull($resultProperties);
+                }
             }
-            else
+            elseif (!$this->fileIsPdf($response))
             {
+                $response->rewind();
                 $resultProperties = 
                     self::$imagingApi->extractImagePropertiesAsync(
                         new Requests\ExtractImagePropertiesRequest($response->getContents()))->wait();
@@ -550,5 +586,18 @@ abstract class ApiTester extends TestCase
 
             echo "Test passed: " . var_export($passed, true) . "\r\n";
         }
+    }
+
+    /**
+     * Checks that stream represents PDF file
+     *
+     * @param $file \GuzzleHttp\Psr7\Stream The file stream
+     * @return bool true if file is a PSD
+     */
+    private function fileIsPdf($file) {
+        $buffer = unpack('C*', $file->read(5));
+        // This is the 1-indexed array, not a mistake
+        return $buffer[1] == 0x25 && $buffer[2] == 0x50 && $buffer[3] == 0x44 && $buffer[4] == 0x46 &&
+            $buffer[5] == 0x2d;
     }
 }
