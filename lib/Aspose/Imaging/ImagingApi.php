@@ -518,6 +518,60 @@ class ImagingApi
     }
     
     /**
+     * Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateFaxTiffRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function createFaxTiff($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\CreateFaxTiffRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFaxTiffAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'POST');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Create the folder
      *
      * @param \Aspose\Imaging\Model\Requests\CreateFolderRequest $request Request object for operation

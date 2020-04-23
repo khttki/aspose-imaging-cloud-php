@@ -81,6 +81,46 @@ class TiffApiTest extends ApiTester
     }
 
     /**
+     * Test CreateFaxTiff
+     *
+     * @test
+     * @dataProvider storageOptionsProvider
+     *
+     * @param bool $saveResultToStorage If result should be saved to storage.
+     * @return void
+     */
+    public function createFaxTiff($saveResultToStorage)
+    {
+        $name = "test.tiff";
+        $folder = self::$tempFolder;
+        $storage = self::$testStorage;
+        $outName = $name . "_specific.tiff";
+
+        $this->postRequestTestInternal(
+            "createFaxTiff",
+            $saveResultToStorage,
+            "Input image: " . $name,
+            $name,
+            $outName,
+            function($inputStream, $outPath) use ($name, $folder, $storage)
+            {
+                $request = new Requests\CreateFaxTiffRequest($inputStream, $outPath, $storage);
+                return self::$imagingApi->createFaxTiffAsync($request)->wait();
+            },
+            function($originalProperties, $resultProperties, $resultStream)
+            {
+                $this->assertNotNull($resultProperties->getTiffProperties());
+                $this->assertEquals(1, $resultProperties->getBitsPerPixel());
+                $this->assertEquals(196, (int)ceil($resultProperties->getVerticalResolution()));
+                $this->assertEquals(204, (int)ceil($resultProperties->getHorizontalResolution()));
+                $this->assertEquals(1728, $resultProperties->getWidth());
+                $this->assertEquals(2200, $resultProperties->getHeight());
+            },
+            $folder,
+            $storage);
+    }
+
+    /**
      * Test ModifyTiff
      * 
      * @test
