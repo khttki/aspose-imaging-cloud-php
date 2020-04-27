@@ -1496,11 +1496,11 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Aspose\Imaging\Model\DetectedObject[]
+     * @return \Aspose\Imaging\Model\DetectedObjectList
      */
     public function createObjectBounds($request)
     {
-        $returnType = '\Aspose\Imaging\Model\DetectedObject[]';
+        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
         $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'POST');
@@ -1525,7 +1525,7 @@ class ImagingApi
      */
     public function createObjectBoundsAsync($request) 
     {
-        $returnType = '\Aspose\Imaging\Model\DetectedObject[]';
+        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
         $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'POST');
@@ -3926,11 +3926,11 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Aspose\Imaging\Model\DetectedObject[]
+     * @return \Aspose\Imaging\Model\DetectedObjectList
      */
     public function objectBounds($request)
     {
-        $returnType = '\Aspose\Imaging\Model\DetectedObject[]';
+        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
         $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'GET');
@@ -3955,7 +3955,7 @@ class ImagingApi
      */
     public function objectBoundsAsync($request) 
     {
-        $returnType = '\Aspose\Imaging\Model\DetectedObject[]';
+        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
         $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'GET');

@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="Rectangle.php">
+ * <copyright company="Aspose" file="DetectedObjectList.php">
  *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -32,10 +32,11 @@ use \ArrayAccess;
 use \Aspose\Imaging\ObjectSerializer;
 
 /**
- * Rectangle
+ * DetectedObjectList
  *
+ * @description Wrapper for detected objects array
  */
-class Rectangle implements ArrayAccess
+class DetectedObjectList implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -44,7 +45,7 @@ class Rectangle implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "Rectangle";
+    protected static $swaggerModelName = "DetectedObjectList";
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -52,10 +53,7 @@ class Rectangle implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'x' => 'double',
-        'y' => 'double',
-        'width' => 'double',
-        'height' => 'double'
+        'detected_objects' => '\Aspose\Imaging\Model\DetectedObject[]'
     ];
 
     /**
@@ -64,10 +62,7 @@ class Rectangle implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'x' => 'double',
-        'y' => 'double',
-        'width' => 'double',
-        'height' => 'double'
+        'detected_objects' => null
     ];
 
     /**
@@ -97,10 +92,7 @@ class Rectangle implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'X',
-        'y' => 'Y',
-        'width' => 'Width',
-        'height' => 'Height'
+        'detected_objects' => 'DetectedObjects'
     ];
 
     /**
@@ -109,10 +101,7 @@ class Rectangle implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'y' => 'setY',
-        'width' => 'setWidth',
-        'height' => 'setHeight'
+        'detected_objects' => 'setDetectedObjects'
     ];
 
     /**
@@ -121,10 +110,7 @@ class Rectangle implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'y' => 'getY',
-        'width' => 'getWidth',
-        'height' => 'getHeight'
+        'detected_objects' => 'getDetectedObjects'
     ];
 
     /**
@@ -187,10 +173,7 @@ class Rectangle implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['x'] = isset($data['x']) ? $data['x'] : null;
-        $this->container['y'] = isset($data['y']) ? $data['y'] : null;
-        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
-        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['detected_objects'] = isset($data['detected_objects']) ? $data['detected_objects'] : null;
     }
 
     /**
@@ -202,18 +185,6 @@ class Rectangle implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['x'] === null) {
-            $invalidProperties[] = "'x' can't be null";
-        }
-        if ($this->container['y'] === null) {
-            $invalidProperties[] = "'y' can't be null";
-        }
-        if ($this->container['width'] === null) {
-            $invalidProperties[] = "'width' can't be null";
-        }
-        if ($this->container['height'] === null) {
-            $invalidProperties[] = "'height' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -226,114 +197,30 @@ class Rectangle implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['x'] === null) {
-            return false;
-        }
-        if ($this->container['y'] === null) {
-            return false;
-        }
-        if ($this->container['width'] === null) {
-            return false;
-        }
-        if ($this->container['height'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets x
+     * Gets detected_objects
      *
-     * @return double
+     * @return \Aspose\Imaging\Model\DetectedObject[]
      */
-    public function getX()
+    public function getDetectedObjects()
     {
-        return $this->container['x'];
+        return $this->container['detected_objects'];
     }
 
     /**
-     * Sets x
+     * Sets detected_objects
      *
-     * @param double $x x
+     * @param \Aspose\Imaging\Model\DetectedObject[] $detected_objects detected objects
      *
      * @return $this
      */
-    public function setX($x)
+    public function setDetectedObjects($detected_objects)
     {
-        $this->container['x'] = $x;
-
-        return $this;
-    }
-
-    /**
-     * Gets y
-     *
-     * @return double
-     */
-    public function getY()
-    {
-        return $this->container['y'];
-    }
-
-    /**
-     * Sets y
-     *
-     * @param double $y y
-     *
-     * @return $this
-     */
-    public function setY($y)
-    {
-        $this->container['y'] = $y;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return double
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param double $width width
-     *
-     * @return $this
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return double
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param double $height height
-     *
-     * @return $this
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
+        $this->container['detected_objects'] = $detected_objects;
 
         return $this;
     }

@@ -1188,7 +1188,7 @@ Detects objects bounds. Image data is passed as zero-indexed multipart/form-data
 
 ### Return type
 
-[**\Aspose\Imaging\Model\DetectedObject[]**](DetectedObject.md)
+[**\Aspose\Imaging\Model\DetectedObjectList**](DetectedObjectList.md)
 
 <a name="createobjectboundsasync"></a>
 # **createObjectBoundsAsync**
@@ -3136,7 +3136,7 @@ Detect objects' bounds
 
 ### Return type
 
-[**\Aspose\Imaging\Model\DetectedObject[]**](DetectedObject.md)
+[**\Aspose\Imaging\Model\DetectedObjectList**](DetectedObjectList.md)
 
 <a name="objectboundsasync"></a>
 # **objectBoundsAsync**
@@ -3156,7 +3156,7 @@ __construct(
     $name, 
     $method, 
     $threshold, 
-    $inlcude_class, 
+    $include_class, 
     $include_score, 
     $folder, 
     $storage)
@@ -3167,7 +3167,7 @@ Name | Type | Description  | Notes
  **name** | **string**| Image file name. |
  **method** | **string**| Object detection method | [optional] [default to ssd]
  **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
- **inlcude_class** | **bool**| Return detected objects classes | [optional] [default to true]
+ **include_class** | **bool**| Return detected objects classes | [optional] [default to true]
  **include_score** | **bool**| Return detected objects score | [optional] [default to true]
  **folder** | **string**| Folder | [optional]
  **storage** | **string**| Storage | [optional]

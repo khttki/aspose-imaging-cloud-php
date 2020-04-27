@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="ObjectBoundsRequest.php">
- *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -64,7 +64,7 @@ class ObjectBoundsRequest extends ImagingRequest
      *
      * @var bool
      */
-    public $inlcude_class;
+    public $include_class;
     
     /**
      * Return detected objects score
@@ -93,17 +93,17 @@ class ObjectBoundsRequest extends ImagingRequest
      * @param string $name Image file name.
      * @param string $method Object detection method
      * @param int $threshold Object detection probability threshold in percents
-     * @param bool $inlcude_class Return detected objects classes
+     * @param bool $include_class Return detected objects classes
      * @param bool $include_score Return detected objects score
      * @param string $folder Folder
      * @param string $storage Storage
      */
-    public function __construct($name, $method = null, $threshold = null, $inlcude_class = null, $include_score = null, $folder = null, $storage = null)             
+    public function __construct($name, $method = null, $threshold = null, $include_class = null, $include_score = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->method = $method;
         $this->threshold = $threshold;
-        $this->inlcude_class = $inlcude_class;
+        $this->include_class = $include_class;
         $this->include_score = $include_score;
         $this->folder = $folder;
         $this->storage = $storage;
@@ -177,9 +177,9 @@ class ObjectBoundsRequest extends ImagingRequest
      *
      * @return bool
      */
-    public function get_inlcude_class()
+    public function get_include_class()
     {
-        return $this->inlcude_class;
+        return $this->include_class;
     }
 
     /**
@@ -187,9 +187,9 @@ class ObjectBoundsRequest extends ImagingRequest
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_inlcude_class($value)
+    public function set_include_class($value)
     {
-        $this->inlcude_class = $value;
+        $this->include_class = $value;
         return $this;
     }
     
@@ -306,9 +306,9 @@ class ObjectBoundsRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->inlcude_class !== null) {
-            $localName = lcfirst('inlcudeClass');
-            $localValue = is_bool($this->inlcude_class) ? ($this->inlcude_class ? 'true' : 'false') : $this->inlcude_class;
+        if ($this->include_class !== null) {
+            $localName = lcfirst('includeClass');
+            $localValue = is_bool($this->include_class) ? ($this->include_class ? 'true' : 'false') : $this->include_class;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
