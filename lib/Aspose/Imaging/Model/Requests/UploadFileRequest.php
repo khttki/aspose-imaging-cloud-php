@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="UploadFileRequest.php">
- *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+ *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -202,3 +202,4 @@ class UploadFileRequest extends ImagingRequest
         return $httpInfo;        
     }
 }
+

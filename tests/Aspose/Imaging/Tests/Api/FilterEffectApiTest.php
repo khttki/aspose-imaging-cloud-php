@@ -50,7 +50,7 @@ class FilterEffectApiTest extends ApiTester
      */
     public function filterEffectFormatsProvider()
     {
-        return self::$extendedTests ? [
+        return self::getExtendedTests() ? [
             [".dicom"],
             [".djvu"],
             [".gif"],
@@ -84,7 +84,7 @@ class FilterEffectApiTest extends ApiTester
             }
         }
 
-        foreach (self::$inputTestFiles as $inputFile) {
+        foreach (self::$basicInputTestFiles as $inputFile) {
             $inputFileName = $inputFile->getName();
             if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
                 $name = $inputFileName;
@@ -94,6 +94,10 @@ class FilterEffectApiTest extends ApiTester
 
             foreach ($this->__getTestFilters() as $filter) {
                 foreach ($formatsToExport as $format) {
+					if ($formatExtension == ".psd" and $format == "webp") {
+						continue;
+					}
+					
                     $this->getRequestTestInternal(
                         "FilterEffectTest",
                         "Input image: " . $name . "; Output format: " . isset($format)? $format : "null" . "; Filter type: " . $filter->filterType,
