@@ -700,7 +700,7 @@ abstract class ApiTester extends TestCase
                 }
             }
 
-            if (isset($resultProperties) && isset($propertiesTester))
+            if (isset($propertiesTester))
             {
                 $propertiesTester($response);
             }

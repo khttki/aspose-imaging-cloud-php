@@ -94,7 +94,7 @@ class ObjectDetectionApiTest extends ApiTester
     public function objectDetectionTest($saveResultToStorage)
     {
         if ($saveResultToStorage) {
-            return;
+            $this->assertTrue(true);
         }
 
         echo "\r\n" . "objectDetectionTest1" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
@@ -112,14 +112,16 @@ class ObjectDetectionApiTest extends ApiTester
                 "Input image: " . $name,
                 $name,
                 function () use ($name, $folder, $storage) {
-                    $request = new Requests\ObjectBoundsRequest($name, null, 60, true, true, $folder, $storage);
-                    return self::$imagingApi->objectBoundsAsync($request)->wait();
+                    $request = new Requests\ObjectBoundsRequest($name, null, 10, true, true, $folder, $storage);
+                    $result = self::$imagingApi->objectBoundsAsync($request)->wait();
+                    echo "result: " . $result;
+                    return $result;
                 },
                 function (DetectedObjectList $result) {
                     echo $result;
                     $this->assertNotNull($result);
                     $this->assertNotNull($result->getDetectedObjects());
-                    $this->assert.assertGreaterThan(0, $result->getDetectedObjects().$this->getSize());
+                    $this->assertTrue(count($result->getDetectedObjects()) > 0);
                 },
                 $folder,
                 $storage);
@@ -183,7 +185,7 @@ class ObjectDetectionApiTest extends ApiTester
                         echo $result;
                         $this->assertNotNull($result);
                         $this->assertNotNull($result->getDetectedObjects());
-                        $this->assert.assertGreaterThan(0, $result->getDetectedObjects().$this->getSize());
+                        $this->assertGreaterThan(0, count($result->getDetectedObjects()));
                     },
                     $folder,
                     $storage);
