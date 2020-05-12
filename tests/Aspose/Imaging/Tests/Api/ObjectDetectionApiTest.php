@@ -92,10 +92,11 @@ class ObjectDetectionApiTest extends ApiTester
      */
     public function objectDetectionTest($saveResultToStorage)
     {
-        echo "\r\n" . "objectDetectionTest1" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
         if ($saveResultToStorage) {
             return;
         }
+
+        echo "\r\n" . "objectDetectionTest1" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
 
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
@@ -119,7 +120,7 @@ class ObjectDetectionApiTest extends ApiTester
                 $folder,
                 $storage);
 
-            $this->getRequestTestInternal(
+            /*$this->getRequestTestInternal(
                 "visualObjectBoundsRequest",
                 "Input image: " . $name,
                 $name,
@@ -133,7 +134,7 @@ class ObjectDetectionApiTest extends ApiTester
                     $this->assertNotNull($resultStream);
                 },
                 $folder,
-                $storage);
+                $storage);*/
         }
     }
 
