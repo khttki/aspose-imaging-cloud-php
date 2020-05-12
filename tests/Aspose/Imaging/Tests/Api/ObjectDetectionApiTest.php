@@ -125,7 +125,9 @@ class ObjectDetectionApiTest extends ApiTester
                 $name,
                 function () use ($name, $folder, $storage) {
                     $request = new Requests\VisualObjectBoundsRequest($name, null, 60, true, true, $folder, $storage);
-                    return self::$imagingApi->visualObjectBoundsAsync($request)->wait();
+                    $result =  self::$imagingApi->visualObjectBoundsAsync($request)->wait();
+                    echo "result: " . $result;
+                    return $result;
                 },
                 function ($resultStream) {
                     $this->assertNotNull($resultStream);
