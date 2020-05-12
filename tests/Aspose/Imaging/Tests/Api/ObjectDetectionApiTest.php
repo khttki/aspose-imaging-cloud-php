@@ -106,7 +106,7 @@ class ObjectDetectionApiTest extends ApiTester
                 continue;
             }
 
-            $this->getObjectDetectionRequestTestInternal(
+            /*$this->getObjectDetectionRequestTestInternal(
                 "objectBoundsRequest",
                 "Input image: " . $name,
                 $name,
@@ -118,9 +118,9 @@ class ObjectDetectionApiTest extends ApiTester
                     $this->assertNotNull($resultStream);
                 },
                 $folder,
-                $storage);
+                $storage);*/
 
-            /*$this->getRequestTestInternal(
+            $this->getRequestTestInternal(
                 "visualObjectBoundsRequest",
                 "Input image: " . $name,
                 $name,
@@ -134,7 +134,7 @@ class ObjectDetectionApiTest extends ApiTester
                     $this->assertNotNull($resultStream);
                 },
                 $folder,
-                $storage);*/
+                $storage);
         }
     }
 
