@@ -403,6 +403,31 @@ abstract class ApiTester extends TestCase
     }
 
     /**
+     * Tests the typical POST request.
+
+     * @param string $testMethodName Name of the test method.
+     * @param bool $saveResultToStorage If save result to storage.
+     * @param string $parametersLine The parameters line.
+     * @param string $inputFileName Name of the input file.
+     * @param string $resultFileName Name of the result file.
+     * @param callable $requestInvoker The request invoker.
+     * @param callable $propertiesTester The properties tester.
+     * @param string $folder The folder.
+     * @param string $storage The storage.
+     * @return void
+     */
+    protected function postObjectDetectionRequestTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName,
+                                               callable $requestInvoker, callable $propertiesTester, $folder, $storage)
+    {
+        $this->requestObjectDetectionTestInternal($testMethodName, $saveResultToStorage, $parametersLine, $inputFileName, $resultFileName,
+            function() use ($inputFileName, $saveResultToStorage, $folder, $resultFileName, $storage, $requestInvoker)
+            {
+                return $this->obtainObjectDetectionPostResponse($folder . "/" . $inputFileName, $saveResultToStorage ? $folder . "/" . $resultFileName : null, $storage, $requestInvoker);
+            },
+            $propertiesTester, $folder, $storage);
+    }
+
+    /**
      * Checks if input file exists.
      *
      * @param string $inputFileName Name of the input file.
@@ -504,6 +529,21 @@ abstract class ApiTester extends TestCase
         }
 
         return null;
+    }
+
+    /**
+     * Obtains the typical POST request response.
+     *
+     * @param string $inputPath The input path.
+     * @param string $outPath The output path to save the result.
+     * @param string $storage The storage.
+     * @param callable $requestInvoker The request invoker.
+     * @return Psr\Http\Message\StreamInterface
+     */
+    private function obtainObjectDetectionPostResponse($inputPath, $outPath, $storage, callable $requestInvoker)
+    {
+        $downContents = self::$imagingApi->downloadFile(new Requests\DownloadFileRequest($inputPath, $storage));
+        return $requestInvoker($downContents->getContents(), $outPath);
     }
 
     /**

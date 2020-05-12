@@ -28,6 +28,7 @@
 
 namespace Aspose\Imaging\Tests\Api;
 
+use Aspose\Imaging\Model\DetectedObjectList;
 use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging\Model\Requests;
 
@@ -114,10 +115,11 @@ class ObjectDetectionApiTest extends ApiTester
                     $request = new Requests\ObjectBoundsRequest($name, null, 60, true, true, $folder, $storage);
                     return self::$imagingApi->objectBoundsAsync($request)->wait();
                 },
-                function ($result) {
-                    $this->assertNotNull($result);
+                function (DetectedObjectList $result) {
                     echo $result;
-                    //$this->assertGreaterThan(0, $result -> getLength());
+                    $this->assertNotNull($result);
+                    $this->assertNotNull($result->getDetectedObjects());
+                    $this->assert.assertGreaterThan(0, $result->getDetectedObjects().$this->getSize());
                 },
                 $folder,
                 $storage);
@@ -176,11 +178,12 @@ class ObjectDetectionApiTest extends ApiTester
                         $request = new Requests\CreateObjectBoundsRequest($inputStream, null, 60, true, true,  $outPath, $storage);
                         return self::$imagingApi->createObjectBoundsAsync($request)->wait();
                     },
-                    function($result) use($saveResultToStorage)
+                    function(DetectedObjectList $result) use($saveResultToStorage)
                     {
-                        if($saveResultToStorage == false) {
-                            $this->assertNotNull($result);
-                        }
+                        echo $result;
+                        $this->assertNotNull($result);
+                        $this->assertNotNull($result->getDetectedObjects());
+                        $this->assert.assertGreaterThan(0, $result->getDetectedObjects().$this->getSize());
                     },
                     $folder,
                     $storage);
