@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="DeskewApiTest.php">
+ * <copyright company="Aspose" file="ObjectDetectionTest.php">
  *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -32,11 +32,11 @@ use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging\Model\Requests;
 
 /**
- * Class for testing DeskewApi
+ * Class for testing ObjectDetection API
  * 
  * @group Imaging
  * @group v3.0
- * @group Deskew
+ * @group ObjectDetection
  */
 class ObjectDetectionTests extends ApiTester
 {
@@ -107,7 +107,7 @@ class ObjectDetectionTests extends ApiTester
     }
 
     /**
-     * Test CreateCroppedImage
+     * Test createObjectBoundsImageTest
      *
      * @test
      * @dataProvider exportOptionsProvider
@@ -115,14 +115,13 @@ class ObjectDetectionTests extends ApiTester
      * @param bool $saveResultToStorage If result should be saved to storage.
      * @return void
      */
-    public function createCroppedImageTest($saveResultToStorage)
+    public function createObjectBoundsImageTest($saveResultToStorage)
     {
         $name = null;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
         $outName = null;
 
-        $formatsToExport = ApiTester::BasicExportFormats;
         $name = "object_detection_example.jpg";
         foreach (self::$inputTestFiles as $inputFile)
         {
@@ -130,8 +129,7 @@ class ObjectDetectionTests extends ApiTester
                 continue;
             }
 
-            foreach ($formatsToExport as $format)
-            {
+
                 $outName = "object_detection_example_bounds.jpg";
 
                 $this->postRequestTestInternal(
@@ -140,7 +138,7 @@ class ObjectDetectionTests extends ApiTester
                     "Input image: " . $name,
                     $name,
                     $outName,
-                    function($inputStream, $outPath) use ($format, $storage)
+                    function($inputStream, $outPath) use ($storage)
                     {
                         $request = new Requests\CreateObjectBoundsRequest($inputStream, null, 60, true, true,  $outPath, $storage);
                         return self::$imagingApi->createObjectBoundsAsync($request)->wait();
@@ -173,7 +171,6 @@ class ObjectDetectionTests extends ApiTester
                     },
                     $folder,
                     $storage);
-            }
         }
     }
 }
