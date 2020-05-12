@@ -167,7 +167,7 @@ class ObjectDetectionApiTest extends ApiTester
 
                 $outName = "object_detection_example_bounds.jpg";
 
-                $this->postRequestTestInternal(
+                $this->postObjectDetectionRequestTestInternal(
                     "createObjectBoundsTest",
                     $saveResultToStorage,
                     "Input image: " . $name,
