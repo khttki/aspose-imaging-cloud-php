@@ -63,6 +63,7 @@ class ObjectDetectionTests extends ApiTester
      */
     public function objectDetectionTest($saveResultToStorage)
     {
+        echo "\r\n" . "objectDetectionTest1" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
         if ($saveResultToStorage) {
             return;
         }
@@ -116,6 +117,7 @@ class ObjectDetectionTests extends ApiTester
      */
     public function createObjectBoundsImageTest($saveResultToStorage)
     {
+        echo "\r\n" . "objectDetectionTest2" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
         $name = null;
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
