@@ -92,7 +92,7 @@ class DetectedObjectList implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'detected_objects' => 'DetectedObjects'
+        'detected_objects' => 'detectedObjects'
     ];
 
     /**
