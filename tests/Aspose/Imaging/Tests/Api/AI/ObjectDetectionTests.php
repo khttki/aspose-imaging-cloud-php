@@ -63,7 +63,6 @@ class ObjectDetectionTests extends ApiTester
      */
     public function objectDetectionTest($saveResultToStorage)
     {
-        $saveResultToStorage = false;
         if ($saveResultToStorage) {
             return;
         }
@@ -84,7 +83,7 @@ class ObjectDetectionTests extends ApiTester
                     $request = new Requests\ObjectBoundsRequest($name, null, 60, true, true, $folder, $storage);
                     return self::$imagingApi->objectBoundsAsync($request)->wait();
                 },
-                function ($originalProperties, $resultProperties, $resultStream) {
+                function ($resultStream) {
                     $this->assertNotNull($resultStream);
                 },
                 $folder,
@@ -98,7 +97,7 @@ class ObjectDetectionTests extends ApiTester
                     $request = new Requests\VisualObjectBoundsRequest($name, null, 60, true, true, $folder, $storage);
                     return self::$imagingApi->visualObjectBoundsAsync($request)->wait();
                 },
-                function ($originalProperties, $resultProperties, $resultStream) {
+                function ($resultStream) {
                     $this->assertNotNull($resultStream);
                 },
                 $folder,
@@ -143,7 +142,7 @@ class ObjectDetectionTests extends ApiTester
                         $request = new Requests\CreateObjectBoundsRequest($inputStream, null, 60, true, true,  $outPath, $storage);
                         return self::$imagingApi->createObjectBoundsAsync($request)->wait();
                     },
-                    function($originalProperties, $resultProperties, $resultStream) use($saveResultToStorage)
+                    function($resultStream) use($saveResultToStorage)
                     {
                         if($saveResultToStorage == false) {
                             $this->assertNotNull($resultStream);
@@ -163,7 +162,7 @@ class ObjectDetectionTests extends ApiTester
                         $request = new Requests\CreateVisualObjectBoundsRequest($inputStream, null, 60, true, true,  $outPath, $storage);
                         return self::$imagingApi->createVisualObjectBoundsAsync($request)->wait();
                     },
-                    function($originalProperties, $resultProperties, $resultStream) use($saveResultToStorage)
+                    function($resultStream) use($saveResultToStorage)
                     {
                         if($saveResultToStorage == false) {
                             $this->assertNotNull($resultStream);
