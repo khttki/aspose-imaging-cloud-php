@@ -158,7 +158,7 @@ class ObjectDetectionTests extends ApiTester
                     "Input image: " . $name,
                     $name,
                     $outName,
-                    function($inputStream, $outPath) use ($format, $storage)
+                    function($inputStream, $outPath) use ($storage)
                     {
                         $request = new Requests\CreateVisualObjectBoundsRequest($inputStream, null, 60, true, true,  $outPath, $storage);
                         return self::$imagingApi->createVisualObjectBoundsAsync($request)->wait();
