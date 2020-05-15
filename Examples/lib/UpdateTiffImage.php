@@ -31,6 +31,7 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\AppendTiffRequest;
 use Aspose\Imaging\Model\Requests\ConvertTiffToFaxRequest;
+use Aspose\Imaging\Model\Requests\CreateFaxTiffRequest;
 use Aspose\Imaging\Model\Requests\CreateModifiedTiffRequest;
 use Aspose\Imaging\Model\Requests\DownloadFileRequest;
 use Aspose\Imaging\Model\Requests\ModifyTiffRequest;
@@ -165,6 +166,28 @@ class UpdateTiffImage extends ImagingBase
 
         $updatedImage = self::$imagingApi->convertTiffToFax($getTiffToFaxRequest);
         $this->SaveUpdatedImageToOutput("ConvertTiffToFax.tiff", $updatedImage);
+
+        echo PHP_EOL;
+    }
+
+    /**
+     * Update parameters of TIFF image from request body according to fax parameters
+     */
+    public function ConvertTiffToFaxFromRequestBody()
+    {
+        echo "Update parameters of TIFF image from request body according to fax parameters." . PHP_EOL;
+
+        // Update TIFF Image parameters according to fax parameters
+        $outPath = null;
+        $storage = null; // We are using default Cloud Storage
+
+        $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
+        $createFaxTiffRequest = new CreateFaxTiffRequest($inputStream, $outPath, $storage);
+
+        echo "Call ConvertTiffToFax" . PHP_EOL;
+
+        $updatedImage = self::$imagingApi->createFaxTiff($createFaxTiffRequest);
+        $this->SaveUpdatedSampleImageToOutput($updatedImage, true);
 
         echo PHP_EOL;
     }
