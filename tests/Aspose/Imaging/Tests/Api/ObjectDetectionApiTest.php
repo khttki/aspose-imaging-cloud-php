@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="DeskewApiTest.php">
+ * <copyright company="Aspose" file="ObjectDetectionApiTest.php">
  *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -46,34 +46,6 @@ class ObjectDetectionApiTest extends ApiTester
      *
      * @return array
      */
-//    public function exportOptionsProvider()
-//    {
-//        return self::getExtendedTests() ? [
-//            [".bmp", true, true, null], [".bmp", false, false, "green"],
-//            /* TODO: enable after IMAGINGCLOUD-51 is resolved
-//            [".gif", true, true, null], [".gif", false, true, null],
-//            */
-//            [".j2k", true, true, null], [".j2k", false, true, null],
-//            [".png", true, true, null], [".png", false, true, null],
-//            [".psd", true, true, null], [".psd", false, true, null],
-//            [".jpg", true, true, null], [".jpg", false, true, null],
-//            [".tiff", true, true, null], [".tiff", false, true, null],
-//            [".webp", true, true, null], [".webp", false, true, null]
-//            /*todo: enable after those formats save is implemented
-//            [".dicom", true, true, null], [".dicom", false, true, null],
-//            [".dng", true, true, null], [".dng", false, true, null],
-//            [".djvu", true, true, null], [".djvu", false, true, null]
-//            */
-//        ] : [
-//            [".jpg", true, true, null], [".jpg", false, true, null],
-//        ];
-//    }
-
-    /**
-     * Export options provider
-     *
-     * @return array
-     */
     public function exportOptionsProvider()
     {
         return [
@@ -97,41 +69,38 @@ class ObjectDetectionApiTest extends ApiTester
             $this->assertTrue(true);
         }
 
-        echo "\r\n" . "objectDetectionTest1" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
+        //echo "\r\n" . "objectDetectionTest1" . "; save result to storage: " . var_export($saveResultToStorage, true) . "\r\n";
 
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
-        $name = "object_detection_example.jpg";
+        $name = "test.bmp";
         foreach (self::$inputTestFiles as $inputFile) {
             if($name != $inputFile->getName()) {
                 continue;
             }
 
             $this->getObjectDetectionRequestTestInternal(
-                "objectBoundsRequest",
+                "objectDetection_objectbounds_test",
                 "Input image: " . $name,
                 $name,
                 function () use ($name, $folder, $storage) {
                     $request = new Requests\ObjectBoundsRequest($name, null, 10, true, true, $folder, $storage);
-                    $result = self::$imagingApi->objectBoundsAsync($request)->wait();
-                    echo "result: " . $result;
-                    return $result;
+                    return self::$imagingApi->objectBoundsAsync($request)->wait();
                 },
                 function (DetectedObjectList $result) {
-                    echo $result;
                     $this->assertNotNull($result);
                     $this->assertNotNull($result->getDetectedObjects());
                     $this->assertTrue(count($result->getDetectedObjects()) > 0);
+                    $this->assertNotNull($result->getDetectedObjects()[0]);
                 },
                 $folder,
                 $storage);
 
             $this->getRequestTestInternal(
-                "visualObjectBoundsRequest",
+                "objectDetection_visualobjectbounds_test",
                 "Input image: " . $name,
                 $name,
                 function () use ($name, $folder, $storage) {
-                    echo "hello";
                     $request = new Requests\VisualObjectBoundsRequest($name, null, 60, true, true, $folder, $storage);
                     return self::$imagingApi->visualObjectBoundsAsync($request)->wait();
                 },
@@ -159,7 +128,7 @@ class ObjectDetectionApiTest extends ApiTester
         $storage = self::$testStorage;
         $outName = null;
 
-        $name = "object_detection_example.jpg";
+        $name = "test.bmp";
         foreach (self::$inputTestFiles as $inputFile)
         {
             if($name != $inputFile->getName()) {
@@ -167,10 +136,10 @@ class ObjectDetectionApiTest extends ApiTester
             }
 
 
-                $outName = "object_detection_example_bounds.jpg";
+                $outName = "result_test.bmp";
 
                 $this->postObjectDetectionRequestTestInternal(
-                    "createObjectBoundsTest",
+                    "objectDetection_createobjectbounds_test",
                     $saveResultToStorage,
                     "Input image: " . $name,
                     $name,
@@ -182,16 +151,16 @@ class ObjectDetectionApiTest extends ApiTester
                     },
                     function(DetectedObjectList $result) use($saveResultToStorage)
                     {
-                        echo $result;
                         $this->assertNotNull($result);
                         $this->assertNotNull($result->getDetectedObjects());
                         $this->assertGreaterThan(0, count($result->getDetectedObjects()));
+                        $this->assertNotNull($result->getDetectedObjects()[0]);
                     },
                     $folder,
                     $storage);
 
                 $this->postRequestTestInternal(
-                    "createVisualObjectBoundsTest",
+                    "objectDetection_createvisualobjectbounds_test",
                     $saveResultToStorage,
                     "Input image: " . $name,
                     $name,
@@ -211,52 +180,4 @@ class ObjectDetectionApiTest extends ApiTester
                     $storage);
         }
     }
-
-    /**
-     * Test CreateDeskewedImage
-     *
-     * @test
-     * @dataProvider exportOptionsProvider
-     *
-     * @param string $formatExtension Format extension to search for input images in the test folder.
-     * @param bool $saveResultToStorage If result should be saved to storage.
-     * @param bool $resizeProportionally Resize proportionally
-     * @param string $bkColor Background color
-     * @return void
-     */
-    /*public function createDeskewedImageTest($formatExtension, $saveResultToStorage, $resizeProportionally, $bkColor)
-    {
-        $name = null;
-        $folder = self::$tempFolder;
-        $storage = self::$testStorage;
-        $outName = null;
-
-        foreach (self::$basicInputTestFiles as $inputFile) {
-            $inputFileName = $inputFile->getName();
-            if (substr($inputFileName, -strlen($formatExtension), strlen($formatExtension)) === $formatExtension) {
-                $name = $inputFileName;
-            } else {
-                continue;
-            }
-
-            $outName = $name . "_deskew." . $formatExtension;
-
-            $this->postRequestTestInternal(
-                "createDeskewedImageTest",
-                $saveResultToStorage,
-                "Input image: " . $name . "; Output format: " . $formatExtension . "; ResizeProportionally: " . $resizeProportionally . "; BkColor: " . $bkColor,
-                $name,
-                $outName,
-                function ($inputStream, $outPath) use ($formatExtension, $resizeProportionally, $bkColor, $storage) {
-                    $request = new Requests\CreateDeskewedImageRequest($inputStream, $resizeProportionally, $bkColor, $outPath, $storage);
-                    return self::$imagingApi->createDeskewedImageAsync($request)->wait();
-                },
-                function ($originalProperties, $resultProperties, $resultStream) {
-                    $this->assertEquals($originalProperties->getBitsPerPixel(), $resultProperties->getBitsPerPixel());
-                },
-                $folder,
-                $storage);
-        }
-    }
-    */
 }
