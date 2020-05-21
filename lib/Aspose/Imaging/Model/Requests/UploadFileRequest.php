@@ -202,4 +202,3 @@ class UploadFileRequest extends ImagingRequest
         return $httpInfo;        
     }
 }
-
