@@ -2252,12 +2252,12 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
+     * @return \SplFileObject
      */
     public function downloadFile($request)
     {
         $returnType = '\SplFileObject';
-        $isBinary = true;
+        $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'GET');
         $options = $this->createHttpClientOptions();
@@ -2282,7 +2282,7 @@ class ImagingApi
     public function downloadFileAsync($request) 
     {
         $returnType = '\SplFileObject';
-        $isBinary = true;
+        $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'GET');
         $options = $this->createHttpClientOptions();
