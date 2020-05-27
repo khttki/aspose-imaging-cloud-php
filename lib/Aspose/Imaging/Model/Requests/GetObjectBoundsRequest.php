@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="ObjectBoundsRequest.php">
+ * <copyright company="Aspose" file="GetObjectBoundsRequest.php">
  *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,9 +34,9 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for objectBounds operation.
+ * Request model for getObjectBounds operation.
  */
-class ObjectBoundsRequest extends ImagingRequest
+class GetObjectBoundsRequest extends ImagingRequest
 {
     /**
      * Image file name.
@@ -60,11 +60,11 @@ class ObjectBoundsRequest extends ImagingRequest
     public $threshold;
     
     /**
-     * Return detected objects classes
+     * Return detected objects labels
      *
      * @var bool
      */
-    public $include_class;
+    public $include_label;
     
     /**
      * Return detected objects score
@@ -88,22 +88,22 @@ class ObjectBoundsRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Initializes a new instance of the ObjectBoundsRequest class.
+     * Initializes a new instance of the GetObjectBoundsRequest class.
      *  
      * @param string $name Image file name.
      * @param string $method Object detection method
      * @param int $threshold Object detection probability threshold in percents
-     * @param bool $include_class Return detected objects classes
+     * @param bool $include_label Return detected objects labels
      * @param bool $include_score Return detected objects score
      * @param string $folder Folder
      * @param string $storage Storage
      */
-    public function __construct($name, $method = null, $threshold = null, $include_class = null, $include_score = null, $folder = null, $storage = null)             
+    public function __construct($name, $method = null, $threshold = null, $include_label = null, $include_score = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->method = $method;
         $this->threshold = $threshold;
-        $this->include_class = $include_class;
+        $this->include_label = $include_label;
         $this->include_score = $include_score;
         $this->folder = $folder;
         $this->storage = $storage;
@@ -173,23 +173,23 @@ class ObjectBoundsRequest extends ImagingRequest
     }
     
     /**
-     * Return detected objects classes
+     * Return detected objects labels
      *
      * @return bool
      */
-    public function get_include_class()
+    public function get_include_label()
     {
-        return $this->include_class;
+        return $this->include_label;
     }
 
     /**
-     * Return detected objects classes
+     * Return detected objects labels
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_include_class($value)
+    public function set_include_label($value)
     {
-        $this->include_class = $value;
+        $this->include_label = $value;
         return $this;
     }
     
@@ -265,26 +265,21 @@ class ObjectBoundsRequest extends ImagingRequest
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $name when calling objectBounds');
+            throw new \InvalidArgumentException('Missing the required parameter $name when calling getObjectBounds');
         }
 
-        $resourcePath = '/imaging/ai/objectdetection/bounds';
+        $resourcePath = '/imaging/ai/objectdetection/{name}/bounds';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $headers = [];
     
-
-        // query params
+        // path params
         if ($this->name !== null) {
             $localName = lcfirst('name');
-            $localValue = is_bool($this->name) ? ($this->name ? 'true' : 'false') : $this->name;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
+            $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($this->name), $resourcePath);
         }
+
         // query params
         if ($this->method !== null) {
             $localName = lcfirst('method');
@@ -306,9 +301,9 @@ class ObjectBoundsRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->include_class !== null) {
-            $localName = lcfirst('includeClass');
-            $localValue = is_bool($this->include_class) ? ($this->include_class ? 'true' : 'false') : $this->include_class;
+        if ($this->include_label !== null) {
+            $localName = lcfirst('includeLabel');
+            $localValue = is_bool($this->include_label) ? ($this->include_label ? 'true' : 'false') : $this->include_label;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

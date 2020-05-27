@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="VisualObjectBoundsRequest.php">
+ * <copyright company="Aspose" file="GetVisualObjectBoundsRequest.php">
  *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,9 +34,9 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for visualObjectBounds operation.
+ * Request model for getVisualObjectBounds operation.
  */
-class VisualObjectBoundsRequest extends ImagingRequest
+class GetVisualObjectBoundsRequest extends ImagingRequest
 {
     /**
      * The image features detector.
@@ -60,11 +60,11 @@ class VisualObjectBoundsRequest extends ImagingRequest
     public $threshold;
     
     /**
-     * Draw detected objects classes
+     * Draw detected objects labels
      *
      * @var bool
      */
-    public $include_class;
+    public $include_label;
     
     /**
      * Draw detected objects scores
@@ -72,6 +72,13 @@ class VisualObjectBoundsRequest extends ImagingRequest
      * @var bool
      */
     public $include_score;
+    
+    /**
+     * Bounds, labels, and scores text color
+     *
+     * @var string
+     */
+    public $color;
     
     /**
      * The folder.
@@ -88,23 +95,25 @@ class VisualObjectBoundsRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Initializes a new instance of the VisualObjectBoundsRequest class.
+     * Initializes a new instance of the GetVisualObjectBoundsRequest class.
      *  
      * @param string $name The image features detector.
      * @param string $method Object detection method
      * @param int $threshold Object detection probability threshold in percents
-     * @param bool $include_class Draw detected objects classes
+     * @param bool $include_label Draw detected objects labels
      * @param bool $include_score Draw detected objects scores
+     * @param string $color Bounds, labels, and scores text color
      * @param string $folder The folder.
      * @param string $storage The storage.
      */
-    public function __construct($name, $method = null, $threshold = null, $include_class = null, $include_score = null, $folder = null, $storage = null)             
+    public function __construct($name, $method = null, $threshold = null, $include_label = null, $include_score = null, $color = null, $folder = null, $storage = null)             
     {
         $this->name = $name;
         $this->method = $method;
         $this->threshold = $threshold;
-        $this->include_class = $include_class;
+        $this->include_label = $include_label;
         $this->include_score = $include_score;
+        $this->color = $color;
         $this->folder = $folder;
         $this->storage = $storage;
     }
@@ -173,23 +182,23 @@ class VisualObjectBoundsRequest extends ImagingRequest
     }
     
     /**
-     * Draw detected objects classes
+     * Draw detected objects labels
      *
      * @return bool
      */
-    public function get_include_class()
+    public function get_include_label()
     {
-        return $this->include_class;
+        return $this->include_label;
     }
 
     /**
-     * Draw detected objects classes
+     * Draw detected objects labels
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_include_class($value)
+    public function set_include_label($value)
     {
-        $this->include_class = $value;
+        $this->include_label = $value;
         return $this;
     }
     
@@ -211,6 +220,27 @@ class VisualObjectBoundsRequest extends ImagingRequest
     public function set_include_score($value)
     {
         $this->include_score = $value;
+        return $this;
+    }
+    
+    /**
+     * Bounds, labels, and scores text color
+     *
+     * @return string
+     */
+    public function get_color()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Bounds, labels, and scores text color
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_color($value)
+    {
+        $this->color = $value;
         return $this;
     }
     
@@ -265,26 +295,21 @@ class VisualObjectBoundsRequest extends ImagingRequest
     {
         // verify the required parameter 'name' is set
         if ($this->name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $name when calling visualObjectBounds');
+            throw new \InvalidArgumentException('Missing the required parameter $name when calling getVisualObjectBounds');
         }
 
-        $resourcePath = '/imaging/ai/objectdetection/visualbounds';
+        $resourcePath = '/imaging/ai/objectdetection/{name}/visualbounds';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $headers = [];
     
-
-        // query params
+        // path params
         if ($this->name !== null) {
             $localName = lcfirst('name');
-            $localValue = is_bool($this->name) ? ($this->name ? 'true' : 'false') : $this->name;
-            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
-                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
-            } else {
-                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
-            }
+            $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($this->name), $resourcePath);
         }
+
         // query params
         if ($this->method !== null) {
             $localName = lcfirst('method');
@@ -306,9 +331,9 @@ class VisualObjectBoundsRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->include_class !== null) {
-            $localName = lcfirst('includeClass');
-            $localValue = is_bool($this->include_class) ? ($this->include_class ? 'true' : 'false') : $this->include_class;
+        if ($this->include_label !== null) {
+            $localName = lcfirst('includeLabel');
+            $localValue = is_bool($this->include_label) ? ($this->include_label ? 'true' : 'false') : $this->include_label;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -319,6 +344,16 @@ class VisualObjectBoundsRequest extends ImagingRequest
         if ($this->include_score !== null) {
             $localName = lcfirst('includeScore');
             $localValue = is_bool($this->include_score) ? ($this->include_score ? 'true' : 'false') : $this->include_score;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->color !== null) {
+            $localName = lcfirst('color');
+            $localValue = is_bool($this->color) ? ($this->color ? 'true' : 'false') : $this->color;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -369,4 +404,3 @@ class VisualObjectBoundsRequest extends ImagingRequest
         return $httpInfo;        
     }
 }
-
