@@ -788,7 +788,7 @@ class ImagingApi
     }
     
     /**
-     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      *
      * @param \Aspose\Imaging\Model\Requests\CreateImageFrameRangeRequest $request Request object for operation
      *
@@ -813,7 +813,7 @@ class ImagingApi
     }
 
     /**
-     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\CreateImageFrameRangeRequest $request Request object for operation
@@ -1760,7 +1760,7 @@ class ImagingApi
     }
     
     /**
-     * Detect objects bounds and draw them on the original image
+     * Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
      *
      * @param \Aspose\Imaging\Model\Requests\CreateVisualObjectBoundsRequest $request Request object for operation
      *
@@ -1785,7 +1785,7 @@ class ImagingApi
     }
 
     /**
-     * Detect objects bounds and draw them on the original image
+     * Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\CreateVisualObjectBoundsRequest $request Request object for operation
@@ -3164,6 +3164,60 @@ class ImagingApi
     }
     
     /**
+     * Detects objects' bounds
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetObjectBoundsRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\DetectedObjectList
+     */
+    public function getObjectBounds($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Detects objects' bounds
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetObjectBoundsRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getObjectBoundsAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Get image from search context
      *
      * @param \Aspose\Imaging\Model\Requests\GetSearchImageRequest $request Request object for operation
@@ -3198,6 +3252,60 @@ class ImagingApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getSearchImageAsync($request) 
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
+     * Detects objects bounds and draw them on the original image
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetVisualObjectBoundsRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function getVisualObjectBounds($request)
+    {
+        $returnType = '\SplFileObject';
+        $isBinary = true;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Detects objects bounds and draw them on the original image
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetVisualObjectBoundsRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getVisualObjectBoundsAsync($request) 
     {
         $returnType = '\SplFileObject';
         $isBinary = true;
@@ -3920,60 +4028,6 @@ class ImagingApi
     }
     
     /**
-     * Detect objects' bounds
-     *
-     * @param \Aspose\Imaging\Model\Requests\ObjectBoundsRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Aspose\Imaging\Model\DetectedObjectList
-     */
-    public function objectBounds($request)
-    {
-        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
-        $isBinary = false;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-            
-        try {
-            $response = $this->client->send($request, $options);
-            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-        } catch (RequestException $e) {
-            $this->processException($e);
-        }
-    }
-
-    /**
-     * Detect objects' bounds
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\ObjectBoundsRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function objectBoundsAsync($request) 
-    {
-        $returnType = '\Aspose\Imaging\Model\DetectedObjectList';
-        $isBinary = false;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    $this->processException($exception);
-                }
-            );
-    }
-    
-    /**
      * Check if file or folder exists
      *
      * @param \Aspose\Imaging\Model\Requests\ObjectExistsRequest $request Request object for operation
@@ -4445,60 +4499,6 @@ class ImagingApi
         $isBinary = false;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'PUT');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    $this->processException($exception);
-                }
-            );
-    }
-    
-    /**
-     * Detect objects bounds and draw them on the original image
-     *
-     * @param \Aspose\Imaging\Model\Requests\VisualObjectBoundsRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function visualObjectBounds($request)
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-            
-        try {
-            $response = $this->client->send($request, $options);
-            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-        } catch (RequestException $e) {
-            $this->processException($e);
-        }
-    }
-
-    /**
-     * Detect objects bounds and draw them on the original image
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\VisualObjectBoundsRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function visualObjectBoundsAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
         $options = $this->createHttpClientOptions();
 
         return $this->client

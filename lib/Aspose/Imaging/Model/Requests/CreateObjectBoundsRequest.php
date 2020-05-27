@@ -60,11 +60,11 @@ class CreateObjectBoundsRequest extends ImagingRequest
     public $threshold;
     
     /**
-     * Draw detected objects classes
+     * Draw detected objects labels
      *
      * @var bool
      */
-    public $include_class;
+    public $include_label;
     
     /**
      * Draw detected objects scores
@@ -93,17 +93,17 @@ class CreateObjectBoundsRequest extends ImagingRequest
      * @param string $image_data Input image
      * @param string $method Object detection method
      * @param int $threshold Object detection probability threshold in percents
-     * @param bool $include_class Draw detected objects classes
+     * @param bool $include_label Draw detected objects labels
      * @param bool $include_score Draw detected objects scores
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image)
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($image_data, $method = null, $threshold = null, $include_class = null, $include_score = null, $out_path = null, $storage = null)             
+    public function __construct($image_data, $method = null, $threshold = null, $include_label = null, $include_score = null, $out_path = null, $storage = null)             
     {
         $this->image_data = $image_data;
         $this->method = $method;
         $this->threshold = $threshold;
-        $this->include_class = $include_class;
+        $this->include_label = $include_label;
         $this->include_score = $include_score;
         $this->out_path = $out_path;
         $this->storage = $storage;
@@ -173,23 +173,23 @@ class CreateObjectBoundsRequest extends ImagingRequest
     }
     
     /**
-     * Draw detected objects classes
+     * Draw detected objects labels
      *
      * @return bool
      */
-    public function get_include_class()
+    public function get_include_label()
     {
-        return $this->include_class;
+        return $this->include_label;
     }
 
     /**
-     * Draw detected objects classes
+     * Draw detected objects labels
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_include_class($value)
+    public function set_include_label($value)
     {
-        $this->include_class = $value;
+        $this->include_label = $value;
         return $this;
     }
     
@@ -296,9 +296,9 @@ class CreateObjectBoundsRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->include_class !== null) {
-            $localName = lcfirst('includeClass');
-            $localValue = is_bool($this->include_class) ? ($this->include_class ? 'true' : 'false') : $this->include_class;
+        if ($this->include_label !== null) {
+            $localName = lcfirst('includeLabel');
+            $localValue = is_bool($this->include_label) ? ($this->include_label ? 'true' : 'false') : $this->include_label;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
