@@ -37,7 +37,7 @@ use \Aspose\Imaging\Model\Requests;
  * 
  * @group Imaging
  * @group v3.0
- * @group ObjectDetectionApi
+ * @group ObjectDetection
  */
 class ObjectDetectionApiTest extends ApiTester
 {
