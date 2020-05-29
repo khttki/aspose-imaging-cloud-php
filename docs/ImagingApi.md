@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 # **createImageFrameRange**
 > createImageFrameRange($createImageFrameRangeRequest)
 
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### Return type
 
@@ -562,7 +562,7 @@ Get separate frame from existing image. Image data is passed as zero-indexed mul
 # **createImageFrameRangeAsync**
 > createImageFrameRangeAsync($createImageFrameRangeRequest)
 
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 Performs operation asynchronously.
 
@@ -1180,6 +1180,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createobjectbounds"></a>
+# **createObjectBounds**
+> createObjectBounds($createObjectBoundsRequest)
+
+Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+[**\Aspose\Imaging\Model\DetectedObjectList**](DetectedObjectList.md)
+
+<a name="createobjectboundsasync"></a>
+# **createObjectBoundsAsync**
+> createObjectBoundsAsync($createObjectBoundsRequest)
+
+Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateObjectBoundsRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $method, 
+    $threshold, 
+    $include_label, 
+    $include_score, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
+ **include_label** | **bool**| Draw detected objects labels | [optional] [default to false]
+ **include_score** | **bool**| Draw detected objects scores | [optional] [default to false]
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createresizedimage"></a>
 # **createResizedImage**
 > createResizedImage($createResizedImageRequest)
@@ -1356,6 +1402,54 @@ Name | Type | Description  | Notes
  **rotate_flip_method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
  **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createvisualobjectbounds"></a>
+# **createVisualObjectBounds**
+> createVisualObjectBounds($createVisualObjectBoundsRequest)
+
+Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="createvisualobjectboundsasync"></a>
+# **createVisualObjectBoundsAsync**
+> createVisualObjectBoundsAsync($createVisualObjectBoundsRequest)
+
+Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateVisualObjectBoundsRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $method, 
+    $threshold, 
+    $include_label, 
+    $include_score, 
+    $color, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
+ **include_label** | **bool**| Draw detected objects classes | [optional] [default to false]
+ **include_score** | **bool**| Draw detected objects scores | [optional] [default to false]
+ **color** | **string**| Bounds, labels, and scores text color | [optional]
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
@@ -2384,6 +2478,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="getobjectbounds"></a>
+# **getObjectBounds**
+> getObjectBounds($getObjectBoundsRequest)
+
+Detects objects' bounds
+
+### Return type
+
+[**\Aspose\Imaging\Model\DetectedObjectList**](DetectedObjectList.md)
+
+<a name="getobjectboundsasync"></a>
+# **getObjectBoundsAsync**
+> getObjectBoundsAsync($getObjectBoundsRequest)
+
+Detects objects' bounds
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **GetObjectBoundsRequest** Parameters
+```php
+__construct(
+    $name, 
+    $method, 
+    $threshold, 
+    $include_label, 
+    $include_score, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. |
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
+ **include_label** | **bool**| Return detected objects labels | [optional] [default to false]
+ **include_score** | **bool**| Return detected objects score | [optional] [default to false]
+ **folder** | **string**| Folder | [optional]
+ **storage** | **string**| Storage | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="getsearchimage"></a>
 # **getSearchImage**
 > getSearchImage($getSearchImageRequest)
@@ -2421,6 +2561,54 @@ Name | Type | Description  | Notes
  **image_id** | **string**| Image identifier. |
  **folder** | **string**| Folder. | [optional]
  **storage** | **string**| Storage | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="getvisualobjectbounds"></a>
+# **getVisualObjectBounds**
+> getVisualObjectBounds($getVisualObjectBoundsRequest)
+
+Detects objects bounds and draw them on the original image
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="getvisualobjectboundsasync"></a>
+# **getVisualObjectBoundsAsync**
+> getVisualObjectBoundsAsync($getVisualObjectBoundsRequest)
+
+Detects objects bounds and draw them on the original image
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **GetVisualObjectBoundsRequest** Parameters
+```php
+__construct(
+    $name, 
+    $method, 
+    $threshold, 
+    $include_label, 
+    $include_score, 
+    $color, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| The image features detector. |
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
+ **include_label** | **bool**| Draw detected objects labels | [optional] [default to false]
+ **include_score** | **bool**| Draw detected objects scores | [optional] [default to false]
+ **color** | **string**| Bounds, labels, and scores text color | [optional]
+ **folder** | **string**| The folder. | [optional]
+ **storage** | **string**| The storage. | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
