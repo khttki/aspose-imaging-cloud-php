@@ -31,8 +31,8 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
+use Aspose\Imaging\Model\Requests\GetObjectBoundsRequest;
 use Exception;
-use \Aspose\Imaging\Examples\ImagingBase;
 
 
 /**
@@ -75,10 +75,10 @@ class ObjectDetectionImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new ObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel, $includeScore, $folder,
+        $request = new GetObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel, $includeScore, $folder,
             $storage);
 
-        echo "Call ObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, $includeLabel: ${includeLabel},includeScore: ${$includeScore}," . PHP_EOL;
+        echo "Call ObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${includeLabel},includeScore: ${$includeScore}," . PHP_EOL;
 
         try {
             $detectedObjectsList = self::$imagingApi->getObjectBounds($request);

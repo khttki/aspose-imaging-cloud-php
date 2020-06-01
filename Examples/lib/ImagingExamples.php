@@ -53,6 +53,7 @@ require_once __DIR__ . '/AI/ImagingAiBase.php';
 require_once __DIR__ . '/AI/CompareImages.php';
 require_once __DIR__ . '/AI/FindDuplicateImages.php';
 require_once __DIR__ . '/AI/FindSimilarImages.php';
+require_once __DIR__ . '/ObjectDetectionImage.php';
 
 use Aspose\Imaging\Configuration;
 use Aspose\Imaging\ImagingApi;
