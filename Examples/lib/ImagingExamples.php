@@ -77,7 +77,7 @@ try {
     mkdir(ImagingBase::GetOutputFolder());
 
     echo "Running Imaging Cloud examples:" . PHP_EOL;
-
+/*
     // Update parameters of existing BMP image
     $bmpImage = new UpdateBmpImage($imagingApi);
     $bmpImage->ModifyBmpFromStorage();
@@ -226,6 +226,10 @@ try {
     $findSimilarImages->FindImagesSimilar();
     $findSimilarImages->FindImagesByTag();
     $findSimilarImages->DeleteSearchContext();
+*/
+    $objectDetection = new ObjectDetectionImage($imagingApi);
+    $objectDetection->DetectObjectsImageFromStorage();
+
 } catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;
     exit(1);
