@@ -82,7 +82,8 @@ class ObjectDetectionImage extends ImagingBase
 
         try {
             $detectedObjectsList = self::$imagingApi->getObjectBounds($request);
-            echo "objects detected: count($detectedObjectsList->getDetectedObjects())";
+            $count = count($detectedObjectsList->getDetectedObjects());
+            echo "objects detected: $count";
         } catch (Exception $ex) {
             echo $ex->getMessage() . PHP_EOL;
         }
