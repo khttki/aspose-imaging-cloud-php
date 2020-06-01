@@ -31,6 +31,8 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
+use Aspose\Imaging\Model\Requests\CreateObjectBoundsRequest;
+use Aspose\Imaging\Model\Requests\CreateVisualObjectBoundsRequest;
 use Aspose\Imaging\Model\Requests\GetObjectBoundsRequest;
 use Aspose\Imaging\Model\Requests\GetVisualObjectBoundsRequest;
 use Exception;
