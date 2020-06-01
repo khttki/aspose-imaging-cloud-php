@@ -230,6 +230,9 @@ try {
 */
     $objectDetection = new ObjectDetectionImage($imagingApi);
     $objectDetection->DetectObjectsImageFromStorage();
+    $objectDetection->VisualiizeDetectObjectsAndUploadToStorage();
+    $objectDetection->DetectedObjectsImageFromRequestBody();
+    $objectDetection->VisualizeDetectedObjectsImageFromRequestBody();
 
 } catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;

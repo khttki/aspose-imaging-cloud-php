@@ -32,6 +32,7 @@ namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\ApiException;
 use Aspose\Imaging\Model\Requests\GetObjectBoundsRequest;
+use Aspose\Imaging\Model\Requests\GetVisualObjectBoundsRequest;
 use Exception;
 
 
@@ -104,24 +105,23 @@ class ObjectDetectionImage extends ImagingBase
         $this->UploadSampleImageToCloud();
         $method = "ssd";
         $threshold = 50;
-        $includeClass = true;
+        $includeLabel = true;
         $includeScore = true;
+        $color = "blue";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new VisualObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeClass, $includeScore, $folder,
+        $request = new GetVisualObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel, $includeScore, $color, $folder,
             $storage);
 
-        echo "Call VisualObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeClass: ${includeClass},includeScore: ${$includeScore}," . PHP_EOL;
+        echo "Call VisualObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${includeLabel},includeScore: ${includeScore}, color: ${color}" . PHP_EOL;
 
         try {
-            $updatedImage = self::$imagingApi->visualObjectBounds($request);
-            //echo "objects detected: $detectedObjectsList->detectedObjects->getLength()"
+            $updatedImage = self::$imagingApi->getVisualObjectBounds($request);
             $this->SaveUpdatedSampleImageToOutput($updatedImage, false, "jpg");
         } catch (Exception $ex) {
             echo $ex->getMessage() . PHP_EOL;
         }
-
 
         echo PHP_EOL;
     }
@@ -137,21 +137,21 @@ class ObjectDetectionImage extends ImagingBase
 
         $method = "ssd";
         $threshold = 50;
-        $includeClass = true;
+        $includeLabel = true;
         $includeScore = true;
         $outPath = null;
         $storage = null; // We are using default Cloud Storage
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
 
-        $request = new CreateObjectBoundsRequest($inputStream, $method, $threshold, $includeClass, $includeScore, $outPath,
+        $request = new CreateObjectBoundsRequest($inputStream, $method, $threshold, $includeLabel, $includeScore, $outPath,
             $storage);
 
-        echo "Call CreateObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeClass: ${includeClass},includeScore: ${$includeScore}," . PHP_EOL;
+        echo "Call CreateObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${includeLabel},includeScore: ${includeScore}," . PHP_EOL;
 
         try {
             $detectedObjectsList = self::$imagingApi->createObjectBounds($request);
-            echo "objects detected: $detectedObjectsList->detectedObjects";
-            //$this->SaveUpdatedSampleImageToOutput($updatedImage, false, "jpg");
+            $count = count($detectedObjectsList->getDetectedObjects());
+            echo "objects detected: $count";
         } catch (Exception $ex) {
             echo $ex->getMessage() . PHP_EOL;
         }
@@ -172,25 +172,23 @@ class ObjectDetectionImage extends ImagingBase
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
         $method = "ssd";
         $threshold = 50;
-        $includeClass = true;
+        $includeLabel = true;
         $includeScore = true;
+        $color = null;
         $outPath = null;
         $storage = null; // We are using default Cloud Storage
 
-        $request = new CreateVisualObjectBoundsRequest($inputStream, $method, $threshold, $includeClass, $includeScore, $outPath,
+        $request = new CreateVisualObjectBoundsRequest($inputStream, $method, $threshold, $includeLabel, $includeScore, $color, $outPath,
             $storage);
 
-        echo "Call CreateObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeClass: ${includeClass},includeScore: ${$includeScore}," . PHP_EOL;
+        echo "Call CreateObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${$includeLabel},includeScore: ${$includeScore}, color: null" . PHP_EOL;
 
         try {
             $updatedImage = self::$imagingApi->createVisualObjectBounds($request);
-            //echo "objects detected: $detectedObjectsList->detectedObjects";
             $this->SaveUpdatedSampleImageToOutput($updatedImage, false, "jpg");
         } catch (Exception $ex) {
             echo $ex->getMessage() . PHP_EOL;
         }
-
-
         echo PHP_EOL;
     }
 }
