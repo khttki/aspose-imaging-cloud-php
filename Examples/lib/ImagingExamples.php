@@ -53,6 +53,7 @@ require_once __DIR__ . '/AI/ImagingAiBase.php';
 require_once __DIR__ . '/AI/CompareImages.php';
 require_once __DIR__ . '/AI/FindDuplicateImages.php';
 require_once __DIR__ . '/AI/FindSimilarImages.php';
+require_once __DIR__ . '/ObjectDetectionImage.php';
 
 use Aspose\Imaging\Configuration;
 use Aspose\Imaging\ImagingApi;
@@ -226,6 +227,13 @@ try {
     $findSimilarImages->FindImagesSimilar();
     $findSimilarImages->FindImagesByTag();
     $findSimilarImages->DeleteSearchContext();
+
+    $objectDetection = new ObjectDetectionImage($imagingApi);
+    $objectDetection->DetectObjectsImageFromStorage();
+    $objectDetection->VisualiizeDetectObjectsAndUploadToStorage();
+    $objectDetection->DetectedObjectsImageFromRequestBody();
+    $objectDetection->VisualizeDetectedObjectsImageFromRequestBody();
+
 } catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;
     exit(1);
