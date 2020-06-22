@@ -2678,6 +2678,60 @@ class ImagingApi
     }
     
     /**
+     * Detects objects bounds and draw them on the original image
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetAvailableLabelsRequest $request Request object for operation
+     *
+     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Aspose\Imaging\Model\AvailableLabelsList
+     */
+    public function getAvailableLabels($request)
+    {
+        $returnType = '\Aspose\Imaging\Model\AvailableLabelsList';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+            
+        try {
+            $response = $this->client->send($request, $options);
+            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+        } catch (RequestException $e) {
+            $this->processException($e);
+        }
+    }
+
+    /**
+     * Detects objects bounds and draw them on the original image
+     * Performs operation asynchronously.
+     *
+     * @param \Aspose\Imaging\Model\Requests\GetAvailableLabelsRequest $request Request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAvailableLabelsAsync($request) 
+    {
+        $returnType = '\Aspose\Imaging\Model\AvailableLabelsList';
+        $isBinary = false;
+        $hasReturnType = true;
+        $request = $this->getHttpRequest($request, 'GET');
+        $options = $this->createHttpClientOptions();
+
+        return $this->client
+            ->sendAsync($request, $options)
+            ->then(
+                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
+                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
+                },
+                function ($exception) use ($request) {
+                    $this->processException($exception);
+                }
+            );
+    }
+    
+    /**
      * Get disc usage
      *
      * @param \Aspose\Imaging\Model\Requests\GetDiscUsageRequest $request Request object for operation
