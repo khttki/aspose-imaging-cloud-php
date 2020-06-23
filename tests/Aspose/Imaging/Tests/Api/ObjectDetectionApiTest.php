@@ -192,7 +192,7 @@ class ObjectDetectionApiTest extends ApiTester
         echo "available Labels Test" . "\r\n";
         try {
             $request = new Requests\GetAvailableLabelsRequest("ssd");
-            $response = self::$imagingApi->getAvailableLabels($request)->wait();
+            $response = self::$imagingApi->getAvailableLabels($request);
             $this->assertNotNull($response);
             echo "Test passed: true" . "\r\n";
         }
