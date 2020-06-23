@@ -126,6 +126,46 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="convertimage"></a>
+# **convertImage**
+> convertImage($convertImageRequest)
+
+Convert existing image to another format.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="convertimageasync"></a>
+# **convertImageAsync**
+> convertImageAsync($convertImageRequest)
+
+Convert existing image to another format.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **ConvertImageRequest** Parameters
+```php
+__construct(
+    $name, 
+    $format, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of image. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **folder** | **string**| Folder with image to process. | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="converttifftofax"></a>
 # **convertTiffToFax**
 > convertTiffToFax($convertTiffToFaxRequest)
@@ -243,6 +283,46 @@ Name | Type | Description  | Notes
  **dest_path** | **string**| Destination folder path e.g. &#39;/dst&#39; |
  **src_storage_name** | **string**| Source storage name | [optional]
  **dest_storage_name** | **string**| Destination storage name | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createconvertedimage"></a>
+# **createConvertedImage**
+> createConvertedImage($createConvertedImageRequest)
+
+Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="createconvertedimageasync"></a>
+# **createConvertedImageAsync**
+> createConvertedImageAsync($createConvertedImageRequest)
+
+Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateConvertedImageRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $format, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -1320,7 +1400,7 @@ Export existing image to another format. Image data is passed as zero-indexed mu
 
 ### Return type
 
-**\Psr\Http\Message\StreamInterface**
+[**\SplFileObject**](\SplFileObject.md)
 
 <a name="createsavedimageasasync"></a>
 # **createSavedImageAsAsync**
@@ -1337,7 +1417,6 @@ Performs operation asynchronously.
 ### **CreateSavedImageAsRequest** Parameters
 ```php
 __construct(
-    $image_data, 
     $format, 
     $out_path, 
     $storage)
@@ -1345,7 +1424,6 @@ __construct(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image_data** | **string**| Input image |
  **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
@@ -3356,7 +3434,7 @@ Export existing image to another format.
 
 ### Return type
 
-**\Psr\Http\Message\StreamInterface**
+[**\SplFileObject**](\SplFileObject.md)
 
 <a name="saveimageasasync"></a>
 # **saveImageAsAsync**
