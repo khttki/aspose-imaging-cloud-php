@@ -101,7 +101,7 @@ class ObjectDetectionApiTest extends ApiTester
                 "Input image: " . $name,
                 $name,
                 function () use ($name, $folder, $storage) {
-                    $request = new Requests\GetVisualObjectBoundsRequest($name, null, 60, true, true, "dog", null, "red", $folder, $storage);
+                    $request = new Requests\GetVisualObjectBoundsRequest($name, null, 10, true, true, "dog", null, "red", $folder, $storage);
                     return self::$imagingApi->getVisualObjectBoundsAsync($request)->wait();
                 },
                 function ($resultStream) {
@@ -146,7 +146,7 @@ class ObjectDetectionApiTest extends ApiTester
                     $outName,
                     function($inputStream, $outPath) use ($storage)
                     {
-                        $request = new Requests\CreateObjectBoundsRequest($inputStream, null, 60, true, true, "dog", null,  $outPath, $storage);
+                        $request = new Requests\CreateObjectBoundsRequest($inputStream, null, 20, true, true, "dog", null,  $outPath, $storage);
                         return self::$imagingApi->createObjectBoundsAsync($request)->wait();
                     },
                     function(DetectedObjectList $result) use($saveResultToStorage)
@@ -167,7 +167,7 @@ class ObjectDetectionApiTest extends ApiTester
                     $outName,
                     function($inputStream, $outPath) use ($storage)
                     {
-                        $request = new Requests\CreateVisualObjectBoundsRequest($inputStream, null, 60, true, true, "dog", null, null,  $outPath, $storage);
+                        $request = new Requests\CreateVisualObjectBoundsRequest($inputStream, null, 20, true, true, "dog", null, null,  $outPath, $storage);
                         return self::$imagingApi->createVisualObjectBoundsAsync($request)->wait();
                     },
                     function($resultStream) use($saveResultToStorage)
@@ -182,11 +182,14 @@ class ObjectDetectionApiTest extends ApiTester
     }
 
     /**
-     * Test get available labels
-     * * @return void
+     * Test createObjectBoundsImageTest
+     *
+     * @test
+     * @return void
      */
     public function availableLabelsTest()
     {
+        echo "available Labels Test" . "\r\n";
         try {
             $request = new Requests\GetAvailableLabelsRequest("ssd");
             $response = self::$imagingApi->getAvailableLabels($request)->wait();
