@@ -118,7 +118,7 @@ class ExamplesTests extends ApiTester {
                 $imagingConfig->getOnPremise() ? self::$testStorage : null);
 
             // process resulting image from response stream
-            $resultPostImageStream = $imagingApi->createConvertdedImage($postSaveToStreamRequest)->getContents();
+            $resultPostImageStream = $imagingApi->createConvertedImage($postSaveToStreamRequest)->getContents();
         } finally {
             // remove file from storage
             $imagingApi->deleteFile(new Requests\DeleteFileRequest("ExampleFolderNet/resultImage.jpg", 
