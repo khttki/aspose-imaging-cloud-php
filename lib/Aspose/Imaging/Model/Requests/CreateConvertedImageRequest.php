@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="CreateSavedImageAsRequest.php">
+ * <copyright company="Aspose" file="CreateConvertedImageRequest.php">
  *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,10 +34,17 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for createSavedImageAs operation.
+ * Request model for createConvertedImage operation.
  */
-class CreateSavedImageAsRequest extends ImagingRequest
+class CreateConvertedImageRequest extends ImagingRequest
 {
+    /**
+     * Input image
+     *
+     * @var string
+     */
+    public $image_data;
+    
     /**
      * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
@@ -60,19 +67,42 @@ class CreateSavedImageAsRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Initializes a new instance of the CreateSavedImageAsRequest class.
+     * Initializes a new instance of the CreateConvertedImageRequest class.
      *  
+     * @param string $image_data Input image
      * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($format, $out_path = null, $storage = null)             
+    public function __construct($image_data, $format, $out_path = null, $storage = null)             
     {
+        $this->image_data = $image_data;
         $this->format = $format;
         $this->out_path = $out_path;
         $this->storage = $storage;
     }
 
+    /**
+     * Input image
+     *
+     * @return string
+     */
+    public function get_image_data()
+    {
+        return $this->image_data;
+    }
+
+    /**
+     * Input image
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_image_data($value)
+    {
+        $this->image_data = $value;
+        return $this;
+    }
+    
     /**
      * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
      *
@@ -143,12 +173,16 @@ class CreateSavedImageAsRequest extends ImagingRequest
      */
     public function getHttpRequestInfo($config)
     {
+        // verify the required parameter 'image_data' is set
+        if ($this->image_data === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $image_data when calling createConvertedImage');
+        }
         // verify the required parameter 'format' is set
         if ($this->format === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $format when calling createSavedImageAs');
+            throw new \InvalidArgumentException('Missing the required parameter $format when calling createConvertedImage');
         }
 
-        $resourcePath = '/imaging/saveAs';
+        $resourcePath = '/imaging/convert';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -189,12 +223,16 @@ class CreateSavedImageAsRequest extends ImagingRequest
     
         $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
+        // form params
+        if ($this->image_data !== null) {
+            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
+        }
         // body params
         $httpBody = null;
 
         $headers = $this->selectHeaders(
             ['application/json'],
-            ['application/json']
+            ['multipart/form-data']
         );
         
         $httpInfo = array(
