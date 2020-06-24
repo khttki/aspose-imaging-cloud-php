@@ -248,60 +248,6 @@ class ImagingApi
     }
     
     /**
-     * Convert existing image to another format.
-     *
-     * @param \Aspose\Imaging\Model\Requests\ConvertImageRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function convertImage($request)
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-            
-        try {
-            $response = $this->client->send($request, $options);
-            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-        } catch (RequestException $e) {
-            $this->processException($e);
-        }
-    }
-
-    /**
-     * Convert existing image to another format.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\ConvertImageRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function convertImageAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'GET');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    $this->processException($exception);
-                }
-            );
-    }
-    
-    /**
      * Update parameters of existing TIFF image accordingly to fax parameters.
      *
      * @param \Aspose\Imaging\Model\Requests\ConvertTiffToFaxRequest $request Request object for operation
@@ -449,60 +395,6 @@ class ImagingApi
         $isBinary = false;
         $hasReturnType = false;
         $request = $this->getHttpRequest($request, 'PUT');
-        $options = $this->createHttpClientOptions();
-
-        return $this->client
-            ->sendAsync($request, $options)
-            ->then(
-                function ($response) use ($request, $hasReturnType, $returnType, $isBinary) {
-                    return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-                },
-                function ($exception) use ($request) {
-                    $this->processException($exception);
-                }
-            );
-    }
-    
-    /**
-     * Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     *
-     * @param \Aspose\Imaging\Model\Requests\CreateConvertedImageRequest $request Request object for operation
-     *
-     * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function createConvertedImage($request)
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
-        $options = $this->createHttpClientOptions();
-            
-        try {
-            $response = $this->client->send($request, $options);
-            return $this->processResponse($request, $response, $hasReturnType, $returnType, $isBinary);
-        } catch (RequestException $e) {
-            $this->processException($e);
-        }
-    }
-
-    /**
-     * Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-     * Performs operation asynchronously.
-     *
-     * @param \Aspose\Imaging\Model\Requests\CreateConvertedImageRequest $request Request object for operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createConvertedImageAsync($request) 
-    {
-        $returnType = '\SplFileObject';
-        $isBinary = true;
-        $hasReturnType = true;
-        $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
 
         return $this->client
@@ -1766,12 +1658,12 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function createSavedImageAs($request)
     {
         $returnType = '\SplFileObject';
-        $isBinary = false;
+        $isBinary = true;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
@@ -1796,7 +1688,7 @@ class ImagingApi
     public function createSavedImageAsAsync($request) 
     {
         $returnType = '\SplFileObject';
-        $isBinary = false;
+        $isBinary = true;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'POST');
         $options = $this->createHttpClientOptions();
@@ -4358,12 +4250,12 @@ class ImagingApi
      *
      * @throws \Aspose\Imaging\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function saveImageAs($request)
     {
         $returnType = '\SplFileObject';
-        $isBinary = false;
+        $isBinary = true;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'GET');
         $options = $this->createHttpClientOptions();
@@ -4388,7 +4280,7 @@ class ImagingApi
     public function saveImageAsAsync($request) 
     {
         $returnType = '\SplFileObject';
-        $isBinary = false;
+        $isBinary = true;
         $hasReturnType = true;
         $request = $this->getHttpRequest($request, 'GET');
         $options = $this->createHttpClientOptions();
