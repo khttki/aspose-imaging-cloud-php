@@ -34,6 +34,7 @@ use \Aspose\Imaging\ObjectSerializer;
 /**
  * AvailableLabelsList
  *
+ * @description AvailableLabelsList
  */
 class AvailableLabelsList implements ArrayAccess
 {
