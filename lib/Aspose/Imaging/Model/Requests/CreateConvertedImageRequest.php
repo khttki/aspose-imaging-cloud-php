@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="SaveImageAsRequest.php">
+ * <copyright company="Aspose" file="CreateConvertedImageRequest.php">
  *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -34,16 +34,16 @@ use \Aspose\Imaging\ObjectSerializer;
 use \Aspose\Imaging\Model\Requests\ImagingRequest;
 
 /**
- * Request model for saveImageAs operation.
+ * Request model for createConvertedImage operation.
  */
-class SaveImageAsRequest extends ImagingRequest
+class CreateConvertedImageRequest extends ImagingRequest
 {
     /**
-     * Filename of image.
+     * Input image
      *
      * @var string
      */
-    public $name;
+    public $image_data;
     
     /**
      * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
@@ -53,11 +53,11 @@ class SaveImageAsRequest extends ImagingRequest
     public $format;
     
     /**
-     * Folder with image to process.
+     * Path to updated file (if this is empty, response contains streamed image).
      *
      * @var string
      */
-    public $folder;
+    public $out_path;
     
     /**
      * Your Aspose Cloud Storage name.
@@ -67,39 +67,39 @@ class SaveImageAsRequest extends ImagingRequest
     public $storage;
     
     /**
-     * Initializes a new instance of the SaveImageAsRequest class.
+     * Initializes a new instance of the CreateConvertedImageRequest class.
      *  
-     * @param string $name Filename of image.
+     * @param string $image_data Input image
      * @param string $format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-     * @param string $folder Folder with image to process.
+     * @param string $out_path Path to updated file (if this is empty, response contains streamed image).
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($name, $format, $folder = null, $storage = null)             
+    public function __construct($image_data, $format, $out_path = null, $storage = null)             
     {
-        $this->name = $name;
+        $this->image_data = $image_data;
         $this->format = $format;
-        $this->folder = $folder;
+        $this->out_path = $out_path;
         $this->storage = $storage;
     }
 
     /**
-     * Filename of image.
+     * Input image
      *
      * @return string
      */
-    public function get_name()
+    public function get_image_data()
     {
-        return $this->name;
+        return $this->image_data;
     }
 
     /**
-     * Filename of image.
+     * Input image
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_name($value)
+    public function set_image_data($value)
     {
-        $this->name = $value;
+        $this->image_data = $value;
         return $this;
     }
     
@@ -125,23 +125,23 @@ class SaveImageAsRequest extends ImagingRequest
     }
     
     /**
-     * Folder with image to process.
+     * Path to updated file (if this is empty, response contains streamed image).
      *
      * @return string
      */
-    public function get_folder()
+    public function get_out_path()
     {
-        return $this->folder;
+        return $this->out_path;
     }
 
     /**
-     * Folder with image to process.
+     * Path to updated file (if this is empty, response contains streamed image).
      *
      * @return \Aspose\Imaging\Model\Requests\Request
      */
-    public function set_folder($value)
+    public function set_out_path($value)
     {
-        $this->folder = $value;
+        $this->out_path = $value;
         return $this;
     }
     
@@ -173,26 +173,21 @@ class SaveImageAsRequest extends ImagingRequest
      */
     public function getHttpRequestInfo($config)
     {
-        // verify the required parameter 'name' is set
-        if ($this->name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $name when calling saveImageAs');
+        // verify the required parameter 'image_data' is set
+        if ($this->image_data === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $image_data when calling createConvertedImage');
         }
         // verify the required parameter 'format' is set
         if ($this->format === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $format when calling saveImageAs');
+            throw new \InvalidArgumentException('Missing the required parameter $format when calling createConvertedImage');
         }
 
-        $resourcePath = '/imaging/{name}/saveAs';
+        $resourcePath = '/imaging/convert';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $headers = [];
     
-        // path params
-        if ($this->name !== null) {
-            $localName = lcfirst('name');
-            $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($this->name), $resourcePath);
-        }
 
         // query params
         if ($this->format !== null) {
@@ -205,9 +200,9 @@ class SaveImageAsRequest extends ImagingRequest
             }
         }
         // query params
-        if ($this->folder !== null) {
-            $localName = lcfirst('folder');
-            $localValue = is_bool($this->folder) ? ($this->folder ? 'true' : 'false') : $this->folder;
+        if ($this->out_path !== null) {
+            $localName = lcfirst('outPath');
+            $localValue = is_bool($this->out_path) ? ($this->out_path ? 'true' : 'false') : $this->out_path;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
@@ -228,12 +223,16 @@ class SaveImageAsRequest extends ImagingRequest
     
         $resourcePath = trim($resourcePath, "/") . "?" . http_build_query($queryParams);
 
+        // form params
+        if ($this->image_data !== null) {
+            $formParams[ObjectSerializer::toStandardName('image_data')] = ObjectSerializer::toFormValue($this->image_data);
+        }
         // body params
         $httpBody = null;
 
         $headers = $this->selectHeaders(
             ['application/json'],
-            ['application/json']
+            ['multipart/form-data']
         );
         
         $httpInfo = array(

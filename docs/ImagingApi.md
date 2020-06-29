@@ -126,6 +126,46 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="convertimage"></a>
+# **convertImage**
+> convertImage($convertImageRequest)
+
+Convert existing image to another format.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="convertimageasync"></a>
+# **convertImageAsync**
+> convertImageAsync($convertImageRequest)
+
+Convert existing image to another format.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **ConvertImageRequest** Parameters
+```php
+__construct(
+    $name, 
+    $format, 
+    $folder, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of image. |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **folder** | **string**| Folder with image to process. | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="converttifftofax"></a>
 # **convertTiffToFax**
 > convertTiffToFax($convertTiffToFaxRequest)
@@ -243,6 +283,46 @@ Name | Type | Description  | Notes
  **dest_path** | **string**| Destination folder path e.g. &#39;/dst&#39; |
  **src_storage_name** | **string**| Source storage name | [optional]
  **dest_storage_name** | **string**| Destination storage name | [optional]
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createconvertedimage"></a>
+# **createConvertedImage**
+> createConvertedImage($createConvertedImageRequest)
+
+Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### Return type
+
+**\Psr\Http\Message\StreamInterface**
+
+<a name="createconvertedimageasync"></a>
+# **createConvertedImageAsync**
+> createConvertedImageAsync($createConvertedImageRequest)
+
+Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **CreateConvertedImageRequest** Parameters
+```php
+__construct(
+    $image_data, 
+    $format, 
+    $out_path, 
+    $storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **image_data** | **string**| Input image |
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -1210,6 +1290,8 @@ __construct(
     $threshold, 
     $include_label, 
     $include_score, 
+    $allowed_labels, 
+    $blocked_labels, 
     $out_path, 
     $storage)
 ```
@@ -1221,6 +1303,8 @@ Name | Type | Description  | Notes
  **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
  **include_label** | **bool**| Draw detected objects labels | [optional] [default to false]
  **include_score** | **bool**| Draw detected objects scores | [optional] [default to false]
+ **allowed_labels** | **string**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blocked_labels** | **string**| Comma-separated list of blocked labels | [optional] [default to ]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1312,46 +1396,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
-<a name="createsavedimageas"></a>
-# **createSavedImageAs**
-> createSavedImageAs($createSavedImageAsRequest)
-
-Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-
-### Return type
-
-**\Psr\Http\Message\StreamInterface**
-
-<a name="createsavedimageasasync"></a>
-# **createSavedImageAsAsync**
-> createSavedImageAsAsync($createSavedImageAsRequest)
-
-Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-
-Performs operation asynchronously.
-
-### Return type
-
-**\GuzzleHttp\Promise\PromiseInterface**
-
-### **CreateSavedImageAsRequest** Parameters
-```php
-__construct(
-    $image_data, 
-    $format, 
-    $out_path, 
-    $storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **image_data** | **string**| Input image |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
- **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional]
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
 <a name="createupdatedimage"></a>
 # **createUpdatedImage**
 > createUpdatedImage($createUpdatedImageRequest)
@@ -1436,6 +1480,8 @@ __construct(
     $threshold, 
     $include_label, 
     $include_score, 
+    $allowed_labels, 
+    $blocked_labels, 
     $color, 
     $out_path, 
     $storage)
@@ -1448,6 +1494,8 @@ Name | Type | Description  | Notes
  **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
  **include_label** | **bool**| Draw detected objects classes | [optional] [default to false]
  **include_score** | **bool**| Draw detected objects scores | [optional] [default to false]
+ **allowed_labels** | **string**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blocked_labels** | **string**| Comma-separated list of blocked labels | [optional] [default to ]
  **color** | **string**| Bounds, labels, and scores text color | [optional]
  **out_path** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
@@ -2102,6 +2150,40 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="getavailablelabels"></a>
+# **getAvailableLabels**
+> getAvailableLabels($getAvailableLabelsRequest)
+
+Detects objects bounds and draw them on the original image
+
+### Return type
+
+[**\Aspose\Imaging\Model\AvailableLabelsList**](AvailableLabelsList.md)
+
+<a name="getavailablelabelsasync"></a>
+# **getAvailableLabelsAsync**
+> getAvailableLabelsAsync($getAvailableLabelsRequest)
+
+Detects objects bounds and draw them on the original image
+
+Performs operation asynchronously.
+
+### Return type
+
+**\GuzzleHttp\Promise\PromiseInterface**
+
+### **GetAvailableLabelsRequest** Parameters
+```php
+__construct(
+    $method)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **method** | **string**| Object detection method |
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="getdiscusage"></a>
 # **getDiscUsage**
 > getDiscUsage($getDiscUsageRequest)
@@ -2508,6 +2590,8 @@ __construct(
     $threshold, 
     $include_label, 
     $include_score, 
+    $allowed_labels, 
+    $blocked_labels, 
     $folder, 
     $storage)
 ```
@@ -2519,6 +2603,8 @@ Name | Type | Description  | Notes
  **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
  **include_label** | **bool**| Return detected objects labels | [optional] [default to false]
  **include_score** | **bool**| Return detected objects score | [optional] [default to false]
+ **allowed_labels** | **string**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blocked_labels** | **string**| Comma-separated list of blocked labels | [optional] [default to ]
  **folder** | **string**| Folder | [optional]
  **storage** | **string**| Storage | [optional]
 
@@ -2594,6 +2680,8 @@ __construct(
     $threshold, 
     $include_label, 
     $include_score, 
+    $allowed_labels, 
+    $blocked_labels, 
     $color, 
     $folder, 
     $storage)
@@ -2606,6 +2694,8 @@ Name | Type | Description  | Notes
  **threshold** | **int**| Object detection probability threshold in percents | [optional] [default to 50]
  **include_label** | **bool**| Draw detected objects labels | [optional] [default to false]
  **include_score** | **bool**| Draw detected objects scores | [optional] [default to false]
+ **allowed_labels** | **string**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blocked_labels** | **string**| Comma-separated list of blocked labels | [optional] [default to ]
  **color** | **string**| Bounds, labels, and scores text color | [optional]
  **folder** | **string**| The folder. | [optional]
  **storage** | **string**| The storage. | [optional]
@@ -3343,46 +3433,6 @@ Name | Type | Description  | Notes
  **name** | **string**| Filename of an image. |
  **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). |
  **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
- **folder** | **string**| Folder with image to process. | [optional]
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="saveimageas"></a>
-# **saveImageAs**
-> saveImageAs($saveImageAsRequest)
-
-Export existing image to another format.
-
-### Return type
-
-**\Psr\Http\Message\StreamInterface**
-
-<a name="saveimageasasync"></a>
-# **saveImageAsAsync**
-> saveImageAsAsync($saveImageAsRequest)
-
-Export existing image to another format.
-
-Performs operation asynchronously.
-
-### Return type
-
-**\GuzzleHttp\Promise\PromiseInterface**
-
-### **SaveImageAsRequest** Parameters
-```php
-__construct(
-    $name, 
-    $format, 
-    $folder, 
-    $storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. |
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **folder** | **string**| Folder with image to process. | [optional]
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional]
 

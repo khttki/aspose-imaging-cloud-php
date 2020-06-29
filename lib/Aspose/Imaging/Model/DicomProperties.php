@@ -63,8 +63,6 @@ class DicomProperties implements ArrayAccess
         'samples_per_pixel' => 'int',
         'bits_allocated' => 'int',
         'photo_interpretation' => 'string',
-        'width_tag_found' => 'bool',
-        'height_tag_found' => 'bool',
         'width' => 'int',
         'height' => 'int',
         'window_centre' => 'double',
@@ -73,10 +71,8 @@ class DicomProperties implements ArrayAccess
         'rescale_intercept' => 'double',
         'rescale_slope' => 'double',
         'number_of_frames' => 'int',
-        'length_value' => 'int',
         'is_little_endian' => 'bool',
-        'offset' => 'int',
-        'dicom_found' => 'bool'
+        'offset' => 'int'
     ];
 
     /**
@@ -95,8 +91,6 @@ class DicomProperties implements ArrayAccess
         'samples_per_pixel' => 'int32',
         'bits_allocated' => 'int32',
         'photo_interpretation' => null,
-        'width_tag_found' => null,
-        'height_tag_found' => null,
         'width' => 'int32',
         'height' => 'int32',
         'window_centre' => 'double',
@@ -105,10 +99,8 @@ class DicomProperties implements ArrayAccess
         'rescale_intercept' => 'double',
         'rescale_slope' => 'double',
         'number_of_frames' => 'int32',
-        'length_value' => 'int32',
         'is_little_endian' => null,
-        'offset' => 'int32',
-        'dicom_found' => null
+        'offset' => 'int32'
     ];
 
     /**
@@ -148,8 +140,6 @@ class DicomProperties implements ArrayAccess
         'samples_per_pixel' => 'SamplesPerPixel',
         'bits_allocated' => 'BitsAllocated',
         'photo_interpretation' => 'PhotoInterpretation',
-        'width_tag_found' => 'WidthTagFound',
-        'height_tag_found' => 'HeightTagFound',
         'width' => 'Width',
         'height' => 'Height',
         'window_centre' => 'WindowCentre',
@@ -158,10 +148,8 @@ class DicomProperties implements ArrayAccess
         'rescale_intercept' => 'RescaleIntercept',
         'rescale_slope' => 'RescaleSlope',
         'number_of_frames' => 'NumberOfFrames',
-        'length_value' => 'LengthValue',
         'is_little_endian' => 'IsLittleEndian',
-        'offset' => 'Offset',
-        'dicom_found' => 'DicomFound'
+        'offset' => 'Offset'
     ];
 
     /**
@@ -180,8 +168,6 @@ class DicomProperties implements ArrayAccess
         'samples_per_pixel' => 'setSamplesPerPixel',
         'bits_allocated' => 'setBitsAllocated',
         'photo_interpretation' => 'setPhotoInterpretation',
-        'width_tag_found' => 'setWidthTagFound',
-        'height_tag_found' => 'setHeightTagFound',
         'width' => 'setWidth',
         'height' => 'setHeight',
         'window_centre' => 'setWindowCentre',
@@ -190,10 +176,8 @@ class DicomProperties implements ArrayAccess
         'rescale_intercept' => 'setRescaleIntercept',
         'rescale_slope' => 'setRescaleSlope',
         'number_of_frames' => 'setNumberOfFrames',
-        'length_value' => 'setLengthValue',
         'is_little_endian' => 'setIsLittleEndian',
-        'offset' => 'setOffset',
-        'dicom_found' => 'setDicomFound'
+        'offset' => 'setOffset'
     ];
 
     /**
@@ -212,8 +196,6 @@ class DicomProperties implements ArrayAccess
         'samples_per_pixel' => 'getSamplesPerPixel',
         'bits_allocated' => 'getBitsAllocated',
         'photo_interpretation' => 'getPhotoInterpretation',
-        'width_tag_found' => 'getWidthTagFound',
-        'height_tag_found' => 'getHeightTagFound',
         'width' => 'getWidth',
         'height' => 'getHeight',
         'window_centre' => 'getWindowCentre',
@@ -222,10 +204,8 @@ class DicomProperties implements ArrayAccess
         'rescale_intercept' => 'getRescaleIntercept',
         'rescale_slope' => 'getRescaleSlope',
         'number_of_frames' => 'getNumberOfFrames',
-        'length_value' => 'getLengthValue',
         'is_little_endian' => 'getIsLittleEndian',
-        'offset' => 'getOffset',
-        'dicom_found' => 'getDicomFound'
+        'offset' => 'getOffset'
     ];
 
     /**
@@ -298,8 +278,6 @@ class DicomProperties implements ArrayAccess
         $this->container['samples_per_pixel'] = isset($data['samples_per_pixel']) ? $data['samples_per_pixel'] : null;
         $this->container['bits_allocated'] = isset($data['bits_allocated']) ? $data['bits_allocated'] : null;
         $this->container['photo_interpretation'] = isset($data['photo_interpretation']) ? $data['photo_interpretation'] : null;
-        $this->container['width_tag_found'] = isset($data['width_tag_found']) ? $data['width_tag_found'] : null;
-        $this->container['height_tag_found'] = isset($data['height_tag_found']) ? $data['height_tag_found'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
         $this->container['window_centre'] = isset($data['window_centre']) ? $data['window_centre'] : null;
@@ -308,10 +286,8 @@ class DicomProperties implements ArrayAccess
         $this->container['rescale_intercept'] = isset($data['rescale_intercept']) ? $data['rescale_intercept'] : null;
         $this->container['rescale_slope'] = isset($data['rescale_slope']) ? $data['rescale_slope'] : null;
         $this->container['number_of_frames'] = isset($data['number_of_frames']) ? $data['number_of_frames'] : null;
-        $this->container['length_value'] = isset($data['length_value']) ? $data['length_value'] : null;
         $this->container['is_little_endian'] = isset($data['is_little_endian']) ? $data['is_little_endian'] : null;
         $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
-        $this->container['dicom_found'] = isset($data['dicom_found']) ? $data['dicom_found'] : null;
     }
 
     /**
@@ -351,12 +327,6 @@ class DicomProperties implements ArrayAccess
         if ($this->container['bits_allocated'] === null) {
             $invalidProperties[] = "'bits_allocated' can't be null";
         }
-        if ($this->container['width_tag_found'] === null) {
-            $invalidProperties[] = "'width_tag_found' can't be null";
-        }
-        if ($this->container['height_tag_found'] === null) {
-            $invalidProperties[] = "'height_tag_found' can't be null";
-        }
         if ($this->container['width'] === null) {
             $invalidProperties[] = "'width' can't be null";
         }
@@ -381,17 +351,11 @@ class DicomProperties implements ArrayAccess
         if ($this->container['number_of_frames'] === null) {
             $invalidProperties[] = "'number_of_frames' can't be null";
         }
-        if ($this->container['length_value'] === null) {
-            $invalidProperties[] = "'length_value' can't be null";
-        }
         if ($this->container['is_little_endian'] === null) {
             $invalidProperties[] = "'is_little_endian' can't be null";
         }
         if ($this->container['offset'] === null) {
             $invalidProperties[] = "'offset' can't be null";
-        }
-        if ($this->container['dicom_found'] === null) {
-            $invalidProperties[] = "'dicom_found' can't be null";
         }
         return $invalidProperties;
     }
@@ -417,12 +381,6 @@ class DicomProperties implements ArrayAccess
         if ($this->container['bits_allocated'] === null) {
             return false;
         }
-        if ($this->container['width_tag_found'] === null) {
-            return false;
-        }
-        if ($this->container['height_tag_found'] === null) {
-            return false;
-        }
         if ($this->container['width'] === null) {
             return false;
         }
@@ -447,16 +405,10 @@ class DicomProperties implements ArrayAccess
         if ($this->container['number_of_frames'] === null) {
             return false;
         }
-        if ($this->container['length_value'] === null) {
-            return false;
-        }
         if ($this->container['is_little_endian'] === null) {
             return false;
         }
         if ($this->container['offset'] === null) {
-            return false;
-        }
-        if ($this->container['dicom_found'] === null) {
             return false;
         }
         return true;
@@ -704,54 +656,6 @@ class DicomProperties implements ArrayAccess
     }
 
     /**
-     * Gets width_tag_found
-     *
-     * @return bool
-     */
-    public function getWidthTagFound()
-    {
-        return $this->container['width_tag_found'];
-    }
-
-    /**
-     * Sets width_tag_found
-     *
-     * @param bool $width_tag_found Gets or sets a value indicating whether width tag found.
-     *
-     * @return $this
-     */
-    public function setWidthTagFound($width_tag_found)
-    {
-        $this->container['width_tag_found'] = $width_tag_found;
-
-        return $this;
-    }
-
-    /**
-     * Gets height_tag_found
-     *
-     * @return bool
-     */
-    public function getHeightTagFound()
-    {
-        return $this->container['height_tag_found'];
-    }
-
-    /**
-     * Sets height_tag_found
-     *
-     * @param bool $height_tag_found Gets or sets a value indicating whether height tag found.
-     *
-     * @return $this
-     */
-    public function setHeightTagFound($height_tag_found)
-    {
-        $this->container['height_tag_found'] = $height_tag_found;
-
-        return $this;
-    }
-
-    /**
      * Gets width
      *
      * @return int
@@ -944,30 +848,6 @@ class DicomProperties implements ArrayAccess
     }
 
     /**
-     * Gets length_value
-     *
-     * @return int
-     */
-    public function getLengthValue()
-    {
-        return $this->container['length_value'];
-    }
-
-    /**
-     * Sets length_value
-     *
-     * @param int $length_value Gets or sets the length of element.
-     *
-     * @return $this
-     */
-    public function setLengthValue($length_value)
-    {
-        $this->container['length_value'] = $length_value;
-
-        return $this;
-    }
-
-    /**
      * Gets is_little_endian
      *
      * @return bool
@@ -1011,30 +891,6 @@ class DicomProperties implements ArrayAccess
     public function setOffset($offset)
     {
         $this->container['offset'] = $offset;
-
-        return $this;
-    }
-
-    /**
-     * Gets dicom_found
-     *
-     * @return bool
-     */
-    public function getDicomFound()
-    {
-        return $this->container['dicom_found'];
-    }
-
-    /**
-     * Sets dicom_found
-     *
-     * @param bool $dicom_found Gets or sets a value indicating whether \"DICOM\" data is found.
-     *
-     * @return $this
-     */
-    public function setDicomFound($dicom_found)
-    {
-        $this->container['dicom_found'] = $dicom_found;
 
         return $this;
     }

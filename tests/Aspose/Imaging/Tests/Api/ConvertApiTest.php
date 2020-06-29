@@ -32,13 +32,13 @@ use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging\Model\Requests;
 
 /**
- * Class for testing SaveAsApi
+ * Class for testing ConvertApi
  * 
  * @group Imaging
  * @group v3.0
- * @group SaveAs
+ * @group Convert
  */
-class SaveAsApiTest extends ApiTester
+class ConvertApiTest extends ApiTester
 {
     /**
      * Export options provider
@@ -65,7 +65,7 @@ class SaveAsApiTest extends ApiTester
     }
 
     /**
-     * Test SaveImageAs
+     * Test ConvertImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -75,7 +75,7 @@ class SaveAsApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function saveImageAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function convertImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         if ($saveResultToStorage) {
             return;
@@ -109,13 +109,13 @@ class SaveAsApiTest extends ApiTester
             foreach ($formatsToExport as $format)
             {
                 $this->getRequestTestInternal(
-                    "saveImageAsTest", 
+                    "convertImageTest", 
                     "Input image: " . $name . "; Output format: " . $format,
                     $name,
                     function() use ($name, $format, $folder, $storage)
                     {
-                        $request = new Requests\SaveImageAsRequest($name, $format, $folder, $storage);
-                        return self::$imagingApi->saveImageAsAsync($request)->wait();
+                        $request = new Requests\ConvertImageRequest($name, $format, $folder, $storage);
+                        return self::$imagingApi->convertImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,
@@ -125,7 +125,7 @@ class SaveAsApiTest extends ApiTester
     }
 
     /**
-     * Test CreateSavedImageAs
+     * Test CreateConvertedImage
      * 
      * @test
      * @dataProvider exportOptionsProvider
@@ -135,7 +135,7 @@ class SaveAsApiTest extends ApiTester
      * @param array $additionalExportFormats Additional formats to export to.
      * @return void
     */
-    public function createSavedImageAsTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
+    public function createConvertedImageTest($formatExtension, $saveResultToStorage, $additionalExportFormats = [])
     {
         $name = null;
         $folder = self::$tempFolder;
@@ -168,15 +168,15 @@ class SaveAsApiTest extends ApiTester
                 $outName = $name . "." . $format;
 
                 $this->postRequestTestInternal(
-                    "createSavedImageAsTest", 
+                    "createConvertedImageTest", 
                     $saveResultToStorage,
                     "Input image: " . $name . "; Output format: " . $format,
                     $name,
                     $outName,
                     function($inputStream, $outPath) use ($format, $storage)
                     {
-                        $request = new Requests\CreateSavedImageAsRequest($inputStream, $format, $outPath, $storage);
-                        return self::$imagingApi->createSavedImageAsAsync($request)->wait();
+                        $request = new Requests\CreateConvertedImageRequest($inputStream, $format, $outPath, $storage);
+                        return self::$imagingApi->createConvertedImageAsync($request)->wait();
                     },
                     function($originalProperties, $resultProperties, $resultStream){},
                     $folder,

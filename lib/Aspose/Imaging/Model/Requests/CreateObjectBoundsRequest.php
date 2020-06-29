@@ -74,6 +74,20 @@ class CreateObjectBoundsRequest extends ImagingRequest
     public $include_score;
     
     /**
+     * Comma-separated list of allowed labels
+     *
+     * @var string
+     */
+    public $allowed_labels;
+    
+    /**
+     * Comma-separated list of blocked labels
+     *
+     * @var string
+     */
+    public $blocked_labels;
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image)
      *
      * @var string
@@ -95,16 +109,20 @@ class CreateObjectBoundsRequest extends ImagingRequest
      * @param int $threshold Object detection probability threshold in percents
      * @param bool $include_label Draw detected objects labels
      * @param bool $include_score Draw detected objects scores
+     * @param string $allowed_labels Comma-separated list of allowed labels
+     * @param string $blocked_labels Comma-separated list of blocked labels
      * @param string $out_path Path to updated file (if this is empty, response contains streamed image)
      * @param string $storage Your Aspose Cloud Storage name.
      */
-    public function __construct($image_data, $method = null, $threshold = null, $include_label = null, $include_score = null, $out_path = null, $storage = null)             
+    public function __construct($image_data, $method = null, $threshold = null, $include_label = null, $include_score = null, $allowed_labels = null, $blocked_labels = null, $out_path = null, $storage = null)             
     {
         $this->image_data = $image_data;
         $this->method = $method;
         $this->threshold = $threshold;
         $this->include_label = $include_label;
         $this->include_score = $include_score;
+        $this->allowed_labels = $allowed_labels;
+        $this->blocked_labels = $blocked_labels;
         $this->out_path = $out_path;
         $this->storage = $storage;
     }
@@ -215,6 +233,48 @@ class CreateObjectBoundsRequest extends ImagingRequest
     }
     
     /**
+     * Comma-separated list of allowed labels
+     *
+     * @return string
+     */
+    public function get_allowed_labels()
+    {
+        return $this->allowed_labels;
+    }
+
+    /**
+     * Comma-separated list of allowed labels
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_allowed_labels($value)
+    {
+        $this->allowed_labels = $value;
+        return $this;
+    }
+    
+    /**
+     * Comma-separated list of blocked labels
+     *
+     * @return string
+     */
+    public function get_blocked_labels()
+    {
+        return $this->blocked_labels;
+    }
+
+    /**
+     * Comma-separated list of blocked labels
+     *
+     * @return \Aspose\Imaging\Model\Requests\Request
+     */
+    public function set_blocked_labels($value)
+    {
+        $this->blocked_labels = $value;
+        return $this;
+    }
+    
+    /**
      * Path to updated file (if this is empty, response contains streamed image)
      *
      * @return string
@@ -309,6 +369,26 @@ class CreateObjectBoundsRequest extends ImagingRequest
         if ($this->include_score !== null) {
             $localName = lcfirst('includeScore');
             $localValue = is_bool($this->include_score) ? ($this->include_score ? 'true' : 'false') : $this->include_score;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->allowed_labels !== null) {
+            $localName = lcfirst('allowedLabels');
+            $localValue = is_bool($this->allowed_labels) ? ($this->allowed_labels ? 'true' : 'false') : $this->allowed_labels;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($this->blocked_labels !== null) {
+            $localName = lcfirst('blockedLabels');
+            $localValue = is_bool($this->blocked_labels) ? ($this->blocked_labels ? 'true' : 'false') : $this->blocked_labels;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {
