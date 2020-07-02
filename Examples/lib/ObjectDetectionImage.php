@@ -75,11 +75,13 @@ class ObjectDetectionImage extends ImagingBase
         $threshold = 50;
         $includeLabel = true;
         $includeScore = true;
+        $allowedLabels = "cat";
+        $blockedLabels = "dog";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new GetObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel, $includeScore, $folder,
-            $storage);
+        $request = new GetObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel,
+            $includeScore, $allowedLabels, $blockedLabels, $folder, $storage);
 
         echo "Call ObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${includeLabel},includeScore: ${$includeScore}," . PHP_EOL;
 
@@ -109,12 +111,14 @@ class ObjectDetectionImage extends ImagingBase
         $threshold = 50;
         $includeLabel = true;
         $includeScore = true;
+        $allowedLabels = "cat";
+        $blockedLabels = "dog";
         $color = "blue";
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // We are using default Cloud Storage
 
-        $request = new GetVisualObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel, $includeScore, $color, $folder,
-            $storage);
+        $request = new GetVisualObjectBoundsRequest($this->GetSampleImageFileName(), $method, $threshold, $includeLabel, $includeScore, $allowedLabels, $blockedLabels,
+            $color, $folder, $storage);
 
         echo "Call VisualObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${includeLabel},includeScore: ${includeScore}, color: ${color}" . PHP_EOL;
 
@@ -141,11 +145,13 @@ class ObjectDetectionImage extends ImagingBase
         $threshold = 50;
         $includeLabel = true;
         $includeScore = true;
+        $allowedLabels = "cat";
+        $blockedLabels = "dog";
         $outPath = null;
         $storage = null; // We are using default Cloud Storage
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
 
-        $request = new CreateObjectBoundsRequest($inputStream, $method, $threshold, $includeLabel, $includeScore, $outPath,
+        $request = new CreateObjectBoundsRequest($inputStream, $method, $threshold, $includeLabel, $includeScore, $allowedLabels, $blockedLabels, $outPath,
             $storage);
 
         echo "Call CreateObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${includeLabel},includeScore: ${includeScore}," . PHP_EOL;
@@ -176,11 +182,13 @@ class ObjectDetectionImage extends ImagingBase
         $threshold = 50;
         $includeLabel = true;
         $includeScore = true;
+        $allowedLabels = "cat";
+        $blockedLabels = "dog";
         $color = null;
         $outPath = null;
         $storage = null; // We are using default Cloud Storage
 
-        $request = new CreateVisualObjectBoundsRequest($inputStream, $method, $threshold, $includeLabel, $includeScore, $color, $outPath,
+        $request = new CreateVisualObjectBoundsRequest($inputStream, $method, $threshold, $includeLabel, $includeScore, $allowedLabels, $blockedLabels, $color, $outPath,
             $storage);
 
         echo "Call CreateObjectBoundsRequest with params: method: ${method}, threshold: ${threshold}, includeLabel: ${$includeLabel},includeScore: ${$includeScore}, color: null" . PHP_EOL;

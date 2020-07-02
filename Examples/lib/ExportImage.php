@@ -29,8 +29,8 @@
 
 namespace Aspose\Imaging\Examples;
 
-use Aspose\Imaging\Model\Requests\CreateSavedImageAsRequest;
-use Aspose\Imaging\Model\Requests\SaveImageAsRequest;
+use Aspose\Imaging\Model\Requests\ConvertImageRequest;
+use Aspose\Imaging\Model\Requests\CreateConvertedImageRequest;
 
 
 /**
@@ -59,11 +59,11 @@ class ExportImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // Cloud Storage name
 
-        $request = new SaveImageAsRequest($this->GetSampleImageFileName(), $format, $folder, $storage);
+        $request = new ConvertImageRequest($this->GetSampleImageFileName(), $format, $folder, $storage);
 
         echo "Call SaveImageAs with params: format: ${format}" . PHP_EOL;
 
-        $updatedImage = self::$imagingApi->saveImageAs($request);
+        $updatedImage = self::$imagingApi->convertImage($request);
         $this->SaveUpdatedSampleImageToOutput($updatedImage, false, $format);
 
         echo PHP_EOL;
@@ -93,11 +93,11 @@ class ExportImage extends ImagingBase
         $folder = $this->CloudPath; // Input file is saved at the Examples folder in the storage
         $storage = null; // Cloud Storage name
 
-        $request = new SaveImageAsRequest($this->GetSampleImageFileName(), $format, $folder, $storage);
+        $request = new ConvertImageRequest($this->GetSampleImageFileName(), $format, $folder, $storage);
 
         echo "Call SaveImageAs with params: format: ${format}" . PHP_EOL;
 
-        $updatedImage = self::$imagingApi->saveImageAs($request);
+        $updatedImage = self::$imagingApi->convertImage($request);
         $this->UploadImageToCloud($this->GetModifiedSampleImageFileName(false, $format), $updatedImage);
 
         echo PHP_EOL;
@@ -117,11 +117,11 @@ class ExportImage extends ImagingBase
         $storage = null; // Cloud Storage name
 
         $inputStream = file_get_contents($this->GetExampleImagesFolder() . DIRECTORY_SEPARATOR . $this->GetSampleImageFileName());
-        $request = new CreateSavedImageAsRequest($inputStream, $format, $outPath, $storage);
+        $request = new CreateConvertedImageRequest($inputStream, $format, $outPath, $storage);
 
         echo "Call CreateSavedImageAs with params: format: ${format}" . PHP_EOL;
 
-        $updatedImage = self::$imagingApi->createSavedImageAs($request);
+        $updatedImage = self::$imagingApi->createConvertedImage($request);
         $this->SaveUpdatedSampleImageToOutput($updatedImage, true, $format);
 
         echo PHP_EOL;
