@@ -102,8 +102,8 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**findImagesByTagsAsync**](ImagingApi.md#findimagesbytagsasync) | **POST** /imaging/ai/imageSearch/{searchContextId}/findByTags | Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**findSimilarImages**](ImagingApi.md#findsimilarimages) | **GET** /imaging/ai/imageSearch/{searchContextId}/findSimilar | Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**findSimilarImagesAsync**](ImagingApi.md#findsimilarimagesasync) | **GET** /imaging/ai/imageSearch/{searchContextId}/findSimilar | Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**getAvailableLabels**](ImagingApi.md#getavailablelabels) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Detects objects bounds and draw them on the original image
-*ImagingApi* | [**getAvailableLabelsAsync**](ImagingApi.md#getavailablelabelsasync) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Detects objects bounds and draw them on the original image
+*ImagingApi* | [**getAvailableLabels**](ImagingApi.md#getavailablelabels) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Gets available labels for selected object detection method.
+*ImagingApi* | [**getAvailableLabelsAsync**](ImagingApi.md#getavailablelabelsasync) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Gets available labels for selected object detection method.
 *ImagingApi* | [**getDiscUsage**](ImagingApi.md#getdiscusage) | **GET** /imaging/storage/disc | Get disc usage
 *ImagingApi* | [**getDiscUsageAsync**](ImagingApi.md#getdiscusageasync) | **GET** /imaging/storage/disc | Get disc usage
 *ImagingApi* | [**getFileVersions**](ImagingApi.md#getfileversions) | **GET** /imaging/storage/version/{path} | Get file versions
@@ -182,6 +182,7 @@ Class | Method | HTTP request | Description
  - [Aspose\Imaging\Model\DiscUsage](DiscUsage.md)
  - [Aspose\Imaging\Model\DjvuProperties](DjvuProperties.md)
  - [Aspose\Imaging\Model\DngProperties](DngProperties.md)
+ - [Aspose\Imaging\Model\EpsProperties](EpsProperties.md)
  - [Aspose\Imaging\Model\Error](Error.md)
  - [Aspose\Imaging\Model\ErrorDetails](ErrorDetails.md)
  - [Aspose\Imaging\Model\ExifData](ExifData.md)

@@ -2732,7 +2732,7 @@ class ImagingApi
     }
     
     /**
-     * Detects objects bounds and draw them on the original image
+     * Gets available labels for selected object detection method.
      *
      * @param \Aspose\Imaging\Model\Requests\GetAvailableLabelsRequest $request Request object for operation
      *
@@ -2757,7 +2757,7 @@ class ImagingApi
     }
 
     /**
-     * Detects objects bounds and draw them on the original image
+     * Gets available labels for selected object detection method.
      * Performs operation asynchronously.
      *
      * @param \Aspose\Imaging\Model\Requests\GetAvailableLabelsRequest $request Request object for operation

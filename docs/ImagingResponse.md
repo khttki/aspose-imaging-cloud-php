@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **dng_properties** | [**\Aspose\Imaging\Model\DngProperties**](DngProperties.md) | Gets or sets the DNG properties. | [optional] 
 **odg_properties** | [**\Aspose\Imaging\Model\OdgProperties**](OdgProperties.md) | Gets or sets the the ODG properties. | [optional] 
 **svg_properties** | [**\Aspose\Imaging\Model\SvgProperties**](SvgProperties.md) | Gets or sets the SVG properties. | [optional] 
+**esp_properties** | [**\Aspose\Imaging\Model\EpsProperties**](EpsProperties.md) | Gets or sets the ESP properties. | [optional] 
 **horizontal_resolution** | **double** | Gets or sets the horizontal resolution of an image. | 
 **vertical_resolution** | **double** | Gets or sets the vertical resolution of an image. | 
 **is_cached** | **bool** | Gets or sets a value indicating whether image is cached. | 
