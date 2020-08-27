@@ -69,7 +69,7 @@ class ImagingResponse implements ArrayAccess
         'dng_properties' => '\Aspose\Imaging\Model\DngProperties',
         'odg_properties' => '\Aspose\Imaging\Model\OdgProperties',
         'svg_properties' => '\Aspose\Imaging\Model\SvgProperties',
-        'esp_properties' => '\Aspose\Imaging\Model\EpsProperties',
+        'eps_properties' => '\Aspose\Imaging\Model\EpsProperties',
         'horizontal_resolution' => 'double',
         'vertical_resolution' => 'double',
         'is_cached' => 'bool'
@@ -97,7 +97,7 @@ class ImagingResponse implements ArrayAccess
         'dng_properties' => null,
         'odg_properties' => null,
         'svg_properties' => null,
-        'esp_properties' => null,
+        'eps_properties' => null,
         'horizontal_resolution' => 'double',
         'vertical_resolution' => 'double',
         'is_cached' => null
@@ -146,7 +146,7 @@ class ImagingResponse implements ArrayAccess
         'dng_properties' => 'DngProperties',
         'odg_properties' => 'OdgProperties',
         'svg_properties' => 'SvgProperties',
-        'esp_properties' => 'EspProperties',
+        'eps_properties' => 'EpsProperties',
         'horizontal_resolution' => 'HorizontalResolution',
         'vertical_resolution' => 'VerticalResolution',
         'is_cached' => 'IsCached'
@@ -174,7 +174,7 @@ class ImagingResponse implements ArrayAccess
         'dng_properties' => 'setDngProperties',
         'odg_properties' => 'setOdgProperties',
         'svg_properties' => 'setSvgProperties',
-        'esp_properties' => 'setEspProperties',
+        'eps_properties' => 'setEpsProperties',
         'horizontal_resolution' => 'setHorizontalResolution',
         'vertical_resolution' => 'setVerticalResolution',
         'is_cached' => 'setIsCached'
@@ -202,7 +202,7 @@ class ImagingResponse implements ArrayAccess
         'dng_properties' => 'getDngProperties',
         'odg_properties' => 'getOdgProperties',
         'svg_properties' => 'getSvgProperties',
-        'esp_properties' => 'getEspProperties',
+        'eps_properties' => 'getEpsProperties',
         'horizontal_resolution' => 'getHorizontalResolution',
         'vertical_resolution' => 'getVerticalResolution',
         'is_cached' => 'getIsCached'
@@ -284,7 +284,7 @@ class ImagingResponse implements ArrayAccess
         $this->container['dng_properties'] = isset($data['dng_properties']) ? $data['dng_properties'] : null;
         $this->container['odg_properties'] = isset($data['odg_properties']) ? $data['odg_properties'] : null;
         $this->container['svg_properties'] = isset($data['svg_properties']) ? $data['svg_properties'] : null;
-        $this->container['esp_properties'] = isset($data['esp_properties']) ? $data['esp_properties'] : null;
+        $this->container['eps_properties'] = isset($data['eps_properties']) ? $data['eps_properties'] : null;
         $this->container['horizontal_resolution'] = isset($data['horizontal_resolution']) ? $data['horizontal_resolution'] : null;
         $this->container['vertical_resolution'] = isset($data['vertical_resolution']) ? $data['vertical_resolution'] : null;
         $this->container['is_cached'] = isset($data['is_cached']) ? $data['is_cached'] : null;
@@ -736,25 +736,25 @@ class ImagingResponse implements ArrayAccess
     }
 
     /**
-     * Gets esp_properties
+     * Gets eps_properties
      *
      * @return \Aspose\Imaging\Model\EpsProperties
      */
-    public function getEspProperties()
+    public function getEpsProperties()
     {
-        return $this->container['esp_properties'];
+        return $this->container['eps_properties'];
     }
 
     /**
-     * Sets esp_properties
+     * Sets eps_properties
      *
-     * @param \Aspose\Imaging\Model\EpsProperties $esp_properties Gets or sets the ESP properties.
+     * @param \Aspose\Imaging\Model\EpsProperties $eps_properties Gets or sets the EPS properties.
      *
      * @return $this
      */
-    public function setEspProperties($esp_properties)
+    public function setEpsProperties($eps_properties)
     {
-        $this->container['esp_properties'] = $esp_properties;
+        $this->container['eps_properties'] = $eps_properties;
 
         return $this;
     }

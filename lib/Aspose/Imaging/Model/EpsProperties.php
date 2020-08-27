@@ -52,8 +52,6 @@ class EpsProperties implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'width' => 'int',
-        'height' => 'int',
         'bounding_box_string' => 'string',
         'creation_date_string' => 'string',
         'creator' => 'string',
@@ -67,8 +65,6 @@ class EpsProperties implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'width' => 'int32',
-        'height' => 'int32',
         'bounding_box_string' => null,
         'creation_date_string' => null,
         'creator' => null,
@@ -103,8 +99,6 @@ class EpsProperties implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'width' => 'Width',
-        'height' => 'Height',
         'bounding_box_string' => 'BoundingBoxString',
         'creation_date_string' => 'CreationDateString',
         'creator' => 'Creator',
@@ -118,8 +112,6 @@ class EpsProperties implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'width' => 'setWidth',
-        'height' => 'setHeight',
         'bounding_box_string' => 'setBoundingBoxString',
         'creation_date_string' => 'setCreationDateString',
         'creator' => 'setCreator',
@@ -133,8 +125,6 @@ class EpsProperties implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'width' => 'getWidth',
-        'height' => 'getHeight',
         'bounding_box_string' => 'getBoundingBoxString',
         'creation_date_string' => 'getCreationDateString',
         'creator' => 'getCreator',
@@ -202,8 +192,6 @@ class EpsProperties implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
-        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
         $this->container['bounding_box_string'] = isset($data['bounding_box_string']) ? $data['bounding_box_string'] : null;
         $this->container['creation_date_string'] = isset($data['creation_date_string']) ? $data['creation_date_string'] : null;
         $this->container['creator'] = isset($data['creator']) ? $data['creator'] : null;
@@ -220,12 +208,6 @@ class EpsProperties implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['width'] === null) {
-            $invalidProperties[] = "'width' can't be null";
-        }
-        if ($this->container['height'] === null) {
-            $invalidProperties[] = "'height' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -238,63 +220,9 @@ class EpsProperties implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['width'] === null) {
-            return false;
-        }
-        if ($this->container['height'] === null) {
-            return false;
-        }
         return true;
     }
 
-
-    /**
-     * Gets width
-     *
-     * @return int
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param int $width Gets the width.
-     *
-     * @return $this
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return int
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param int $height Gets the height.
-     *
-     * @return $this
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
-
-        return $this;
-    }
 
     /**
      * Gets bounding_box_string

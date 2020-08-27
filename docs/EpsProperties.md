@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **int** | Gets the width. | 
-**height** | **int** | Gets the height. | 
 **bounding_box_string** | **string** | Gets the BoundingBox. | [optional] 
 **creation_date_string** | **string** | Gets the CreationDate. | [optional] 
 **creator** | **string** | Gets the Creator. | [optional] 
