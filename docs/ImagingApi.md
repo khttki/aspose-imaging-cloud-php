@@ -2154,7 +2154,7 @@ Name | Type | Description  | Notes
 # **getAvailableLabels**
 > getAvailableLabels($getAvailableLabelsRequest)
 
-Detects objects bounds and draw them on the original image
+Gets available labels for selected object detection method.
 
 ### Return type
 
@@ -2164,7 +2164,7 @@ Detects objects bounds and draw them on the original image
 # **getAvailableLabelsAsync**
 > getAvailableLabelsAsync($getAvailableLabelsRequest)
 
-Detects objects bounds and draw them on the original image
+Gets available labels for selected object detection method.
 
 Performs operation asynchronously.
 
