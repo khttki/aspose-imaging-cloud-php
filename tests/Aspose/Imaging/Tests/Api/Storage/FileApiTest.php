@@ -212,6 +212,9 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsCreateTest() {
+		
+		$this->markTestSkipped("IMAGINGCLOUD-644");
+		
         if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
@@ -262,6 +265,9 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsDownloadTest() {
+		
+		$this->markTestSkipped("IMAGINGCLOUD-644");
+		
         if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
@@ -309,6 +315,9 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsCopyTest() {
+		
+		$this->markTestSkipped("IMAGINGCLOUD-644");
+		
         if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
@@ -363,6 +372,9 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsMoveTest() {
+		
+		$this->markTestSkipped("IMAGINGCLOUD-644");
+		
         if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
@@ -423,6 +435,9 @@ class FileApiTests extends StorageTester {
      * @return void
      */
     public function fileVersionsDeleteTest() {
+		
+		$this->markTestSkipped("IMAGINGCLOUD-644");
+		
         if (self::$imagingApi->getConfig()->getOnPremise())
         {
             return;
