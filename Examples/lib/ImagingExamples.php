@@ -61,15 +61,15 @@ use Exception;
 
 error_reporting(1);
 
-$appKey = null;
-$appSid = null;
+$clientSecret = null;
+$clientId = null;
 $baseUrl = null;
-processArguments($argv, $appKey, $appSid, $baseUrl);
+processArguments($argv, $clientSecret, $clientId, $baseUrl);
 
 try {
     $imagingConfig = new Configuration();
-    $imagingConfig->setAppKey($appKey);
-    $imagingConfig->setAppSid($appSid);
+    $imagingConfig->setClientSecret($clientSecret);
+    $imagingConfig->setClientId($clientId);
     $imagingConfig->setBaseUrl($baseUrl);
     $imagingApi = new ImagingApi($imagingConfig);
 
@@ -250,12 +250,12 @@ function deleteDir($path)
         array_map(__FUNCTION__, glob($path . '/*')) == @rmdir($path);
 }
 
-function processArguments($args, &$appKey, &$appSid, &$baseUrl)
+function processArguments($args, &$clientSecret, &$clientId, &$baseUrl)
 {
     $errors = array();
 
-    $appKey = processArgument($args, "--appKey", "app key", $errors);
-    $appSid = processArgument($args, "--appSid", "app sid", $errors);
+    $clientSecret = processArgument($args, "--clientSecret", "Client Secret", $errors);
+    $clientId = processArgument($args, "--clientId", "Client ID", $errors);
     $baseUrl = processArgument($args, "--baseUrl", "base url", $errors, "https://api.aspose.cloud/");
 
     if (count($errors) == 0)
