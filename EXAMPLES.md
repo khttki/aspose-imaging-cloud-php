@@ -2,8 +2,8 @@
 ```php
 // optional parameters are base URL, API version and debug mode
 $imagingConfig = new Configuration();
-$imagingConfig->setAppKey("yourAppKey");
-$imagingConfig->setAppSid("yourAppSID");
+$imagingConfig->setClientSecret("ClientSecret");
+$imagingConfig->setClientId("ClientId");
 $imagingApi = new ImagingApi($imagingConfig);
 
 try {
@@ -40,8 +40,8 @@ try {
 ```php
 // optional parameters are base URL, API version and debug mode
 $imagingConfig = new Configuration();
-$imagingConfig->setAppKey("yourAppKey");
-$imagingConfig->setAppSid("yourAppSID");
+$imagingConfig->setClientSecret("ClientSecret");
+$imagingConfig->setClientId("ClientId");
 $imagingApi = new ImagingApi($imagingConfig);
 
 try {
@@ -85,8 +85,8 @@ try {
 ```php
 // optional parameters are base URL, API version and debug mode
 $imagingConfig = new Configuration();
-$imagingConfig->setAppKey("yourAppKey");
-$imagingConfig->setAppSid("yourAppSID");
+$imagingConfig->setClientSecret("ClientSecret");
+$imagingConfig->setClientId("ClientId");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
@@ -112,8 +112,8 @@ $similarity = $response->getResults()[0]->getSimilarity();
 // default authentication type is OAuth2.0
 // default debug mode is false
 $imagingConfig = new Configuration();
-$imagingConfig->setAppKey("yourAppKey");
-$imagingConfig->setAppSid("yourAppSID");
+$imagingConfig->setClientSecret("ClientSecret");
+$imagingConfig->setClientId("ClientId");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
@@ -168,8 +168,8 @@ foreach ($results->getResults() as $searchResult)
 // default authentication type is OAuth2.0
 // default debug mode is false
 $imagingConfig = new Configuration();
-$imagingConfig->setAppKey("yourAppKey");
-$imagingConfig->setAppSid("yourAppSID");
+$imagingConfig->setClientSecret("ClientSecret");
+$imagingConfig->setClientId("ClientId");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
@@ -212,8 +212,8 @@ foreach ($response->getDuplicates() as $duplicates)
 // default authentication type is OAuth2.0
 // default debug mode is false
 $imagingConfig = new Configuration();
-$imagingConfig->setAppKey("yourAppKey");
-$imagingConfig->setAppSid("yourAppSID");
+$imagingConfig->setClientSecret("ClientSecret");
+$imagingConfig->setClientId("ClientId");
 $imagingApi = new ImagingApi($imagingConfig);
  
 // create search context or use existing search context ID if search context was created earlier
