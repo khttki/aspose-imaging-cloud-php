@@ -56,18 +56,18 @@ abstract class ApiTester extends TestCase
     const ApiVersion = "v3.0";
 
     /**
-     * The application key
+     * The Client Secret
      * 
      * @var string 
      */
-    const AppKey = "xxx";
+    const ClientSecret = "xxx";
 
     /**
-     * The application SID
+     * The Client ID
      * 
      * @var string 
      */
-    const AppSid = "xxx";
+    const ClientId = "xxx";
 
     /**
      * The base URL
@@ -81,7 +81,7 @@ abstract class ApiTester extends TestCase
      * 
      * @var string 
      */
-    const LocalTestFolder = ".\\testdata\\";
+    const LocalTestFolder = "./testdata/";
 
     /**
      * The local test folder
@@ -247,12 +247,12 @@ abstract class ApiTester extends TestCase
     {
         echo "Trying to obtain access creds environment variables.\r\n";
         $onPremise = getenv("OnPremise") === "true";
-        $appKey = $onPremise ? '' : getenv("AppKey");
-        $appSid = $onPremise ? '' : getenv("AppSid");
+        $clientSecret = $onPremise ? '' : getenv("ClientSecret");
+        $clientId = $onPremise ? '' : getenv("ClientId");
         $baseUrl = getenv("ApiEndpoint");
         $apiVersion = getenv("ApiVersion");
 
-        if ((!$onPremise && (empty($appKey) || empty($appSid))) || empty($baseUrl) || empty($apiVersion))
+        if ((!$onPremise && (empty($clientSecret) || empty($clientId))) || empty($baseUrl) || empty($apiVersion))
         {
             echo "Access data isn't set completely by environment variables. Filling unset data with default values.\r\n";
         }
@@ -273,16 +273,16 @@ abstract class ApiTester extends TestCase
         if (!empty($serverAccessString))
         {
             $accessData = json_decode($serverAccessString);
-            if (empty($appKey) && !$onPremise)
+            if (empty($clientSecret) && !$onPremise)
             {
-                $appKey = $accessData->{'AppKey'};
-                echo "Set default App key\r\n";
+                $clientSecret = $accessData->{'ClientSecret'};
+                echo "Set default Client Secret\r\n";
             }
 
-            if (empty($appSid) && !$onPremise)
+            if (empty($clientId) && !$onPremise)
             {
-                $appSid = $accessData->{'AppSid'};
-                echo "Set default App SID\r\n";
+                $clientId = $accessData->{'ClientId'};
+                echo "Set default Client ID\r\n";
             }
 
             if (empty($baseUrl))
@@ -293,20 +293,20 @@ abstract class ApiTester extends TestCase
         }
         else if (!$onPremise)
         {
-            throw new InvalidArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
+            throw new InvalidArgumentException("Please, specify valid access data (ClientSecret, ClientId, Base URL)");
         }
 
         echo "On-premise: " . var_export($onPremise, true) . "\r\n";
-        echo "App key: " . $appKey . "\r\n";
-        echo "App SID: " . $appSid . "\r\n";
+        echo "Client Secret: " . $clientSecret . "\r\n";
+        echo "Client ID: " . $clientId . "\r\n";
         echo "Storage: " . self::$testStorage . "\r\n";
         echo "Base URL: " . $baseUrl . "\r\n";
         echo "API version: " . $apiVersion . "\r\n";
 
         $imagingConfig = new Imaging\Configuration();
         $imagingConfig->setBaseUrl($baseUrl);
-        $imagingConfig->setAppKey($appKey);
-        $imagingConfig->setAppSid($appSid);
+        $imagingConfig->setClientSecret($clientSecret);
+        $imagingConfig->setClientId($clientId);
         $imagingConfig->setApiVersion($apiVersion);
         $imagingConfig->setOnPremise($onPremise);
         self::$imagingApi = new Imaging\ImagingApi($imagingConfig);

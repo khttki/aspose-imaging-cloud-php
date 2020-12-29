@@ -34,18 +34,18 @@ namespace Aspose\Imaging;
 class Configuration
 {
     /**
-     * AppKey for API
+     * ClientSecret for API
      *
      * @var string
      */
-    public $appKey = '';
+    public $clientSecret = '';
     
     /**
-     * AppSid for API
+     * ClientId for API
      *
      * @var string
      */
-    public $appSid = '';
+    public $clientId = '';
 
     /**
      * The base url
@@ -113,47 +113,47 @@ class Configuration
     }
 
     /**
-     * Sets AppSid
+     * Sets ClientId
      *
-     * @param string $appSid
+     * @param string $clientId
      *
      * @return $this
      */
-    public function setAppSid($appSid)
+    public function setClientId($clientId)
     {
-        $this->appSid = $appSid;
+        $this->clientId = $clientId;
         return $this;
     }
     
     /**
-     * Gets AppSid
-     * @return $appSid
+     * Gets ClientId
+     * @return $clientId
      */
-    public function getAppSid()
+    public function getClientId()
     {
-        return $this->appSid;
+        return $this->clientId;
     }
     
     /**
-     * Sets AppKey
+     * Sets ClientSecret
      *
-     * @param string $appKey
+     * @param string $clientSecret
      *
      * @return $this
      */
-    public function setAppKey($appKey)
+    public function setClientSecret($clientSecret)
     {
-        $this->appKey = $appKey;
+        $this->clientSecret = $clientSecret;
         return $this;
     }
     
     /**
-     * Gets AppKey
-     * @return $appKey
+     * Gets ClientSecret
+     * @return $clientSecret
      */
-    public function getAppKey()
+    public function getClientSecret()
     {
-        return $this->appKey;
+        return $this->clientSecret;
     }
 
     /**
