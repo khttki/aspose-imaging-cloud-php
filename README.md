@@ -77,6 +77,20 @@ use \Aspose\Imaging\Model\Requests;
 ## Quick Examples
 Please, look at [Examples](EXAMPLES.md) document for basic usage or use the [Examples](Examples) folder for more sophisticated scenarios.
 
+## Convert JPG to PNG in PHP
+
+```php
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+	$config = new Configuration();
+	$config->setAppSid("MY_CLIENT_ID");
+	$config->setAppKey("MY_CLIENT_SECRET");
+
+	$api = new ImagingApi($config);
+
+	$request = new ConvertImageRequest("sample.jpg", "png", "tempFolder", "My_Storage_Name");
+	$result = $api->convertImage($request);
+```
+
 #### Aspose Cloud-hosted service VS on-premise deployment (*experimental feature*)
 Starting from v19.7, you can choose either to use Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests.
 The details about key differences and deployment process will be described on the dedicated Docker Hub page as soon as it's released.
