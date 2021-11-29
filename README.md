@@ -61,7 +61,7 @@ Please, add the following  to your composer.json as a dependency.
 ```json
 {
     "require": {
-        "aspose/aspose-imaging-cloud": ">=21.6"
+        "aspose/aspose-imaging-cloud": ">=21.11"
     }
 }
 ```
