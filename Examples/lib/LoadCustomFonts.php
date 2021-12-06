@@ -87,7 +87,7 @@ class LoadCustomFonts extends ImagingBase
 	*/
 	protected function UploadFontsToCloud()
 	{
-		$fontsFolder =  $this->GetSampleImageFileName() . DIRECTORY_SEPARATOR . "Fonts";
+		$fontsFolder =  $this->ImagingBase::GetExampleImagesFolder() . DIRECTORY_SEPARATOR . "Fonts";
 		echo "Fonts folder: $fontsFolder" . PHP_EOL;
 		$fileList = glob($fontsFolder + "/*.ttf", GLOB_BRACE);
 		foreach($fileList as $filename){
