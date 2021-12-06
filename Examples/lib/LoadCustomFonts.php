@@ -113,7 +113,7 @@ class LoadCustomFonts extends ImagingBase
      */
     protected function UploadFileToCloud($fileName, $file)
     {
-        $request = new UploadFileRequest($this-> $fileName, $file);
+        $request = new UploadFileRequest($fileName, $file);
         $response = self::$imagingApi->uploadFile($request);
         echo ($response->getErrors() == null || count($response->getErrors()) == 0) ?
             "File " . $fileName . " is uploaded to cloud storage" :
