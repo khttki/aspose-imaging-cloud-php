@@ -85,7 +85,7 @@ class LoadCustomFonts extends ImagingBase
    /**
 	*    Uploads custom fonts to cloud.
 	*/
-	private function UploadFontsToCloud()
+	protected function UploadFontsToCloud()
 	{
 		$fontsFolder =  $this->GetSampleImageFileName() . DIRECTORY_SEPARATOR . "Fonts";
 		echo "Fonts folder: $fontsFolder" . PHP_EOL;
@@ -105,7 +105,7 @@ class LoadCustomFonts extends ImagingBase
      * @param $file string The file.
      * @return void
      */
-    private function UploadFileToCloud($fileName, $file)
+    protected function UploadFileToCloud($fileName, $file)
     {
         $request = new UploadFileRequest($this-> $fileName, $file);
         $response = self::$imagingApi->uploadFile($request);
