@@ -97,7 +97,7 @@ class LoadCustomFonts extends ImagingBase
 				$fontContent = file_get_contents($filename);
 				$cloudPath = "Fonts" . DIRECTORY_SEPARATOR . basename($filename);
 				echo "Cloud path: $cloudPath" . PHP_EOL;
-				UploadFileToCloud($cloudPath , fontContent);
+				$this->UploadFileToCloud($cloudPath , fontContent);
 			 }
 		}	
 		
