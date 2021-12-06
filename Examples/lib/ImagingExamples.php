@@ -80,7 +80,7 @@ try {
 
     echo "Running Imaging Cloud examples:" . PHP_EOL;
 
-    // Update parameters of existing BMP image
+   /*  // Update parameters of existing BMP image
     $bmpImage = new UpdateBmpImage($imagingApi);
     $bmpImage->ModifyBmpFromStorage();
     $bmpImage->ModifyBmpAndUploadToStorage();
@@ -234,7 +234,7 @@ try {
     $objectDetection->DetectObjectsImageFromStorage();
     $objectDetection->VisualiizeDetectObjectsAndUploadToStorage();
     $objectDetection->DetectedObjectsImageFromRequestBody();
-    $objectDetection->VisualizeDetectedObjectsImageFromRequestBody();
+    $objectDetection->VisualizeDetectedObjectsImageFromRequestBody(); */
 	
 	// Custom fonts
 	$customFonts = new LoadCustomFonts($imagingApi);
