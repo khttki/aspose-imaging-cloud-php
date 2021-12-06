@@ -89,7 +89,7 @@ class LoadCustomFonts extends ImagingBase
 	{
 		$fontsFolder =  $this->GetSampleImageFileName() . DIRECTORY_SEPARATOR . "Fonts";
 
-		$fileList = glob($fontsFolder + "/.ttf");
+		$fileList = glob($fontsFolder + "/*.ttf");
 		foreach($fileList as $filename){
 			if(is_file($filename)){
 				 $fontContent = file_get_contents($filename);
