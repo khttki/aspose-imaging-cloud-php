@@ -89,13 +89,15 @@ class LoadCustomFonts extends ImagingBase
 	{
 		$fontsFolder = ImagingBase::GetExampleImagesFolder() . DIRECTORY_SEPARATOR . "Fonts";
 		echo "Fonts folder: $fontsFolder" . PHP_EOL;
-		$fileList = glob($fontsFolder + "/*.ttf", GLOB_BRACE);
-		foreach($fileList as $filename){
-			 echo "File: $filename" . PHP_EOL;
-		     $fontContent = file_get_contents($filename);
-		     UploadToCloud("Fonts" . DIRECTORY_SEPARATOR . basename($filename), fontContent);
-			 echo "Uploaded font" . PHP_EOL;
-		}   
+		
+		$handle = opendir($fontsFolder);
+		while($filename = readdir($handle)) {
+			echo "File: $filename" . PHP_EOL;
+		    $fontContent = file_get_contents($filename);
+		    UploadToCloud("Fonts" . DIRECTORY_SEPARATOR . basename($filename), fontContent);
+		}	
+		
+		closedir($handle);
 	}		
 	
 
