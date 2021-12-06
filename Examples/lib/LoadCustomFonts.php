@@ -30,7 +30,7 @@
 namespace Aspose\Imaging\Examples;
 
 use Aspose\Imaging\Model\Requests\ConvertImageRequest;
-
+use Aspose\Imaging\Model\Requests\UploadFileRequest;
 
 /**
  * Load custom fonts example.
