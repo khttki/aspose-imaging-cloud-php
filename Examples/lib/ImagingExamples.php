@@ -238,7 +238,7 @@ try {
 	
 	// Custom fonts
 	$customFonts = new LoadCustomFonts($imagingApi);
-	$customFonts.UsingCustomFontsForVectorImageConversion();
+	$customFonts->UsingCustomFontsForVectorImageConversion();
 
 } catch (Exception $exception) {
     echo "Something goes wrong: " . $exception . PHP_EOL;
