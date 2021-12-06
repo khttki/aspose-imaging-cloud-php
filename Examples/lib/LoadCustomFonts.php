@@ -95,9 +95,9 @@ class LoadCustomFonts extends ImagingBase
 		     $fontContent = file_get_contents($filename);
 		     UploadToCloud("Fonts" . DIRECTORY_SEPARATOR . basename($filename), fontContent);
 			 echo "Uploaded font" . PHP_EOL;
-			}   
-		}		
-	}
+		}   
+	}		
+	
 
     /**
      * Uploads the file to cloud.
