@@ -70,12 +70,12 @@ class LoadCustomFontsTests extends ApiTester
 				$request = new Requests\ConvertImageRequest($name, $format, $folder, $storage);
 				return self::$imagingApi->convertImageAsync($request)->wait();
 			},
-			function($originalProperties, $resultProperties, $resultStream){},
-			$folder,
-			$storage)
+			function($originalProperties, $resultProperties, $resultStream)
 			{
-				assertLessThan(100, abs($resultStream.Length - 11454));
-			};          
+				$this->assertLessThan(100, abs($resultStream.Length - 11454))
+			},
+			$folder,
+			$storage)			          
     }   
 	
 	 /**
