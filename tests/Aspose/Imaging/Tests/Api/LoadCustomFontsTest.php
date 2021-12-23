@@ -59,7 +59,7 @@ class LoadCustomFontsTests extends ApiTester
         $storage = self::$testStorage;
         $format = "png";       
 		
-		$this->copyInputFileToFolder($name, $folder, $storage);
+		$this->copyInputFileToTestFolder($name, $folder, $storage);
 		
 		$this->getRequestTestInternal(
 			"usingCustomFontsForVectorImageTest", 
