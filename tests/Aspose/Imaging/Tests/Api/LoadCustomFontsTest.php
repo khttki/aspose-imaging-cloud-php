@@ -85,7 +85,7 @@ class LoadCustomFontsTests extends ApiTester
      */
     protected function checkInputFileExists($inputFileName)
     {
-		if (inputFileName == "image.emz") {
+		if ($inputFileName == "image.emz") {
 			return true;
 		}
 		
