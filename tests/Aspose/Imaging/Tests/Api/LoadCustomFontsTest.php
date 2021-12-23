@@ -32,7 +32,7 @@ use \Aspose\Imaging\Tests\Base\ApiTester;
 use \Aspose\Imaging\Model\Requests;
 
 /**
- * Class for using custom fonts.
+ * Class for testing using custom fonts.
  * 
  * @group Imaging
  * @group v3.0
