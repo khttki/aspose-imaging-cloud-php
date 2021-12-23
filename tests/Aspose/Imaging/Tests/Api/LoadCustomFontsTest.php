@@ -47,13 +47,20 @@ class LoadCustomFontsTests extends ApiTester
      */
     protected static $originalDataFolder = "ImagingIntegrationTestData/UseCases";
 	
-    
+	/**
+	 * Test UsingCustomFontsForVectorImage.
+	 *  
+	 * @test
+	 */    
     public function usingCustomFontsForVectorImageTest()
     {
         $name = "image.emz";
         $folder = self::$tempFolder;
         $storage = self::$testStorage;
         $format = "png";       
+		
+		$this->copyInputFileToFolder($name, $folder, $storage);
+		
 		$this->getRequestTestInternal(
 			"usingCustomFontsForVectorImageTest", 
 			"Input image: " . $name . "; Output format: " . $format,
@@ -69,4 +76,34 @@ class LoadCustomFontsTests extends ApiTester
 			$folder,
 			$storage);          
     }   
+	
+	 /**
+     * Checks if input file exists.
+     *
+     * @param string $inputFileName Name of the input file.
+     * @return bool
+     */
+    protected function checkInputFileExists($inputFileName)
+    {
+		if (inputFileName == "image.emz") {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+     * Copies original input file to test folder in cloud
+     * @param string $inputFileName The input file name
+     * @param string $folder The folder
+     * @param string $storage The storage
+     */
+    protected function copyInputFileToTestFolder($inputFileName, $folder, $storage)
+    {   
+        if (!self::$imagingApi->objectExists(new Requests\ObjectExistsRequest($folder . "/" . $inputFileName, $storage))->getExists())
+        {
+            self::$imagingApi->copyFile(
+                new Requests\CopyFileRequest(self::$originalDataFolder . "/" . $inputFileName, $folder . "/" . $inputFileName, $storage, $storage));
+        }
+    }
 }
