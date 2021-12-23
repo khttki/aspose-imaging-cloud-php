@@ -72,7 +72,7 @@ class LoadCustomFontsTests extends ApiTester
 			},
 			function($originalProperties, $resultProperties, $resultStream)
 			{
-				$this->assertLessThan(100, abs($resultStream.Length - 11454));
+				$this->assertLessThan(100, abs($resultStream->getSize() - 11454));
 			},
 			$folder,
 			$storage);			          
